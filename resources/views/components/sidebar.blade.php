@@ -18,13 +18,28 @@
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item"><a href="{{ route('admin.pengguna.guru') }}" class="sidebar-link"><span
-                                    class="hide-menu"> Guru
-                                </span></a></li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.pengguna.akun') }}" class="sidebar-link">
+                                <span class="hide-menu">
+                                    Akun
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.pengguna.guru') }}" class="sidebar-link">
+                                <span class="hide-menu">
+                                    Guru
+                                </span>
+                            </a>
+                        </li>
 
-                        <li class="sidebar-item"><a href="{{ route('admin.pengguna.murid') }}"
-                                class="sidebar-link"><span class="hide-menu">
-                                    Murid </span></a></li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.pengguna.murid') }}" class="sidebar-link">
+                                <span class="hide-menu">
+                                    Murid
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
@@ -79,28 +94,28 @@
                 </li>
                 <li class="list-divider"></li>
                 <li class="nav-small-cap"><span class="hide-menu">Alat/Bahan</span></li>
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route("admin.alatbahan.daftar") }}"
-                        aria-expanded="false"><i data-feather="list" class="feather-icon"></i><span
-                            class="hide-menu">Daftar Alat/Bahan
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
+                        href="{{ route('admin.alatbahan.daftar') }}" aria-expanded="false"><i data-feather="list"
+                            class="feather-icon"></i><span class="hide-menu">Daftar Alat/Bahan
                         </span></a>
                 </li>
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
                         aria-expanded="false"><i data-feather="refresh-ccw" class="feather-icon"></i><span
                             class="hide-menu">Transaksi </span></a>
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a href="{{ route("admin.alatbahan.transaksi.masuk") }}" class="sidebar-link"><span
-                                    class="hide-menu"> Alat/Bahan Masuk
+                        <li class="sidebar-item"><a href="{{ route('admin.alatbahan.transaksi.masuk') }}"
+                                class="sidebar-link"><span class="hide-menu"> Alat/Bahan Masuk
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"><a href="{{ route("admin.alatbahan.transaksi.keluar") }}" class="sidebar-link"><span
-                                    class="hide-menu"> Alat/Bahan Keluar
+                        <li class="sidebar-item"><a href="{{ route('admin.alatbahan.transaksi.keluar') }}"
+                                class="sidebar-link"><span class="hide-menu"> Alat/Bahan Keluar
                                 </span></a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route("admin.alatbahan.pengajuan") }}"
-                        aria-expanded="false"><i data-feather="inbox" class="feather-icon"></i><span
-                            class="hide-menu">Pengajuan
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link"
+                        href="{{ route('admin.alatbahan.pengajuan') }}" aria-expanded="false"><i
+                            data-feather="inbox" class="feather-icon"></i><span class="hide-menu">Pengajuan
                         </span></a>
                 </li>
             </ul>

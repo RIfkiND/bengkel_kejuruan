@@ -11,6 +11,11 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    public function akun()
+    {
+        return view('admin.referensi.pengguna.akun');
+    }
+
     public function guru()
     {
         return view('admin.referensi.pengguna.guru');
