@@ -31,22 +31,22 @@ Route::prefix('/admin')->group(function () {
             Route::get('guru','guru')->name('admin.pengguna.guru');
             Route::get('murid','murid')->name('admin.pengguna.murid');
         });
-        Route::prefix('kelolaruangan')->group(function(){
+        Route::prefix('kelola-ruangan')->group(function(){
             Route::get('kelas','kelas')->name('admin.kelolaruangan.kelas');
             Route::get('ruangan','ruangan')->name('admin.kelolaruangan.ruangan');
         });
-        Route::get('kategoriperalatan','kategoriperalatan')->name('admin.kategoriperalatan');
+        Route::get('kategori-peralatan-dan-mesin','kategoriperalatan')->name('admin.kategoriperalatan');
 
-        Route::get('peralatan','peralatan')->name('admin.peralatanmesin.daftar');
+        Route::get('peralatan-dan-mesin','peralatan')->name('admin.peralatanmesin.daftar');
         Route::get('pemeliharaan','pemeliharaan')->name('admin.peralatanmesin.pemeliharaan');
-        Route::prefix('transaksiperalatan')->group(function(){
+        Route::prefix('transaksi-peralatan-dan-mesin')->group(function(){
             Route::get('masuk','peralatanmasuk')->name('admin.peralatanmesin.transaksi.masuk');
             Route::get('keluar','peralatankeluar')->name('admin.peralatanmesin.transaksi.keluar');
         });
 
-        Route::get('alat','alatbahan')->name('admin.alatbahan.daftar');
+        Route::get('alat-dan-bahan','alatbahan')->name('admin.alatbahan.daftar');
         Route::get('pengajuan','pengajuan')->name('admin.alatbahan.pengajuan');
-        Route::prefix('transaksialat')->group(function(){
+        Route::prefix('transaksi-alat')->group(function(){
             Route::get('masuk','alatmasuk')->name('admin.alatbahan.transaksi.masuk');
             Route::get('keluar','alatkeluar')->name('admin.alatbahan.transaksi.keluar');
         });
