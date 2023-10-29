@@ -28,4 +28,18 @@ class Sekolah extends Model
     {
         return $this->hasMany(Ruangan::class);
     }
+
+    public function getTotalMuridCountAttribute()
+    {
+        return $this->kelas->sum(function ($kelas) {
+            return $kelas->murid->count();
+        });
+    }
+
+    public function getTotalPeralatanCountAttribute()
+    {
+        return $this->ruangan->sum(function ($ruangan) {
+            return $ruangan->peralatanataumesin->count();
+        });
+    }
 }

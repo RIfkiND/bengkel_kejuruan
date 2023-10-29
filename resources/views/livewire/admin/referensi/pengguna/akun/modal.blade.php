@@ -53,7 +53,8 @@
                         <div class="form-row">
                             <div class="form-group col">
                                 <label>Role</label>
-                                <select id="role" class="form-control" wire:model='role'>
+                                <select id="role" class="form-control" wire:model='role'
+                                    wire:change="updateSekolahVisibility">
                                     <option selected="selected">Pilih</option>
                                     <option value="0">Guru</option>
                                     <option value="1">Admin Sekolah</option>
@@ -66,15 +67,18 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            @if ($this->role == '1')
+                            @if ($showSekolahSelect)
                                 <div class="form-group col">
                                     <label>Sekolah</label>
-                                    <select id="sekolah" class="form-control">
-                                        <option selected="selected">Choose...</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        <option>Option 3</option>
+                                    <select id="sekolah_user" class="form-control" wire:model='sekolah_user'>
+                                        <option selected="selected">Pilih</option>
+                                        @foreach ($sekolahs as $sekolah)
+                                            <option value="{{ $sekolah->id }}">{{ $sekolah->nama_sekolah }}</option>
+                                        @endforeach
                                     </select>
+                                    @error('sekolah_user')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             @endif
                         </div>

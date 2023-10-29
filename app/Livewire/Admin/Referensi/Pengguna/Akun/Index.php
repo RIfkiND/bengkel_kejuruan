@@ -3,14 +3,16 @@
 namespace App\Livewire\Admin\Referensi\Pengguna\Akun;
 
 use App\Models\User;
+use App\Models\Sekolah;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $name, $email, $password, $role, $sekolah, $guru, $password_confirmation, $user_id, $searchUser, $selectedUserId;
+    public $name, $email, $password, $role, $sekolah_user, $guru, $password_confirmation, $user_id, $searchUser, $selectedUserId;
     public $updateMode = false;
+    public $showSekolahSelect = false;
 
     use WithPagination;
     use LivewireAlert;
@@ -19,6 +21,11 @@ class Index extends Component
     public function getListeners()
     {
         return ['delete'];
+    }
+
+    public function updateSekolahVisibility()
+    {
+        $this->showSekolahSelect = $this->role == '1';
     }
 
     public function resetPage()
@@ -34,11 +41,13 @@ class Index extends Component
                     ->where('role', '!=', '3')
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),
+                'sekolahs' => Sekolah::all(),
             ]);
         } elseif (auth()->user()->role == 'AdminSekolah') {
             return view('livewire.admin.referensi.pengguna.akun.index', [
                 'users' => User::where('name', 'LIKE', $searchUser)
                     ->where('role', '==', '0')
+                    ->where('sekolah_id', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),
             ]);
@@ -47,6 +56,7 @@ class Index extends Component
                 'users' => User::where('name', 'LIKE', $searchUser)
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),
+                'sekolahs' => Sekolah::all(),
             ]);
         }
     }
@@ -58,7 +68,8 @@ class Index extends Component
         $this->password = '';
         $this->password_confirmation = '';
         $this->role = '';
-        $this->sekolah = '';
+        $this->sekolah_user = '';
+        $this->showSekolahSelect = false;
     }
 
     public function store()
@@ -70,13 +81,13 @@ class Index extends Component
             'role' => 'required',
         ]);
 
-        if ($this->sekolah) {
+        if ($this->sekolah_user) {
             User::create([
                 'name' => $this->name,
                 'email' => $this->email,
                 'password' => bcrypt($this->password),
                 'role' => $this->role,
-                'sekolah_id' => $this->sekolah,
+                'sekolah_id' => $this->sekolah_user,
             ]);
         } else {
             User::create([
@@ -88,7 +99,6 @@ class Index extends Component
         }
 
         $this->resetInputFields();
-
         $this->alert('success', 'Berhasil Ditambahkan!', [
             'position' => 'center',
             'timer' => 3000,
@@ -123,14 +133,14 @@ class Index extends Component
                 'role' => 'required',
             ]);
 
-            if ($this->sekolah) {
+            if ($this->sekolah_user) {
                 $user = User::find($this->user_id);
                 $user->update([
                     'name' => $this->name,
                     'email' => $this->email,
                     'password' => bcrypt($this->password),
                     'role' => $this->role,
-                    'sekolah_id' => $this->sekolah,
+                    'sekolah_id' => $this->sekolah_user,
                 ]);
             } else {
                 $user = User::find($this->user_id);
@@ -148,13 +158,13 @@ class Index extends Component
                 'role' => 'required',
             ]);
 
-            if ($this->sekolah) {
+            if ($this->sekolah_user) {
                 $user = User::find($this->user_id);
                 $user->update([
                     'name' => $this->name,
                     'email' => $this->email,
                     'role' => $this->role,
-                    'sekolah_id' => $this->sekolah,
+                    'sekolah_id' => $this->sekolah_user,
                 ]);
             } else {
                 $user = User::find($this->user_id);

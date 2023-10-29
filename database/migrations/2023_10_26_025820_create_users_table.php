@@ -18,8 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('role')->default(0)->comment('0: Guru, 1: AdminSekolah , 2: Admin, 3: SuperAdmin');
-            $table->foreignId('sekolah_id')->nullable()->constrained('sekolahs')->onDelete('cascade');
-            $table->foreignId('guru_id')->nullable()->constrained('gurus')->onDelete('cascade');
+            $table->foreignId('sekolah_id')->nullable()->constrained('sekolahs')->cascadeOnDelete();
+            $table->foreignId('guru_id')->nullable()->constrained('gurus')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
