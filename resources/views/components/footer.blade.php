@@ -1,4 +1,5 @@
-<footer class="footer text-center text-muted">
-    All Rights Reserved by Freedash. Designed and Developed by <a
-        href="https://adminmart.com/">Adminmart</a>.
-</footer>
+<div class="footer">
+    <div class="copyright">
+        <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+    </div>
+</div>
