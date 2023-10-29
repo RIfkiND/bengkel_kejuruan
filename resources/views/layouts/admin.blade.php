@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
+
     <!-- theme meta -->
     <meta name="theme-name" content="quixlab" />
-  
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/Asset/images/favicon.png">
     @livewireStyles
@@ -29,7 +29,7 @@
         Preloader end
     ********************-->
 
-    
+
     <!--**********************************
         Main wrapper start
     ***********************************-->
@@ -66,8 +66,8 @@
         <!--**********************************
             Content body end
         ***********************************-->
-        
-        
+
+
         <!--**********************************
             Footer start
         ***********************************-->
@@ -96,7 +96,7 @@
 
     @livewireScripts
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script> 
+    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
 </body>
 
 </html>

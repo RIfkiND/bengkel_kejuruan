@@ -26,6 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('/admin')->group(function () {
     Route::controller(AdminController::class)->group(function(){
         Route::get('dashboard','index')->name('admin.index');
+        Route::get('sekolah','sekolah')->name('admin.sekolah');
         Route::prefix('pengguna')->group(function(){
             Route::get('akun','akun')->name('admin.pengguna.akun');
             Route::get('guru','guru')->name('admin.pengguna.guru');

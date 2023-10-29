@@ -16,6 +16,11 @@ class AdminController extends Controller
         return view('admin.referensi.pengguna.akun');
     }
 
+    public function sekolah()
+    {
+        return view('admin.referensi.sekolah');
+    }
+
     public function guru()
     {
         return view('admin.referensi.pengguna.guru');
