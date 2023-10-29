@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('/admin')->group(function () {
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/', 'index')->name('admin');
+        Route::get('dashboard','index')->name('admin.index');
+    });
+});
