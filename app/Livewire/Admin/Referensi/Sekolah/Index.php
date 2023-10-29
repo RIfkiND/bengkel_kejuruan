@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Livewire\Admin\Referensi\KategoriPeralatan;
+namespace App\Livewire\Admin\Referensi\Sekolah;
 
+use App\Models\Sekolah;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\KategoriPeralatanAtauMesin;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama_kategori, $kategori_id, $searchKategori, $selectedKategoriId;
+    public $nama_sekolah, $sekolah_id, $searchSekolah, $selectedSekolahId;
     public $updateMode = false;
 
     use WithPagination;
@@ -23,32 +23,32 @@ class Index extends Component
 
     public function resetPage()
     {
-        $this->gotoPage(1, 'kategoriPage');
+        $this->gotoPage(1, 'sekolahPage');
     }
     public function render()
     {
-        $searchKategori = '%' . $this->searchKategori . '%';
+        $searchSekolah = '%' . $this->searchSekolah . '%';
 
-        return view('livewire.admin.referensi.kategori-peralatan.index', [
-            'kategories' => KategoriPeralatanAtauMesin::where('nama_kategori', 'LIKE', $searchKategori)
+        return view('livewire.admin.referensi.sekolah.index', [
+            'sekolah' => Sekolah::where('nama_sekolah', 'LIKE', $searchSekolah)
                 ->orderBy('id', 'DESC')
-                ->paginate(10, ['*'], 'kategoriPage'),
+                ->paginate(10, ['*'], 'sekolahPage'),
         ]);
     }
 
     private function resetInputFields()
     {
-        $this->nama_kategori = '';
+        $this->nama_sekolah = '';
     }
 
     public function store()
     {
         $validatedDate = $this->validate([
-            'nama_kategori' => 'required',
+            'nama_sekolah' => 'required',
         ]);
 
-        KategoriPeralatanAtauMesin::create([
-            'nama_kategori' => $this->nama_kategori,
+        Sekolah::create([
+            'nama_sekolah' => $this->nama_sekolah,
         ]);
 
         $this->resetInputFields();
@@ -63,9 +63,9 @@ class Index extends Component
 
     public function edit($id)
     {
-        $kategori = KategoriPeralatanAtauMesin::findOrFail($id);
-        $this->kategori_id = $id;
-        $this->nama_kategori = $kategori->nama_kategori;
+        $sekolah = Sekolah::findOrFail($id);
+        $this->sekolah_id = $id;
+        $this->nama_sekolah = $sekolah->nama_sekolah;
         $this->updateMode = true;
     }
 
@@ -78,12 +78,12 @@ class Index extends Component
     public function update()
     {
         $validatedDate = $this->validate([
-            'nama_kategori' => 'required',
+            'nama_sekolah' => 'required',
         ]);
 
-        $kategori = KategoriPeralatanAtauMesin::find($this->kategori_id);
-        $kategori->update([
-            'nama_kategori' => $this->nama_kategori,
+        $sekolah = Sekolah::find($this->sekolah_id);
+        $sekolah->update([
+            'nama_sekolah' => $this->nama_sekolah,
         ]);
 
         $this->updateMode = false;
@@ -98,7 +98,7 @@ class Index extends Component
 
     public function ondel($id)
     {
-        $this->selectedKategoriId = $id;
+        $this->selectedSekolahId = $id;
 
         $this->alert('question', 'Yakin Ingin di Hapus ?', [
             'position' => 'center',
@@ -116,10 +116,10 @@ class Index extends Component
 
     public function delete()
     {
-        $kategori = KategoriPeralatanAtauMesin::find($this->selectedKategoriId);
+        $sekolah = Sekolah::find($this->selectedSekolahId);
 
-        if ($kategori) {
-            $kategori->delete();
+        if ($sekolah) {
+            $sekolah->delete();
             $this->alert('success', 'Berhasil Dihapus!', [
                 'position' => 'center',
                 'timer' => 3000,
@@ -127,7 +127,7 @@ class Index extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', 'Kategori Tidak Ditemukan!', [
+            $this->alert('error', 'Sekolah Tidak Ditemukan!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,

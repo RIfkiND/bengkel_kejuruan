@@ -17,7 +17,7 @@ class Murid extends Model
 
     // public function sekolah()
     // {
-    //     return $this->belongsTo(Sekolah::class);
+    //     return $this->hasOneThrough(Sekolah::class, Kelas::class);
     // }
 
 }

@@ -29,12 +29,21 @@ class Index extends Component
     public function render()
     {
         $searchGuru = '%' . $this->searchGuru . '%';
-        return view('livewire.admin.referensi.pengguna.guru.index', [
-            'gurus' => Guru::where('nama_guru', 'LIKE', $searchGuru)
-                ->orderBy('id', 'DESC')
-                ->paginate(10, ['*'], 'guruPage'),
-            'sekolahs' => Sekolah::all(),
-        ]);
+        if (auth()->user()->role == 'AdminSekolah') {
+            return view('livewire.admin.referensi.pengguna.guru.index', [
+                'gurus' => Guru::where('nama_guru', 'LIKE', $searchGuru)
+                    ->where('sekolah_id', auth()->user()->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'guruPage'),
+            ]);
+        } else {
+            return view('livewire.admin.referensi.pengguna.guru.index', [
+                'gurus' => Guru::where('nama_guru', 'LIKE', $searchGuru)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'guruPage'),
+                'sekolahs' => Sekolah::all(),
+            ]);
+        }
     }
 
     private function resetInputFields()
@@ -100,14 +109,14 @@ class Index extends Component
             $validatedDate = $this->validate([
                 'nama_guru' => 'required',
                 'mata_pelajaran' => 'required',
-                'sekolah'=> 'required',
+                'sekolah' => 'required',
             ]);
 
             $guru = Guru::find($this->guru_id);
             $guru->update([
                 'nama_guru' => $this->nama_guru,
                 'mata_pelajaran' => $this->mata_pelajaran,
-                'sekolah_id'=>$this->sekolah,
+                'sekolah_id' => $this->sekolah,
             ]);
         } else {
             $validatedDate = $this->validate([

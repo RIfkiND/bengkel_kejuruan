@@ -18,6 +18,17 @@
                     <li><a href="{{ route('admin.pengguna.murid') }}">Murid</a></li>
                 </ul>
             </li>
+
+            <li>
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
         </ul>
     </div>
 </div>
