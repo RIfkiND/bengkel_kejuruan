@@ -34,6 +34,7 @@ Route::prefix('/admin')->group(function () {
         });
         Route::prefix('kelola-ruangan')->group(function(){
             Route::get('kelas','kelas')->name('admin.kelolaruangan.kelas');
+            Route::get('kelas/{id}/murid','murid_kelas')->name('admin.kelolaruangan.murid');
             Route::get('ruangan','ruangan')->name('admin.kelolaruangan.ruangan');
         });
         Route::get('kategori-peralatan-dan-mesin','kategoriperalatan')->name('admin.kategoriperalatan');
