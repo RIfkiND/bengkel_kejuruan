@@ -13,7 +13,7 @@
         </div>
     </div>
     <!-- row -->
-    @livewire('admin.referensi.kelola-ruangan.kelas.murid', ['kelas_id' => $kelas->id])
+    @livewire('admin.referensi.kelola-ruangan.kelas.murid.index', ['kelas_id' => $kelas->id])
 </div>
 
 @endsection

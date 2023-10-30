@@ -11,7 +11,7 @@
                     </ol>
                 </div>
             </div>
-            @livewire('admin.peralatan-mesin.daftar')
+            @livewire('admin.peralatan-mesin.daftar.index')
         </div>
         <!-- #/ container -->
     </div>

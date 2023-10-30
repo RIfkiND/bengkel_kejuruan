@@ -12,9 +12,9 @@
                 </div>
             </div>
             @if ($sekolah != null)
-                @livewire('admin.referensi.kelola-ruangan.kelas', ['sekolah_id' => $sekolah->id])
+                @livewire('admin.referensi.kelola-ruangan.kelas.index', ['sekolah_id' => $sekolah->id])
             @else
-                @livewire('admin.referensi.kelola-ruangan.kelas')
+                @livewire('admin.referensi.kelola-ruangan.kelas.index')
             @endif
         </div>
         <!-- #/ container -->

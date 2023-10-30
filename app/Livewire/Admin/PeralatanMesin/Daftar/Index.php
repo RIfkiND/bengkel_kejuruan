@@ -2,14 +2,18 @@
 
 namespace App\Livewire\Admin\PeralatanMesin\Daftar;
 
+use App\Models\Ruangan;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\PeralatanAtauMesin;
+use App\Models\PeralatanAtauMesinMasuk;
+use App\Models\KategoriPeralatanAtauMesin;
+use App\Models\SpesifikasiPeralatanAtauMesin;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama_peralatan_atau_mesin, $peralatan_id, $searchPeralatan, $selectedPeralatanId;
+    public $nama_peralatan_atau_mesin, $tanggal_masuk, $kategori_id, $ruangan_id, $sumber_dana, $merk, $type, $tahun, $kapasitas, $peralatan_id, $searchPeralatan, $selectedPeralatanId;
     public $updateMode = false;
 
     use WithPagination;
@@ -33,22 +37,56 @@ class Index extends Component
             'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                 ->orderBy('id', 'DESC')
                 ->paginate(10, ['*'], 'peralatanPage'),
+            'kategories' => KategoriPeralatanAtauMesin::all(),
+            'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
         ]);
     }
 
     private function resetInputFields()
     {
         $this->nama_peralatan_atau_mesin = '';
+        $this->tanggal_masuk = '';
+        $this->kategori_id = '';
+        $this->ruangan_id = '';
+        $this->sumber_dana = '';
+        $this->merk = '';
+        $this->type = '';
+        $this->tahun = '';
+        $this->kapasitas = '';
     }
 
     public function store()
     {
         $validatedDate = $this->validate([
             'nama_peralatan_atau_mesin' => 'required',
+            'tanggal_masuk' => 'required',
+            'kategori_id' => 'required',
+            'ruangan_id' => 'required',
+            'sumber_dana' => 'required',
+            'merk' => 'required',
+            'type' => 'required',
+            'tahun' => 'required',
+            'kapasitas' => 'required',
         ]);
 
-        PeralatanAtauMesin::create([
+        $peralatan = PeralatanAtauMesin::create([
             'nama_peralatan_atau_mesin' => $this->nama_peralatan_atau_mesin,
+            'kategori_id' => $this->kategori_id,
+            'ruangan_id' => $this->ruangan_id,
+        ]);
+
+        PeralatanAtauMesinMasuk::create([
+            'tanggal_masuk' => $this->tanggal_masuk,
+            'peralatan_atau_mesin_id' => $peralatan->id,
+            'sumber_dana' => $this->sumber_dana,
+        ]);
+
+        SpesifikasiPeralatanAtauMesin::create([
+            'merk' => $this->merk,
+            'tipe_atau_model' => $this->type,
+            'tahun' => $this->tahun,
+            'kapasitas' => $this->kapasitas,
+            'p_atau_m_id' => $peralatan->id,
         ]);
 
         $this->resetInputFields();

@@ -12,7 +12,7 @@
         </div>
     </div>
     <!-- row -->
-    @livewire('admin.referensi.pengguna.guru')
+    @livewire('admin.referensi.pengguna.guru.index')
 </div>
 
 @endsection

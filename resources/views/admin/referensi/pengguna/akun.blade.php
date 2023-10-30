@@ -13,7 +13,7 @@
         </div>
     </div>
     <!-- row -->
-    @livewire('admin.referensi.pengguna.akun')
+    @livewire('admin.referensi.pengguna.akun.index')
 </div>
 
 @endsection

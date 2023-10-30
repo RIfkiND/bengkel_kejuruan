@@ -11,7 +11,7 @@
                 </ol>
             </div>
         </div>
-        @livewire('admin.referensi.kategori-peralatan')
+        @livewire('admin.referensi.kategori-peralatan.index')
     </div>
     <!-- #/ container -->
 </div>

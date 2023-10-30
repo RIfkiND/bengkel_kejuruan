@@ -18,7 +18,17 @@ class PeralatanAtauMesin extends Model
 
     public function kategori()
     {
-        return $this->beongsTo(KategoriPeralatanAtauMesin::class);
+        return $this->belongsTo(KategoriPeralatanAtauMesin::class, 'kategori_id', 'id');
+    }
+
+    public function peralatanmasuk()
+    {
+        return $this->hasOne(PeralatanAtauMesinMasuk::class, 'peralatan_atau_mesin_id', 'id');
+    }
+
+    public function spesifikasi()
+    {
+        return $this->hasOne(SpesifikasiPeralatanAtauMesin::class, 'p_atau_m_id', 'id');
     }
 
 }

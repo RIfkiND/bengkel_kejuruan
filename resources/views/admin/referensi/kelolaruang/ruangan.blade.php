@@ -11,7 +11,7 @@
                     </ol>
                 </div>
             </div>
-            @livewire('admin.referensi.kelola-ruangan.ruangan')
+            @livewire('admin.referensi.kelola-ruangan.ruangan.index')
         </div>
         <!-- #/ container -->
     </div>

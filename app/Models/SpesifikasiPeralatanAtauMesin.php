@@ -12,8 +12,8 @@ class SpesifikasiPeralatanAtauMesin extends Model
 
     protected $guarded = ['id'];
 
-    // public function peralatanataumesin()
-    // {
-    //     return $this->belongsTo(PeralatanAtauMesin::class);
-    // }
+    public function peralatanataumesin()
+    {
+        return $this->hasOne(PeralatanAtauMesin::class, 'id', 'p_atau_m_id');
+    }
 }
