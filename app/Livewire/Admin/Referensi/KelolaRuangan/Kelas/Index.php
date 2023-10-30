@@ -10,7 +10,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama_kelas, $sekolah_id, $tingkat, $jurusan, $kelas_id, $searchKelas, $selectedKelasId;
+    public $nama_kelas, $sekolah_kelas, $tingkat, $jurusan, $kelas_id, $searchKelas, $selectedKelasId;
     public $updateMode = false;
 
     use WithPagination;
@@ -57,7 +57,7 @@ class Index extends Component
     private function resetInputFields()
     {
         $this->nama_kelas = '';
-        $this->sekolah_id = '';
+        $this->sekolah_kelas = '';
         $this->tingkat = '';
         $this->jurusan = '';
     }
@@ -80,14 +80,14 @@ class Index extends Component
         } else {
             $validatedDate = $this->validate([
                 'nama_kelas' => 'required',
-                'sekolah_id' => 'required',
+                'sekolah_kelas' => 'required',
                 'tingkat' => 'required',
                 'jurusan' => 'required',
             ]);
 
             Kelas::create([
                 'nama_kelas' => $this->nama_kelas,
-                'sekolah_id' => $this->sekolah_id,
+                'sekolah_id' => $this->sekolah_kelas,
                 'tingkat' => $this->tingkat,
                 'jurusan' => $this->jurusan,
             ]);
@@ -108,7 +108,7 @@ class Index extends Component
         $kelas = Kelas::findOrFail($id);
         $this->kelas_id = $id;
         $this->nama_kelas = $kelas->nama_kelas;
-        $this->sekolah_id = $kelas->sekolah_id;
+        $this->sekolah_kelas = $kelas->sekolah_id;
         $this->tingkat = $kelas->tingkat;
         $this->jurusan = $kelas->jurusan;
         $this->updateMode = true;
@@ -122,10 +122,10 @@ class Index extends Component
 
     public function update()
     {
-        if ($this->sekolah_id) {
+        if ($this->sekolah_kelas) {
             $validatedDate = $this->validate([
                 'nama_kelas' => 'required',
-                'sekolah_id' => 'required',
+                'sekolah_kelas' => 'required',
                 'tingkat' => 'required',
                 'jurusan' => 'required',
             ]);
@@ -133,7 +133,7 @@ class Index extends Component
             $kelas = Kelas::find($this->kelas_id);
             $kelas->update([
                 'nama_kelas' => $this->nama_kelas,
-                'sekolah_id' => $this->sekolah_id,
+                'sekolah_id' => $this->sekolah_kelas,
                 'tingkat' => $this->tingkat,
                 'jurusan' => $this->jurusan,
             ]);
