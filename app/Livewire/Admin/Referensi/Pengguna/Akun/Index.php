@@ -38,7 +38,7 @@ class Index extends Component
         if (auth()->user()->role == 'Admin') {
             return view('livewire.admin.referensi.pengguna.akun.index', [
                 'users' => User::where('name', 'LIKE', $searchUser)
-                    ->where('role', '!=', '3')
+                    ->where('role', '!=', '4')
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),
                 'sekolahs' => Sekolah::all(),
