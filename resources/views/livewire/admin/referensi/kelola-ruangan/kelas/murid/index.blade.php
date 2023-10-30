@@ -11,7 +11,7 @@
                             <div class="col text-center">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#ModalMurid">Tambahkan Murid</button>
+                                    data-target="#ModalMuridKelas">Tambahkan Murid</button>
                             </div>
                         </div>
                         <div class="row">
@@ -31,7 +31,7 @@
                                                     <td>
                                                         <span>
                                                             <a href="#" data-toggle="modal"
-                                                                data-target="#ModalMurid"
+                                                                data-target="#ModalMuridKelas"
                                                                 wire:click='edit({{ $murid->id }})'><i
                                                                     class="fa fa-pencil color-muted m-r-5"></i>
                                                             </a><a href="#"

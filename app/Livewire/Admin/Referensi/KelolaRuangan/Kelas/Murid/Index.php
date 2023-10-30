@@ -29,7 +29,7 @@ class Index extends Component
     public function render()
     {
         $searchMurid = '%' . $this->searchMurid . '%';
-        return view('livewire.admin.referensi.pengguna.murid.index', [
+        return view('livewire.admin.referensi.kelola-ruangan.kelas.murid.index', [
             'murids' => Murid::where('nama_murid', 'LIKE', $searchMurid)
                 ->where('kelas_id', $this->kelas_id)
                 ->orderBy('id', 'DESC')

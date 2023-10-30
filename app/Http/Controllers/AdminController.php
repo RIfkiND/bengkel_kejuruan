@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Sekolah;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -40,6 +41,12 @@ class AdminController extends Controller
     public function kelas()
     {
         return view('admin.referensi.kelolaruang.kelas');
+    }
+
+    public function kelas_sekolah($id)
+    {
+        $sekolah = Sekolah::find($id);
+        return view('admin.referensi.kelolaruang.kelas', compact('sekolah'));
     }
 
     public function murid_kelas($id)

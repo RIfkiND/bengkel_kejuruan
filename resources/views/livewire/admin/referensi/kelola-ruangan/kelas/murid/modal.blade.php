@@ -1,5 +1,5 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="ModalMurid">
+    <div wire:ignore.self class="modal fade" id="ModalMuridKelas">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form>

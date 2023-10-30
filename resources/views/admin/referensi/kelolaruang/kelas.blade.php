@@ -11,7 +11,11 @@
                     </ol>
                 </div>
             </div>
-            @livewire('admin.referensi.kelola-ruangan.kelas')
+            @if ($sekolah->id)
+                @livewire('admin.referensi.kelola-ruangan.kelas', ['sekolah_id' => $sekolah->id])
+            @else
+                @livewire('admin.referensi.kelola-ruangan.kelas')
+            @endif
         </div>
         <!-- #/ container -->
     </div>

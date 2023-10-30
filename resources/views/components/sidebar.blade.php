@@ -28,7 +28,7 @@
                 </li>
             @endif
 
-            @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah')
+            @if (auth()->user()->role == 'AdminSekolah')
                 <li class="mega-menu mega-menu-sm">
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="icon-home menu-icon"></i><span class="nav-text">Kelola Ruangan</span>

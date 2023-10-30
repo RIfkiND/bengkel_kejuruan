@@ -12,6 +12,7 @@ class Index extends Component
 {
     public $nama_kelas, $sekolah_kelas, $tingkat, $jurusan, $kelas_id, $searchKelas, $selectedKelasId;
     public $updateMode = false;
+    public $sekolah_id;
 
     use WithPagination;
     use LivewireAlert;
@@ -47,6 +48,7 @@ class Index extends Component
         } else {
             return view('livewire.admin.referensi.kelola-ruangan.kelas.index', [
                 'kelas' => Kelas::where('nama_kelas', 'LIKE', $searchKelas)
+                    ->where('sekolah_id', 'LIKE', $this->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'kelasPage'),
                 'sekolahs' => Sekolah::All(),

@@ -23,39 +23,42 @@
                     <div class="row">
                         @foreach ($sekolahs as $sekolah)
                             <div class="col-lg-4 col-sm-6">
-                                <div class="card">
-                                    <div class="social-graph-wrapper widget-facebook">
-                                        <span class="s-icon text-truncate" title="{{ $sekolah->nama_sekolah }}">{{ $sekolah->nama_sekolah }}</span>
+                                <a href="{{ route('admin.sekolah.kelas', $sekolah->id) }}">
+                                    <div class="card">
+                                        <div class="social-graph-wrapper widget-facebook">
+                                            <span class="s-icon text-truncate"
+                                                title="{{ $sekolah->nama_sekolah }}">{{ $sekolah->nama_sekolah }}</span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 border-right">
+                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                                    <h4 class="m-1">{{ $sekolah->total_murid_count }}</h4>
+                                                    <p class="m-0">Murid</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                                    <h4 class="m-1">{{ $sekolah->ruangan->count() }}</h4>
+                                                    <p class="m-0">Ruangan</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 border-right">
+                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                                    <h4 class="m-1">{{ $sekolah->guru->count() }}</h4>
+                                                    <p class="m-0">Guru</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                                    <h4 class="m-1">{{ $sekolah->total_peralatan_count }}</h4>
+                                                    <p class="m-0">Peralatan/Mesin</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6 border-right">
-                                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                <h4 class="m-1">{{ $sekolah->total_murid_count }}</h4>
-                                                <p class="m-0">Murid</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                <h4 class="m-1">{{ $sekolah->ruangan->count() }}</h4>
-                                                <p class="m-0">Ruangan</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 border-right">
-                                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                <h4 class="m-1">{{ $sekolah->guru->count() }}</h4>
-                                                <p class="m-0">Guru</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                <h4 class="m-1">{{ $sekolah->total_peralatan_count }}</h4>
-                                                <p class="m-0">Peralatan/Mesin</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         @endforeach
                     </div>
