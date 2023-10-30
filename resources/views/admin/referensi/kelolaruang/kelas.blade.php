@@ -11,7 +11,7 @@
                     </ol>
                 </div>
             </div>
-            @if ($sekolah->id)
+            @if ($sekolah != null)
                 @livewire('admin.referensi.kelola-ruangan.kelas', ['sekolah_id' => $sekolah->id])
             @else
                 @livewire('admin.referensi.kelola-ruangan.kelas')

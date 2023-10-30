@@ -44,21 +44,6 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
-                        @if (auth()->user()->sekolah_id == null)
-                            <div class="form-group">
-                                <label>Sekolah</label>
-                                <select id="sekolah_guru" class="form-control" wire:model='sekolah_kelas'>
-                                    <option selected="selected">Pilih</option>
-                                    @foreach ($sekolahs as $sekolah)
-                                        <option value="{{ $sekolah->id }}">{{ $sekolah->nama_sekolah }}</option>
-                                    @endforeach
-                                </select>
-                                @error('sekolah_kelas')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        @endif
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"

@@ -1,5 +1,5 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="ModalMurid">
+    <div wire:ignore.self class="modal fade" id="c">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form>
@@ -14,7 +14,23 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" class="form-control" placeholder="LAB-TIK"
+                                wire:model='nama_ruangan'>
+                            @error('nama_ruangan')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>Letak Ruangan</label>
+                            <input type="text" class="form-control" placeholder="Bangunan NO. 1 Lantai 1"
+                                wire:model='letak_ruangan'>
+                            @error('letak_ruangan')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"

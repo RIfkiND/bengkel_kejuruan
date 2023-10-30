@@ -40,7 +40,8 @@ class AdminController extends Controller
 
     public function kelas()
     {
-        return view('admin.referensi.kelolaruang.kelas');
+        $sekolah=null;
+        return view('admin.referensi.kelolaruang.kelas', compact('sekolah'));
     }
 
     public function kelas_sekolah($id)

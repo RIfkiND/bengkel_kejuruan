@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('pemeliharaan_dan_perawatans', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal');
-            $table->foreignId('kategori_id')->constrained('kategori_peralatan_atau_mesins')->cascadeOnDelete();
             $table->foreignId('peralatan_atau_mesin_id')->constrained('peralatan_atau_mesins')->cascadeOnDelete();
             $table->enum('jenis', ['perawatan rutin', 'perbaikan']);
             $table->enum('status', ['selesai', 'belum selesai']);

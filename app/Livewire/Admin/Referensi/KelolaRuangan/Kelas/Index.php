@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin\Referensi\KelolaRuangan\Kelas;
 
 use App\Models\Kelas;
+use App\Models\Ruangan;
 use App\Models\Sekolah;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -10,9 +11,8 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama_kelas, $sekolah_kelas, $tingkat, $jurusan, $kelas_id, $searchKelas, $selectedKelasId;
+    public $nama_kelas, $sekolah_id, $tingkat, $jurusan, $kelas_id, $searchKelas, $searchRuangan, $selectedKelasId;
     public $updateMode = false;
-    public $sekolah_id;
 
     use WithPagination;
     use LivewireAlert;
@@ -36,22 +36,27 @@ class Index extends Component
                 'kelas' => Kelas::where('nama_kelas', 'LIKE', $searchKelas)
                     ->where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
-                    ->paginate(10, ['*'], 'kelasPage'),
+                    ->paginate(6, ['*'], 'kelasPage'),
             ]);
         } elseif (auth()->user()->role == 'Guru') {
             return view('livewire.admin.referensi.kelola-ruangan.kelas.index', [
                 'kelas' => Kelas::where('nama_kelas', 'LIKE', $searchKelas)
                     ->where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
-                    ->paginate(10, ['*'], 'kelasPage'),
+                    ->paginate(6, ['*'], 'kelasPage'),
             ]);
         } else {
+            $searchRuangan = '%' . $this->searchRuangan . '%';
             return view('livewire.admin.referensi.kelola-ruangan.kelas.index', [
                 'kelas' => Kelas::where('nama_kelas', 'LIKE', $searchKelas)
                     ->where('sekolah_id', 'LIKE', $this->sekolah_id)
                     ->orderBy('id', 'DESC')
-                    ->paginate(10, ['*'], 'kelasPage'),
-                'sekolahs' => Sekolah::All(),
+                    ->paginate(6, ['*'], 'kelasPage'),
+
+                'ruangans' => Ruangan::where('nama_ruangan', 'LIKE', $searchRuangan)
+                    ->where('sekolah_id', 'LIKE', $this->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(6, ['*'], 'kelasPage'),
             ]);
         }
     }
@@ -59,7 +64,7 @@ class Index extends Component
     private function resetInputFields()
     {
         $this->nama_kelas = '';
-        $this->sekolah_kelas = '';
+        $this->sekolah_id = '';
         $this->tingkat = '';
         $this->jurusan = '';
     }
@@ -82,14 +87,13 @@ class Index extends Component
         } else {
             $validatedDate = $this->validate([
                 'nama_kelas' => 'required',
-                'sekolah_kelas' => 'required',
                 'tingkat' => 'required',
                 'jurusan' => 'required',
             ]);
 
             Kelas::create([
                 'nama_kelas' => $this->nama_kelas,
-                'sekolah_id' => $this->sekolah_kelas,
+                'sekolah_id' => $this->sekolah_id,
                 'tingkat' => $this->tingkat,
                 'jurusan' => $this->jurusan,
             ]);
@@ -110,7 +114,7 @@ class Index extends Component
         $kelas = Kelas::findOrFail($id);
         $this->kelas_id = $id;
         $this->nama_kelas = $kelas->nama_kelas;
-        $this->sekolah_kelas = $kelas->sekolah_id;
+        $this->sekolah_id = $kelas->sekolah_id;
         $this->tingkat = $kelas->tingkat;
         $this->jurusan = $kelas->jurusan;
         $this->updateMode = true;
@@ -124,10 +128,9 @@ class Index extends Component
 
     public function update()
     {
-        if ($this->sekolah_kelas) {
+        if ($this->sekolah_id) {
             $validatedDate = $this->validate([
                 'nama_kelas' => 'required',
-                'sekolah_kelas' => 'required',
                 'tingkat' => 'required',
                 'jurusan' => 'required',
             ]);
@@ -135,7 +138,7 @@ class Index extends Component
             $kelas = Kelas::find($this->kelas_id);
             $kelas->update([
                 'nama_kelas' => $this->nama_kelas,
-                'sekolah_id' => $this->sekolah_kelas,
+                'sekolah_id' => $this->sekolah_id,
                 'tingkat' => $this->tingkat,
                 'jurusan' => $this->jurusan,
             ]);

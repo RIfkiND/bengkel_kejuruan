@@ -35,20 +35,20 @@ class Index extends Component
                 'ruangans' => Ruangan::where('nama_ruangan', 'LIKE', $searchRuangan)
                     ->where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
-                    ->paginate(10, ['*'], 'ruanganPage'),
+                    ->paginate(6, ['*'], 'ruanganPage'),
             ]);
         } elseif (auth()->user()->role == 'Guru') {
             return view('livewire.admin.referensi.kelola-ruangan.ruangan.index', [
                 'ruangans' => Ruangan::where('nama_ruangan', 'LIKE', $searchRuangan)
                     ->where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
-                    ->paginate(10, ['*'], 'ruanganPage'),
+                    ->paginate(6, ['*'], 'ruanganPage'),
             ]);
         } else {
             return view('livewire.admin.referensi.kelola-ruangan.ruangan.index', [
                 'ruangans' => Ruangan::where('nama_ruangan', 'LIKE', $searchRuangan)
                     ->orderBy('id', 'DESC')
-                    ->paginate(10, ['*'], 'ruanganPage'),
+                    ->paginate(6, ['*'], 'ruanganPage'),
                 'sekolahs' => Sekolah::All(),
             ]);
         }

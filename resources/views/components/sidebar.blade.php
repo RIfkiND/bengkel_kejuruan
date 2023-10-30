@@ -21,9 +21,6 @@
                         @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah')
                             <li><a href="{{ route('admin.pengguna.guru') }}">Guru</a></li>
                         @endif
-                        {{-- @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah')
-                            <li><a href="{{ route('admin.pengguna.murid') }}">Murid</a></li>
-                        @endif --}}
                     </ul>
                 </li>
             @endif
@@ -68,10 +65,7 @@
                 </a>
             </li>
 
-            @if (auth()->user()->role == 'SuperAdmin' or
-                    auth()->user()->role == 'Guru' or
-                    auth()->user()->role == 'AdminSekolah' or
-                    auth()->user()->role == 'KepalaBengkel')
+            @if (auth()->user()->role == 'Guru' or auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'KepalaBengkel')
                 <li class="nav-label">Peralatan / Mesin</li>
 
                 <li>
@@ -80,9 +74,7 @@
                     </a>
                 </li>
 
-                @if (auth()->user()->role == 'SuperAdmin' or
-                        auth()->user()->role == 'AdminSekolah' or
-                        auth()->user()->role == 'KepalaBengkel')
+                @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'KepalaBengkel')
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-refresh menu-icon"></i> <span class="nav-text">Transaksi</span>
@@ -115,9 +107,7 @@
                     </a>
                 </li>
 
-                @if (auth()->user()->role == 'SuperAdmin' or
-                        auth()->user()->role == 'AdminSekolah' or
-                        auth()->user()->role == 'KepalaBengkel')
+                @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'KepalaBengkel')
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-refresh menu-icon"></i> <span class="nav-text">Transaksi</span>

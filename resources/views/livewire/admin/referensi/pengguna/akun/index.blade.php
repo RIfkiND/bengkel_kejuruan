@@ -4,14 +4,19 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row justify-between mb-3">
+                        <div class="row">
                             <div class="col">
                                 <h4 class="card-title">Akun Yang Terdaftar</h4>
                             </div>
-                            <div class="col text-center">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#ModalAkun">Tambahkan Akun</button>
+                            <div class="col d-flex justify-content-end px-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
+                                        wire:model='searchAkun' wire:input='resetPage'>
+                                </div>
+                            </div>
+                            <div class="col-3 d-flex justify-content-end px-4 h-50">
+                                <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
+                                    data-toggle="modal" data-target="#ModalAkun">Tambahkan Akun</button>
                             </div>
                         </div>
                         <div class="row">
