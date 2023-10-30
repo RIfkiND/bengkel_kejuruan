@@ -61,8 +61,8 @@
                                                     Kapasitas: <i>50</i>
                                                 </td>
                                                 <td>DD-MM-YY</td>
-                                                <td>12.00</td>
-                                                <td>Kelas 8 B</td>
+                                                <td>12.00-13.00</td>
+                                                <td>XI-TKJ-A</td>
                                                 <td>DR. Eni Nurhayati S.P.d</td>
                                                 <td>
                                                     <h3><span class="badge badge-success px-2">Selesai</span></h3>

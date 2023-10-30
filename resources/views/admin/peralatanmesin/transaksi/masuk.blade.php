@@ -39,7 +39,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Tanggal</th>
-                                                <th>Kode Barang</th>
+                                                <th>Kode P/M</th>
                                                 <th>Kategori P/M</th>
                                                 <th>Nama Barang</th>
                                                 <th>Spesifikasi</th>
@@ -50,7 +50,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>DD-MM-YY</td>
-                                                <td>BRG-001</td>
+                                                <td>PM-001</td>
                                                 <td>test cat</td>
                                                 <td>Kolor</td>
                                                 <td>

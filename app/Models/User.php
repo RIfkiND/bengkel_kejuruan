@@ -23,6 +23,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'sekolah_id',
+        'guru_id',
     ];
 
     /**
@@ -50,5 +52,10 @@ class User extends Authenticatable
         return new Attribute(
             get: fn ($value) =>  ["Guru", "AdminGuru", "Admin", "SuperAdmin"][$value],
         );
+    }
+
+    public function sekolah()
+    {
+        return $this->belongsTo(Sekolah::class, 'sekolah_id', 'id');
     }
 }

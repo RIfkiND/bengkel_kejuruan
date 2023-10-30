@@ -33,11 +33,12 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->role }}</td>
-                                                    @if ($user->sekolah)
-                                                        <td>{{ $user->sekolah }}</td>
-                                                    @else
+                                                    @if ($user->sekolah_id == null)
                                                         <td>Tidak Terdaftar Di Sekolah Manapun</td>
+                                                    @else
+                                                        <td>{{ $user->sekolah->nama_sekolah }}</td>
                                                     @endif
+
                                                     <td>
                                                         <span>
                                                             <a href="#" data-toggle="modal"

@@ -29,6 +29,11 @@ class Sekolah extends Model
         return $this->hasMany(Ruangan::class);
     }
 
+    public function user()
+    {
+        return $this->hasMany(User::class, 'sekolah_id', 'id');
+    }
+
     public function getTotalMuridCountAttribute()
     {
         return $this->kelas->sum(function ($kelas) {

@@ -62,7 +62,7 @@
                                                     Kapasitas: <i>50</i>
                                                 </td>
                                                 <td>Perawatan Rutin</td>
-                                                <td>Baut na leungit hiji</td>
+                                                <td>Ganti Oli</td>
                                                 <td>
                                                     <h3><span class="badge badge-success px-2">Selesai</span></h3>
                                                 </td>
