@@ -25,7 +25,7 @@ class Index extends Component
 
     public function updateSekolahVisibility()
     {
-        $this->showSekolahSelect = $this->role == '1';
+        $this->showSekolahSelect = $this->role == '2';
     }
 
     public function resetPage()
@@ -46,7 +46,6 @@ class Index extends Component
         } elseif (auth()->user()->role == 'AdminSekolah') {
             return view('livewire.admin.referensi.pengguna.akun.index', [
                 'users' => User::where('name', 'LIKE', $searchUser)
-                    ->where('role', '==', '0')
                     ->where('sekolah_id', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),
@@ -81,7 +80,11 @@ class Index extends Component
             'role' => 'required',
         ]);
 
-        if ($this->sekolah_user) {
+        if ($this->showSekolahSelect == true) {
+            $validatedDate = $this->validate([
+                'sekolah_user' => 'required',
+            ]);
+
             User::create([
                 'name' => $this->name,
                 'email' => $this->email,
@@ -89,6 +92,16 @@ class Index extends Component
                 'role' => $this->role,
                 'sekolah_id' => $this->sekolah_user,
             ]);
+        } elseif(auth()->user()->sekolah_id) {
+
+            User::create([
+                'name' => $this->name,
+                'email' => $this->email,
+                'password' => bcrypt($this->password),
+                'role' => $this->role,
+                'sekolah_id' => auth()->user()->sekolah_id,
+            ]);
+
         } else {
             User::create([
                 'name' => $this->name,
@@ -133,7 +146,10 @@ class Index extends Component
                 'role' => 'required',
             ]);
 
-            if ($this->sekolah_user) {
+            if ($this->showSekolahSelect == true) {
+                $validatedDate = $this->validate([
+                    'sekolah_user' => 'required',
+                ]);
                 $user = User::find($this->user_id);
                 $user->update([
                     'name' => $this->name,
@@ -158,7 +174,10 @@ class Index extends Component
                 'role' => 'required',
             ]);
 
-            if ($this->sekolah_user) {
+            if ($this->showSekolahSelect == true) {
+                $validatedDate = $this->validate([
+                    'sekolah_user' => 'required',
+                ]);
                 $user = User::find($this->user_id);
                 $user->update([
                     'name' => $this->name,

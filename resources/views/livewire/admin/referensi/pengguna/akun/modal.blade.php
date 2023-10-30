@@ -55,12 +55,17 @@
                                 <label>Role</label>
                                 <select id="role" class="form-control" wire:model='role'
                                     wire:change="updateSekolahVisibility">
-                                    <option selected="selected">Pilih</option>
-                                    <option value="0">Guru</option>
-                                    <option value="1">Admin Sekolah</option>
+                                    <option selected="selected" value=" ">Pilih</option>
+                                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah')
+                                        <option value="0">Guru</option>
+                                        <option value="1">Kepala Bengkel</option>
+                                    @endif
+                                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin')
+                                    <option value="2">Admin Sekolah</option>
+                                    @endif
                                     @if (auth()->user()->role == 'SuperAdmin')
-                                        <option value="2">Admin</option>
-                                        <option value="3">Super Admin</option>
+                                        <option value="3">Admin</option>
+                                        <option value="4">Super Admin</option>
                                     @endif
                                 </select>
                                 @error('role')
@@ -71,7 +76,7 @@
                                 <div class="form-group col">
                                     <label>Sekolah</label>
                                     <select id="sekolah_user" class="form-control" wire:model='sekolah_user'>
-                                        <option selected="selected">Pilih</option>
+                                        <option selected="selected" value=" ">Pilih</option>
                                         @foreach ($sekolahs as $sekolah)
                                             <option value="{{ $sekolah->id }}">{{ $sekolah->nama_sekolah }}</option>
                                         @endforeach

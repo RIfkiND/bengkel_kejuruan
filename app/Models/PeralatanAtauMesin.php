@@ -16,4 +16,9 @@ class PeralatanAtauMesin extends Model
         return $this->belongsTo(Ruangan::class);
     }
 
+    public function kategori()
+    {
+        return $this->beongsTo(KategoriPeralatanAtauMesin::class);
+    }
+
 }

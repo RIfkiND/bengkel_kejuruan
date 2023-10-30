@@ -25,7 +25,7 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="card">
                                     <div class="social-graph-wrapper widget-facebook">
-                                        <span class="s-icon text-truncate">{{ $sekolah->nama_sekolah }}</span>
+                                        <span class="s-icon text-truncate" title="{{ $sekolah->nama_sekolah }}">{{ $sekolah->nama_sekolah }}</span>
                                     </div>
                                     <div class="row">
                                         <div class="col-6 border-right">

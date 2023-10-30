@@ -11,8 +11,8 @@ class KategoriPeralatanAtauMesin extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function kategori()
+    public function peralatan()
     {
-        return $this->belongsTo(PeralatanAtauMesin::class);
+        return $this->hasMany(PeralatanAtauMesin::class, 'kategori_id', 'id');
     }
 }
