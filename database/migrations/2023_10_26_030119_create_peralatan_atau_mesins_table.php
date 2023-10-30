@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('ruangan_id')->constrained('ruangans')->cascadeOnDelete();
             $table->string('nama_peralatan_atau_mesin');
             $table->foreignId('kategori_id')->constrained('kategori_peralatan_atau_mesins')->cascadeOnDelete();
+            $table->enum('status', ['Tersedia', 'Digunakan'])->default('Tersedia');
             $table->timestamps();
         });
     }
