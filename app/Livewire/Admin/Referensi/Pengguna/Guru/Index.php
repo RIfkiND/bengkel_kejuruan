@@ -10,8 +10,9 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama_guru, $mata_pelajaran, $sekolah, $guru_id, $searchGuru, $selectedGuruId;
+    public $nama_guru, $mata_pelajaran, $sekolah_guru, $guru_id, $searchGuru, $selectedGuruId;
     public $updateMode = false;
+
 
     use WithPagination;
     use LivewireAlert;
@@ -49,11 +50,13 @@ class Index extends Component
     private function resetInputFields()
     {
         $this->nama_guru = '';
+        $this->mata_pelajaran= '';
+        $this->sekolah_guru = '';
     }
 
     public function store()
     {
-        if (auth()->user()->sekolah_id) {
+        if (auth()->user()->role == 'AdminSekolah') {
             $validatedDate = $this->validate([
                 'nama_guru' => 'required',
                 'mata_pelajaran' => 'required',
@@ -68,13 +71,13 @@ class Index extends Component
             $validatedDate = $this->validate([
                 'nama_guru' => 'required',
                 'mata_pelajaran' => 'required',
-                'sekolah' => 'required',
+                'sekolah_guru' => 'required',
             ]);
 
             Guru::create([
                 'nama_guru' => $this->nama_guru,
                 'mata_pelajaran' => $this->mata_pelajaran,
-                'sekolah_id' => $this->sekolah,
+                'sekolah_id' => $this->sekolah_guru,
             ]);
         }
 
@@ -94,6 +97,7 @@ class Index extends Component
         $this->guru_id = $id;
         $this->nama_guru = $guru->nama_guru;
         $this->mata_pelajaran = $guru->mata_pelajaran;
+        $this->sekolah_guru = $guru->sekolah_id;
         $this->updateMode = true;
     }
 
@@ -105,18 +109,18 @@ class Index extends Component
 
     public function update()
     {
-        if ($this->sekolah) {
+        if ($this->sekolah_guru) {
             $validatedDate = $this->validate([
                 'nama_guru' => 'required',
                 'mata_pelajaran' => 'required',
-                'sekolah' => 'required',
+                'sekolah_guru' => 'required',
             ]);
 
             $guru = Guru::find($this->guru_id);
             $guru->update([
                 'nama_guru' => $this->nama_guru,
                 'mata_pelajaran' => $this->mata_pelajaran,
-                'sekolah_id' => $this->sekolah,
+                'sekolah_id' => $this->sekolah_guru,
             ]);
         } else {
             $validatedDate = $this->validate([

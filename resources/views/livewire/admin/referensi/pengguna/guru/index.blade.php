@@ -32,7 +32,7 @@
                                                     <td>{{ $guru->nama_guru }}</td>
                                                     <td>{{ $guru->mata_pelajaran }}</td>
                                                     @if ($guru->sekolah())
-                                                        <td>{{ $guru->sekolah() }}</td>
+                                                        <td>{{ $guru->sekolah->nama_sekolah }}</td>
                                                     @else
                                                         <td>Tidak Terdaftar Di Sekolah Manapun</td>
                                                     @endif

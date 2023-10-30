@@ -14,7 +14,36 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" class="form-control" placeholder="Drs.Nama Anda.Spd"
+                                wire:model='nama_guru'>
+                            @error('nama_guru')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Mata Pelajaran</label>
+                            <input type="text" class="form-control" placeholder="Teknik Mesin"
+                                wire:model='mata_pelajaran'>
+                            @error('mata_pelajaran')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        @if (auth()->user()->sekolah_id == null)
+                            <div class="form-group">
+                                <label>Sekolah</label>
+                                <select id="sekolah_guru" class="form-control" wire:model='sekolah_guru'>
+                                    <option selected="selected">Pilih</option>
+                                    @foreach ($sekolahs as $sekolah)
+                                        <option value="{{ $sekolah->id }}">{{ $sekolah->nama_sekolah }}</option>
+                                    @endforeach
+                                </select>
+                                @error('sekolah_guru')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        @endif
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"

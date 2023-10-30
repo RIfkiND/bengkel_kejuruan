@@ -13,9 +13,13 @@
                     <i class="icon-user menu-icon"></i><span class="nav-text">Pengguna</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.pengguna.akun') }}">Akun</a></li>
-                    <li><a href="{{ route('admin.pengguna.guru') }}">Guru</a></li>
-                    <li><a href="{{ route('admin.pengguna.murid') }}">Murid</a></li>
+                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin' or auth()->user()->role == 'AdminSekolah')
+                        <li><a href="{{ route('admin.pengguna.akun') }}">Akun</a></li>
+                    @endif
+                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'Guru')
+                        <li><a href="{{ route('admin.pengguna.guru') }}">Guru</a></li>
+                        <li><a href="{{ route('admin.pengguna.murid') }}">Murid</a></li>
+                    @endif
                 </ul>
             </li>
             <li class="mega-menu mega-menu-sm">
@@ -23,14 +27,20 @@
                     <i class="icon-home menu-icon"></i><span class="nav-text">Kelola Ruangan</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.kelolaruangan.ruangan') }}">Ruangan</a></li>
-                    <li><a href="{{ route('admin.kelolaruangan.kelas') }}">Kelas</a></li>
+                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah')
+                        <li><a href="{{ route('admin.kelolaruangan.ruangan') }}">Ruangan</a></li>
+                    @endif
+                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Guru' or auth()->user()->role == 'AdminSekolah')
+                        <li><a href="{{ route('admin.kelolaruangan.kelas') }}">Kelas</a></li>
+                    @endif
                 </ul>
             </li>
             <li>
-                <a href="{{ route('admin.sekolah') }}" aria-expanded="false">
-                    <i class="icon-home menu-icon"></i><span class="nav-text">Sekolah</span>
-                </a>
+                @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin')
+                    <a href="{{ route('admin.sekolah') }}" aria-expanded="false">
+                        <i class="icon-home menu-icon"></i><span class="nav-text">Sekolah</span>
+                    </a>
+                @endif
             </li>
             <li>
                 <a href="{{ route('admin.kategoriperalatan') }}" aria-expanded="false">

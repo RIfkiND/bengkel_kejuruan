@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Kelas;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Murid extends Model
 {
@@ -12,7 +13,7 @@ class Murid extends Model
 
     public function kelas()
     {
-        return $this->belongsTo(KelasMurid::class);
+        return $this->belongsTo(Kelas::class);
     }
 
     // public function sekolah()

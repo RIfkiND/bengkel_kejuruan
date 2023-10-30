@@ -152,19 +152,16 @@
                         <div class="dropdown-content-body">
                             <ul>
                                 <li>
-                                    <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <i class="icon-envelope-open"></i> <span>Inbox</span>
-                                        <div class="badge gradient-3 badge-pill gradient-1">3</div>
-                                    </a>
+                                    @if (Auth::check())
+                                        <span>Anda Login Sebagai</span>
+                                        <h4>{{ auth()->user()->name }}</h4>
+                                    @else
+                                        <a href="{{ route('login') }}"><i class="icon-user"></i>
+                                            <span>Login</span></a>
+                                    @endif
                                 </li>
 
                                 <hr class="my-2">
-                                <li>
-                                    <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                </li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

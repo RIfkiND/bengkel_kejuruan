@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\KelasMurid;
+use App\Models\Murid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,7 +13,7 @@ class Kelas extends Model
 
     public function murid()
     {
-        return $this->hasMany(KelasMurid::class);
+        return $this->hasMany(Murid::class);
     }
 
     public function guru()

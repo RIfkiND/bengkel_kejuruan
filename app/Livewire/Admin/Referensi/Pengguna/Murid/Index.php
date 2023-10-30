@@ -2,15 +2,15 @@
 
 namespace App\Livewire\Admin\Referensi\Pengguna\Murid;
 
+use App\Models\Kelas;
 use App\Models\Murid;
-use App\Models\Sekolah;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama_murid, $murid_id, $searchMurid, $selectedMuridId;
+    public $nama_murid, $murid_id, $kelas_id, $searchMurid, $selectedMuridId;
     public $updateMode = false;
 
     use WithPagination;
@@ -32,7 +32,7 @@ class Index extends Component
         if (auth()->user()->role == 'AdminSekolah') {
             return view('livewire.admin.referensi.pengguna.murid.index', [
                 'murids' => Murid::where('nama_murid', 'LIKE', $searchMurid)
-                    ->where('sekolah_id', auth()->user()->sekolah_id)
+                    ->where('kelas_id',auth()->user()->sekolah->kelas->pluck('id')->toArray() )
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'muridPage'),
             ]);
@@ -41,7 +41,7 @@ class Index extends Component
                 'murids' => Murid::where('nama_murid', 'LIKE', $searchMurid)
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'muridPage'),
-                'sekolahs' => Sekolah::all(),
+                'kelas' => Kelas::all(),
             ]);
         }
     }
@@ -49,16 +49,19 @@ class Index extends Component
     private function resetInputFields()
     {
         $this->nama_murid = '';
+        $this->kelas_id = '';
     }
 
     public function store()
     {
         $validatedDate = $this->validate([
             'nama_murid' => 'required',
+            'kelas_id'=> 'kelas_id',
         ]);
 
         Murid::create([
             'nama_murid' => $this->nama_murid,
+            'kelas_id' => $this->kelas_id
         ]);
 
         $this->resetInputFields();
@@ -89,11 +92,13 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'nama_murid' => 'required',
+            'kelas_id'=> 'kelas_id',
         ]);
 
         $murid = Murid::find($this->murid_id);
         $murid->update([
             'nama_murid' => $this->nama_murid,
+            'kelas_id' => $this->kelas_id,
         ]);
 
         $this->updateMode = false;
