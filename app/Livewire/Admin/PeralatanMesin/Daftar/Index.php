@@ -7,6 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\PeralatanAtauMesin;
 use App\Models\PeralatanAtauMesinMasuk;
+use App\Models\PeralatanAtauMesinKeluar;
 use App\Models\KategoriPeralatanAtauMesin;
 use App\Models\SpesifikasiPeralatanAtauMesin;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -14,9 +15,10 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class Index extends Component
 {
     public $nama_peralatan_atau_mesin, $tanggal_masuk, $kategori_id, $ruangan_id, $sumber_dana, $merk, $type, $tahun, $kapasitas, $peralatan_id, $searchPeralatan, $selectedPeralatanId;
+    public $tanggal_keluar, $alasan;
     public $updateMode = false;
-
     public $ruangan_byadmin;
+    public $keluarMode = false;
 
     use WithPagination;
     use LivewireAlert;
@@ -39,11 +41,17 @@ class Index extends Component
             return view('livewire.admin.peralatan-mesin.daftar.index', [
                 'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                     ->where('ruangan_id', $this->ruangan_byadmin)
+                    ->where('kondisi', 'ditempat')
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'peralatanPage'),
             ]);
         } else {
-            if (auth()->user()->sekolah->ruangan->pluck('id')->count() > 0) {
+            if (
+                auth()
+                    ->user()
+                    ->sekolah->ruangan->pluck('id')
+                    ->count() > 0
+            ) {
                 return view('livewire.admin.peralatan-mesin.daftar.index', [
                     'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                         ->where(
@@ -52,13 +60,14 @@ class Index extends Component
                                 ->user()
                                 ->sekolah->ruangan->pluck('id'),
                         )
+                        ->where('kondisi', 'ditempat')
                         ->orderBy('id', 'DESC')
                         ->paginate(10, ['*'], 'peralatanPage'),
                     'kategories' => KategoriPeralatanAtauMesin::all(),
                     'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
                 ]);
             } else {
-                return view('livewire.admin.peralatan-mesin.daftar.index',[
+                return view('livewire.admin.peralatan-mesin.daftar.index', [
                     'peralatans' => 'kosong',
                 ]);
             }
@@ -68,14 +77,14 @@ class Index extends Component
     private function resetInputFields()
     {
         $this->nama_peralatan_atau_mesin = '';
-        $this->tanggal_masuk = '';
         $this->kategori_id = '';
         $this->ruangan_id = '';
         $this->sumber_dana = '';
         $this->merk = '';
         $this->type = '';
-        $this->tahun = '';
         $this->kapasitas = '';
+        $this->tanggal_keluar = '';
+        $this->alasan = '';
     }
 
     public function store()
@@ -127,12 +136,15 @@ class Index extends Component
         $peralatan = PeralatanAtauMesin::findOrFail($id);
         $this->peralatan_id = $id;
         $this->nama_peralatan_atau_mesin = $peralatan->nama_peralatan_atau_mesin;
+        $this->kategori_id = $peralatan->kategori_id;
+        $this->ruangan_id = $peralatan->ruangan_id;
         $this->updateMode = true;
     }
 
     public function cancel()
     {
         $this->updateMode = false;
+        $this->keluarMode = false;
         $this->resetInputFields();
     }
 
@@ -140,11 +152,15 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'nama_peralatan_atau_mesin' => 'required',
+            'kategori_id' => 'required',
+            'ruangan_id' => 'required',
         ]);
 
         $peralatan = PeralatanAtauMesin::find($this->peralatan_id);
         $peralatan->update([
             'nama_peralatan_atau_mesin' => $this->nama_peralatan_atau_mesin,
+            'kategori_id' => $this->kategori_id,
+            'ruangan_id' => $this->ruangan_id,
         ]);
 
         $this->updateMode = false;
@@ -161,7 +177,7 @@ class Index extends Component
     {
         $this->selectedPeralatanId = $id;
 
-        $this->alert('question', 'Yakin Ingin di Hapus ?', [
+        $this->alert('question', 'Data Masuk,Keluar,Peminjaman Juga Akan Terhapus !! <br> Yakin Akan Di Hapus ?', [
             'position' => 'center',
             'timer' => 5000,
             'toast' => false,
@@ -195,5 +211,35 @@ class Index extends Component
                 'timerProgressBar' => true,
             ]);
         }
+    }
+
+    public function onkel($id)
+    {
+        $peralatan = PeralatanAtauMesin::findOrFail($id);
+        $this->peralatan_id = $id;
+        $this->keluarMode = true;
+    }
+
+    public function keluar()
+    {
+        $peralatan = PeralatanAtauMesin::find($this->peralatan_id);
+        $peralatan->update([
+            'kondisi' => 'keluar',
+        ]);
+
+        PeralatanAtauMesinKeluar::create([
+            'tanggal_keluar' => $this->tanggal_keluar,
+            'peralatan_atau_mesin_id' => $peralatan->id,
+            'alasan_keluar' => $this->alasan,
+        ]);
+
+        $this->keluarMode = false;
+        $this->resetInputFields();
+        $this->alert('success', 'Berhasil Diubah!', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
     }
 }

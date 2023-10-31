@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('pemakaians', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('peralatan_atau_mesin_id')->constrained('peralatan_atau_mesins')->cascadeOnDelete();
             $table->date('tanggal_pemakaian');
-            $table->time('waktu_atau_jam');
+            $table->time('waktu_awal');
+            $table->time('waktu_akhir');
             $table->foreignId('kelas_id')->constrained('kelas')->cascadeOnDelete();
             $table->foreignId('guru_id')->constrained('gurus')->cascadeOnDelete();
-            $table->enum('status', ['selesai', 'belum selesai'])->default('belum selesai');
+            $table->enum('status_pengajuan', ['Pending', 'Disetujui','Ditolak'])->default('Pending');
+            $table->enum('status_penggunaan', ['Selesai', 'Belum Selesai'])->default('Belum Selesai');
             $table->timestamps();
         });
     }

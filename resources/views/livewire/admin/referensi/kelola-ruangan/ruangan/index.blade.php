@@ -25,7 +25,7 @@
                     <div class="row">
                         @foreach ($ruangans as $ruangan)
                             <div class="col-lg-4 col-sm-6">
-                                <a href="#">
+                                <a href="javascript:void(0)">
                                     <div class="card">
                                         <div class="social-graph-wrapper widget-facebook">
                                             <span class="s-icon text-truncate"

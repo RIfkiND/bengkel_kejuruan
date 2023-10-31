@@ -54,9 +54,9 @@
                             <div class="form-group col">
                                 <label>Role</label>
                                 <select id="role" class="form-control" wire:model='role'
-                                    wire:change="updateSekolahVisibility">
+                                    wire:change="updateSekolahGuruRuanganVisibility">
                                     <option value="">Pilih</option>
-                                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah')
+                                    @if (auth()->user()->role == 'AdminSekolah')
                                         <option value="0">Guru</option>
                                         <option value="1">Kepala Bengkel</option>
                                     @endif
@@ -93,13 +93,71 @@
                                     @enderror
                                 </div>
                             @endif
+                            @if ($updateMode == false)
+                                @if ($showGuruSelect)
+                                    <div class="form-group col">
+                                        <label>Nama Guru</label>
+                                        <input type="text" class="form-control" placeholder="Drs.Nama Anda.Spd"
+                                            wire:model='nama_guru'>
+                                        @error('nama_guru')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col">
+                                        <label>Mata Pelajaran</label>
+                                        <input type="text" class="form-control" placeholder="Teknik Mesin"
+                                            wire:model='mata_pelajaran'>
+                                        @error('mata_pelajaran')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                @endif
+                            @endif
+                        </div>
+                        <div class="form-row">
+                            @if ($showRuanganSelect)
+                                <div class="form-group col">
+                                    <label>Ruangan</label>
+                                    <select id="ruangan_user" class="form-control" wire:model='ruangan_user'>
+                                        <option selected="selected" value="">Pilih</option>
+                                        @foreach ($ruangans as $ruangan)
+                                            <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('ruangan_user')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                @if ($updateMode == false)
+                                    <div class="form-group col">
+                                        <label>Nama Guru</label>
+                                        <input type="text" class="form-control" placeholder="Drs.Nama Anda.Spd"
+                                            wire:model='nama_guru'>
+                                        @error('nama_guru')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col">
+                                        <label>Mata Pelajaran</label>
+                                        <input type="text" class="form-control" placeholder="Teknik Mesin"
+                                            wire:model='mata_pelajaran'>
+                                            <span class="text-info">bisa di kosongkan jika tidak mengajar</span>
+                                        @error('mata_pelajaran')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                @endif
+
+                            @endif
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                             wire:click.prevent='cancel()'>Batal</button>
                         @if ($updateMode)
-                            <button type="button" class="btn btn-primary" wire:click.prevent="update()">Simpan</button>
+                            <button type="button" class="btn btn-primary"
+                                wire:click.prevent="update()">Simpan</button>
                         @else
                             <button type="button" class="btn btn-primary"
                                 wire:click.prevent="store()">Tambahkan</button>

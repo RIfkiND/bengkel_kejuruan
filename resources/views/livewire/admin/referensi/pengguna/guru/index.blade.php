@@ -46,10 +46,10 @@
                                                 @endif
                                                 <td>
                                                     <span>
-                                                        <a href="#" data-toggle="modal" data-target="#ModalGuru"
+                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#ModalGuru"
                                                             wire:click='edit({{ $guru->id }})'><i
                                                                 class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a><a href="#" wire:click='ondel({{ $guru->id }})'><i
+                                                        </a><a href="javascript:void(0)" wire:click='ondel({{ $guru->id }})'><i
                                                                 class="fa fa-trash color-danger"></i></a>
                                                     </span>
                                                 </td>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('tanggal_keluar');
             $table->foreignId('peralatan_atau_mesin_id')->constrained('peralatan_atau_mesins')->cascadeOnDelete();
-            $table->string('alasan_keluar');
+            $table->text('alasan_keluar');
             $table->timestamps();
         });
     }

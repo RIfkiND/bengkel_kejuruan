@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('dimensi');
             $table->string('gambar');
             $table->string('sumber_dana');
+            $table->enum('status', ['Pending', 'Diterima', 'Ditolak'])->default('Pending');
             $table->timestamps();
         });
     }
