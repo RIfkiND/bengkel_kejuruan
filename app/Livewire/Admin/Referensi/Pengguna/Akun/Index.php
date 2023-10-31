@@ -25,7 +25,11 @@ class Index extends Component
 
     public function updateSekolahVisibility()
     {
-        $this->showSekolahSelect = $this->role == '2';
+        if (auth()->user()->sekolah_id) {
+            $this->showSekolahSelect = false;
+        } else {
+            $this->showSekolahSelect = $this->role == '2';
+        }
     }
 
     public function resetPage()
@@ -92,8 +96,7 @@ class Index extends Component
                 'role' => $this->role,
                 'sekolah_id' => $this->sekolah_user,
             ]);
-        } elseif(auth()->user()->sekolah_id) {
-
+        } elseif (auth()->user()->sekolah_id) {
             User::create([
                 'name' => $this->name,
                 'email' => $this->email,
@@ -101,7 +104,6 @@ class Index extends Component
                 'role' => $this->role,
                 'sekolah_id' => auth()->user()->sekolah_id,
             ]);
-
         } else {
             User::create([
                 'name' => $this->name,
@@ -158,6 +160,15 @@ class Index extends Component
                     'role' => $this->role,
                     'sekolah_id' => $this->sekolah_user,
                 ]);
+            } elseif (auth()->user()->sekolah_id) {
+                $user = User::find($this->user_id);
+                $user->update([
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'password' => bcrypt($this->password),
+                    'role' => $this->role,
+                    'sekolah_id' => auth()->user()->sekolah_id,
+                ]);
             } else {
                 $user = User::find($this->user_id);
                 $user->update([
@@ -184,6 +195,14 @@ class Index extends Component
                     'email' => $this->email,
                     'role' => $this->role,
                     'sekolah_id' => $this->sekolah_user,
+                ]);
+            } elseif (auth()->user()->sekolah_id) {
+                $user = User::find($this->user_id);
+                $user->update([
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'role' => $this->role,
+                    'sekolah_id' => auth()->user()->sekolah_id,
                 ]);
             } else {
                 $user = User::find($this->user_id);

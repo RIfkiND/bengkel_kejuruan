@@ -55,13 +55,13 @@
                                 <label>Role</label>
                                 <select id="role" class="form-control" wire:model='role'
                                     wire:change="updateSekolahVisibility">
-                                    <option selected="selected" value=" ">Pilih</option>
+                                    <option value="">Pilih</option>
                                     @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah')
                                         <option value="0">Guru</option>
                                         <option value="1">Kepala Bengkel</option>
                                     @endif
-                                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin')
-                                    <option value="2">Admin Sekolah</option>
+                                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin' or auth()->user()->role == 'AdminSekolah')
+                                        <option value="2">Admin Sekolah</option>
                                     @endif
                                     @if (auth()->user()->role == 'SuperAdmin')
                                         <option value="3">Admin</option>
@@ -76,10 +76,17 @@
                                 <div class="form-group col">
                                     <label>Sekolah</label>
                                     <select id="sekolah_user" class="form-control" wire:model='sekolah_user'>
-                                        <option selected="selected" value=" ">Pilih</option>
-                                        @foreach ($sekolahs as $sekolah)
-                                            <option value="{{ $sekolah->id }}">{{ $sekolah->nama_sekolah }}</option>
-                                        @endforeach
+                                        @if (auth()->user()->sekolah_id)
+                                            <option value="">Pilih</option>
+                                            <option selected value="{{ auth()->user()->sekolah_id }}">
+                                                {{ auth()->user()->sekolah->nama_sekolah }}</option>
+                                        @else
+                                            <option selected="selected" value="">Pilih</option>
+                                            @foreach ($sekolahs as $sekolah)
+                                                <option value="{{ $sekolah->id }}">{{ $sekolah->nama_sekolah }}
+                                                </option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                     @error('sekolah_user')
                                         <span class="text-danger">{{ $message }}</span>
