@@ -56,8 +56,8 @@
                                 <select id="role" class="form-control" wire:model='role'
                                     wire:change="updateSekolahVisibility">
                                     <option value="">Pilih</option>
-                                    @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah')
-                                        <option value="0" >Guru</option>
+                                    @if (auth()->user()->role == 'AdminSekolah')
+                                        <option value="0">Guru</option>
                                         <option value="1">Kepala Bengkel</option>
                                     @endif
                                     @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin' or auth()->user()->role == 'AdminSekolah')
@@ -89,6 +89,36 @@
                                         @endif
                                     </select>
                                     @error('sekolah_user')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            @endif
+                            @if ($showGuruSelect)
+                                <div class="form-group col">
+                                    <label>Sekolah</label>
+                                    <select id="guru_user" class="form-control" wire:model='guru_user'>
+                                        <option selected="selected" value="">Pilih</option>
+                                        @foreach ($gurus as $guru)
+                                            <option value="{{ $guru->id }}">{{ $guru->nama_guru }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('guru_user')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            @endif
+                            @if ($showRuanganSelect)
+                                <div class="form-group col">
+                                    <label>Sekolah</label>
+                                    <select id="ruangan_user" class="form-control" wire:model='ruangan_user'>
+                                        <option selected="selected" value="">Pilih</option>
+                                        @foreach ($ruangans as $ruangan)
+                                            <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('ruangan_user')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
