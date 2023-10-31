@@ -1,5 +1,5 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="c">
+    <div wire:ignore.self class="modal fade" id="ModalRuangan">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form>
@@ -16,8 +16,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" class="form-control" placeholder="LAB-TIK"
-                                wire:model='nama_ruangan'>
+                            <input type="text" class="form-control" placeholder="LAB-TIK" wire:model='nama_ruangan'>
                             @error('nama_ruangan')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

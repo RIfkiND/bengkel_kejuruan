@@ -64,8 +64,8 @@
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modal -->
-@include('livewire.admin.referensi.pengguna.guru.modal')
+
+    <!-- Modal -->
+    @include('livewire.admin.referensi.pengguna.guru.modal')
 </div>
