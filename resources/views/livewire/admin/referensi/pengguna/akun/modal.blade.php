@@ -142,6 +142,7 @@
                                         <label>Mata Pelajaran</label>
                                         <input type="text" class="form-control" placeholder="Teknik Mesin"
                                             wire:model='mata_pelajaran'>
+                                            <span class="text-info">bisa di kosongkan jika tidak mengajar</span>
                                         @error('mata_pelajaran')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

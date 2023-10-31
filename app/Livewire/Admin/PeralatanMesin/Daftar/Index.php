@@ -68,13 +68,11 @@ class Index extends Component
     private function resetInputFields()
     {
         $this->nama_peralatan_atau_mesin = '';
-        $this->tanggal_masuk = '';
         $this->kategori_id = '';
         $this->ruangan_id = '';
         $this->sumber_dana = '';
         $this->merk = '';
         $this->type = '';
-        $this->tahun = '';
         $this->kapasitas = '';
     }
 
@@ -167,7 +165,7 @@ class Index extends Component
     {
         $this->selectedPeralatanId = $id;
 
-        $this->alert('question', 'Yakin Ingin di Hapus ?', [
+        $this->alert('question', 'Data Masuk,Keluar,Peminjaman Juga Akan Terhapus !! <br> Yakin Akan Di Hapus ?', [
             'position' => 'center',
             'timer' => 5000,
             'toast' => false,

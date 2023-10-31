@@ -113,6 +113,7 @@ class Index extends Component
             if ($this->showGuruSelect == true) {
                 $validatedDate = $this->validate([
                     'nama_guru' => 'required',
+                    'mata_pelajaran' => 'required',
                 ]);
 
                 $guru = Guru::create([

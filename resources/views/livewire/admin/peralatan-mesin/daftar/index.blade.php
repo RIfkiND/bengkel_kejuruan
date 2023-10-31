@@ -47,12 +47,12 @@
                                         <div class="col">
                                             <div class="d-flex justify-content-end">
                                                 <div class="col-auto">
-                                                    <button type="submit" class="btn btn-primary">Simpan
-                                                        Perubahan</button>
+                                                    <button type="button" wire:click="cancel"
+                                                        class="btn btn-secondary text-white">Batal</button>
                                                 </div>
                                                 <div class="col-auto">
-                                                    <button type="button" wire:click="cancel"
-                                                        class="btn btn-secondary">Batal</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan
+                                                        Perubahan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -192,10 +192,6 @@
                                         <th>Kategori P/M</th>
                                         <th>Nama Barang</th>
                                         <th>Spesifikasi</th>
-                                        {{-- <th>Tanggal</th>
-                                                        <th>Waktu/Jam</th>
-                                                        <th>Nama Kelas</th>
-                                                        <th>Nama Guru</th> --}}
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -222,10 +218,6 @@
                                                     </ul>
                                                 @endif
                                             </td>
-                                            {{-- <td>Belum Di Gunakan</td>
-                                                            <td>Belum Di Gunakan</td>
-                                                            <td>Belum Di Gunakan</td>
-                                                            <td>Belum Di Gunakan</td> --}}
                                             <td>
                                                 <span class="badge badge-success px-2 text-white"> Tersedia
                                                 </span>
@@ -236,11 +228,18 @@
                                                             class="fa fa-ellipsis-v fa-lg"></i></a>
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item" href="javascript:void(0)"
-                                                            wire:click='ondel({{ $peralatan->id }})'>Delete</a>
+                                                            data-toggle="modal"
+                                                            data-target="#ModalPeralatan">Informasi</a>
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='edit({{ $peralatan->id }})'>Edit</a>
-                                                        <a class="dropdown-item" href="javascript:void(0)">Link
-                                                            3</a>
+                                                        <a class="dropdown-item text-danger" href="javascript:void(0)"
+                                                            data-toggle="modal"
+                                                            data-target="#ModalPeralatan">Keluar</a>
+                                                        @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
+                                                            <a class="dropdown-item text-danger"
+                                                                href="javascript:void(0)"
+                                                                wire:click='ondel({{ $peralatan->id }})'>Delete</a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </td>
@@ -254,4 +253,7 @@
             </div>
         </div>
     </div>
+
+    {{-- modal --}}
+    @include('livewire.admin.peralatan-mesin.daftar.modal')
 </div>
