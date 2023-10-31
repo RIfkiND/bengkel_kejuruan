@@ -127,6 +127,8 @@ class Index extends Component
         $peralatan = PeralatanAtauMesin::findOrFail($id);
         $this->peralatan_id = $id;
         $this->nama_peralatan_atau_mesin = $peralatan->nama_peralatan_atau_mesin;
+        $this->kategori_id = $peralatan->kategori_id;
+        $this->ruangan_id = $peralatan->ruangan_id;
         $this->updateMode = true;
     }
 
@@ -140,11 +142,15 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'nama_peralatan_atau_mesin' => 'required',
+            'kategori_id' => 'required',
+            'ruangan_id' => 'required',
         ]);
 
         $peralatan = PeralatanAtauMesin::find($this->peralatan_id);
         $peralatan->update([
             'nama_peralatan_atau_mesin' => $this->nama_peralatan_atau_mesin,
+            'kategori_id' => $this->kategori_id,
+            'ruangan_id' => $this->ruangan_id,
         ]);
 
         $this->updateMode = false;

@@ -27,7 +27,7 @@ class Index extends Component
         return ['delete'];
     }
 
-    public function updateSekolahVisibility()
+    public function updateSekolahGuruRuanganVisibility()
     {
         if (auth()->user()->sekolah_id) {
             $this->showSekolahSelect = false;
@@ -80,6 +80,8 @@ class Index extends Component
         $this->password_confirmation = '';
         $this->role = '';
         $this->sekolah_user = '';
+        $this->guru_user = '';
+        $this->ruangan_user = '';
         $this->showSekolahSelect = false;
         $this->showGuruSelect = false;
         $this->showRuanganSelect = false;
@@ -122,6 +124,7 @@ class Index extends Component
                 ]);
             } elseif ($this->showRuanganSelect == true) {
                 $validatedDate = $this->validate([
+                    'guru_user' => 'required',
                     'ruangan_user' => 'required',
                 ]);
 
@@ -131,6 +134,7 @@ class Index extends Component
                     'password' => bcrypt($this->password),
                     'role' => $this->role,
                     'sekolah_id' => auth()->user()->sekolah_id,
+                    'guru_id' => $this->guru_user,
                     'ruangan_id' => $this->ruangan_user,
                 ]);
             } else {
@@ -216,6 +220,7 @@ class Index extends Component
                 } elseif ($this->showRuanganSelect == true) {
                     $validatedDate = $this->validate([
                         'ruangan_user' => 'required',
+                        'guru_user' => 'required',
                     ]);
 
                     $user = User::find($this->user_id);
@@ -226,6 +231,7 @@ class Index extends Component
                         'role' => $this->role,
                         'sekolah_id' => auth()->user()->sekolah_id,
                         'ruangan_id' => $this->ruangan_user,
+                        'guru_id' => $this->guru_user,
                     ]);
                 } else {
                     $user = User::find($this->user_id);
@@ -280,6 +286,7 @@ class Index extends Component
                     ]);
                 } elseif ($this->showRuanganSelect == true) {
                     $validatedDate = $this->validate([
+                        'guru_user' => 'required',
                         'ruangan_user' => 'required',
                     ]);
 
@@ -289,6 +296,7 @@ class Index extends Component
                         'email' => $this->email,
                         'role' => $this->role,
                         'sekolah_id' => auth()->user()->sekolah_id,
+                        'guru_id' => $this->guru_user,
                         'ruangan_id' => $this->ruangan_user,
                     ]);
                 } else {

@@ -176,11 +176,10 @@
                                                     <a href="#" data-toggle="dropdown"><i
                                                             class="fa fa-ellipsis-v fa-lg"></i></a>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#"
+                                                        <a class="dropdown-item" href=""
                                                             wire:click='ondel({{ $peralatan->id }})'>Delete</a>
-                                                        <a class="dropdown-item" href="#">Link
-                                                            2</a>
-                                                        <a class="dropdown-item" href="#">Link
+                                                        <a class="dropdown-item" href="" wire:click='edit({{ $peralatan->id }})'>Edit</a>
+                                                        <a class="dropdown-item" href="">Link
                                                             3</a>
                                                     </div>
                                                 </div>
