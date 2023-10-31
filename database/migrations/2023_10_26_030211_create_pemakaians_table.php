@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('peralatan_atau_mesin_id')->constrained('peralatan_atau_mesins')->cascadeOnDelete();
             $table->date('tanggal_pemakaian');
-            $table->time('waktu_atau_jam');
+            $table->time('waktu_awal');
+            $table->time('waktu_akhir');
             $table->foreignId('kelas_id')->constrained('kelas')->cascadeOnDelete();
             $table->foreignId('guru_id')->constrained('gurus')->cascadeOnDelete();
             $table->enum('status_pengajuan', ['Pending', 'Disetujui','Ditolak'])->default('Pending');

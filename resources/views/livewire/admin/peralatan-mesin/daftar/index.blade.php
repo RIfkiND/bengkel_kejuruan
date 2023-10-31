@@ -205,22 +205,45 @@
                                             <td>
                                                 @if ($peralatan->spesifikasi)
                                                     <ul>
-                                                        <li>Merk : {{ $peralatan->spesifikasi->merk }}
+                                                        <li>
+                                                            <i>
+                                                                Merk : {{ $peralatan->spesifikasi->merk }}
+                                                            </i>
                                                         </li>
-                                                        <li>Type/Model :
-                                                            {{ $peralatan->spesifikasi->tipe_atau_model }}
+                                                        <li>
+                                                            <i>
+                                                                Type/Model :
+                                                                {{ $peralatan->spesifikasi->tipe_atau_model }}
+                                                            </i>
                                                         </li>
-                                                        <li>Tahun :
-                                                            {{ $peralatan->spesifikasi->tahun }}</li>
-                                                        <li>Kapasitas :
-                                                            {{ $peralatan->spesifikasi->kapasitas }}
+                                                        <li>
+                                                            <i>
+                                                                Tahun :
+                                                                {{ $peralatan->spesifikasi->tahun }}
+                                                            </i>
+                                                        </li>
+                                                        <li>
+                                                            <i>
+                                                                Kapasitas :
+                                                                {{ $peralatan->spesifikasi->kapasitas }}
+                                                            </i>
                                                         </li>
                                                     </ul>
                                                 @endif
                                             </td>
                                             <td>
-                                                <span class="badge badge-success px-2 text-white"> Tersedia
-                                                </span>
+                                                <h4>
+                                                    <span class="badge badge-success px-2 text-white">
+                                                        @php
+                                                            $latestPemeliharaan = $peralatan->pemeliharaan->sortByDesc('created_at')->first();
+                                                        @endphp
+                                                        @if ($latestPemeliharaan && $latestPemeliharaan->status == 'Belum Selesai')
+                                                            Sedang Dalam Pemeliharaan
+                                                        @else
+                                                            {{ $peralatan->status }}
+                                                        @endif
+                                                    </span>
+                                                </h4>
                                             </td>
                                             <td>
                                                 <div class="dropdown">
@@ -234,7 +257,7 @@
                                                             wire:click='edit({{ $peralatan->id }})'>Edit</a>
                                                         <a class="dropdown-item text-danger" href="javascript:void(0)"
                                                             data-toggle="modal"
-                                                            data-target="#ModalPeralatan">Keluar</a>
+                                                            data-target="#ModalPeralatan" wire:click='onkel({{ $peralatan->id }})'>Keluar</a>
                                                         @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
                                                             <a class="dropdown-item text-danger"
                                                                 href="javascript:void(0)"

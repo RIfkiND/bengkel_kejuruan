@@ -27,7 +27,7 @@
                                         <th>Nama Barang</th>
                                         <th>Spesifikasi</th>
                                         <th>Sumber Dana</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,7 +54,7 @@
                                                 @endif
                                             </td>
                                             <td>{{ $peralatan->peralatanmasuk->sumber_dana }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <div class="dropdown">
                                                     <a href="#" data-toggle="dropdown"><i
                                                             class="fa fa-ellipsis-v fa-lg"></i></a>
@@ -64,7 +64,7 @@
                                                             class="dropdown-item" href="#">Link 3</a>
                                                     </div>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

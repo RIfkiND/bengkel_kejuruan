@@ -7,6 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\PeralatanAtauMesin;
 use App\Models\PeralatanAtauMesinMasuk;
+use App\Models\PeralatanAtauMesinKeluar;
 use App\Models\KategoriPeralatanAtauMesin;
 use App\Models\SpesifikasiPeralatanAtauMesin;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -14,9 +15,10 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class Index extends Component
 {
     public $nama_peralatan_atau_mesin, $tanggal_masuk, $kategori_id, $ruangan_id, $sumber_dana, $merk, $type, $tahun, $kapasitas, $peralatan_id, $searchPeralatan, $selectedPeralatanId;
+    public $tanggal_keluar, $alasan;
     public $updateMode = false;
-
     public $ruangan_byadmin;
+    public $keluarMode = false;
 
     use WithPagination;
     use LivewireAlert;
@@ -74,6 +76,8 @@ class Index extends Component
         $this->merk = '';
         $this->type = '';
         $this->kapasitas = '';
+        $this->tanggal_keluar = '';
+        $this->alasan = '';
     }
 
     public function store()
@@ -133,6 +137,7 @@ class Index extends Component
     public function cancel()
     {
         $this->updateMode = false;
+        $this->keluarMode = false;
         $this->resetInputFields();
     }
 
@@ -199,5 +204,35 @@ class Index extends Component
                 'timerProgressBar' => true,
             ]);
         }
+    }
+
+    public function onkel($id)
+    {
+        $peralatan = PeralatanAtauMesin::findOrFail($id);
+        $this->peralatan_id = $id;
+        $this->keluarMode = true;
+    }
+
+    public function keluar()
+    {
+        $peralatan = PeralatanAtauMesin::find($this->peralatan_id);
+        $peralatan->update([
+            'kondisi' => 'keluar',
+        ]);
+
+        PeralatanAtauMesinKeluar::create([
+            'tanggal_keluar' => $this->tanggal_keluar,
+            'peralatan_atau_mesin_id' => $peralatan->id,
+            'alasan' => $this->alasan,
+        ]);
+
+        $this->keluarMode = false;
+        $this->resetInputFields();
+        $this->alert('success', 'Berhasil Diubah!', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
     }
 }
