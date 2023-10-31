@@ -46,11 +46,11 @@
 
                                                     <td>
                                                         <span>
-                                                            <a href="#" data-toggle="modal"
+                                                            <a href="" data-toggle="modal"
                                                                 data-target="#ModalAkun"
                                                                 wire:click='edit({{ $user->id }})'><i
                                                                     class="fa fa-pencil color-muted m-r-5"></i>
-                                                            </a><a href="#"
+                                                            </a><a href=""
                                                                 wire:click='ondel({{ $user->id }})'><i
                                                                     class="fa fa-trash color-danger"></i></a>
                                                         </span>

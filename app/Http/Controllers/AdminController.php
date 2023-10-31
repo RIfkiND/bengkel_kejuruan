@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Ruangan;
 use App\Models\Sekolah;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -33,14 +33,9 @@ class AdminController extends Controller
         return view('admin.referensi.pengguna.guru');
     }
 
-    public function murid()
-    {
-        return view('admin.referensi.pengguna.murid');
-    }
-
     public function kelas()
     {
-        $sekolah=null;
+        $sekolah = null;
         return view('admin.referensi.kelolaruang.kelas', compact('sekolah'));
     }
 
@@ -68,7 +63,14 @@ class AdminController extends Controller
 
     public function peralatan()
     {
-        return view('admin.peralatanmesin.daftar');
+        $ruangan = null;
+        return view('admin.peralatanmesin.daftar', compact('ruangan'));
+    }
+
+    public function peralatan_ruangan($id)
+    {
+        $ruangan = Ruangan::find($id);
+        return view('admin.peralatanmesin.daftar', compact('ruangan'));
     }
 
     public function pemeliharaan()

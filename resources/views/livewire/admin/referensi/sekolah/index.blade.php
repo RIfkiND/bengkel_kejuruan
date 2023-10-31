@@ -23,7 +23,7 @@
                     <div class="row">
                         @foreach ($sekolahs as $sekolah)
                             <div class="col-lg-4 col-sm-6">
-                                <a href="{{ route('admin.sekolah.kelas', $sekolah->id) }}">
+                                <a href="{{ route('admin.sekolah.kelas-ruangan', $sekolah->id) }}">
                                     <div class="card">
                                         <div class="social-graph-wrapper widget-facebook">
                                             <span class="s-icon text-truncate"

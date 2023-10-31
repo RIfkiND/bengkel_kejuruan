@@ -75,7 +75,7 @@
                         <div class="row">
                             @foreach ($ruangans as $ruangan)
                                 <div class="col-lg-4 col-sm-6">
-                                    <a href="#">
+                                    <a href="{{ route('admin.sekolah.ruangan.peralatan', $ruangan->id) }}">
                                         <div class="card">
                                             <div class="social-graph-wrapper widget-facebook">
                                                 <span class="s-icon text-truncate"

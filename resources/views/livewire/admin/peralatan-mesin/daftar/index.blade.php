@@ -124,31 +124,6 @@
                             </div>
                         </div>
                     </div>
-
-                    {{-- Modal info--}}
-
-                    <div class="modal fade" id="infoModal">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">More Info</h5>
-                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p><b>Tanggal Masuk :</b> Belum Di Gunakan</p>
-                                    <p><b>Waktu/Jam :</b> Belum Di Gunakan</p>
-                                    <p><b>Nama Kelas :</b> Belum Di Gunakan</p>
-                                    <p><b>Nama Guru :</b> Belum Di Gunakan</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- End Modal Info --}}
                     <div class="row">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
@@ -158,6 +133,10 @@
                                         <th>Kategori P/M</th>
                                         <th>Nama Barang</th>
                                         <th>Spesifikasi</th>
+                                        {{-- <th>Tanggal</th>
+                                                        <th>Waktu/Jam</th>
+                                                        <th>Nama Kelas</th>
+                                                        <th>Nama Guru</th> --}}
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -197,10 +176,10 @@
                                                     <a href="#" data-toggle="dropdown"><i
                                                             class="fa fa-ellipsis-v fa-lg"></i></a>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#infoModal">
-                                                            More Info</a>
                                                         <a class="dropdown-item" href="#"
                                                             wire:click='ondel({{ $peralatan->id }})'>Delete</a>
+                                                        <a class="dropdown-item" href="#">Link
+                                                            2</a>
                                                         <a class="dropdown-item" href="#">Link
                                                             3</a>
                                                     </div>
