@@ -16,6 +16,133 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
+                            <div class="basic-form">
+                                <form>
+                                    <div class="form-group">
+                                        <h4 class="text-center">Tambah Pemeliharaan</h4>
+                                    </div>
+        
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-6 mb-4">
+                                                <input type="text"
+                                                    class="form-control input-default" placeholder="Nama Peralatan Atau Mesin">
+                                            </div>
+                                            <div class="col">
+                                                <div class="d-flex justify-content-end">
+                                                    <button type="submit" class="btn btn-primary">Tambahkan</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-1 mb-4">
+                                                <label for="tanggal" class="text-center">Tanggal Pemeliharaan</label>
+                                            </div>
+                                            <div class="col-lg-2 mb-4">
+                                                <input type="date" id="tanggal"
+                                                    class="form-control input-default">
+                                            </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <select wire:model="kategori_id" class="form-control" id="category">
+                                                    <option value="" selected>Kategori</option>
+                                                    <option>Cat 1</option>
+                                                    <option>Cat 2</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <select class="form-control" id="ruangan">
+                                                    <option value="" selected>Jenis Kerusakan</option>
+                                                    <option value="">Perawatan Rutin</option>
+                                                    <option value="">Perbaikan</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                {{-- <input  type="text" id="sumber_dana"
+                                                    class="form-control input-default" placeholder="Keterangan"> --}}
+                                                    <textarea id="ket" class="form-control input-default" placeholder="keterangan"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label>Spesifikasi</label>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-3 mb-4">
+                                                <input type="text" id="spek"
+                                                    class="form-control input-default" placeholder="Merk">
+                                            </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <input type="text" class="form-control input-default"
+                                                    placeholder="Type/Model">
+                                            </div>
+                                            <div class="col-lg-2 mb-4">
+                                                <input type="date" id="tanggal"
+                                                    class="form-control input-default">
+                                            </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <input type="text" class="form-control input-default"
+                                                    placeholder="Kapasitas">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form>
+                                    <div class="form-group">
+                                        <h4 class="text-center">Tambah Pemeliharaan Opsi 2</h4>
+                                    </div>
+        
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-6 mb-4">
+                                                <label for="tanggal" class="text-center">Tanggal Pemeliharaan</label>
+                                                <input type="date" id="tanggal"
+                                                    class="form-control input-default">
+                                            </div>
+                                            <div class="col">
+                                                <div class="d-flex justify-content-end">
+                                                    <button type="submit" class="btn btn-primary">Tambahkan</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-4 mb-4">
+                                                <input type="text" id="kode"
+                                                    class="form-control input-default" placeholder="Kode P/M">
+                                            </div>
+                                            <div class="col-lg-4 mb-4">
+                                                <select class="form-control" id="ruangan">
+                                                    <option value="" selected>Jenis Kerusakan</option>
+                                                    <option value="">Perawatan Rutin</option>
+                                                    <option value="">Perbaikan</option>
+                                                </select>
+                                            </div>
+                                           
+                                            <div class="col-lg-4 mb-4">
+                                                <textarea class="form-control input-default" id="ket" placeholder="Keterangan"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col">
                                     <div class="card-title">
@@ -33,25 +160,45 @@
                                         class="btn mb-1 btn-primary d-flex justify-content-end">Tambahkan</a>
                                 </div>
                             </div>
+                            {{-- Modal info--}}
+
+                            <div class="modal fade" id="infoModal">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">More Info</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><b>Tanggal Pemeliharaan :</b> DD-MM-YY</p>
+                                            <p><b>Jenis kerusakan :</b> Perawatan Rutin</p>
+                                            <p><b>Keterangan :</b> Ganti oli</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- End Modal Info --}}
+
                             <div class="row">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Tanggal</th>
-                                                <th>Kode Barang</th>
+                                                <th>Kode P/M</th>
                                                 <th>Kategori P/M</th>
-                                                <th>Nama Barang</th>
+                                                <th>Nama P/M</th>
                                                 <th>Spesifikasi</th>
-                                                <th>Jenis Kerusakan</th>
-                                                <th>Keterangan</th>
                                                 <th>Status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>DD-MM-YY</td>
                                                 <td>BRG-001</td>
                                                 <td>test cat</td>
                                                 <td>Kolor</td>
@@ -61,8 +208,6 @@
                                                     Tahun: <i>2018</i><br>
                                                     Kapasitas: <i>50</i>
                                                 </td>
-                                                <td>Perawatan Rutin</td>
-                                                <td>Ganti Oli</td>
                                                 <td>
                                                     <h3><span class="badge badge-success px-2">Selesai</span></h3>
                                                 </td>
@@ -71,7 +216,7 @@
                                                         <a href="#" data-toggle="dropdown"><i
                                                                 class="fa fa-ellipsis-v fa-lg"></i></a>
                                                         <div class="dropdown-menu"><a class="dropdown-item"
-                                                                href="#">Link 1</a> <a class="dropdown-item"
+                                                                href="#"  data-toggle="modal" data-target="#infoModal">More info</a> <a class="dropdown-item"
                                                                 href="#">Link 2</a> <a class="dropdown-item"
                                                                 href="#">Link 3</a>
                                                         </div>
