@@ -39,12 +39,6 @@
 
             @if (auth()->user()->role == 'Guru')
                 <li>
-                    <a href="{{ route('admin.pengguna.murid') }}" aria-expanded="false">
-                        <i class="icon-people menu-icon"></i><span class="nav-text">Murid</span>
-                    </a>
-                </li>
-
-                <li>
                     <a href="{{ route('admin.kelolaruangan.kelas') }}" aria-expanded="false">
                         <i class="icon-home menu-icon"></i><span class="nav-text">Kelas</span>
                     </a>

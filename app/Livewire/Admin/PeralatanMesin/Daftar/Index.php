@@ -41,11 +41,17 @@ class Index extends Component
             return view('livewire.admin.peralatan-mesin.daftar.index', [
                 'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                     ->where('ruangan_id', $this->ruangan_byadmin)
+                    ->where('kondisi', 'ditempat')
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'peralatanPage'),
             ]);
         } else {
-            if (auth()->user()->sekolah->ruangan->pluck('id')->count() > 0) {
+            if (
+                auth()
+                    ->user()
+                    ->sekolah->ruangan->pluck('id')
+                    ->count() > 0
+            ) {
                 return view('livewire.admin.peralatan-mesin.daftar.index', [
                     'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                         ->where(
@@ -54,13 +60,14 @@ class Index extends Component
                                 ->user()
                                 ->sekolah->ruangan->pluck('id'),
                         )
+                        ->where('kondisi', 'ditempat')
                         ->orderBy('id', 'DESC')
                         ->paginate(10, ['*'], 'peralatanPage'),
                     'kategories' => KategoriPeralatanAtauMesin::all(),
                     'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
                 ]);
             } else {
-                return view('livewire.admin.peralatan-mesin.daftar.index',[
+                return view('livewire.admin.peralatan-mesin.daftar.index', [
                     'peralatans' => 'kosong',
                 ]);
             }
@@ -223,7 +230,7 @@ class Index extends Component
         PeralatanAtauMesinKeluar::create([
             'tanggal_keluar' => $this->tanggal_keluar,
             'peralatan_atau_mesin_id' => $peralatan->id,
-            'alasan' => $this->alasan,
+            'alasan_keluar' => $this->alasan,
         ]);
 
         $this->keluarMode = false;
