@@ -17,7 +17,8 @@ return new class extends Migration
             $table->time('waktu_atau_jam');
             $table->foreignId('kelas_id')->constrained('kelas')->cascadeOnDelete();
             $table->foreignId('guru_id')->constrained('gurus')->cascadeOnDelete();
-            $table->enum('status', ['selesai', 'belum selesai'])->default('belum selesai');
+            $table->enum('status_pengajuan', ['Pending', 'Disetujui','Ditolak'])->default('Pending');
+            $table->enum('status_penggunaan', ['Selesai', 'Belum Selesai'])->default('Belum Selesai');
             $table->timestamps();
         });
     }

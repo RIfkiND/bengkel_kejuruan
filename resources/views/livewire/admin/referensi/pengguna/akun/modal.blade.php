@@ -57,7 +57,7 @@
                                     wire:change="updateSekolahVisibility">
                                     <option value="">Pilih</option>
                                     @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'AdminSekolah')
-                                        <option value="0">Guru</option>
+                                        <option value="0" >Guru</option>
                                         <option value="1">Kepala Bengkel</option>
                                     @endif
                                     @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin' or auth()->user()->role == 'AdminSekolah')

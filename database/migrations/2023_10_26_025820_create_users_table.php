@@ -20,6 +20,7 @@ return new class extends Migration
             $table->tinyInteger('role')->default(0)->comment('0: Guru, 1: Kepala Bengkel, 2: AdminSekolah , 3: Admin, 4: SuperAdmin');
             $table->foreignId('sekolah_id')->nullable()->constrained('sekolahs')->cascadeOnDelete();
             $table->foreignId('guru_id')->nullable()->constrained('gurus')->cascadeOnDelete();
+            $table->foreignId('ruangan_id')->nullable()->constrained('ruangans')->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });
