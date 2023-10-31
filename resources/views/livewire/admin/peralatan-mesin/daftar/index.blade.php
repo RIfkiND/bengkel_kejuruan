@@ -4,104 +4,163 @@
             <div class="card">
                 <div class="card-body">
                     <div class="basic-form">
-                        <form wire:submit.prevent="store">
-                            <div class="form-group">
-                                <h4 class="text-center">Tambahkan Peralatan Atau Mesin</h4>
-                            </div>
+                        @if ($updateMode)
+                            <form wire:submit.prevent="update">
+                                <div class="form-group">
+                                    <h4 class="text-center">Edit Data Peralatan Atau Mesin</h4>
+                                </div>
 
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-6 mb-4">
-                                        <input wire:model="nama_peralatan_atau_mesin" type="text"
-                                            class="form-control input-default" placeholder="Nama Peralatan Atau Mesin">
-                                        @error('nama_peralatan_atau_mesin')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col">
-                                        <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary">Tambahkan</button>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-4 mb-4">
+                                            <input wire:model="nama_peralatan_atau_mesin" type="text"
+                                                class="form-control input-default"
+                                                placeholder="Nama Peralatan Atau Mesin">
+                                            @error('nama_peralatan_atau_mesin')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-3 mb-4">
+                                            <select wire:model="kategori_id" class="form-control" id="category">
+                                                <option value="" selected>Kategori</option>
+                                                @foreach ($kategories as $kategori)
+                                                    <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('kategori_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-3 mb-4">
+                                            <select wire:model="ruangan_id" class="form-control" id="ruangan">
+                                                <option value="" selected>Ruangan</option>
+                                                @foreach ($ruangans as $ruangan)
+                                                    <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('ruangan_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-flex justify-content-end">
+                                                <div class="col-auto">
+                                                    <button type="submit" class="btn btn-primary">Simpan
+                                                        Perubahan</button>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button type="button" wire:click="cancel"
+                                                        class="btn btn-secondary">Batal</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-1 mb-4">
-                                        <label for="tanggal" class="text-center">Tanggal Masuk</label>
+                            </form>
+                        @else
+                            <form wire:submit.prevent="store">
+                                <div class="form-group">
+                                    <h4 class="text-center">Tambahkan Peralatan Atau Mesin</h4>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-4">
+                                            <input wire:model="nama_peralatan_atau_mesin" type="text"
+                                                class="form-control input-default"
+                                                placeholder="Nama Peralatan Atau Mesin">
+                                            @error('nama_peralatan_atau_mesin')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-flex justify-content-end">
+                                                <button type="submit" class="btn btn-primary">Tambahkan</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-2 mb-4">
-                                        <input wire:model="tanggal_masuk" type="date" id="tanggal"
-                                            class="form-control input-default">
-                                        @error('tanggal_masuk')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <select wire:model="kategori_id" class="form-control" id="category">
-                                            <option value="" selected>Kategori</option>
-                                            @foreach ($kategories as $kategori)
-                                                <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('kategori_id')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <select wire:model="ruangan_id" class="form-control" id="ruangan">
-                                            <option value="" selected>Ruangan</option>
-                                            @foreach ($ruangans as $ruangan)
-                                                <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('ruangan_id')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input wire:model="sumber_dana" type="text" id="sumber_dana"
-                                            class="form-control input-default" placeholder="Sumber Dana">
-                                        @error('sumber_dana')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                    <div class="row">
+                                        <div class="col-lg-1 mb-4">
+                                            <label for="tanggal" class="text-center">Tanggal Masuk</label>
+                                        </div>
+                                        <div class="col-lg-2 mb-4">
+                                            <input wire:model="tanggal_masuk" type="date" id="tanggal"
+                                                class="form-control input-default">
+                                            @error('tanggal_masuk')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-3 mb-4">
+                                            <select wire:model="kategori_id" class="form-control" id="category">
+                                                <option value="" selected>Kategori</option>
+                                                @foreach ($kategories as $kategori)
+                                                    <option value="{{ $kategori->id }}">
+                                                        {{ $kategori->nama_kategori }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('kategori_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-3 mb-4">
+                                            <select wire:model="ruangan_id" class="form-control" id="ruangan">
+                                                <option value="" selected>Ruangan</option>
+                                                @foreach ($ruangans as $ruangan)
+                                                    <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('ruangan_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <input wire:model="sumber_dana" type="text" id="sumber_dana"
+                                                class="form-control input-default" placeholder="Sumber Dana">
+                                            @error('sumber_dana')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <label>Spesifikasi</label>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-3 mb-4">
-                                        <input wire:model="merk" type="text" id="spek"
-                                            class="form-control input-default" placeholder="Merk">
-                                        @error('merk')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <input wire:model="type" type="text" class="form-control input-default"
-                                            placeholder="Type/Model">
-                                        @error('type')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-lg-2 mb-4">
-                                        <input wire:model="tahun" type="date" id="tanggal"
-                                            class="form-control input-default">
-                                        @error('tahun')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <input wire:model="kapasitas" type="text" class="form-control input-default"
-                                            placeholder="Kapasitas">
-                                        @error('kapasitas')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                <label>Spesifikasi</label>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-3 mb-4">
+                                            <input wire:model="merk" type="text" id="spek"
+                                                class="form-control input-default" placeholder="Merk">
+                                            @error('merk')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-3 mb-4">
+                                            <input wire:model="type" type="text" class="form-control input-default"
+                                                placeholder="Type/Model">
+                                            @error('type')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-2 mb-4">
+                                            <input wire:model="tahun" type="date" id="tanggal"
+                                                class="form-control input-default">
+                                            @error('tahun')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-3 mb-4">
+                                            <input wire:model="kapasitas" type="text"
+                                                class="form-control input-default" placeholder="Kapasitas">
+                                            @error('kapasitas')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>
