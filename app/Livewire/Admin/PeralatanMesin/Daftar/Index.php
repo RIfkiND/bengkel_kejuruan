@@ -16,6 +16,8 @@ class Index extends Component
     public $nama_peralatan_atau_mesin, $tanggal_masuk, $kategori_id, $ruangan_id, $sumber_dana, $merk, $type, $tahun, $kapasitas, $peralatan_id, $searchPeralatan, $selectedPeralatanId;
     public $updateMode = false;
 
+    public $ruangan_byadmin;
+
     use WithPagination;
     use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
@@ -33,13 +35,34 @@ class Index extends Component
     {
         $searchPeralatan = '%' . $this->searchPeralatan . '%';
 
-        return view('livewire.admin.peralatan-mesin.daftar.index', [
-            'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
-                ->orderBy('id', 'DESC')
-                ->paginate(10, ['*'], 'peralatanPage'),
-            'kategories' => KategoriPeralatanAtauMesin::all(),
-            'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
-        ]);
+        if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin') {
+            return view('livewire.admin.peralatan-mesin.daftar.index', [
+                'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
+                    ->where('ruangan_id', $this->ruangan_byadmin)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'peralatanPage'),
+            ]);
+        } else {
+            if (auth()->user()->sekolah->ruangan->pluck('id')->count() > 0) {
+                return view('livewire.admin.peralatan-mesin.daftar.index', [
+                    'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
+                        ->where(
+                            'ruangan_id',
+                            auth()
+                                ->user()
+                                ->sekolah->ruangan->pluck('id'),
+                        )
+                        ->orderBy('id', 'DESC')
+                        ->paginate(10, ['*'], 'peralatanPage'),
+                    'kategories' => KategoriPeralatanAtauMesin::all(),
+                    'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
+                ]);
+            } else {
+                return view('livewire.admin.peralatan-mesin.daftar.index',[
+                    'peralatans' => 'kosong',
+                ]);
+            }
+        }
     }
 
     private function resetInputFields()

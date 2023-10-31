@@ -29,11 +29,14 @@ Route::prefix('/admin')->group(function () {
         Route::get('sekolah', 'sekolah')->name('admin.sekolah');
         Route::prefix('sekolah')->group(function () {
             Route::get('{id}/kelas', 'kelas_sekolah')->name('admin.sekolah.kelas');
+            Route::get('{id}/kelas-ruangan', 'kelas_sekolah')->name('admin.sekolah.kelas-ruangan');
+            Route::prefix('ruangan')->group(function () {
+                Route::get('{id}/peralatan', 'peralatan_ruangan')->name('admin.sekolah.ruangan.peralatan');
+            });
         });
         Route::prefix('pengguna')->group(function () {
             Route::get('akun', 'akun')->name('admin.pengguna.akun');
             Route::get('guru', 'guru')->name('admin.pengguna.guru');
-            Route::get('murid', 'murid')->name('admin.pengguna.murid');
         });
         Route::prefix('kelola-ruangan')->group(function () {
             Route::get('kelas', 'kelas')->name('admin.kelolaruangan.kelas');

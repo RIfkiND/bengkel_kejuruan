@@ -11,7 +11,11 @@
                     </ol>
                 </div>
             </div>
-            @livewire('admin.peralatan-mesin.daftar.index')
+            @if ($ruangan != null)
+                @livewire('admin.peralatan-mesin.daftar.index', ['ruangan_byadmin' => $ruangan->id])
+            @else
+                @livewire('admin.peralatan-mesin.daftar.index')
+            @endif
         </div>
         <!-- #/ container -->
     </div>
