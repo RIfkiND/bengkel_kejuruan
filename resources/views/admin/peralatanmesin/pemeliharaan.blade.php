@@ -25,8 +25,9 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-lg-6 mb-4">
-                                                <input type="text"
-                                                    class="form-control input-default" placeholder="Nama Peralatan Atau Mesin">
+                                                <label for="tanggal" class="text-center">Tanggal Pemeliharaan</label>
+                                                <input type="date" id="tanggal"
+                                                    class="form-control input-default">
                                             </div>
                                             <div class="col">
                                                 <div class="d-flex justify-content-end">
@@ -34,93 +35,21 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
                                         <div class="row">
-                                            <div class="col-lg-1 mb-4">
-                                                <label for="tanggal" class="text-center">Tanggal Pemeliharaan</label>
-                                            </div>
-                                            <div class="col-lg-2 mb-4">
-                                                <input type="date" id="tanggal"
-                                                    class="form-control input-default">
-                                            </div>
-                                            <div class="col-lg-3 mb-4">
-                                                <select wire:model="kategori_id" class="form-control" id="category">
-                                                    <option value="" selected>Kategori</option>
-                                                    <option>Cat 1</option>
-                                                    <option>Cat 2</option>
-                                                </select>
-                                            </div>
                                             <div class="col-lg-3 mb-4">
                                                 <select class="form-control" id="ruangan">
-                                                    <option value="" selected>Jenis Kerusakan</option>
-                                                    <option value="">Perawatan Rutin</option>
-                                                    <option value="">Perbaikan</option>
+                                                    <option value="" selected disabled>Ruangan</option>
+                                                    <option value="">Ruangan 1</option>
+                                                    <option value="">Ruangan 2</option>
                                                 </select>
                                             </div>
-                                            <div class="col-lg-3">
-                                                {{-- <input  type="text" id="sumber_dana"
-                                                    class="form-control input-default" placeholder="Keterangan"> --}}
-                                                    <textarea id="ket" class="form-control input-default" placeholder="keterangan"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <label>Spesifikasi</label>
-                                    <div class="form-group">
-                                        <div class="row">
                                             <div class="col-lg-3 mb-4">
-                                                <input type="text" id="spek"
-                                                    class="form-control input-default" placeholder="Merk">
-                                            </div>
-                                            <div class="col-lg-3 mb-4">
-                                                <input type="text" class="form-control input-default"
-                                                    placeholder="Type/Model">
-                                            </div>
-                                            <div class="col-lg-2 mb-4">
-                                                <input type="date" id="tanggal"
-                                                    class="form-control input-default">
-                                            </div>
-                                            <div class="col-lg-3 mb-4">
-                                                <input type="text" class="form-control input-default"
-                                                    placeholder="Kapasitas">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="basic-form">
-                                <form>
-                                    <div class="form-group">
-                                        <h4 class="text-center">Tambah Pemeliharaan Opsi 2</h4>
-                                    </div>
-        
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-6 mb-4">
-                                                <label for="tanggal" class="text-center">Tanggal Pemeliharaan</label>
-                                                <input type="date" id="tanggal"
-                                                    class="form-control input-default">
-                                            </div>
-                                            <div class="col">
-                                                <div class="d-flex justify-content-end">
-                                                    <button type="submit" class="btn btn-primary">Tambahkan</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-4 mb-4">
                                                 <input type="text" id="kode"
                                                     class="form-control input-default" placeholder="Kode P/M">
                                             </div>
-                                            <div class="col-lg-4 mb-4">
+                                            <div class="col-lg-3 mb-4">
                                                 <select class="form-control" id="ruangan">
                                                     <option value="" selected>Jenis Kerusakan</option>
                                                     <option value="">Perawatan Rutin</option>
@@ -128,7 +57,7 @@
                                                 </select>
                                             </div>
                                            
-                                            <div class="col-lg-4 mb-4">
+                                            <div class="col-lg-3 mb-4">
                                                 <textarea class="form-control input-default" id="ket" placeholder="Keterangan"></textarea>
                                             </div>
                                         </div>
@@ -209,7 +138,7 @@
                                                     Kapasitas: <i>50</i>
                                                 </td>
                                                 <td>
-                                                    <h3><span class="badge badge-success px-2">Selesai</span></h3>
+                                                    <h4><span class="badge badge-success px-2 text-white">Selesai</span></h4>
                                                 </td>
                                                 <td>
                                                     <div class="dropdown">
