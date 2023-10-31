@@ -15,10 +15,6 @@
                                     wire:model='searchPeralatan' wire:input='resetPage'>
                             </div>
                         </div>
-                        <div class="col-2 d-flex justify-content-end px-4 h-50">
-                            <a href="add-peralatan-keluar.html" type="button"
-                                class="btn mb-1 btn-primary d-flex justify-content-end">Tambahkan</a>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="table-responsive">
