@@ -12,7 +12,7 @@
                         <div class="col d-flex justify-content-end px-4">
                             <div class="form-group">
                                 <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
-                                    wire:model='searchCategory' wire:input='resetPage'>
+                                    wire:model='searchPeralatan' wire:input='resetPage'>
                             </div>
                         </div>
                         <div class="col-2 d-flex justify-content-end px-4 h-50">
@@ -37,7 +37,7 @@
                                 <tbody>
                                     @foreach ($peralatans as $peralatan)
                                         <tr>
-                                            <td>{{ $peralatan->peralatanmasuk->tanggal_masuk }}</td>
+                                            <td>{{ $peralatan->peralatankeluar->tanggal_keluar }}</td>
                                             <td>PM-{{ $peralatan->id }}</td>
                                             <td>{{ $peralatan->kategori->nama_kategori }}</td>
                                             <td>{{ $peralatan->nama_peralatan_atau_mesin }}</td>
@@ -57,7 +57,7 @@
                                                     </ul>
                                                 @endif
                                             </td>
-                                            <td>{{ $peralatan->peralatanmasuk->sumber_dana }}</td>
+                                            <td>{{ $peralatan->peralatankeluar->alasan }}</td>
                                             {{-- <td>
                                                 <div class="dropdown">
                                                     <a href="#" data-toggle="dropdown"><i
