@@ -12,7 +12,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $name, $email, $password, $role, $sekolah_user, $guru_user, $ruangan_user, $password_confirmation, $user_id, $searchUser, $selectedUserId;
+    public $name, $email, $password, $mata_pelajaran, $nama_guru, $role, $sekolah_user, $ruangan_user, $password_confirmation, $user_id, $searchUser, $selectedUserId;
     public $updateMode = false;
     public $showSekolahSelect = false;
     public $showGuruSelect = false;
@@ -80,7 +80,8 @@ class Index extends Component
         $this->password_confirmation = '';
         $this->role = '';
         $this->sekolah_user = '';
-        $this->guru_user = '';
+        $this->mata_pelajaran = '';
+        $this->nama_guru = '';
         $this->ruangan_user = '';
         $this->showSekolahSelect = false;
         $this->showGuruSelect = false;
@@ -111,7 +112,13 @@ class Index extends Component
         } elseif (auth()->user()->sekolah_id) {
             if ($this->showGuruSelect == true) {
                 $validatedDate = $this->validate([
-                    'guru_user' => 'required',
+                    'nama_guru' => 'required',
+                ]);
+
+                $guru = Guru::create([
+                    'sekolah_id' => auth()->user()->sekolah_id,
+                    'nama_guru' => $this->nama_guru,
+                    'mata_pelajaran' => $this->mata_pelajaran,
                 ]);
 
                 User::create([
@@ -120,12 +127,18 @@ class Index extends Component
                     'password' => bcrypt($this->password),
                     'role' => $this->role,
                     'sekolah_id' => auth()->user()->sekolah_id,
-                    'guru_id' => $this->guru_user,
+                    'guru_id' => $guru->id,
                 ]);
             } elseif ($this->showRuanganSelect == true) {
                 $validatedDate = $this->validate([
-                    'guru_user' => 'required',
+                    'nama_guru' => 'required',
                     'ruangan_user' => 'required',
+                ]);
+
+                $guru = Guru::create([
+                    'sekolah_id' => auth()->user()->sekolah_id,
+                    'nama_guru' => $this->nama_guru,
+                    'mata_pelajaran' => $this->mata_pelajaran,
                 ]);
 
                 User::create([
@@ -134,7 +147,7 @@ class Index extends Component
                     'password' => bcrypt($this->password),
                     'role' => $this->role,
                     'sekolah_id' => auth()->user()->sekolah_id,
-                    'guru_id' => $this->guru_user,
+                    'guru_id' => $guru->id,
                     'ruangan_id' => $this->ruangan_user,
                 ]);
             } else {
@@ -205,7 +218,7 @@ class Index extends Component
             } elseif (auth()->user()->sekolah_id) {
                 if ($this->showGuruSelect == true) {
                     $validatedDate = $this->validate([
-                        'guru_user' => 'required',
+                        'nama_guru' => 'required',
                     ]);
 
                     $user = User::find($this->user_id);
@@ -215,12 +228,10 @@ class Index extends Component
                         'password' => bcrypt($this->password),
                         'role' => $this->role,
                         'sekolah_id' => auth()->user()->sekolah_id,
-                        'guru_id' => $this->guru_user,
                     ]);
                 } elseif ($this->showRuanganSelect == true) {
                     $validatedDate = $this->validate([
                         'ruangan_user' => 'required',
-                        'guru_user' => 'required',
                     ]);
 
                     $user = User::find($this->user_id);
@@ -231,7 +242,6 @@ class Index extends Component
                         'role' => $this->role,
                         'sekolah_id' => auth()->user()->sekolah_id,
                         'ruangan_id' => $this->ruangan_user,
-                        'guru_id' => $this->guru_user,
                     ]);
                 } else {
                     $user = User::find($this->user_id);
@@ -272,9 +282,6 @@ class Index extends Component
                 ]);
             } elseif (auth()->user()->sekolah_id) {
                 if ($this->showGuruSelect == true) {
-                    $validatedDate = $this->validate([
-                        'guru_user' => 'required',
-                    ]);
 
                     $user = User::find($this->user_id);
                     $user->update([
@@ -282,11 +289,9 @@ class Index extends Component
                         'email' => $this->email,
                         'role' => $this->role,
                         'sekolah_id' => auth()->user()->sekolah_id,
-                        'guru_id' => $this->guru_user,
                     ]);
                 } elseif ($this->showRuanganSelect == true) {
                     $validatedDate = $this->validate([
-                        'guru_user' => 'required',
                         'ruangan_user' => 'required',
                     ]);
 
@@ -296,7 +301,6 @@ class Index extends Component
                         'email' => $this->email,
                         'role' => $this->role,
                         'sekolah_id' => auth()->user()->sekolah_id,
-                        'guru_id' => $this->guru_user,
                         'ruangan_id' => $this->ruangan_user,
                     ]);
                 } else {

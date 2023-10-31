@@ -39,11 +39,11 @@
                                                     <td>{{ $murid->nama_murid }}</td>
                                                     <td>
                                                         <span>
-                                                            <a href="#" data-toggle="modal"
+                                                            <a href="javascript:void(0)" data-toggle="modal"
                                                                 data-target="#ModalMuridKelas"
                                                                 wire:click='edit({{ $murid->id }})'><i
                                                                     class="fa fa-pencil color-muted m-r-5"></i>
-                                                            </a><a href="#"
+                                                            </a><a href="javascript:void(0)"
                                                                 wire:click='ondel({{ $murid->id }})'><i
                                                                     class="fa fa-trash color-danger"></i></a>
                                                         </span>

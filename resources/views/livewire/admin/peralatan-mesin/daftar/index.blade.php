@@ -173,13 +173,14 @@
                                             </td>
                                             <td>
                                                 <div class="dropdown">
-                                                    <a href="#" data-toggle="dropdown"><i
+                                                    <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                             class="fa fa-ellipsis-v fa-lg"></i></a>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href=""
+                                                        <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='ondel({{ $peralatan->id }})'>Delete</a>
-                                                        <a class="dropdown-item" href="" wire:click='edit({{ $peralatan->id }})'>Edit</a>
-                                                        <a class="dropdown-item" href="">Link
+                                                        <a class="dropdown-item" href="javascript:void(0)"
+                                                            wire:click='edit({{ $peralatan->id }})'>Edit</a>
+                                                        <a class="dropdown-item" href="javascript:void(0)">Link
                                                             3</a>
                                                     </div>
                                                 </div>
