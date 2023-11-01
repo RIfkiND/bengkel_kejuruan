@@ -22,7 +22,7 @@ class AlatAtauBahan extends Model
 
     public function alatmasuk()
     {
-        return $this->hasOne(AlatAtauBahanMasuk::class, 'alat_atau_bahan_id', 'id');
+        return $this->hasMany(AlatAtauBahanMasuk::class, 'alat_atau_bahan_id', 'id');
     }
     public function saldoalat()
     {
@@ -30,7 +30,7 @@ class AlatAtauBahan extends Model
     }
     public function alatkeluar()
     {
-        return $this->hasOne(AlatAtauBahanKeluar::class, 'alat_atau_bahan_id', 'id');
+        return $this->hasMany(AlatAtauBahanKeluar::class, 'alat_atau_bahan_id', 'id');
     }
 
 }

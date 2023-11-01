@@ -264,9 +264,6 @@
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="javascript:void(0)"
                                                                 data-toggle="modal"
-                                                                data-target="#ModalAlat">Informasi</a>
-                                                            <a class="dropdown-item" href="javascript:void(0)"
-                                                                data-toggle="modal"
                                                                 data-target="#ModalAlat"
                                                                 wire:click='onmas({{ $alat->id }})'>Tambah Stock</a>
                                                             <a class="dropdown-item" href="javascript:void(0)"
