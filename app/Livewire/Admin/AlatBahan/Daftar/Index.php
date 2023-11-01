@@ -17,6 +17,7 @@ class Index extends Component
     public $nama_alat_atau_bahan, $tanggal_masuk, $kode, $ruangan_id, $volume, $satuan, $sumber_dana, $merk, $type, $dimensi, $alat_id, $searchAlat, $selectedAlatId, $saldo;
     public $tanggal_keluar, $keterangan, $nama_pemakai, $volume_keluar, $volume_masuk;
     public $updateMode = false;
+    public $historyData, $alathistory;
     public $ruangan_byadmin;
     public $keluarMode = false;
     public $masukMode = false;
@@ -24,6 +25,11 @@ class Index extends Component
     use WithPagination;
     use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
+
+    public function mount(AlatAtauBahan $alathistory)
+    {
+        $this->alathistory = $alathistory;
+    }
     protected $listeners = ['delete'];
     public function getListeners()
     {
@@ -321,5 +327,12 @@ class Index extends Component
             'toast' => false,
             'timerProgressBar' => true,
         ]);
+    }
+
+    public function history($id)
+    {
+        $alathistory = AlatAtauBahan::with('alatmasuk', 'alatkeluar')->find($id);
+
+        $this->historyData = $alathistory;
     }
 }

@@ -25,7 +25,7 @@ class Index extends Component
             return view('livewire.admin.alat-bahan.transaksi.masuk.index', [
                 'alats' => AlatAtauBahan::where('nama_alat_atau_bahan', 'LIKE', $searchAlat)
                     ->where('ruangan_id', $this->ruangan_byadmin)
-                    ->orderBy('id', 'ASC')
+                    ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'alatPage'),
             ]);
         } else {
@@ -43,6 +43,7 @@ class Index extends Component
                                 ->user()
                                 ->sekolah->ruangan->pluck('id'),
                         )
+                        ->orderBy('id', 'DESC')
                         ->paginate(10, ['*'], 'alatPage'),
                     'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
                 ]);

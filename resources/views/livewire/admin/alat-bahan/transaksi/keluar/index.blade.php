@@ -10,7 +10,7 @@
                                     <h1 class="error-text text-warning mt-5"><i class="fa fa-info-circle"></i></h1>
 
                                     <h1 class="my-5 text-warning text-wrap">Tambahkan Ruangan Untuk Bisa Mengatur Data
-                                        alat</h1>
+                                        Alat dan Bahan</h1>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($alats as $alat)
-                                            @foreach ($alat->alatkeluar as $alatkeluar)
+                                            @foreach ($alat->alatkeluar->sortByDesc('id') as $alatkeluar)
                                                 <tr>
                                                     <td>{{ $alatkeluar->tanggal_keluar }}</td>
                                                     <td>AB-{{ $alat->id }}</td>

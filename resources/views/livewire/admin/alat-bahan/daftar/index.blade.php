@@ -62,6 +62,13 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+                                            <div class="col-lg-4 mb-4">
+                                                <input wire:model="satuan" type="text"
+                                                    class="form-control input-default" placeholder="Satuan">
+                                                @error('satuan')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
                                             <div class="col">
                                                 <div class="d-flex justify-content-end">
                                                     <div class="col-auto">
@@ -222,7 +229,7 @@
                                             <th>Kode Alat/Bahan</th>
                                             <th>Nama Alat/Bahan</th>
                                             <th>Spesifikasi</th>
-                                            <th>Stock</th>
+                                            <th>Stock </th>
                                             <th>Saldo</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -230,42 +237,65 @@
                                     <tbody>
                                         @forelse ($alats as $alat)
                                             <tr>
-                                                <td>AB-{{ $alat->id }}</td>
-                                                <td>{{ $alat->nama_alat_atau_bahan }}</td>
                                                 <td>
-                                                    @if ($alat->spesifikasi)
-                                                        <ul>
-                                                            <li>
-                                                                <i>
-                                                                    Merk : {{ $alat->spesifikasi->merk }}
-                                                                </i>
-                                                            </li>
-                                                            <li>
-                                                                <i>
-                                                                    Type/Model :
-                                                                    {{ $alat->spesifikasi->tipe_atau_model }}
-                                                                </i>
-                                                            </li>
-                                                            <li>
-                                                                <i>
-                                                                    Dimensi :
-                                                                    {{ $alat->spesifikasi->dimensi }}
-                                                                </i>
-                                                            </li>
-                                                        </ul>
-                                                    @endif
+                                                    <a href="javascript:void(0)" data-toggle="modal"
+                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        AB-{{ $alat->id }}
+                                                    </a>
                                                 </td>
-                                                <td>{{ $alat->volume }} {{ $alat->satuan }}</td>
-                                                <td>Rp {{ number_format($alat->saldoalat(), 2, ',', '.') }}</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-toggle="modal"
+                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        {{ $alat->nama_alat_atau_bahan }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-toggle="modal"
+                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        @if ($alat->spesifikasi)
+                                                            <ul>
+                                                                <li>
+                                                                    <i>
+                                                                        Merk : {{ $alat->spesifikasi->merk }}
+                                                                    </i>
+                                                                </li>
+                                                                <li>
+                                                                    <i>
+                                                                        Type/Model :
+                                                                        {{ $alat->spesifikasi->tipe_atau_model }}
+                                                                    </i>
+                                                                </li>
+                                                                <li>
+                                                                    <i>
+                                                                        Dimensi :
+                                                                        {{ $alat->spesifikasi->dimensi }}
+                                                                    </i>
+                                                                </li>
+                                                            </ul>
+                                                        @endif
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-toggle="modal"
+                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        {{ $alat->volume }} {{ $alat->satuan }}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:void(0)" data-toggle="modal"
+                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        Rp {{ number_format($alat->saldoalat(), 2, ',', '.') }}
+                                                    </a>
+                                                </td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                                 class="fa fa-ellipsis-v fa-lg"></i></a>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="javascript:void(0)"
-                                                                data-toggle="modal"
-                                                                data-target="#ModalAlat"
-                                                                wire:click='onmas({{ $alat->id }})'>Tambah Stock</a>
+                                                                data-toggle="modal" data-target="#ModalAlat"
+                                                                wire:click='onmas({{ $alat->id }})'>Tambah
+                                                                Stock</a>
                                                             <a class="dropdown-item" href="javascript:void(0)"
                                                                 wire:click='edit({{ $alat->id }})'>Edit</a>
                                                             <a class="dropdown-item text-danger"

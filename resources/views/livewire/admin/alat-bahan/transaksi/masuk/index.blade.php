@@ -10,7 +10,7 @@
                                     <h1 class="error-text text-warning mt-5"><i class="fa fa-info-circle"></i></h1>
 
                                     <h1 class="my-5 text-warning text-wrap">Tambahkan Ruangan Untuk Bisa Mengatur Data
-                                        alat</h1>
+                                        Alat dan Bahan</h1>
                                 </div>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="card-title">
-                                    <h4>Riwayat Pemakaian Alat</h4>
+                                    <h4>Riwayat Penambahan Alat/Bahan</h4>
                                 </div>
                             </div>
                             <div class="col d-flex justify-content-end px-4">
@@ -52,14 +52,14 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($alats as $alat)
-                                            @foreach ($alat->alatmasuk as $alatmasuk)
+                                            @foreach ($alat->alatmasuk->sortByDesc('id') as $alatmasuk)
                                                 <tr>
                                                     <td>{{ $alatmasuk->tanggal_masuk}}</td>
                                                     <td>AB-{{ $alat->id }}</td>
                                                     <td>{{ $alat->nama_alat_atau_bahan }}</td>
                                                     <td>{{ $alatmasuk->sumber_dana }}</td>
                                                     <td>{{ $alatmasuk->volume }}</td>
-                                                    <td>{{ $alatmasuk->saldo }}</td>
+                                                    <td>Rp {{ number_format($alatmasuk->saldo, 2, ',', '.') }}</td>
                                                     {{-- <td>
                                                             <div class="dropdown">
                                                                 <a href="#" data-toggle="dropdown"><i
