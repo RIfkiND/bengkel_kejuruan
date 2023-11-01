@@ -23,13 +23,8 @@
                                     </div>
         
                                     <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-6 mb-4">
-                                                <label for="tanggal" class="text-center">Tanggal Pemeliharaan</label>
-                                                <input type="date" id="tanggal"
-                                                    class="form-control input-default">
-                                            </div>
-                                            <div class="col">
+                                        <div class="row justify-content-md-center">
+                                            <div class="col mb-4">
                                                 <div class="d-flex justify-content-end">
                                                     <button type="submit" class="btn btn-primary">Tambahkan</button>
                                                 </div>
@@ -37,28 +32,40 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-3 mb-4">
+                                        <div class="row justify-content-md-center">
+                                            <div class="col-lg-1 mb-4">
+                                                <label for="tanggal" class="text-center">Tanggal Masuk</label>
+                                            </div>
+                                            <div class="col-lg-2 mb-4">
+                                                <input type="date" id="tanggal"
+                                                    class="form-control input-default">
+                                            
+                                            </div>
+                                            <div class="col-lg-4 mb-4">
                                                 <select class="form-control" id="ruangan">
                                                     <option value="" selected disabled>Ruangan</option>
                                                     <option value="">Ruangan 1</option>
                                                     <option value="">Ruangan 2</option>
                                                 </select>
                                             </div>
-                                            <div class="col-lg-3 mb-4">
+                                            <div class="col-lg-4 mb-4">
                                                 <input type="text" id="kode"
                                                     class="form-control input-default" placeholder="Kode P/M">
                                             </div>
-                                            <div class="col-lg-3 mb-4">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row justify-content-md-center">
+                                            <div class="col-lg-4 mb-4">
                                                 <select class="form-control" id="ruangan">
                                                     <option value="" selected>Jenis Kerusakan</option>
                                                     <option value="">Perawatan Rutin</option>
                                                     <option value="">Perbaikan</option>
                                                 </select>
                                             </div>
-                                           
-                                            <div class="col-lg-3 mb-4">
-                                                <textarea class="form-control input-default" id="ket" placeholder="Keterangan"></textarea>
+                                            <div class="col-lg-4 mb-4">
+                                                <textarea class="form-control" id="keterangan" rows="2"
+                                                    placeholder="Keterangan"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +134,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
+                                                <td>BRG-001</td>
+                                                <td>test cat</td>
+                                                <td>Kolor</td>
+                                                <td>
+                                                    Merk: <i>SAMSUNG</i><br>
+                                                    Type/Model: <i>A01S</i><br>
+                                                    Tahun: <i>2018</i><br>
+                                                    Kapasitas: <i>50</i>
+                                                </td>
+                                                <td>
+                                                    <h4><span class="badge badge-success px-2 text-white">Selesai</span></h4>
+                                                </td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a href="#" data-toggle="dropdown"><i
+                                                                class="fa fa-ellipsis-v fa-lg"></i></a>
+                                                        <div class="dropdown-menu"><a class="dropdown-item"
+                                                                href="#"  data-toggle="modal" data-target="#infoModal">More info</a> <a class="dropdown-item"
+                                                                href="#">Link 2</a> <a class="dropdown-item"
+                                                                href="#">Link 3</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
                                                 <td>BRG-001</td>
                                                 <td>test cat</td>
                                                 <td>Kolor</td>
