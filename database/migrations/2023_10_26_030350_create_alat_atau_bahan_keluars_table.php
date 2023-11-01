@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal_keluar');
             $table->foreignId('alat_atau_bahan_id')->constrained('alat_atau_bahans')->cascadeOnDelete();
+            $table->string('nama_pemakai');
+            $table->string('volume');
+            $table->text('keterangan')->nullabel();
             $table->timestamps();
         });
     }

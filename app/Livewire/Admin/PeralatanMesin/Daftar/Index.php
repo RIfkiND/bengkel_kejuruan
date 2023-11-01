@@ -222,6 +222,11 @@ class Index extends Component
 
     public function keluar()
     {
+        $validate = $this->validate([
+            'tanggal_keluar' => 'required',
+            'alasan_keluar' => 'required',
+        ]);
+
         $peralatan = PeralatanAtauMesin::find($this->peralatan_id);
         $peralatan->update([
             'kondisi' => 'keluar',

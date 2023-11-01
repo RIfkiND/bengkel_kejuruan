@@ -42,6 +42,7 @@ class Index extends Component
                                 ->user()
                                 ->sekolah->ruangan->pluck('id'),
                         )
+                        ->where('kondisi', 'keluar')
                         ->orderBy('id', 'DESC')
                         ->paginate(10, ['*'], 'peralatanPage'),
                 ]);

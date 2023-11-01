@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('alat_atau_bahans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('ruangan_id')->constrained('ruangans')->cascadeOnDelete();
             $table->enum('kode', ['A', 'B']);
-            $table->string('nama_alat_atau_bahan');
-            $table->string('volume');
-            $table->string('satuan');
-            $table->string('sumber_dana');
+            $table->string('nama_alat_atau_bahan')->unique();
+            $table->string('volume')->nullable();
+            $table->string('satuan')->nullable();
             $table->timestamps();
         });
     }
