@@ -224,7 +224,7 @@ class Index extends Component
     {
         $validate = $this->validate([
             'tanggal_keluar' => 'required',
-            'alasan_keluar' => 'required',
+            'alasan' => 'required',
         ]);
 
         $peralatan = PeralatanAtauMesin::find($this->peralatan_id);

@@ -197,20 +197,20 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
                                 <div class="card-title">
-                                    <h4>Daftar Peralatan</h4>
+                                    <h4>Daftar Alat dan Bahan</h4>
                                 </div>
                             </div>
                             <div class="col d-flex justify-content-end px-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
-                                        wire:model='searchPeralatan' wire:input='resetPage'>
+                                        wire:model='searchAlat' wire:input='resetPage'>
                                 </div>
                             </div>
                         </div>
@@ -219,48 +219,44 @@
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Kode Barang</th>
-                                            <th>Kategori P/M</th>
-                                            <th>Nama Barang</th>
+                                            <th>Kode Alat/Bahan</th>
+                                            <th>Nama Alat/Bahan</th>
                                             <th>Spesifikasi</th>
+                                            <th>Stock</th>
+                                            <th>Saldo</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($alats as $peralatan)
+                                        @forelse ($alats as $alat)
                                             <tr>
-                                                <td>PM-{{ $peralatan->id }}</td>
-                                                <td>{{ $peralatan->kategori->nama_kategori }}</td>
-                                                <td>{{ $peralatan->nama_peralatan_atau_mesin }}</td>
+                                                <td>AB-{{ $alat->id }}</td>
+                                                <td>{{ $alat->nama_alat_atau_bahan }}</td>
                                                 <td>
-                                                    @if ($peralatan->spesifikasi)
+                                                    @if ($alat->spesifikasi)
                                                         <ul>
                                                             <li>
                                                                 <i>
-                                                                    Merk : {{ $peralatan->spesifikasi->merk }}
+                                                                    Merk : {{ $alat->spesifikasi->merk }}
                                                                 </i>
                                                             </li>
                                                             <li>
                                                                 <i>
                                                                     Type/Model :
-                                                                    {{ $peralatan->spesifikasi->tipe_atau_model }}
+                                                                    {{ $alat->spesifikasi->tipe_atau_model }}
                                                                 </i>
                                                             </li>
                                                             <li>
                                                                 <i>
-                                                                    Tahun :
-                                                                    {{ $peralatan->spesifikasi->tahun }}
-                                                                </i>
-                                                            </li>
-                                                            <li>
-                                                                <i>
-                                                                    Kapasitas :
-                                                                    {{ $peralatan->spesifikasi->kapasitas }}
+                                                                    Dimensi :
+                                                                    {{ $alat->spesifikasi->dimensi }}
                                                                 </i>
                                                             </li>
                                                         </ul>
                                                     @endif
                                                 </td>
+                                                <td>{{ $alat->volume }} {{ $alat->satuan }}</td>
+                                                <td>Rp {{ number_format($alat->saldoalat(), 2, ',', '.') }}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <a href="javascript:void(0)" data-toggle="dropdown"><i
@@ -268,17 +264,21 @@
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item" href="javascript:void(0)"
                                                                 data-toggle="modal"
-                                                                data-target="#ModalPeralatan">Informasi</a>
+                                                                data-target="#ModalAlat">Informasi</a>
                                                             <a class="dropdown-item" href="javascript:void(0)"
-                                                                wire:click='edit({{ $peralatan->id }})'>Edit</a>
+                                                                data-toggle="modal"
+                                                                data-target="#ModalAlat"
+                                                                wire:click='onmas({{ $alat->id }})'>Tambah Stock</a>
+                                                            <a class="dropdown-item" href="javascript:void(0)"
+                                                                wire:click='edit({{ $alat->id }})'>Edit</a>
                                                             <a class="dropdown-item text-danger"
                                                                 href="javascript:void(0)" data-toggle="modal"
-                                                                data-target="#ModalPeralatan"
-                                                                wire:click='onkel({{ $peralatan->id }})'>Keluar</a>
+                                                                data-target="#ModalAlat"
+                                                                wire:click='onkel({{ $alat->id }})'>Keluar</a>
                                                             @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
                                                                 <a class="dropdown-item text-danger"
                                                                     href="javascript:void(0)"
-                                                                    wire:click='ondel({{ $peralatan->id }})'>Delete</a>
+                                                                    wire:click='ondel({{ $alat->id }})'>Delete</a>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -298,7 +298,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     @endif
 
 

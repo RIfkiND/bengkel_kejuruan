@@ -94,7 +94,7 @@ class Index extends Component
     public function store()
     {
         $validatedDate = $this->validate([
-            'nama_alat_atau_bahan' => 'required|unique',
+            'nama_alat_atau_bahan' => 'required | unique:alat_atau_bahans,nama_alat_atau_bahan',
             'kode' => 'required',
             'ruangan_id' => 'required',
             'volume' => 'required',
@@ -105,7 +105,22 @@ class Index extends Component
             'merk' => 'required',
             'type' => 'required',
             'dimensi' => 'required',
-        ]);
+        ],
+        [
+            'nama_alat_atau_bahan.required' => 'Nama Alat atau Bahan tidak boleh kosong.',
+            'nama_alat_atau_bahan.unique' => 'Nama Alat atau Bahan sudah ada.',
+            'kode.required' => 'Kode tidak boleh kosong.',
+            'ruangan_id.required' => 'Ruangan tidak boleh kosong.',
+            'volume.required' => 'Volume tidak boleh kosong.',
+            'satuan.required' => 'Satuan tidak boleh kosong.',
+            'sumber_dana.required' => 'Sumber Dana tidak boleh kosong.',
+            'saldo.required' => 'Saldo tidak boleh kosong.',
+            'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong.',
+            'merk.required' => 'Merk tidak boleh kosong.',
+            'type.required' => 'Type tidak boleh kosong.',
+            'dimensi.required' => 'Dimensi tidak boleh kosong.',
+        ]
+    );
 
         $alat = AlatAtauBahan::create([
             'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
@@ -238,6 +253,8 @@ class Index extends Component
         $validate = $this->validate([
             'tanggal_masuk' => 'required',
             'volume_masuk' => 'required',
+            'sumber_dana' => 'required',
+            'saldo'=> 'required',
         ]);
 
         $sumvolume = $this->volume + $this->volume_masuk;
@@ -254,6 +271,15 @@ class Index extends Component
             'volume' => $this->volume_masuk,
             'sumber_dana' => $this->sumber_dana,
         ]);
+
+        $this->masukMode = false;
+        $this->resetInputFields();
+        $this->alert('success', 'Berhasil Ditambahkan!', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
     }
     public function onkel($id)
     {
@@ -269,6 +295,7 @@ class Index extends Component
             'tanggal_keluar' => 'required',
             'nama_pemakai' => 'required',
             'volume_keluar' => 'required',
+            'keterangan' => 'required',
         ]);
 
         $sumvolume = $this->volume - $this->volume_keluar;
@@ -288,7 +315,7 @@ class Index extends Component
 
         $this->keluarMode = false;
         $this->resetInputFields();
-        $this->alert('success', 'Berhasil Diubah!', [
+        $this->alert('success', 'Berhasil !', [
             'position' => 'center',
             'timer' => 3000,
             'toast' => false,
