@@ -115,7 +115,7 @@
                                     @foreach ($pemeliharaans as $pemeliharaan)
                                         <tr>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
-                                                PM-{{ $pemeliharaan->peralatan->id }}</td>
+                                                PM-{{ $pemeliharaan->peralatan_id }}</td>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
                                                 {{ $pemeliharaan->peralatan->nama_peralatan_atau_mesin }}</td>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">

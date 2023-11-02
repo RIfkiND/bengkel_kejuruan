@@ -82,10 +82,12 @@ class Index extends Component
         ]);
 
         Pemakaian::create([
-            'tanggal' => $this->tanggal,
+            'tanggal_pemakaian' => $this->tanggal,
             'waktu_awal' => $this->waktu_awal,
+            'waktu_akhir' => $this->waktu_akhir,
             'peralatan_atau_mesin_id' => $this->p_m_id,
-            'guru_id, $kelas_id' => $this->guru_id,
+            'guru_id' => $this->guru_id,
+            'kelas_id' => $this->kelas_id,
         ]);
 
         $this->resetInputFields();

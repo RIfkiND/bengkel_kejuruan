@@ -128,68 +128,50 @@
                                 <thead>
                                     <tr>
                                         <th>Kode P/M</th>
-                                        <th>Kategori P/M</th>
                                         <th>Nama P/M</th>
-                                        <th>Spesifikasi</th>
+                                        <th>Tanggal Pemakaian</th>
+                                        <th>Waktu</th>
+                                        <th>Pemakai</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
-                                            BRG-001</td>
-                                        <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">test
-                                            cat</td>
-                                        <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">Kolor
-                                        </td>
-                                        <td>
-                                            Merk: <i>SAMSUNG</i><br>
-                                            Type/Model: <i>A01S</i><br>
-                                            Tahun: <i>2018</i><br>
-                                            Kapasitas: <i>50</i>
-                                        </td>
-                                        <td>
-                                            <h4><span class="badge badge-success px-2 text-white">Selesai</span>
-                                            </h4>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" data-toggle="dropdown"><i
-                                                        class="fa fa-ellipsis-v fa-lg"></i></a>
-                                                <div class="dropdown-menu">
-                                                    <a href="#" class="dropdown-item">Link 1</a>
-                                                    <a class="dropdown-item" href="#">Link 2</a>
-                                                    <a class="dropdown-item" href="#">Link 3</a>
+                                    @foreach ($peminjamans as $peminjaman)
+                                        <tr>
+                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
+                                                PM-{{ $peminjaman->peralatan_id}}</td>
+                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
+                                                {{ $peminjaman->peralatan->nama_peralatan_atau_mesin }}</td>
+                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
+                                                {{ $peminjaman->tanggal_pemakaian }}
+                                            </td>
+                                            <td>
+                                                {{-- only show hours and minutes --}}
+                                                {{ \Carbon\Carbon::parse($peminjaman->waktu_awal)->format('H:i') }} -
+                                                {{ \Carbon\Carbon::parse($peminjaman->waktu_akhir)->format('H:i') }}
+                                            </td>
+                                            <td>
+                                                <span>Guru:</span> <small>{{ $peminjaman->guru->nama_guru }}</small> <br>
+                                               <span>Kelas:</span> <small>{{ $peminjaman->kelas->nama_kelas }}</small>
+                                            </td>
+                                            <td>
+                                                <h4><span class="badge badge-success px-2 text-white">{{ $peminjaman->status_penggunaan }}</span>
+                                                </h4>
+                                            </td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <a href="#" data-toggle="dropdown"><i
+                                                            class="fa fa-ellipsis-v fa-lg"></i></a>
+                                                    <div class="dropdown-menu">
+                                                        <a href="#" class="dropdown-item">Link 1</a>
+                                                        <a class="dropdown-item" href="#">Link 2</a>
+                                                        <a class="dropdown-item" href="#">Link 3</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
-                                        <td>BRG-001</td>
-                                        <td>test cat</td>
-                                        <td>Kolor</td>
-                                        <td>
-                                            Merk: <i>SAMSUNG</i><br>
-                                            Type/Model: <i>A01S</i><br>
-                                            Tahun: <i>2018</i><br>
-                                            Kapasitas: <i>50</i>
-                                        </td>
-                                        <td>
-                                            <h4><span class="badge badge-danger px-2 text-white">Belum</span></h4>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" data-toggle="dropdown"><i
-                                                        class="fa fa-ellipsis-v fa-lg"></i></a>
-                                                <div class="dropdown-menu"><a class="dropdown-item" href="#"><i
-                                                            class="fa fa-check text-success mr-2"></i>Selesai</a>
-                                                    <a class="dropdown-item" href="#">Link 2</a> <a
-                                                        class="dropdown-item" href="#">Link 3</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

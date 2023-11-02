@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         @if (auth()->user()->sekolah_id)
-                            <div class="col-3 d-flex justify-content-end px-4 h-50">
+                            <div class="col d-flex justify-content-end px-4 h-50">
                                 <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
                                     data-toggle="modal" data-target="#ModalRuangan">Tambahkan Ruangan</button>
                             </div>
@@ -25,7 +25,7 @@
                     <div class="row">
                         @foreach ($ruangans as $ruangan)
                             <div class="col-lg-4 col-sm-6">
-                                <a href="javascript:void(0)">
+                                <a href="{{ route('admin.sekolah.ruangan.peralatan', $ruangan->id) }}">
                                     <div class="card">
                                         <div class="social-graph-wrapper widget-facebook">
                                             <span class="s-icon text-truncate"
