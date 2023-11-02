@@ -152,7 +152,7 @@
                                                         <a href="#" data-toggle="dropdown"><i
                                                                 class="fa fa-ellipsis-v fa-lg"></i></a>
                                                         <div class="dropdown-menu"><a class="dropdown-item"
-                                                                href="#"  data-toggle="modal" data-target="#infoModal">More info</a> <a class="dropdown-item"
+                                                                href="#">Link 1</a> <a class="dropdown-item"
                                                                 href="#">Link 2</a> <a class="dropdown-item"
                                                                 href="#">Link 3</a>
                                                         </div>
@@ -170,14 +170,14 @@
                                                     Kapasitas: <i>50</i>
                                                 </td>
                                                 <td>
-                                                    <h4><span class="badge badge-success px-2 text-white">Selesai</span></h4>
+                                                    <h4><span class="badge badge-warning px-2 text-white">Belum</span></h4>
                                                 </td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <a href="#" data-toggle="dropdown"><i
                                                                 class="fa fa-ellipsis-v fa-lg"></i></a>
                                                         <div class="dropdown-menu"><a class="dropdown-item"
-                                                                href="#"  data-toggle="modal" data-target="#infoModal">More info</a> <a class="dropdown-item"
+                                                                href="#">Link 1</a> <a class="dropdown-item"
                                                                 href="#">Link 2</a> <a class="dropdown-item"
                                                                 href="#">Link 3</a>
                                                         </div>
