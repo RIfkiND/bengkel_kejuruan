@@ -10,4 +10,9 @@ class PemeliharaanDanPerawatan extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    public function peralatan()
+    {
+        return $this->belongsTo(PeralatanAtauMesin::class, 'peralatan_atau_mesin_id');
+    }
+
 }
