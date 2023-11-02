@@ -34,17 +34,14 @@ class Index extends Component
                     ->sekolah->ruangan->pluck('id')
                     ->count() > 0
             ) {
+                $peralatans = PeralatanAtauMesin::whereHas('ruangan', function ($query) {
+                    $query->where('sekolah_id', auth()->user()->sekolah->id);
+                })
+                    ->where('kondisi', 'keluar')
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'peralatanPage');
                 return view('livewire.admin.peralatan-mesin.transaksi.keluar.index', [
-                    'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
-                        ->where(
-                            'ruangan_id',
-                            auth()
-                                ->user()
-                                ->sekolah->ruangan->pluck('id'),
-                        )
-                        ->where('kondisi', 'keluar')
-                        ->orderBy('id', 'DESC')
-                        ->paginate(10, ['*'], 'peralatanPage'),
+                    'peralatans' => $peralatans,
                 ]);
             } else {
                 return view('livewire.admin.peralatan-mesin.transaksi.keluar.index', [

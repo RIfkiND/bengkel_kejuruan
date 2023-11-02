@@ -15,4 +15,9 @@ class Ruangan extends Model
     {
         return $this->hasMany(PeralatanAtauMesin::class);
     }
+
+    public function sekolah()
+    {
+        return $this->belongsTo(Sekolah::class);
+    }
 }
