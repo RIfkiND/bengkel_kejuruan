@@ -88,7 +88,7 @@
                 @endif
 
                 <li>
-                    <a href="#" aria-expanded="false">
+                    <a href="{{ route('admin.peralatanmesin.pemakaian') }}" aria-expanded="false">
                         <i class="icon-clock menu-icon"></i><span class="nav-text">Pemakaian/Peminjaman</span>
                     </a>
                 </li>
