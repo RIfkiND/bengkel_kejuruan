@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Admin\PeralatanMesin\Pemakaian;
 
+use App\Models\Guru;
+use App\Models\GuruKelas;
 use App\Models\Ruangan;
 use Livewire\Component;
 use App\Models\Pemakaian;
@@ -11,13 +13,14 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $tanggal, $jenis, $status, $p_m_id, $keterangan, $pemeliharaan_id, $searchRuangan, $selectedDataId, $ruangan_id;
+    public $tanggal, $waktu_awal, $waktu_akhir, $status_pengajuan, $status_pemakaian, $p_m_id, $guru_id, $kelas_id, $peminjaman_id, $searchRuangan, $selectedDataId, $ruangan_id;
     public $updateMode = false;
 
     use WithPagination;
     use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
     public $peralatans = [];
+    public $kelas = [];
     protected $listeners = ['delete'];
     public function getListeners()
     {
@@ -36,25 +39,34 @@ class Index extends Component
             ->orderBy('id', 'DESC')
             ->get();
     }
+
+    public function updateKelas()
+    {
+        $this->kelas = GuruKelas::where('guru_id', $this->guru_id)
+            ->orderBy('id', 'DESC')
+            ->get();
+    }
     public function render()
     {
-        $ruangan_id = $this->ruangan_id;
-
         return view('livewire.admin.peralatan-mesin.pemakaian.index', [
             'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                 ->orderBy('id', 'DESC')
                 ->get(),
             'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemeliharaanPage'),
+            'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
+                ->orderBy('id', 'DESC')
+                ->get(),
             'peralatans',
+            'kelas',
         ]);
     }
 
     private function resetInputFields()
     {
-        $this->tanggal = '';
-        $this->jenis = '';
-        $this->status = '';
-        $this->keterangan = '';
+        $this->waktu_akhir = '';
+        $this->waktu_awal = '';
+        $this->guru_id = '';
+        $this->kelas_id = '';
         $this->p_m_id = '';
     }
 
@@ -62,16 +74,18 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'tanggal' => 'required',
-            'jenis'=> 'required',
+            'waktu_awal'=> 'required',
             'p_m_id'=> 'required',
-            'keterangan'=> 'required',
+            'guru_id'=> 'required',
+            'kelas_id'=> 'required',
+            'waktu_akhir'=> 'required',
         ]);
 
         Pemakaian::create([
             'tanggal' => $this->tanggal,
-            'jenis' => $this->jenis,
+            'waktu_awal' => $this->waktu_awal,
             'peralatan_atau_mesin_id' => $this->p_m_id,
-            'keterangan' => $this->keterangan,
+            'guru_id, $kelas_id' => $this->guru_id,
         ]);
 
         $this->resetInputFields();
@@ -87,7 +101,7 @@ class Index extends Component
     public function edit($id)
     {
         $pemeliharaan = Pemakaian::findOrFail($id);
-        $this->pemeliharaan_id = $id;
+        $this->peminjaman_id = $id;
         $this->tanggal = $pemeliharaan->tanggal;
         $this->updateMode = true;
     }
@@ -104,7 +118,7 @@ class Index extends Component
             'tanggal' => 'required',
         ]);
 
-        $pemeliharaan = Pemakaian::find($this->pemeliharaan_id);
+        $pemeliharaan = Pemakaian::find($this->peminjaman_id);
         $pemeliharaan->update([
             'tanggal' => $this->tanggal,
         ]);
@@ -136,16 +150,16 @@ class Index extends Component
             'confirmButtonColor' => '#f03535',
         ]);
     }
-    public function updateStatus($id)
+    public function updateStatus_pestatus_pengajuan($id)
     {
         $pemeliharaan = Pemakaian::find($id);
-        if ($pemeliharaan->status == 'Belum Selesai') {
+        if ($pemeliharaan->status_pengajuan == 'Belum Selesai') {
             $pemeliharaan->update([
-                'status' => 'Selesai',
+                'status_pengajuan' => 'Selesai',
             ]);
         } else {
             $pemeliharaan->update([
-                'status' => 'Belum Selesai',
+                'status_pengajuan' => 'Belum Selesai',
             ]);
         }
     }

@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="basic-form">
-                        <form>
+                        <form wire:submit.prevent="store">
                             <div class="form-group">
                                 <h4 class="text-center">Tambah Pemakaian</h4>
                             </div>
@@ -28,7 +28,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col">
-                                                <input type="date" id="tanggal" class="form-control input-default">
+                                                <input type="date" id="tanggal" wire:model='tanggal'
+                                                    class="form-control input-default">
                                             </div>
                                         </div>
                                     </div>
@@ -39,22 +40,14 @@
                                         <div class="row">
                                             <div class="col">
                                                 <input id="start" class="form-control input-default" type="time"
-                                                    placeholder="Dari..." />
+                                                    placeholder="Dari..." wire:model='waktu_awal' />
                                             </div>
                                             <div class="col">
                                                 <input id="end" class="form-control input-default" type="time"
-                                                    placeholder="Sampai..." />
+                                                    placeholder="Sampai..." wire:model='waktu_akhir' />
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-lg-2 mb-4">
-                                            <input id="start" class="form-control input-default" type="time"
-                                                placeholder="Dari..." />
-                                    </div>
-                                    <div class="col-lg-2 mb-4">
-                                            <input id="end" class="form-control input-default" type="time"
-                                                placeholder="Sampai..." />
-                                    </div> --}}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -84,17 +77,24 @@
                                         @enderror
                                     </div>
                                     <div class="col-lg-3 mb-4">
-                                        <select class="form-control" id="guru">
-                                            <option value="" selected disabled>Guru</option>
-                                            <option value="">Guru 1</option>
-                                            <option value="">Ruangan 2</option>
+                                        <select class="form-control" id="guru" wire:model='guru_id'
+                                            wire:change='updateKelas'>
+                                            <option value="" selected>Guru</option>
+                                            @foreach ($gurus as $guru)
+                                                <option value="{{ $guru->id }}">
+                                                    {{ $guru->nama_guru }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col-lg-3 mb-4">
-                                        <select class="form-control" id="ruangan">
-                                            <option value="" selected disabled>Kelas</option>
-                                            <option value="">Ruangan 1</option>
-                                            <option value="">Ruangan 2</option>
+                                        <select class="form-control" id="ruangan" wire:model='kelas_id'>
+                                            <option value="" selected>Kelas</option>
+                                            @foreach ($kelas as $kls)
+                                                <option value="{{ $kls->kelas->id }}">
+                                                    {{ $kls->kelas->nama_kelas }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
