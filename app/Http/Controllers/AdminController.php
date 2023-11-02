@@ -78,6 +78,11 @@ class AdminController extends Controller
         return view('admin.peralatanmesin.pemeliharaan');
     }
 
+    public function pemakaian()
+    {
+        return view('admin.peralatanmesin.pemakaian');
+    }
+
     public function peralatanmasuk()
     {
         return view('admin.peralatanmesin.transaksi.masuk');
