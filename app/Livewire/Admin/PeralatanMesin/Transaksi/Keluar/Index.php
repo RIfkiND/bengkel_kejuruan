@@ -37,6 +37,7 @@ class Index extends Component
                 $peralatans = PeralatanAtauMesin::whereHas('ruangan', function ($query) {
                     $query->where('sekolah_id', auth()->user()->sekolah->id);
                 })
+                    ->where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                     ->where('kondisi', 'keluar')
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'peralatanPage');

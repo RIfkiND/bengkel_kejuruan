@@ -16,9 +16,6 @@
     @stack('css')
     <!-- Custom Stylesheet -->
     <link href="/Asset/css/style.css" rel="stylesheet">
-    {{-- Mobiscroll Date-range --}}
-    <link rel="stylesheet" href="/Asset/css/mobiscroll-daterange/mobiscroll.javascript.min.css">
-    <script src="/Asset/plugins/mobiscroll-daterange/mobiscroll.javascript.min.js"></script>
 
 </head>
 
@@ -93,7 +90,7 @@
     <script src="/Asset/js/styleSwitcher.js"></script>
 
     {{-- Mobiscroll Daterange --}}
-  
+
 
     <!-- Circle progress -->
     <script src="/Asset/plugins/circle-progress/circle-progress.min.js"></script>

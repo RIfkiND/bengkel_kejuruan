@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         @if (auth()->user()->sekolah_id)
-                            <div class="col-3 d-flex justify-content-end px-4 h-50">
+                            <div class="col d-flex justify-content-end px-4 h-50">
                                 <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
                                     data-toggle="modal" data-target="#ModalKelas">Tambahkan Kelas</button>
                             </div>

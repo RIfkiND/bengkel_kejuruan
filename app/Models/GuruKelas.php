@@ -19,6 +19,6 @@ class GuruKelas extends Model
 
     public function kelas()
     {
-        return $this->hasMany(Kelas::class);
+        return $this->belongsTo(Kelas::class, 'kelas_id');
     }
 }
