@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('peralatan_atau_mesin_id')->constrained('peralatan_atau_mesins')->cascadeOnDelete();
             $table->enum('jenis', ['perawatan rutin', 'perbaikan']);
             $table->enum('status', ['Selesai', 'Belum Selesai'])->default('Belum Selesai');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }
