@@ -35,16 +35,15 @@ class Index extends Component
                     ->sekolah->ruangan->pluck('id')
                     ->count() > 0
             ) {
+                $alats = AlatAtauBahan::whereHas('ruangan', function ($query) {
+                    $query->where('sekolah_id', auth()->user()->sekolah->id);
+                })
+                    ->where('nama_alat_atau_bahan', 'LIKE', $searchAlat)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'peralatanPage');
+
                 return view('livewire.admin.alat-bahan.transaksi.keluar.index', [
-                    'alats' => AlatAtauBahan::where('nama_alat_atau_bahan', 'LIKE', $searchAlat)
-                        ->where(
-                            'ruangan_id',
-                            auth()
-                                ->user()
-                                ->sekolah->ruangan->pluck('id'),
-                        )
-                        ->orderBy('id', 'DESC')
-                        ->paginate(10, ['*'], 'alatPage'),
+                    'alats' => $alats,
                     'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
                 ]);
             } else {

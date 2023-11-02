@@ -58,16 +58,15 @@ class Index extends Component
                     ->sekolah->ruangan->pluck('id')
                     ->count() > 0
             ) {
+                $alats = AlatAtauBahan::whereHas('ruangan', function ($query) {
+                    $query->where('sekolah_id', auth()->user()->sekolah->id);
+                })
+                    ->where('nama_alat_atau_bahan', 'LIKE', $searchAlat)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'peralatanPage');
+
                 return view('livewire.admin.alat-bahan.daftar.index', [
-                    'alats' => AlatAtauBahan::where('nama_alat_atau_bahan', 'LIKE', $searchAlat)
-                        ->where(
-                            'ruangan_id',
-                            auth()
-                                ->user()
-                                ->sekolah->ruangan->pluck('id'),
-                        )
-                        ->orderBy('id', 'DESC')
-                        ->paginate(10, ['*'], 'alatPage'),
+                    'alats' => $alats,
                     'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
                 ]);
             } else {
@@ -99,34 +98,35 @@ class Index extends Component
 
     public function store()
     {
-        $validatedDate = $this->validate([
-            'nama_alat_atau_bahan' => 'required | unique:alat_atau_bahans,nama_alat_atau_bahan',
-            'kode' => 'required',
-            'ruangan_id' => 'required',
-            'volume' => 'required',
-            'satuan' => 'required',
-            'sumber_dana' => 'required',
-            'saldo' => 'required',
-            'tanggal_masuk' => 'required',
-            'merk' => 'required',
-            'type' => 'required',
-            'dimensi' => 'required',
-        ],
-        [
-            'nama_alat_atau_bahan.required' => 'Nama Alat atau Bahan tidak boleh kosong.',
-            'nama_alat_atau_bahan.unique' => 'Nama Alat atau Bahan sudah ada.',
-            'kode.required' => 'Kode tidak boleh kosong.',
-            'ruangan_id.required' => 'Ruangan tidak boleh kosong.',
-            'volume.required' => 'Volume tidak boleh kosong.',
-            'satuan.required' => 'Satuan tidak boleh kosong.',
-            'sumber_dana.required' => 'Sumber Dana tidak boleh kosong.',
-            'saldo.required' => 'Saldo tidak boleh kosong.',
-            'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong.',
-            'merk.required' => 'Merk tidak boleh kosong.',
-            'type.required' => 'Type tidak boleh kosong.',
-            'dimensi.required' => 'Dimensi tidak boleh kosong.',
-        ]
-    );
+        $validatedDate = $this->validate(
+            [
+                'nama_alat_atau_bahan' => 'required | unique:alat_atau_bahans,nama_alat_atau_bahan',
+                'kode' => 'required',
+                'ruangan_id' => 'required',
+                'volume' => 'required',
+                'satuan' => 'required',
+                'sumber_dana' => 'required',
+                'saldo' => 'required',
+                'tanggal_masuk' => 'required',
+                'merk' => 'required',
+                'type' => 'required',
+                'dimensi' => 'required',
+            ],
+            [
+                'nama_alat_atau_bahan.required' => 'Nama Alat atau Bahan tidak boleh kosong.',
+                'nama_alat_atau_bahan.unique' => 'Nama Alat atau Bahan sudah ada.',
+                'kode.required' => 'Kode tidak boleh kosong.',
+                'ruangan_id.required' => 'Ruangan tidak boleh kosong.',
+                'volume.required' => 'Volume tidak boleh kosong.',
+                'satuan.required' => 'Satuan tidak boleh kosong.',
+                'sumber_dana.required' => 'Sumber Dana tidak boleh kosong.',
+                'saldo.required' => 'Saldo tidak boleh kosong.',
+                'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong.',
+                'merk.required' => 'Merk tidak boleh kosong.',
+                'type.required' => 'Type tidak boleh kosong.',
+                'dimensi.required' => 'Dimensi tidak boleh kosong.',
+            ],
+        );
 
         $alat = AlatAtauBahan::create([
             'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
@@ -260,7 +260,7 @@ class Index extends Component
             'tanggal_masuk' => 'required',
             'volume_masuk' => 'required',
             'sumber_dana' => 'required',
-            'saldo'=> 'required',
+            'saldo' => 'required',
         ]);
 
         $sumvolume = $this->volume + $this->volume_masuk;

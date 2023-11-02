@@ -255,16 +255,18 @@
                                                 </td>
                                                 <td>
                                                     <h4>
-                                                        <span class="badge badge-success px-2 text-white">
-                                                            @php
-                                                                $latestPemeliharaan = $peralatan->pemeliharaan->sortByDesc('created_at')->first();
-                                                            @endphp
-                                                            @if ($latestPemeliharaan && $latestPemeliharaan->status == 'Belum Selesai')
+                                                        @php
+                                                            $latestPemeliharaan = $peralatan->pemeliharaan->sortByDesc('created_at')->first();
+                                                        @endphp
+                                                        @if ($latestPemeliharaan && $latestPemeliharaan->status == 'Belum Selesai')
+                                                            <span class="badge badge-warning px-2 text-white">
                                                                 Sedang Dalam Pemeliharaan
-                                                            @else
+                                                            </span>
+                                                        @else
+                                                            <span class="badge {{ $peralatan->status == 'Tersedia' ? 'badge-success':'badge-danger' }} px-2 text-white">
                                                                 {{ $peralatan->status }}
-                                                            @endif
-                                                        </span>
+                                                            </span>
+                                                        @endif
                                                     </h4>
                                                 </td>
                                                 <td>
