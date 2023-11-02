@@ -41,8 +41,11 @@
 
                                             </div>
                                             <div class="col-lg-3 mb-4">
-                                                <input type="text" class="form-control input-default" name=""
-                                                    id="waktu" placeholder="Waktu/Jam">
+                                                <label style="margin-top: 3px">
+                                                    <input id="demo-one-input" mbsc-input data-input-style="outline"
+                                                        data-label-style="stacked" placeholder="Pilih Waktu Pemakaian"
+                                                        class="form-control input-default" />
+                                                </label>
                                             </div>
                                             <div class="col-lg-3 mb-4">
                                                 <select class="form-control" id="ruangan">
@@ -161,7 +164,7 @@
                                                                 class="fa fa-ellipsis-v fa-lg"></i></a>
                                                         <div class="dropdown-menu">
                                                             <a href="#" class="dropdown-item">Link 1</a>
-                                                            <a class="dropdown-item" href="#">Link 2</a> 
+                                                            <a class="dropdown-item" href="#">Link 2</a>
                                                             <a class="dropdown-item" href="#">Link 3</a>
                                                         </div>
                                                     </div>
