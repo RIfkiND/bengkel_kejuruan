@@ -48,7 +48,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('kategori-peralatan-dan-mesin', 'kategoriperalatan')->name('admin.kategoriperalatan');
 
         Route::get('peralatan-dan-mesin', 'peralatan')->name('admin.peralatanmesin.daftar');
-        Route::get('pemakaian', 'pemakaian')->name('admin.peralatanmesin.pemakaian');
+        Route::get('peminjaman', 'peminjaman')->name('admin.peralatanmesin.peminjaman');
         Route::get('pemeliharaan', 'pemeliharaan')->name('admin.peralatanmesin.pemeliharaan');
         Route::prefix('transaksi-peralatan-dan-mesin')->group(function () {
             Route::get('masuk', 'peralatanmasuk')->name('admin.peralatanmesin.transaksi.masuk');

@@ -88,8 +88,8 @@
                 @endif
 
                 <li>
-                    <a href="{{ route('admin.peralatanmesin.pemakaian') }}" aria-expanded="false">
-                        <i class="icon-clock menu-icon"></i><span class="nav-text">Pemakaian/Peminjaman</span>
+                    <a href="{{ route('admin.peralatanmesin.peminjaman') }}" aria-expanded="false">
+                        <i class="icon-clock menu-icon"></i><span class="nav-text">Peminjaman</span>
                     </a>
                 </li>
 

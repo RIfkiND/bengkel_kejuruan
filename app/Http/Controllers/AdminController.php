@@ -78,7 +78,7 @@ class AdminController extends Controller
         return view('admin.peralatanmesin.pemeliharaan');
     }
 
-    public function pemakaian()
+    public function peminjaman()
     {
         return view('admin.peralatanmesin.pemakaian');
     }
