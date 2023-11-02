@@ -38,21 +38,19 @@
                                             </div>
                                             <div class="col-lg-2 mb-4">
                                                 <input type="date" id="tanggal" class="form-control input-default">
-
                                             </div>
                                             <div class="col-lg-3 mb-4">
+                                                <div id="range"></div>
                                                 <label style="margin-top: 3px">
-                                                    <input id="demo-one-input" mbsc-input data-input-style="outline"
-                                                        data-label-style="stacked" placeholder="Pilih Waktu Pemakaian"
-                                                        class="form-control input-default" />
+                                                    <input id="start" class="form-control input-default" mbsc-input placeholder="Start..." />
                                                 </label>
                                             </div>
+                                            <span style="position: absolute; top: 43%"><h3>-</h3></span>
                                             <div class="col-lg-3 mb-4">
-                                                <select class="form-control" id="ruangan">
-                                                    <option value="" selected disabled>Ruangan</option>
-                                                    <option value="">Ruangan 1</option>
-                                                    <option value="">Ruangan 2</option>
-                                                </select>
+                                                <div class="range"></div>
+                                                <label style="margin-top: 3px">
+                                                    <input id="end" class="form-control input-default" mbsc-input placeholder="End..." />
+                                                </label>
                                             </div>
                                             <div class="col-lg-3 mb-4">
                                                 <input type="text" id="kode" class="form-control input-default"
@@ -62,15 +60,22 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-lg-4 mb-4">
+                                            <div class="col-lg-3 mb-4">
+                                                <select class="form-control" id="ruangan">
+                                                    <option value="" selected disabled>Ruangan</option>
+                                                    <option value="">Ruangan 1</option>
+                                                    <option value="">Ruangan 2</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-3 mb-4">
                                                 <input type="text" class="form-control input-default"
                                                     placeholder="Nama Kelas">
                                             </div>
-                                            <div class="col-lg-4 mb-4">
+                                            <div class="col-lg-3 mb-4">
                                                 <input type="text" class="form-control input-default"
                                                     placeholder="Nama Guru">
                                             </div>
-                                            <div class="col-lg-4 mb-4">
+                                            <div class="col-lg-3 mb-4">
                                                 <input type="text" class="form-control input-default"
                                                     placeholder="Nama Murid">
                                             </div>
@@ -181,7 +186,7 @@
                                                     Kapasitas: <i>50</i>
                                                 </td>
                                                 <td>
-                                                    <h4><span class="badge badge-warning px-2 text-white">Belum</span></h4>
+                                                    <h4><span class="badge badge-danger px-2 text-white">Belum</span></h4>
                                                 </td>
                                                 <td>
                                                     <div class="dropdown">
