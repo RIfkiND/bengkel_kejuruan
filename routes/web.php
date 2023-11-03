@@ -31,6 +31,9 @@ Route::prefix('/admin')->group(function () {
             Route::prefix('sekolah')->group(function () {
                 Route::get('{id}/kelas', 'kelas_sekolah')->name('admin.sekolah.kelas');
                 Route::get('{id}/kelas-ruangan', 'kelas_sekolah')->name('admin.sekolah.kelas-ruangan');
+                Route::prefix('kelas-ruangan')->group(function () {
+                    Route::get('{id}/murid', 'murid_kelas')->name('admin.sekolah.kelas-ruangan.murid');
+                });
                 Route::prefix('ruangan')->group(function () {
                     Route::get('{id}/peralatan', 'peralatan_ruangan')->name('admin.sekolah.ruangan.peralatan');
                 });
