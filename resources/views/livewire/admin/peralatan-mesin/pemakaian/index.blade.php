@@ -67,9 +67,21 @@
                                         <select class="form-control" id="peralatan" wire:model='p_m_id'>
                                             <option value="" selected>Peralatan/Mesin</option>
                                             @foreach ($peralatans as $peralatan)
-                                                <option value="{{ $peralatan->id }}">
-                                                    {{ $peralatan->nama_peralatan_atau_mesin }}
-                                                </option>
+                                                @php
+                                                    $validPeralatan = true;
+                                                    foreach ($peralatan->pemeliharaan as $pemeliharaan) {
+                                                        if ($pemeliharaan->status == 'Belum Selesai') {
+                                                            $validPeralatan = false;
+                                                            break;
+                                                        }
+                                                    }
+                                                @endphp
+
+                                                @if ($validPeralatan)
+                                                    <option value="{{ $peralatan->id }}">
+                                                        {{ $peralatan->nama_peralatan_atau_mesin }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
                                         @error('p_m_id')
