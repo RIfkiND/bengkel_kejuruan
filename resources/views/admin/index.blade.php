@@ -13,10 +13,10 @@
 
         <div class="container-fluid mt-3">
             <div class="row" style="position: relative;">
-                <div class="col-lg-6 col-sm-6" style="position: relative;">
+                <div class="col-lg-10 col-sm-6" style="position: relative;">
                     <h3 class="text-muted" style="margin-right: auto;">Data Umum</h3>
                 </div>
-                <div class="col-lg-6 col-sm-6 d-flex justify-content-end" style="position: relative;">
+                <div class="col-lg-2 col-sm-6 d-flex justify-content-end" style="position: relative;">
                     <form action="">
                         <div class="form-group">
                             <select class="form-control" id="sel1" style="border-radius: 5px">
@@ -42,7 +42,9 @@
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Akun</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-user text-primary"></i></h1></span>
+                                    <span class="opacity-7 text-muted">
+                                        <h1><i class="fa fa-user text-primary"></i></h1>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +61,9 @@
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Guru</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-user-circle text-info"></i></h1></span>
+                                    <span class="opacity-7 text-muted">
+                                        <h1><i class="fa fa-user-circle text-info"></i></h1>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +80,9 @@
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Kelas</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-window-restore text-secondary"></i></h1></span>
+                                    <span class="opacity-7 text-muted">
+                                        <h1><i class="fa fa-window-restore text-secondary"></i></h1>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +99,9 @@
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home text-warning"></i></h1></span>
+                                    <span class="opacity-7 text-muted">
+                                        <h1><i class="fa fa-home text-warning"></i></h1>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +109,7 @@
                 </div>
             </div>
             {{-- Ruangan --}}
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="card">
                         <div class="card-body">
@@ -109,12 +117,16 @@
                                 <div>
                                     <div class="d-inline-flex align-items-center">
                                         <h2 class="text-primary mb-1 font-weight-medium">12</h2>
-                                        <span class="badge font-12 text-secondary font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
+                                        <span
+                                            class="badge font-12 text-secondary font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Peralatan tersedia</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Peralatan
+                                        tersedia</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-wrench text-primary"></i></h1></span>
+                                    <span class="opacity-7 text-muted">
+                                        <h1><i class="fa fa-wrench text-primary"></i></h1>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -128,10 +140,13 @@
                                     <div class="d-inline-flex align-items-center">
                                         <h2 class="text-success mb-1 font-weight-medium">12</h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Pemeliharaan Selesai</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Pemeliharaan
+                                        Selesai</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-check text-success"></i></h1></span>
+                                    <span class="opacity-7 text-muted">
+                                        <h1><i class="fa fa-check text-success"></i></h1>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -145,10 +160,13 @@
                                     <div class="d-inline-flex align-items-center">
                                         <h2 class="text-warning mb-1 font-weight-medium">12</h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam Proses</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam Proses
+                                    </h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-tasks text-warning"></i></h1></span>
+                                    <span class="opacity-7 text-muted">
+                                        <h1><i class="fa fa-tasks text-warning"></i></h1>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -162,16 +180,19 @@
                                     <div class="d-inline-flex align-items-center">
                                         <h2 class="text-info mb-1 font-weight-medium">12</h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat / Bahan</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat / Bahan
+                                    </h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-cube text-info"></i></h1></span>
+                                    <span class="opacity-7 text-muted">
+                                        <h1><i class="fa fa-cube text-info"></i></h1>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -183,7 +204,7 @@
                                             <h4>Laporan Pengajuan</h4>
                                             <tr>
                                                 <th>Gambar</th>
-                                                <th>Nama A/B</th>
+                                                <th>Nama</th>
                                                 <th>Country</th>
                                                 <th>Status</th>
                                                 <th>Payment Method</th>
