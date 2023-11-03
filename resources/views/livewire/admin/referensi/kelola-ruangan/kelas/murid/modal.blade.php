@@ -42,7 +42,6 @@
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
-
                         <h4 class="modal-title" id="myModalLabel">Tambahkan Data</h4>
                         <button type="button" class="close" data-dismiss="modal"
                             wire:click.prevent='cancel()'><span>&times;</span>

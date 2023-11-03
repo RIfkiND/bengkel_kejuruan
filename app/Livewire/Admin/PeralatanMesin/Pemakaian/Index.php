@@ -29,7 +29,7 @@ class Index extends Component
 
     public function resetPage()
     {
-        $this->gotoPage(1, 'pemeliharaanPage');
+        $this->gotoPage(1, 'pemakaianPage');
     }
 
     public function updatePeralatans()
@@ -52,7 +52,7 @@ class Index extends Component
             'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                 ->orderBy('id', 'DESC')
                 ->get(),
-            'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemeliharaanPage'),
+            'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
             'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                 ->orderBy('id', 'DESC')
                 ->get(),
@@ -74,11 +74,11 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'tanggal' => 'required',
-            'waktu_awal'=> 'required',
-            'p_m_id'=> 'required',
-            'guru_id'=> 'required',
-            'kelas_id'=> 'required',
-            'waktu_akhir'=> 'required',
+            'waktu_awal' => 'required',
+            'p_m_id' => 'required',
+            'guru_id' => 'required',
+            'kelas_id' => 'required',
+            'waktu_akhir' => 'required',
         ]);
 
         Pemakaian::create([
@@ -165,7 +165,6 @@ class Index extends Component
             ]);
         }
     }
-
 
     public function delete()
     {

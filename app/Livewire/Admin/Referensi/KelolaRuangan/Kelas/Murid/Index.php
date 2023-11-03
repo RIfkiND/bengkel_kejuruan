@@ -187,7 +187,10 @@ class Index extends Component
             'timerProgressBar' => true,
         ]);
     }
-
+    public function info($id)
+    {
+        $guru = GuruKelas::find($id);
+    }
     public function delete_guru($id)
     {
         $guru = GuruKelas::find($id);
