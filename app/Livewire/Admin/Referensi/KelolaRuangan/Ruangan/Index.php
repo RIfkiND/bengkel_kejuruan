@@ -67,6 +67,10 @@ class Index extends Component
             $validatedDate = $this->validate([
                 'nama_ruangan' => 'required',
                 'letak_ruangan' => 'required',
+            ],
+            [
+                'nama_ruangan.required' => 'Nama tidak boleh kosong',
+                'letak_ruangan.required' => 'Letak Ruangan tidak boleh kosong',
             ]);
 
             Ruangan::create([
@@ -79,6 +83,11 @@ class Index extends Component
                 'nama_ruangan' => 'required',
                 'sekolah_id' => 'required',
                 'letak_ruangan' => 'required',
+            ],
+            [
+                'nama_ruangan.required' => 'Nama tidak boleh kosong',
+                'sekolah_id.required' => 'Sekolah tidak boleh kosong',
+                'letak_ruangan.required' => 'Letak Ruangan tidak boleh kosong',
             ]);
 
             Ruangan::create([
@@ -121,6 +130,11 @@ class Index extends Component
                 'nama_ruangan' => 'required',
                 'sekolah_id' => 'required',
                 'letak_ruangan' => 'required',
+            ],
+            [
+                'nama_ruangan.required' => 'Nama tidak boleh kosong',
+                'sekolah_id.required' => 'Sekolah tidak boleh kosong',
+                'letak_ruangan.required' => 'Letak Ruangan tidak boleh kosong',
             ]);
 
             $ruangan = Ruangan::find($this->kelas_id);
@@ -133,6 +147,10 @@ class Index extends Component
             $validatedDate = $this->validate([
                 'nama_ruangan' => 'required',
                 'letak_ruangan' => 'required',
+            ],
+            [
+                'nama_ruangan.required' => 'Nama tidak boleh kosong',
+                'letak_ruangan.required' => 'Letak Ruangan tidak boleh kosong',
             ]);
 
             $ruangan = Ruangan::find($this->kelas_id);

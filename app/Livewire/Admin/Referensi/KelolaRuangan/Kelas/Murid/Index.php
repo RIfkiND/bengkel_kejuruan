@@ -73,6 +73,10 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'nama_murid' => 'required',
+        ],
+        [
+            'nama_murid.required' => 'Nama tidak boleh kosong',
+
         ]);
 
         Murid::create([
@@ -108,6 +112,10 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'nama_murid' => 'required',
+        ],
+        [
+            'nama_murid.required' => 'Nama tidak boleh kosong',
+
         ]);
 
         $murid = Murid::find($this->murid_id);
@@ -169,6 +177,9 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'guru_ids' => 'required|array|min:1',
+        ],
+        [
+            'guru_ids.required' => 'Guru tidak boleh kosong',
         ]);
 
         foreach ($this->guru_ids as $guruId) {

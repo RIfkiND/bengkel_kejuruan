@@ -105,6 +105,17 @@ class Index extends Component
             'type' => 'required',
             'tahun' => 'required',
             'kapasitas' => 'required',
+        ],
+        [
+            'nama_peralatan_atau_mesin.required' => 'Nama Peralatan atau Mesin tidak boleh kosong',
+            'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong',
+            'kategori_id.required' => 'Kategori tidak boleh kosong',
+            'sumber_dana.required' => 'Sumber Dana tidak boleh kosong',
+            'merk.required' => 'Merk tidak boleh kosong',
+            'type.required' => 'Type tidak boleh kosong',
+            'tahun.required' => 'Tahun tidak boleh kosong',
+            'kapasitas.required' => 'kapasitas tidak boleh kosong',
+            
         ]);
 
         if (auth()->user()->ruangan_id) {
@@ -116,6 +127,9 @@ class Index extends Component
         } else {
             $validate = $this->validate([
                 'ruangan_id' => 'required',
+            ],
+            [
+                'ruangan_id.required' => 'Ruangan tidak boleh kosong',
             ]);
 
             $peralatan = PeralatanAtauMesin::create([
@@ -172,6 +186,11 @@ class Index extends Component
             'nama_peralatan_atau_mesin' => 'required',
             'kategori_id' => 'required',
             'ruangan_id' => 'required',
+        ],
+        [
+            'nama_peralatan_atau_mesin.required' => 'Nama Peralatan atau Mesin tidak boleh kosong',
+            'kategori_id.required' => 'Kategori tidak boleh kosong',
+            'ruangan_id.required' => 'Ruangan tidak boleh kosong',
         ]);
 
         $peralatan = PeralatanAtauMesin::find($this->peralatan_id);
@@ -243,6 +262,10 @@ class Index extends Component
         $validate = $this->validate([
             'tanggal_keluar' => 'required',
             'alasan' => 'required',
+        ],
+        [
+            'tanggal_keluar.required' => 'Tanggan Keluar tidak boleh kosong',
+            'alasan.required' => 'Alasan tidak boleh kosong',
         ]);
 
         $peralatan = PeralatanAtauMesin::find($this->peralatan_id);

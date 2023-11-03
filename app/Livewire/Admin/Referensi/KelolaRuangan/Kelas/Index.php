@@ -76,6 +76,11 @@ class Index extends Component
                 'nama_kelas' => 'required',
                 'tingkat' => 'required',
                 'jurusan' => 'required',
+            ],
+            [
+                'nama_kelas.required' => 'Nama tidak boleh kosong',
+                'tingkat.required' => 'Kelas tidak boleh kosong',
+                'jurusan.required' => 'Jurusan tidak boleh kosong',
             ]);
 
             Kelas::create([
@@ -89,6 +94,11 @@ class Index extends Component
                 'nama_kelas' => 'required',
                 'tingkat' => 'required',
                 'jurusan' => 'required',
+            ],
+            [
+                'nama_kelas.required' => 'Nama tidak boleh kosong',
+                'tingkat.required' => 'Kelas tidak boleh kosong',
+                'jurusan.required' => 'Jurusan tidak boleh kosong',
             ]);
 
             Kelas::create([
@@ -133,6 +143,11 @@ class Index extends Component
                 'nama_kelas' => 'required',
                 'tingkat' => 'required',
                 'jurusan' => 'required',
+            ],
+            [
+                'nama_kelas.required' => 'Nama tidak boleh kosong',
+                'tingkat.required' => 'Kelas tidak boleh kosong',
+                'jurusan.required' => 'Jurusan tidak boleh kosong',
             ]);
 
             $kelas = Kelas::find($this->kelas_id);
@@ -147,6 +162,11 @@ class Index extends Component
                 'nama_kelas' => 'required',
                 'tingkat' => 'required',
                 'jurusan' => 'required',
+            ],
+            [
+                'nama_kelas.required' => 'Nama tidak boleh kosong',
+                'tingkat.required' => 'Kelas tidak boleh kosong',
+                'jurusan.required' => 'Jurusan tidak boleh kosong',
             ]);
 
             $kelas = Kelas::find($this->kelas_id);

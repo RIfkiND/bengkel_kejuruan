@@ -45,6 +45,9 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'nama_kategori' => 'required',
+        ],
+        [
+            'nama_kategori.required' => 'Nama tidak boleh kosong',
         ]);
 
         KategoriPeralatanAtauMesin::create([
@@ -79,6 +82,9 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'nama_kategori' => 'required',
+        ],
+        [
+            'nama_kategori.required' => 'Nama tidak boleh kosong',
         ]);
 
         $kategori = KategoriPeralatanAtauMesin::find($this->kategori_id);

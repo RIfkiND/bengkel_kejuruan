@@ -60,6 +60,10 @@ class Index extends Component
             $validatedDate = $this->validate([
                 'nama_guru' => 'required',
                 'mata_pelajaran' => 'required',
+            ],
+            [
+                'nama_guru.required' => 'Nama tidak boleh kosong',
+                'mata_pelajaran.required' => 'Mata Pelajaran tidak boleh kosong',
             ]);
 
             Guru::create([
@@ -72,6 +76,11 @@ class Index extends Component
                 'nama_guru' => 'required',
                 'mata_pelajaran' => 'required',
                 'sekolah_guru' => 'required',
+            ],
+            [
+                'nama_guru.required' => 'Nama tidak boleh kosong',
+                'mata_pelajaran.required' => 'Mata Pelajaran tidak boleh kosong',
+                'sekolah_guru.required' => 'Sekolah tidak boleh kosong',
             ]);
 
             Guru::create([
@@ -114,6 +123,12 @@ class Index extends Component
                 'nama_guru' => 'required',
                 'mata_pelajaran' => 'required',
                 'sekolah_guru' => 'required',
+            ],
+            [
+                'nama_guru.required' => 'Nama tidak boleh kosong',
+                'mata_pelajaran.required' => 'Mata Pelajaran tidak boleh kosong',
+                'sekolah_guru.required' => 'Sekolah tidak boleh kosong',
+
             ]);
 
             $guru = Guru::find($this->guru_id);
@@ -126,6 +141,10 @@ class Index extends Component
             $validatedDate = $this->validate([
                 'nama_guru' => 'required',
                 'mata_pelajaran' => 'required',
+            ],
+            [
+                'nama_guru.required' => 'Nama tidak boleh kosong',
+                'mata_pelajaran.required' => 'Mata Pelajaran tidak boleh kosong',
             ]);
 
             $guru = Guru::find($this->guru_id);

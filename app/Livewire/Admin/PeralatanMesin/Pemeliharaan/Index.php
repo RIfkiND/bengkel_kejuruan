@@ -65,6 +65,12 @@ class Index extends Component
             'jenis'=> 'required',
             'p_m_id'=> 'required',
             'keterangan'=> 'required',
+        ],
+        [
+            'tanggal.required' => 'Tanggal tidak boleh kosong',
+            'jenis.required' => 'Jenis Kerusakan tidak boleh kosong',
+            'p_m_id.required' => 'Peralatan atau Mesin tidak boleh kosong',
+            'keterangan.required' => 'Keterangan tidak boleh kosong',
         ]);
 
         PemeliharaanDanPerawatan::create([
@@ -102,6 +108,9 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'tanggal' => 'required',
+        ],
+        [
+            'tanggal.required' => 'Tanggal tidak boleh kosong',
         ]);
 
         $pemeliharaan = PemeliharaanDanPerawatan::find($this->pemeliharaan_id);

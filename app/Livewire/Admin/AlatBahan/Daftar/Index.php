@@ -186,6 +186,12 @@ class Index extends Component
             'kode' => 'required',
             'ruangan_id' => 'required',
             'satuan' => 'required',
+        ],
+        [
+            'nama_alat_atau_bahan.required' => 'Nama alat atau bahan tidak boleh kosong',
+            'kode.required' => 'Kode tidak boleh kosong',
+            'ruangan_id.required' => 'Ruangan tidak boleh kosong',
+            'satuan.required' => 'Satuan tidak boleh kosong',
         ]);
 
         $alat = AlatAtauBahan::find($this->alat_id);
@@ -261,6 +267,12 @@ class Index extends Component
             'volume_masuk' => 'required',
             'sumber_dana' => 'required',
             'saldo' => 'required',
+        ],
+        [
+            'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong',
+            'volume_masuk.required' => 'Volume tidak boleh kosong',
+            'sumber_dana.required' => 'Sumber Dana tidak boleh kosong',
+            'saldo.required' => 'Saldo tidak boleh kosong',
         ]);
 
         $sumvolume = $this->volume + $this->volume_masuk;
@@ -302,6 +314,12 @@ class Index extends Component
             'nama_pemakai' => 'required',
             'volume_keluar' => 'required',
             'keterangan' => 'required',
+        ],
+        [
+            'tanggal_keluar.required' => 'Tanggal Keluar tidak boleh kosong',
+            'nama_pemakai.required' => 'Nama Pemakai tidak boleh kosong',
+            'volume_keluar.required' => 'Volume tidak boleh kosong',
+            'keterangan.required' => 'Keterangan tidak boleh kosong',
         ]);
 
         $sumvolume = $this->volume - $this->volume_keluar;
