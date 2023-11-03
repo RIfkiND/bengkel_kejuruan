@@ -37,7 +37,7 @@ class Index extends Component
     {
         $searchPeralatan = '%' . $this->searchPeralatan . '%';
 
-        if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin') {
+        if ($this->ruangan_byadmin !=null) {
             return view('livewire.admin.peralatan-mesin.daftar.index', [
                 'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                     ->where('ruangan_id', $this->ruangan_byadmin)

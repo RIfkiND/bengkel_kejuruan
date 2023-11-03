@@ -25,21 +25,25 @@
                     <div class="row">
                         @foreach ($ruangans as $ruangan)
                             <div class="col-lg-4 col-sm-6">
-                                <a href="{{ route('admin.sekolah.ruangan.peralatan', $ruangan->id) }}">
-                                    <div class="card">
-                                        <div class="social-graph-wrapper widget-facebook">
-                                            <span class="s-icon text-truncate"
-                                                title="{{ $ruangan->nama_ruangan }}">{{ $ruangan->nama_ruangan }}</span>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                    <h4 class="m-1">{{ $ruangan->peralatanataumesin->count() }}</h4>
-                                                    <p class="m-0">Peralatan</p>
-                                                </div>
+                                @if (auth()->user()->role == 'AdminSekolah')
+                                    <a href="{{ route('admin.kelolaruangan.ruangan.peralatan', $ruangan->id) }}">
+                                    @else
+                                        <a href="{{ route('admin.sekolah.ruangan.peralatan', $ruangan->id) }}">
+                                @endif
+                                <div class="card">
+                                    <div class="social-graph-wrapper widget-facebook">
+                                        <span class="s-icon text-truncate"
+                                            title="{{ $ruangan->nama_ruangan }}">{{ $ruangan->nama_ruangan }}</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                                <h4 class="m-1">{{ $ruangan->peralatanataumesinDitempat->count() }}</h4>
+                                                <p class="m-0">Peralatan</p>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 </a>
                             </div>
                         @endforeach
