@@ -19,13 +19,12 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">12</h2>
-                                        <span class="badge bg-primary font-12 text-white font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
+                                        <h2 class="text-primary mb-1 font-weight-medium">125</h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Guru</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home"></i></h1></span>
+                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-user-circle text-primary"></i></h1></span>
                                 </div>
                             </div>
                         </div>
@@ -37,13 +36,12 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">12</h2>
-                                        <span class="badge bg-primary font-12 text-white font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
+                                        <h2 class="text-secondary mb-1 font-weight-medium">12</h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Kelas</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home"></i></h1></span>
+                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-window-restore text-secondary"></i></h1></span>
                                 </div>
                             </div>
                         </div>
@@ -55,110 +53,17 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">12</h2>
-                                        <span class="badge bg-primary font-12 text-white font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
+                                        <h2 class="text-warning mb-1 font-weight-medium">12</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home"></i></h1></span>
+                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home text-warning"></i></h1></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">12</h2>
-                                        <span class="badge bg-primary font-12 text-white font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
-                                    </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
-                                </div>
-                                <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home"></i></h1></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">12</h2>
-                                        <span class="badge bg-primary font-12 text-white font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
-                                    </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
-                                </div>
-                                <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home"></i></h1></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">12</h2>
-                                        <span class="badge bg-primary font-12 text-white font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
-                                    </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
-                                </div>
-                                <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home"></i></h1></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">12</h2>
-                                        <span class="badge bg-primary font-12 text-white font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
-                                    </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
-                                </div>
-                                <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home"></i></h1></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">12</h2>
-                                        <span class="badge bg-primary font-12 text-white font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
-                                    </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
-                                </div>
-                                <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-home"></i></h1></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-
             </div>
 
             <div class="row">
