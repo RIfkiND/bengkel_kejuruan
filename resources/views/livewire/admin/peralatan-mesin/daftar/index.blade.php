@@ -19,7 +19,7 @@
             </div>
         </div>
     @else
-        @if (auth()->user()->sekolah_id)
+        @if ($ruangan_byadmin == null)
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
