@@ -44,7 +44,7 @@ class Sekolah extends Model
     public function getTotalPeralatanCountAttribute()
     {
         return $this->ruangan->sum(function ($ruangan) {
-            return $ruangan->peralatanataumesin->count();
+            return $ruangan->peralatanataumesinDitempat->count();
         });
     }
 }

@@ -33,7 +33,7 @@ class Index extends Component
     public function render()
     {
         $searchMurid = '%' . $this->searchMurid . '%';
-        if ((auth()->user()->role = ('AdminSekolah' or (auth()->user()->role = 'Guru'))) or (auth()->user()->role = 'KepalaBengkel')) {
+        if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'Guru' or auth()->user()->role == 'KepalaBengkel') {
             return view('livewire.admin.referensi.kelola-ruangan.kelas.murid.index', [
                 'murids' => Murid::where('nama_murid', 'LIKE', $searchMurid)
                     ->where('kelas_id', $this->kelas_id)

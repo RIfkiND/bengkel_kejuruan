@@ -140,23 +140,25 @@
                                     @foreach ($peminjamans as $peminjaman)
                                         <tr>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
-                                                PM-{{ $peminjaman->peralatan_id}}</td>
+                                                PM-{{ $peminjaman->peralatan_atau_mesin_id }}</td>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
                                                 {{ $peminjaman->peralatan->nama_peralatan_atau_mesin }}</td>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
                                                 {{ $peminjaman->tanggal_pemakaian }}
                                             </td>
                                             <td>
-                                                {{-- only show hours and minutes --}}
                                                 {{ \Carbon\Carbon::parse($peminjaman->waktu_awal)->format('H:i') }} -
                                                 {{ \Carbon\Carbon::parse($peminjaman->waktu_akhir)->format('H:i') }}
                                             </td>
                                             <td>
-                                                <span>Guru:</span> <small>{{ $peminjaman->guru->nama_guru }}</small> <br>
-                                               <span>Kelas:</span> <small>{{ $peminjaman->kelas->nama_kelas }}</small>
+                                                <span>Guru:</span> <small>{{ $peminjaman->guru->nama_guru }}</small>
+                                                <br>
+                                                <span>Kelas:</span> <small>{{ $peminjaman->kelas->nama_kelas }}</small>
                                             </td>
                                             <td>
-                                                <h4><span class="badge badge-success px-2 text-white">{{ $peminjaman->status_penggunaan }}</span>
+                                                <h4><span
+                                                        class="badge {{ $peminjaman->status_pengajuan == 'Pending' ? 'badge-secondary' : ($peminjaman->status_pengajuan == 'Di Setujui' ? 'badge-success' : 'badge-danger') }}
+                                                    px-2 text-white">{{ $peminjaman->status_pengajuan }}</span>
                                                 </h4>
                                             </td>
                                             <td>

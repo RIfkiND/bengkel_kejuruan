@@ -84,7 +84,7 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                        <h4 class="m-1">{{ $ruangan->peralatanataumesin->count() }}
+                                                        <h4 class="m-1">{{ $ruangan->peralatanataumesinDitempat->count() }}
                                                         </h4>
                                                         <p class="m-0">Peralatan</p>
                                                     </div>

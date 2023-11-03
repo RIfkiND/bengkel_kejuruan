@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use App\Models\Ruangan;
 use App\Models\Sekolah;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
