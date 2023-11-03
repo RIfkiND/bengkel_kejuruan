@@ -12,6 +12,24 @@
     <div class="content-body">
 
         <div class="container-fluid mt-3">
+            <div class="row" style="position: relative;">
+                <div class="col-lg-6 col-sm-6" style="position: relative;">
+                    <h3 class="text-muted" style="margin-right: auto;">Data Umum</h3>
+                </div>
+                <div class="col-lg-6 col-sm-6 d-flex justify-content-end" style="position: relative;">
+                    <form action="">
+                        <div class="form-group">
+                            <select class="form-control" id="sel1" style="border-radius: 5px">
+                                <option selected id="default">Umum</option>
+                                <option>LAB-TIK</option>
+                                <option>LAB-RPL</option>
+                                <option>LAB SIMDIG</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{-- Default --}}
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="card">
@@ -19,12 +37,29 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-primary mb-1 font-weight-medium">125</h2>
+                                        <h2 class="text-primary mb-1 font-weight-medium">12</h2>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Akun</h6>
+                                </div>
+                                <div class="ms-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-user text-primary"></i></h1></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-info mb-1 font-weight-medium">125</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Guru</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-user-circle text-primary"></i></h1></span>
+                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-user-circle text-info"></i></h1></span>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +100,78 @@
                     </div>
                 </div>
             </div>
-
+            {{-- Ruangan --}}
+            {{-- <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-primary mb-1 font-weight-medium">12</h2>
+                                        <span class="badge font-12 text-secondary font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Peralatan tersedia</h6>
+                                </div>
+                                <div class="ms-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-wrench text-primary"></i></h1></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-success mb-1 font-weight-medium">12</h2>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Pemeliharaan Selesai</h6>
+                                </div>
+                                <div class="ms-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-check text-success"></i></h1></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam Proses</h6>
+                                </div>
+                                <div class="ms-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-tasks text-warning"></i></h1></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-info mb-1 font-weight-medium">12</h2>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat / Bahan</h6>
+                                </div>
+                                <div class="ms-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><h1><i class="fa fa-cube text-info"></i></h1></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -74,9 +180,10 @@
                                 <div class="table-responsive">
                                     <table class="table table-xs mb-0">
                                         <thead>
+                                            <h4>Laporan Pengajuan</h4>
                                             <tr>
-                                                <th>Customers</th>
-                                                <th>Product</th>
+                                                <th>Gambar</th>
+                                                <th>Nama A/B</th>
                                                 <th>Country</th>
                                                 <th>Status</th>
                                                 <th>Payment Method</th>
@@ -85,8 +192,8 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><img src="/Asset/images/avatar/1.jpg" class=" rounded-circle mr-3"
-                                                        alt="">Sarah Smith</td>
+                                                <td><img src="/Asset/images/avatar/1.jpg" style="max-width: 100px; height: auto; "
+                                                        alt=""></td>
                                                 <td>iPhone X</td>
                                                 <td>
                                                     <span>United States</span>
@@ -103,84 +210,13 @@
                                                     <span>Last Login</span>
                                                     <span class="m-0 pl-3">10 sec ago</span>
                                                 </td>
-                                            </tr>
+                                            </tr>  
                                             <tr>
-                                                <td><img src="/Asset/images/avatar/2.jpg" class=" rounded-circle mr-3"
-                                                        alt="">Walter R.</td>
-                                                <td>Pixel 2</td>
-                                                <td><span>Canada</span></td>
-                                                <td>
-                                                    <div>
-                                                        <div class="progress" style="height: 6px">
-                                                            <div class="progress-bar bg-success" style="width: 50%"></div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                                <td>
-                                                    <span>Last Login</span>
-                                                    <span class="m-0 pl-3">50 sec ago</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img src="/Asset/images/avatar/3.jpg" class=" rounded-circle mr-3"
-                                                        alt="">Andrew D.</td>
+                                                <td><img src="/Asset/images/cc.jpg" alt=""
+                                                    style="max-width: 100px; height: auto; ">
+                                            </td>
                                                 <td>OnePlus</td>
                                                 <td><span>Germany</span></td>
-                                                <td>
-                                                    <div>
-                                                        <div class="progress" style="height: 6px">
-                                                            <div class="progress-bar bg-warning" style="width: 50%"></div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td><i class="fa fa-circle-o text-warning  mr-2"></i> Pending</td>
-                                                <td>
-                                                    <span>Last Login</span>
-                                                    <span class="m-0 pl-3">10 sec ago</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img src="/Asset/images/avatar/6.jpg" class=" rounded-circle mr-3"
-                                                        alt=""> Megan S.</td>
-                                                <td>Galaxy</td>
-                                                <td><span>Japan</span></td>
-                                                <td>
-                                                    <div>
-                                                        <div class="progress" style="height: 6px">
-                                                            <div class="progress-bar bg-success" style="width: 50%"></div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                                <td>
-                                                    <span>Last Login</span>
-                                                    <span class="m-0 pl-3">10 sec ago</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img src="/Asset/images/avatar/4.jpg" class=" rounded-circle mr-3"
-                                                        alt=""> Doris R.</td>
-                                                <td>Moto Z2</td>
-                                                <td><span>England</span></td>
-                                                <td>
-                                                    <div>
-                                                        <div class="progress" style="height: 6px">
-                                                            <div class="progress-bar bg-success" style="width: 50%"></div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                                <td>
-                                                    <span>Last Login</span>
-                                                    <span class="m-0 pl-3">10 sec ago</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img src="/Asset/images/avatar/5.jpg" class=" rounded-circle mr-3"
-                                                        alt="">Elizabeth W.</td>
-                                                <td>Notebook Asus</td>
-                                                <td><span>China</span></td>
                                                 <td>
                                                     <div>
                                                         <div class="progress" style="height: 6px">
@@ -202,8 +238,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xl-3 col-lg-6 col-sm-6 col-xxl-6">
 
                     <div class="card">
@@ -308,11 +343,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-
-            <div class="row">
+            </div> --}}
+            {{-- <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="card">
                         <div class="social-graph-wrapper widget-facebook">
@@ -397,7 +429,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!-- #/ container -->
     </div>
