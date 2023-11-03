@@ -283,7 +283,6 @@ class Index extends Component
                 ]);
             } elseif (auth()->user()->sekolah_id) {
                 if ($this->showGuruSelect == true) {
-
                     $user = User::find($this->user_id);
                     $user->update([
                         'name' => $this->name,
@@ -319,6 +318,131 @@ class Index extends Component
                     'name' => $this->name,
                     'email' => $this->email,
                     'role' => $this->role,
+                ]);
+            }
+        }
+
+        $this->updateMode = false;
+        $this->resetInputFields();
+        $this->alert('success', 'Berhasil Diubah!', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
+    }
+    public function update_byadmin()
+    {
+        if ($this->password) {
+            $validatedDate = $this->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'password' => 'required|min:6|confirmed',
+            ]);
+
+            if ($this->showSekolahSelect == true) {
+                $validatedDate = $this->validate([
+                    'sekolah_user' => 'required',
+                ]);
+                $user = User::find($this->user_id);
+                $user->update([
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'password' => bcrypt($this->password),
+                    'sekolah_id' => $this->sekolah_user,
+                ]);
+            } elseif (auth()->user()->sekolah_id) {
+                if ($this->showGuruSelect == true) {
+                    $validatedDate = $this->validate([
+                        'nama_guru' => 'required',
+                    ]);
+
+                    $user = User::find($this->user_id);
+                    $user->update([
+                        'name' => $this->name,
+                        'email' => $this->email,
+                        'password' => bcrypt($this->password),
+                        'sekolah_id' => auth()->user()->sekolah_id,
+                    ]);
+                } elseif ($this->showRuanganSelect == true) {
+                    $validatedDate = $this->validate([
+                        'ruangan_user' => 'required',
+                    ]);
+
+                    $user = User::find($this->user_id);
+                    $user->update([
+                        'name' => $this->name,
+                        'email' => $this->email,
+                        'password' => bcrypt($this->password),
+                        'sekolah_id' => auth()->user()->sekolah_id,
+                        'ruangan_id' => $this->ruangan_user,
+                    ]);
+                } else {
+                    $user = User::find($this->user_id);
+                    $user->update([
+                        'name' => $this->name,
+                        'email' => $this->email,
+                        'password' => bcrypt($this->password),
+                        'sekolah_id' => auth()->user()->sekolah_id,
+                    ]);
+                }
+            } else {
+                $user = User::find($this->user_id);
+                $user->update([
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'password' => bcrypt($this->password),
+                ]);
+            }
+        } else {
+            $validatedDate = $this->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+            ]);
+
+            if ($this->showSekolahSelect == true) {
+                $validatedDate = $this->validate([
+                    'sekolah_user' => 'required',
+                ]);
+                $user = User::find($this->user_id);
+                $user->update([
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'sekolah_id' => $this->sekolah_user,
+                ]);
+            } elseif (auth()->user()->sekolah_id) {
+                if ($this->showGuruSelect == true) {
+                    $user = User::find($this->user_id);
+                    $user->update([
+                        'name' => $this->name,
+                        'email' => $this->email,
+                        'sekolah_id' => auth()->user()->sekolah_id,
+                    ]);
+                } elseif ($this->showRuanganSelect == true) {
+                    $validatedDate = $this->validate([
+                        'ruangan_user' => 'required',
+                    ]);
+
+                    $user = User::find($this->user_id);
+                    $user->update([
+                        'name' => $this->name,
+                        'email' => $this->email,
+                        'sekolah_id' => auth()->user()->sekolah_id,
+                        'ruangan_id' => $this->ruangan_user,
+                    ]);
+                } else {
+                    $user = User::find($this->user_id);
+                    $user->update([
+                        'name' => $this->name,
+                        'email' => $this->email,
+                        'sekolah_id' => auth()->user()->sekolah_id,
+                    ]);
+                }
+            } else {
+                $user = User::find($this->user_id);
+                $user->update([
+                    'name' => $this->name,
+                    'email' => $this->email,
                 ]);
             }
         }
