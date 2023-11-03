@@ -50,9 +50,11 @@
                                 @enderror
                             </div>
                         </div>
-                        @if (auth()->user()->role == 'Admin' or
-                                auth()->user()->role == 'SuperAdmin' and $this->role == 'Guru' or
-                                $this->role == 'KepalaBengkel')
+                        @if ((auth()->user()->role == 'Admin' ||
+                                auth()->user()->role == 'SuperAdmin') && ($this->role == 'Guru' ||
+                                $this->role == 'KepalaBengkel'))
+
+                            <label> Role : {{ $this->role }}</label>
                         @else
                             <div class="form-row">
                                 <div class="form-group col">
@@ -164,7 +166,7 @@
                             @if (auth()->user()->role == 'Admin' or
                                     auth()->user()->role == 'SuperAdmin' and $this->role == 'Guru' or
                                     $this->role == 'KepalaBengkel')
-                                    <button type="button" class="btn btn-primary"
+                                <button type="button" class="btn btn-primary"
                                     wire:click.prevent="update_byadmin()">Simpan</button>
                             @else
                                 <button type="button" class="btn btn-primary"

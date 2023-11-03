@@ -29,7 +29,7 @@ class Index extends Component
 
     public function resetPage()
     {
-        $this->gotoPage(1, 'pemeliharaanPage');
+        $this->gotoPage(1, 'pemakaianPage');
     }
 
     public function updatePeralatans()
@@ -52,7 +52,7 @@ class Index extends Component
             'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                 ->orderBy('id', 'DESC')
                 ->get(),
-            'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemeliharaanPage'),
+            'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
             'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                 ->orderBy('id', 'DESC')
                 ->get(),
@@ -79,14 +79,6 @@ class Index extends Component
             'guru_id'=> 'required',
             'kelas_id'=> 'required',
             'waktu_akhir'=> 'required',
-        ],
-        [
-            'tanggal.required' => 'Tanggal tidak boleh kosong',
-            'waktu_awal.required' => 'Waktu Awal tidak boleh kosong',
-            'p_m_id.required' => 'Peralatan atau Mesin tidak boleh kosong',
-            'guru_id.required' => 'Guru tidak boleh kosong',
-            'kelas_id.required' => 'Kelas tidak boleh kosong',
-            'waktu_akhir.required' => 'Waktu Akhir tidak boleh kosong',
         ]);
 
         Pemakaian::create([
@@ -176,7 +168,6 @@ class Index extends Component
             ]);
         }
     }
-
 
     public function delete()
     {
