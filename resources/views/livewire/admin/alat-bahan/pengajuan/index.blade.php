@@ -12,7 +12,7 @@
                         <div class="col d-flex justify-content-end px-4">
                             <div class="form-group">
                                 <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
-                                    wire:model='searchCategory' wire:input='resetPage'>
+                                    wire:model='searchPengajuan' wire:input='resetPage'>
                             </div>
                         </div>
                         <div class="col d-flex justify-content-end px-4 h-50">

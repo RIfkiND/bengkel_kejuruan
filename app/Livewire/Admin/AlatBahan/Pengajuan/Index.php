@@ -11,7 +11,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama, $image, $category_id, $searchCategory, $selectedCategoryId, $imageprev;
+    public $nama_alat_atau_bahan, $tanggal, $kode, $volume, $satuan, $sumber_dana, $merk, $type, $dimensi, $image, $pengajuan_id, $searchPengajuan, $selectedPengajuanId, $imageprev;
     public $updateMode = false;
 
     use WithPagination;
@@ -26,35 +26,57 @@ class Index extends Component
 
     public function resetPage()
     {
-        $this->gotoPage(1, 'categoryPages');
+        $this->gotoPage(1, 'pengajuanPages');
     }
     public function render()
     {
-        $searchCategory = '%' . $this->searchCategory . '%';
+        $searchPengajuan = '%' . $this->searchPengajuan . '%';
         return view('livewire.admin.alat-bahan.pengajuan.index', [
-            'categories' => PengajuanAlatAtauBahan::where('nama_alat_atau_bahan', 'LIKE', $searchCategory)
+            'pengajuans' => PengajuanAlatAtauBahan::where('nama_alat_atau_bahan', 'LIKE', $searchPengajuan)
                 ->orderBy('id', 'DESC')
-                ->paginate(10, ['*'], 'categoryPages'),
+                ->paginate(10, ['*'], 'pengajuanPages'),
         ]);
     }
 
     private function resetInputFields()
     {
-        $this->nama = '';
+        $this->nama_alat_atau_bahan = '';
         $this->image = null;
+        $this->kode = '';
+        $this->volume = '';
+        $this->satuan = '';
+        $this->sumber_dana = '';
+        $this->merk = '';
+        $this->type = '';
+        $this->dimensi = '';
     }
 
     public function store()
     {
         $validatedDate = $this->validate([
-            'nama' => 'required',
+            'nama_alat_atau_bahan' => 'required',
+            'kode' => 'required',
+            'volume' => 'required',
+            'satuan' => 'required',
+            'dimensi' => 'required',
+            'sumber_dana' => 'required',
+            'merk' => 'required',
+            'type' => 'required',
         ]);
 
-        $validatedDate['image'] = $this->image->store('files', 'public');
+        $validatedDate['image'] = $this->image->store('gambar_pengajuan', 'public');
 
         PengajuanAlatAtauBahan::create([
-            'nama' => $this->nama,
-            'image' => $validatedDate['image'],
+            'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
+            'gambar' => $validatedDate['image'],
+            'kode' => $this->kode,
+            'volume' => $this->volume,
+            'satuan' => $this->satuan,
+            'sumber_dana' => $this->sumber_dana,
+            'merk' => $this->merk,
+            'type_atau_model' => $this->type,
+            'dimensi' => $this->dimensi,
+            'tanggal' => date('Y-m-d H:i:s'),
         ]);
 
         $this->resetInputFields();
@@ -69,10 +91,17 @@ class Index extends Component
 
     public function edit($id)
     {
-        $category = PengajuanAlatAtauBahan::findOrFail($id);
-        $this->category_id = $id;
-        $this->nama = $category->nama;
-        $this->imageprev = $category->image;
+        $pengajuan = PengajuanAlatAtauBahan::findOrFail($id);
+        $this->pengajuan_id = $id;
+        $this->nama_alat_atau_bahan = $pengajuan->nama_alat_atau_bahan;
+        $this->imageprev = $pengajuan->gambar;
+        $this->type = $pengajuan->type_atau_model;
+        $this->dimensi = $pengajuan->dimensi;
+        $this->merk = $pengajuan->merk;
+        $this->kode = $pengajuan->kode;
+        $this->volume = $pengajuan->volume;
+        $this->satuan = $pengajuan->satuan;
+        $this->sumber_dana = $pengajuan->sumber_dana;
         $this->updateMode = true;
     }
 
@@ -85,22 +114,44 @@ class Index extends Component
     public function update()
     {
         $validatedDate = $this->validate([
-            'nama' => 'required',
+            'nama_alat_atau_bahan' => 'required',
+            'kode' => 'required',
+            'volume' => 'required',
+            'satuan' => 'required',
+            'dimensi' => 'required',
+            'sumber_dana' => 'required',
+            'merk' => 'required',
+            'type' => 'required',
         ]);
 
         if ($this->image != null) {
             $validatedDate['image'] = $this->image->store('files', 'public');
-            $category = PengajuanAlatAtauBahan::find($this->category_id);
-            $category->update([
-                'nama' => $this->nama,
-
-                'image' => $validatedDate['image'],
+            $pengajuan = PengajuanAlatAtauBahan::find($this->pengajuan_id);
+            $pengajuan->update([
+                'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
+                'gambar' => $validatedDate['image'],
+                'kode' => $this->kode,
+                'volume' => $this->volume,
+                'satuan' => $this->satuan,
+                'sumber_dana' => $this->sumber_dana,
+                'merk' => $this->merk,
+                'type_atau_model' => $this->type,
+                'dimensi' => $this->dimensi,
+                'tanggal' => date('Y-m-d H:i:s'),
             ]);
             Storage::disk('public')->delete($this->imageprev);
         } else {
-            $category = PengajuanAlatAtauBahan::find($this->category_id);
-            $category->update([
-                'nama' => $this->nama,
+            $pengajuan = PengajuanAlatAtauBahan::find($this->pengajuan_id);
+            $pengajuan->update([
+                'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
+                'kode' => $this->kode,
+                'volume' => $this->volume,
+                'satuan' => $this->satuan,
+                'sumber_dana' => $this->sumber_dana,
+                'merk' => $this->merk,
+                'type_atau_model' => $this->type,
+                'dimensi' => $this->dimensi,
+                'tanggal' => date('Y-m-d H:i:s'),
             ]);
         }
 
@@ -116,14 +167,14 @@ class Index extends Component
 
     // public function updateStatus($id)
     // {
-    //     $category = PengajuanAlatAtauBahan::find($id);
-    //     $category->status = $category->status == 1 ? 0 : 1;
-    //     $category->save();
+    //     $pengajuan = PengajuanAlatAtauBahan::find($id);
+    //     $pengajuan->status = $pengajuan->status == 1 ? 0 : 1;
+    //     $pengajuan->save();
     // }
 
     public function ondel($id)
     {
-        $this->selectedCategoryId = $id;
+        $this->selectedPengajuanId = $id;
 
         $this->alert('question', 'Yakin Ingin di Hapus ?', [
             'position' => 'center',
@@ -141,11 +192,11 @@ class Index extends Component
 
     public function delete()
     {
-        $category = PengajuanAlatAtauBahan::find($this->selectedCategoryId);
+        $pengajuan = PengajuanAlatAtauBahan::find($this->selectedPengajuanId);
 
-        if ($category) {
-            Storage::disk('public')->delete($category->image);
-            $category->delete();
+        if ($pengajuan) {
+            Storage::disk('public')->delete($pengajuan->gambar);
+            $pengajuan->delete();
             $this->alert('success', 'Berhasil Dihapus!', [
                 'position' => 'center',
                 'timer' => 3000,
@@ -153,7 +204,7 @@ class Index extends Component
                 'timerProgressBar' => true,
             ]);
         } else {
-            $this->alert('error', 'Category Tidak Ditemukan!', [
+            $this->alert('error', 'Pengajuan Tidak Ditemukan!', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,

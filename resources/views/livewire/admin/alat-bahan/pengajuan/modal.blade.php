@@ -58,15 +58,15 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <label for="tanggal" class="col-md-auto col-form-label">Tanggal
-                                        Masuk</label>
                                     <div class="col mb-4">
-                                        <input wire:model="tanggal_masuk" type="date" id="tanggal"
-                                            class="form-control input-default">
-                                        @error('tanggal_masuk')
+                                        <input wire:model="nama_alat_atau_bahan" type="text"
+                                            class="form-control input-default" placeholder="Nama Alat Atau Bahan">
+                                        @error('nama_alat_atau_bahan')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col mb-4">
                                         <select wire:model="kode" class="form-control" id="kode">
                                             <option value="" selected>JENIS</option>
@@ -74,15 +74,6 @@
                                             <option value="B">Bahan</option>
                                         </select>
                                         @error('kode')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col mb-4">
-                                        <input wire:model="nama_alat_atau_bahan" type="text"
-                                            class="form-control input-default" placeholder="Nama Alat Atau Bahan">
-                                        @error('nama_alat_atau_bahan')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -95,24 +86,17 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col">
                                         <input wire:model="volume" type="text" id="volume"
                                             class="form-control input-default" placeholder="Jumlah">
                                         @error('volume')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col">
                                         <input wire:model="satuan" type="text" id="satuan"
                                             class="form-control input-default" placeholder="Satuan">
                                         @error('satuan')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col">
-                                        <input wire:model="saldo" type="text" id="saldo"
-                                            class="form-control input-default" placeholder="Harga">
-                                        @error('saldo')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -154,7 +138,7 @@
                                 wire:click.prevent="update()">Simpan</button>
                         @else
                             <button type="button" class="btn btn-primary"
-                                wire:click.prevent="store()">Tambahkan</button>
+                                wire:click.prevent="store()">Ajukan</button>
                         @endif
                     </div>
                 </form>
