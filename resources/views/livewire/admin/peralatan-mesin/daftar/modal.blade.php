@@ -41,7 +41,7 @@
                         {{-- <div class="row">
                             <div class="col">
                                 Terakhir Di Pakai Oleh : Guru Bersama Kelas
-                            </div>  
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -61,11 +61,11 @@
                                     <span>Kapasitas : {{ $kapasitas }} <br><br></span>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="card-text">
-                                    <span>Kategori : {{  $peralatan->kategori->nama_kategori}}</span>
+                                <div class="col-lg-6">
+                                    <div class="card-text">
+                                        <span>Kategori : {{ $kategori_id }}</span>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
