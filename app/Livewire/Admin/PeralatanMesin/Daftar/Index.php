@@ -115,7 +115,7 @@ class Index extends Component
             'type.required' => 'Type tidak boleh kosong',
             'tahun.required' => 'Tahun tidak boleh kosong',
             'kapasitas.required' => 'kapasitas tidak boleh kosong',
-            
+
         ]);
 
         if (auth()->user()->ruangan_id) {
@@ -287,5 +287,19 @@ class Index extends Component
             'toast' => false,
             'timerProgressBar' => true,
         ]);
+    }
+
+    public function status($id)
+    {
+        $peralatan = PeralatanAtauMesin::find($id);
+        if ($peralatan->status == 'Tersedia') {
+            $peralatan->update([
+                'status' => 'Digunakan',
+            ]);
+        } else {
+            $peralatan->update([
+                'status' => 'Tersedia',
+            ]);
+        }
     }
 }

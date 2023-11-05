@@ -163,7 +163,7 @@ class Index extends Component
             'confirmButtonColor' => '#f03535',
         ]);
     }
-    public function updateStatus_pestatus_pengajuan($id)
+    public function updateStatus_pengajuan($id, $newstatus)
     {
         $pemeliharaan = Pemakaian::find($id);
         if ($pemeliharaan->status_pengajuan == 'Belum Selesai') {
