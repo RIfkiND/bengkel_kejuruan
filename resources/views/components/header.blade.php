@@ -168,11 +168,18 @@
                                         document.getElementById('logout-form').submit();">
                                         <i class="icon-key"></i> <span>Logout</span>
                                     </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </li>
+
+                                @if (session('original_user_id'))
+                                    <li>
+                                        <a href="{{ route('admin.stop-impersonating') }}">
+                                            <i class="icon-key"></i> <span>Berhenti</span>
+                                        </a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

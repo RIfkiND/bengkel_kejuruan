@@ -53,6 +53,9 @@
                                                             </a><a href="javascript:void(0)"
                                                                 wire:click='ondel({{ $user->id }})'><i
                                                                     class="fa fa-trash color-danger"></i></a>
+                                                            @if (auth()->user()->role == 'SuperAdmin'|| auth()->user()->role == 'Admin')
+                                                                <a href="{{ route('admin.impersonate', $user) }}">Login AS</a>
+                                                            @endif
                                                         </span>
                                                     </td>
                                                 </tr>

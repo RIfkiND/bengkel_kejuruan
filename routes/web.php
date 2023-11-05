@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ImpersonateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,13 @@ Auth::routes(['register' => false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('/admin')->group(function () {
+    Route::controller(ImpersonateController::class)->group(function () {
+        Route::middleware(['auth', 'user-access:SuperAdmin,Admin'])->group(function () {
+            Route::get('impersonate/{user}', 'impersonate')->name('admin.impersonate');
+        });
+        Route::get('stop-impersonating', 'stopImpersonating')->name('admin.stop-impersonating');
+    });
+
     Route::controller(AdminController::class)->group(function () {
         Route::get('dashboard', 'index')->name('admin.index');
         Route::middleware(['auth', 'user-access:SuperAdmin,Admin'])->group(function () {
