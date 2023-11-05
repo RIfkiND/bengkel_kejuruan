@@ -65,17 +65,19 @@
                         @if ($updateMode == false)
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-lg-3 mb-4">
-                                        <select class="form-control" id="ruangan" wire:model='ruangan_id'
-                                            wire:change='updatePeralatans'>
-                                            <option value="" selected>Ruangan</option>
-                                            @foreach ($ruangans as $ruangan)
-                                                <option value="{{ $ruangan->id }}">
-                                                    {{ $ruangan->nama_ruangan }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    @if (auth()->user()->role != 'KepalaBengkel')
+                                        <div class="col-lg-3 mb-4">
+                                            <select class="form-control" id="ruangan" wire:model='ruangan_id'
+                                                wire:change='updatePeralatans'>
+                                                <option value="" selected>Ruangan</option>
+                                                @foreach ($ruangans as $ruangan)
+                                                    <option value="{{ $ruangan->id }}">
+                                                        {{ $ruangan->nama_ruangan }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
                                     <div class="col-lg-3 mb-4">
                                         <select class="form-control" id="peralatan" wire:model='p_m_id'>
                                             <option value="" selected>Peralatan/Mesin</option>
@@ -101,17 +103,19 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-3 mb-4">
-                                        <select class="form-control" id="guru" wire:model='guru_id'
-                                            wire:change='updateKelas'>
-                                            <option value="" selected>Guru</option>
-                                            @foreach ($gurus as $guru)
-                                                <option value="{{ $guru->id }}">
-                                                    {{ $guru->nama_guru }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    @if (auth()->user()->role != 'Guru')
+                                        <div class="col-lg-3 mb-4">
+                                            <select class="form-control" id="guru" wire:model='guru_id'
+                                                wire:change='updateKelas'>
+                                                <option value="" selected>Guru</option>
+                                                @foreach ($gurus as $guru)
+                                                    <option value="{{ $guru->id }}">
+                                                        {{ $guru->nama_guru }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
                                     <div class="col-lg-3 mb-4">
                                         <select class="form-control" id="ruangan" wire:model='kelas_id'>
                                             <option value="" selected>Kelas</option>
