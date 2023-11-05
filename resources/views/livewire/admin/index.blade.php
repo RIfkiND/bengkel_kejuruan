@@ -14,20 +14,6 @@
                         <h6 class="font-weight-normal mb-0">Semua sistem berjalan lancar!<span class="text-primary">
                                 Mulai mengelola sekarang</span></h6>
                     </div>
-                    <div class="col-12 col-xl-4">
-                        <div class="justify-content-end d-flex">
-                            <form action="">
-                                <div class="form-group">
-                                    <select class="form-control" id="sel1" style="border-radius: 5px">
-                                        <option selected id="default">Umum</option>
-                                        <option>LAB-TIK</option>
-                                        <option>LAB-RPL</option>
-                                        <option>LAB SIMDIG</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -48,7 +34,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-primary mb-1 font-weight-medium">12</h2>
+                                                <h2 class="text-primary mb-1 font-weight-medium">{{ $akuns->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Akun</h6>
                                         </div>
@@ -67,7 +53,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-info mb-1 font-weight-medium">125</h2>
+                                                <h2 class="text-info mb-1 font-weight-medium">{{ $gurus->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Guru</h6>
                                         </div>
@@ -88,7 +74,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-secondary mb-1 font-weight-medium">12</h2>
+                                                <h2 class="text-secondary mb-1 font-weight-medium">{{ $kelas->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Kelas
                                             </h6>
@@ -108,7 +94,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                                <h2 class="text-warning mb-1 font-weight-medium">{{ $ruangans->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan
                                             </h6>
@@ -130,9 +116,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-primary mb-1 font-weight-medium">12</h2>
-                                        <span
-                                            class="badge font-12 text-secondary font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
+                                        <h2 class="text-primary mb-1 font-weight-medium">{{ $peralatans->count() }}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Peralatan
                                         tersedia</h6>
@@ -152,7 +136,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-success mb-1 font-weight-medium">12</h2>
+                                        <h2 class="text-success mb-1 font-weight-medium">{{ $pemeliharaans->where('status', 'selesai')->count() }}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
                                         Pemeliharaan
@@ -173,7 +157,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                        <h2 class="text-warning mb-1 font-weight-medium">{{ $pemeliharaans->where('status','Belum Selesai')->count() }}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam
                                         Proses
@@ -194,9 +178,9 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-info mb-1 font-weight-medium">12</h2>
+                                        <h2 class="text-info mb-1 font-weight-medium">{{ $alats->count() }}</h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat /
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat dan
                                         Bahan
                                     </h6>
                                 </div>
@@ -219,13 +203,10 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-primary mb-1 font-weight-medium">12</h2>
-                                                <span
-                                                    class="badge font-12 text-secondary font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
+                                                <h2 class="text-primary mb-1 font-weight-medium">{{ $peralatans->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
-                                                Peralatan
-                                                tersedia</h6>
+                                                Peralatan</h6>
                                         </div>
                                         <div class="ms-auto mt-md-3 mt-lg-0">
                                             <span class="opacity-7 text-muted">
@@ -242,7 +223,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-success mb-1 font-weight-medium">12</h2>
+                                                <h2 class="text-success mb-1 font-weight-medium">{{ $pemeliharaans->where('status', 'selesai')->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
                                                 Pemeliharaan
@@ -265,7 +246,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                                <h2 class="text-warning mb-1 font-weight-medium">{{ $pemeliharaans->where('status', 'Belum Selesai')->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam
                                                 Proses
@@ -286,9 +267,9 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-info mb-1 font-weight-medium">12</h2>
+                                                <h2 class="text-info mb-1 font-weight-medium">{{ $alats->count() }}</h2>
                                             </div>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat /
+                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat dan
                                                 Bahan
                                             </h6>
                                         </div>
@@ -313,7 +294,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-secondary mb-1 font-weight-medium">12</h2>
+                                                <h2 class="text-secondary mb-1 font-weight-medium">{{ $kelas->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Kelas
                                             </h6>
@@ -333,7 +314,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                                <h2 class="text-warning mb-1 font-weight-medium">{{ $ruangans->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan
                                             </h6>
@@ -426,9 +407,9 @@
                                                             <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                                     class="fa fa-ellipsis-v fa-lg"></i></a>
                                                             <div class="dropdown-menu">
-                                                                    <a class="dropdown-item" data-toggle="modal"
-                                                                        data-target="#ModalPengajuan"href="javascript:void(0)"
-                                                                        wire:click='info({{ $pengajuan->id }})'>Informasi</a>
+                                                                <a class="dropdown-item" data-toggle="modal"
+                                                                    data-target="#ModalPengajuan"href="javascript:void(0)"
+                                                                    wire:click='info({{ $pengajuan->id }})'>Informasi</a>
                                                             </div>
                                                         </div>
                                                     </td>
