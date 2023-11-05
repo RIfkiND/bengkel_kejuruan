@@ -6,6 +6,8 @@
                     <div class="modal-header">
                         @if ($updateMode)
                             <h5 class="modal-title" id="modallabel">Edit Pengajuan</h5>
+                        @elseif ($informasiMode)
+                            <h5 class="modal-title" id="modallabel">Informasi Pengajuan</h5>
                         @else
                             <h5 class="modal-title" id="modallabel">Ajukan Alat atau Bahan</h5>
                         @endif
@@ -16,7 +18,7 @@
                     <div class="modal-body">
                         <div class="container-fluid">
                             {{-- preview img --}}
-                            @if ($updateMode)
+                            @if ($updateMode||$informasiMode)
                                 @if ($image)
                                     <div class="mb-3 mx-auto col-lg-6">
                                         <img src="{{ $image->temporaryUrl() }}" class="img-fluid" alt="Preview Image">
@@ -132,10 +134,17 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            wire:click.prevent='cancel()'>Batalkan</button>
+                            wire:click.prevent='cancel()'>
+                            @if ($informasiMode)
+                                Tutup
+                            @else
+                                Batalkan
+                            @endif
+                        </button>
                         @if ($updateMode)
                             <button type="button" class="btn btn-primary"
                                 wire:click.prevent="update()">Simpan</button>
+                        @elseif ($informasiMode)
                         @else
                             <button type="button" class="btn btn-primary"
                                 wire:click.prevent="store()">Ajukan</button>

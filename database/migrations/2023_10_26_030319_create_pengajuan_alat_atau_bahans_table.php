@@ -20,9 +20,10 @@ return new class extends Migration
             $table->string('satuan');
             $table->string('merk');
             $table->string('type_atau_model');
-            $table->string('dimensi');
-            $table->string('gambar');
-            $table->string('sumber_dana');
+            $table->string('dimensi')->nullable();
+            $table->string('gambar')->nullable();
+            $table->string('nama_pengaju');
+            $table->foreignId('sekolah_id')->constrained('users')->onDelete('cascade');
             $table->enum('status', ['Pending', 'Diterima', 'Ditolak'])->default('Pending');
             $table->timestamps();
         });

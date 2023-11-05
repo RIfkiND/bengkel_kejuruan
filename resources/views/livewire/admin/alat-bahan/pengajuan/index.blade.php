@@ -15,10 +15,12 @@
                                     wire:model='searchPengajuan' wire:input='resetPage'>
                             </div>
                         </div>
-                        <div class="col d-flex justify-content-end px-4 h-50">
-                            <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
-                                data-toggle="modal" data-target="#ModalPengajuan">Ajukan Alat dan Bahan</button>
-                        </div>
+                        @if (auth()->user()->role == 'KepalaBengkel' || auth()->user()->role == 'Guru')
+                            <div class="col d-flex justify-content-end px-4 h-50">
+                                <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
+                                    data-toggle="modal" data-target="#ModalPengajuan">Ajukan Alat dan Bahan</button>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="row">
@@ -31,35 +33,65 @@
                                         <th>Kode A/B</th>
                                         <th>Nama A/B</th>
                                         <th>Spesifikasi</th>
-                                        <th>Satuan</th>
+                                        <th>Volume</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>DD-MM-YY</td>
-                                        <td><img onclick="previewImage(this)" src="/Asset/images/cc.jpg" alt=""
-                                                style="max-width: 100px; height: auto; cursor: pointer;">
-                                        </td>
-                                        <td>BRG-001</td>
-                                        <td>Masako</td>
-                                        <td>
-                                            Merk: <i>SAMSUNG</i><br>
-                                            Type/Model: <i>A01S</i><br>
-                                            Dimensi: <i>2018</i><br>
-                                        </td>
-                                        <td>Kilogram (Kg)</td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" data-toggle="dropdown"><i
-                                                        class="fa fa-ellipsis-v fa-lg"></i></a>
-                                                <div class="dropdown-menu"><a class="dropdown-item" href="#">Link
-                                                        1</a> <a class="dropdown-item" href="#">Link 2</a> <a
-                                                        class="dropdown-item" href="#">Link 3</a>
+                                    @foreach ($pengajuans as $pengajuan)
+                                        <tr>
+                                            <td>{{ $pengajuan->tanggal }}</td>
+                                            <td>
+                                                @if ($pengajuan->gambar)
+                                                    <img onclick="previewImage(this)"
+                                                        src="{{ asset('storage/' . $pengajuan->gambar) }}"
+                                                        alt=""
+                                                        style="max-width: 100px; height: auto; cursor: pointer;">
+                                                @else
+                                                    <svg class="bd-placeholder-img img-thumbnail" width="200"
+                                                        height="200" xmlns="http://www.w3.org/2000/svg" role="img"
+                                                        aria-label="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera: 200x200"
+                                                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                                                        <title>A generic square placeholder image with a white border
+                                                            around
+                                                            it,
+                                                            making it resemble a photograph taken with an old instant
+                                                            camera
+                                                        </title>
+                                                        <rect width="100%" height="100%" fill="#868e96"></rect>
+                                                        <text y="50%" x="20%" fill="#dee2e6" dy=".3em">Gambar
+                                                            Preview</text>
+                                                    </svg>
+                                                @endif
+                                            </td>
+                                            <td>{{ $pengajuan->kode }}</td>
+                                            <td>{{ $pengajuan->nama_alat_atau_bahan }}</td>
+                                            <td>
+                                                Merk: <i>{{ $pengajuan->merk }}</i><br>
+                                                Type/Model: <i>{{ $pengajuan->type_atau_model }}</i><br>
+                                                Dimensi: <i>{{ $pengajuan->dimensi }}</i><br>
+                                            </td>
+                                            <td>{{ $pengajuan->volume }}{{ $pengajuan->satuan }}</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <a href="javascript:void(0)" data-toggle="dropdown"><i
+                                                            class="fa fa-ellipsis-v fa-lg"></i></a>
+                                                    <div class="dropdown-menu">
+                                                        @if (auth()->user()->role == 'AdminSekolah')
+                                                            <a class="dropdown-item" data-toggle="modal"
+                                                                data-target="#ModalPengajuan"href="javascript:void(0)"
+                                                                wire:click='info({{ $pengajuan->id }})'>Informasi</a>
+                                                        @endif
+                                                        <a class="dropdown-item" data-toggle="modal"
+                                                            data-target="#ModalPengajuan" href="javascript:void(0)"
+                                                            wire:click='edit({{ $pengajuan->id }})'>Edit</a>
+                                                        <a class="dropdown-item" href="javascript:void(0)"
+                                                            wire:click='ondel({{ $pengajuan->id }})'>Hapus</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -72,13 +104,3 @@
     {{-- modal --}}
     @include('livewire.admin.alat-bahan.pengajuan.modal')
 </div>
-
-@push('js')
-    <script>
-        document.addEventListener('livewire:load', function() {
-            Livewire.on('close-modal', function() {
-                $('#ModalPengajuan').modal('hide');
-            });
-        });
-    </script>
-@endpush

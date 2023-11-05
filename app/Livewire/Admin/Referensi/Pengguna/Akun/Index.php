@@ -90,29 +90,33 @@ class Index extends Component
 
     public function store()
     {
-        $validatedDate = $this->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|confirmed',
-            'role' => 'required',
-        ],
-        [
-            'name.required' => 'Nama tidak boleh kosong',
-            'email.required' => 'Email tidak boleh kosong',
-            'email.unique' => 'Email sudah ada',
-            'password.required' => 'Password tidak boleh kosong',
-            'password.min:6' => 'Password minimal harus 6 karakter',
-            'password.confirmed' => 'Password tidak sesuai',
-            'role.required' => 'Role harus dipilih',
-        ]);
-
-        if ($this->showSekolahSelect == true) {
-            $validatedDate = $this->validate([
-                'sekolah_user' => 'required',
+        $validatedDate = $this->validate(
+            [
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|min:6|confirmed',
+                'role' => 'required',
             ],
             [
-                'sekolah_user.required' => 'Sekolah tidak boleh kosong',
-            ]);
+                'name.required' => 'Nama tidak boleh kosong',
+                'email.required' => 'Email tidak boleh kosong',
+                'email.unique' => 'Email sudah ada',
+                'password.required' => 'Password tidak boleh kosong',
+                'password.min:6' => 'Password minimal harus 6 karakter',
+                'password.confirmed' => 'Password tidak sesuai',
+                'role.required' => 'Role harus dipilih',
+            ],
+        );
+
+        if ($this->showSekolahSelect == true) {
+            $validatedDate = $this->validate(
+                [
+                    'sekolah_user' => 'required',
+                ],
+                [
+                    'sekolah_user.required' => 'Sekolah tidak boleh kosong',
+                ],
+            );
 
             User::create([
                 'name' => $this->name,
@@ -123,14 +127,16 @@ class Index extends Component
             ]);
         } elseif (auth()->user()->sekolah_id) {
             if ($this->showGuruSelect == true) {
-                $validatedDate = $this->validate([
-                    'nama_guru' => 'required',
-                    'mata_pelajaran' => 'required',
-                ],
-                [
-                    'nama_guru.required' => 'Nama tidak boleh kosong',
-                    'mata_pelajaran.required' => 'Mata pelajaran tidak boleh kosong',
-                ]);
+                $validatedDate = $this->validate(
+                    [
+                        'nama_guru' => 'required',
+                        'mata_pelajaran' => 'required',
+                    ],
+                    [
+                        'nama_guru.required' => 'Nama tidak boleh kosong',
+                        'mata_pelajaran.required' => 'Mata pelajaran tidak boleh kosong',
+                    ],
+                );
 
                 $guru = Guru::create([
                     'sekolah_id' => auth()->user()->sekolah_id,
@@ -147,14 +153,16 @@ class Index extends Component
                     'guru_id' => $guru->id,
                 ]);
             } elseif ($this->showRuanganSelect == true) {
-                $validatedDate = $this->validate([
-                    'nama_guru' => 'required',
-                    'ruangan_user' => 'required',
-                ],
-                [
-                    'nama_guru.required' => 'Nama tidak boleh kosong',
-                    'ruangan_user.required' => 'Ruangan tidak boleh kosong',
-                ]);
+                $validatedDate = $this->validate(
+                    [
+                        'nama_guru' => 'required',
+                        'ruangan_user' => 'required',
+                    ],
+                    [
+                        'nama_guru.required' => 'Nama tidak boleh kosong',
+                        'ruangan_user.required' => 'Ruangan tidak boleh kosong',
+                    ],
+                );
 
                 $guru = Guru::create([
                     'sekolah_id' => auth()->user()->sekolah_id,
@@ -216,68 +224,84 @@ class Index extends Component
 
     public function update()
     {
+        $roleMapping = [
+            'Guru' => 0,
+            'KepalaBengkel' => 1,
+            'AdminSekolah' => 2,
+            'Admin' => 3,
+            'SuperAdmin' => 4,
+        ];
         if ($this->password) {
-            $validatedDate = $this->validate([
-                'name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required|min:6|confirmed',
-                'role' => 'required',
-            ],
-            [
-                'name.required' => 'Nama tidak boleh kosong',
-                'email.required' => 'Email tidak boleh kosong',
-                'password.required' => 'Password tidak boleh kosong',
-                'password.min:6' => 'Password minimal harus 6 karakter',
-                'password.confirmed' => 'Password tidak sesuai',
-                'role.required' => 'Role harus dipilih',
-            ]);
-
-            if ($this->showSekolahSelect == true) {
-                $validatedDate = $this->validate([
-                    'sekolah_user' => 'required',
+            $validatedDate = $this->validate(
+                [
+                    'name' => 'required',
+                    'email' => 'required|email',
+                    'password' => 'required|min:6|confirmed',
+                    'role' => 'required',
                 ],
                 [
-                    'sekolah_user.required' => 'Sekolah tidak boleh kosong',
-                ]);
+                    'name.required' => 'Nama tidak boleh kosong',
+                    'email.required' => 'Email tidak boleh kosong',
+                    'password.required' => 'Password tidak boleh kosong',
+                    'password.min:6' => 'Password minimal harus 6 karakter',
+                    'password.confirmed' => 'Password tidak sesuai',
+                    'role.required' => 'Role harus dipilih',
+                ],
+            );
+            $roleInteger = $roleMapping[$this->role];
+
+            if ($this->showSekolahSelect == true) {
+                $validatedDate = $this->validate(
+                    [
+                        'sekolah_user' => 'required',
+                    ],
+                    [
+                        'sekolah_user.required' => 'Sekolah tidak boleh kosong',
+                    ],
+                );
                 $user = User::find($this->user_id);
                 $user->update([
                     'name' => $this->name,
                     'email' => $this->email,
                     'password' => bcrypt($this->password),
-                    'role' => $this->role,
+                    'role' => $roleInteger,
                     'sekolah_id' => $this->sekolah_user,
                 ]);
             } elseif (auth()->user()->sekolah_id) {
                 if ($this->showGuruSelect == true) {
-                    $validatedDate = $this->validate([
-                        'nama_guru' => 'required',
-                    ],
-                    [
-                        'nama_guru.required' => 'Nama tidak boleh kosong', 
-                    ]);
+                    $validatedDate = $this->validate(
+                        [
+                            'nama_guru' => 'required',
+                        ],
+                        [
+                            'nama_guru.required' => 'Nama tidak boleh kosong',
+                        ],
+                    );
 
                     $user = User::find($this->user_id);
                     $user->update([
                         'name' => $this->name,
                         'email' => $this->email,
                         'password' => bcrypt($this->password),
-                        'role' => $this->role,
+                        'role' => $roleInteger,
                         'sekolah_id' => auth()->user()->sekolah_id,
                     ]);
                 } elseif ($this->showRuanganSelect == true) {
-                    $validatedDate = $this->validate([
-                        'ruangan_user' => 'required',
-                    ],
-                    [
-                        'ruangan_user.required' => 'Ruangan tidak boleh kosong',
-                    ]);
+                    $validatedDate = $this->validate(
+                        [
+                            'ruangan_user' => 'required',
+                        ],
+                        [
+                            'ruangan_user.required' => 'Ruangan tidak boleh kosong',
+                        ],
+                    );
 
                     $user = User::find($this->user_id);
                     $user->update([
                         'name' => $this->name,
                         'email' => $this->email,
                         'password' => bcrypt($this->password),
-                        'role' => $this->role,
+                        'role' => $roleInteger,
                         'sekolah_id' => auth()->user()->sekolah_id,
                         'ruangan_id' => $this->ruangan_user,
                     ]);
@@ -287,7 +311,7 @@ class Index extends Component
                         'name' => $this->name,
                         'email' => $this->email,
                         'password' => bcrypt($this->password),
-                        'role' => $this->role,
+                        'role' => $roleInteger,
                         'sekolah_id' => auth()->user()->sekolah_id,
                     ]);
                 }
@@ -297,33 +321,39 @@ class Index extends Component
                     'name' => $this->name,
                     'email' => $this->email,
                     'password' => bcrypt($this->password),
-                    'role' => $this->role,
+                    'role' => $roleInteger,
                 ]);
             }
         } else {
-            $validatedDate = $this->validate([
-                'name' => 'required',
-                'email' => 'required|email',
-                'role' => 'required',
-            ],
-            [
-                'name.required' => 'Nama tidak boleh kosong',
-                'email.required' => 'Email tidak boleh kosong',
-                'role.required' => 'Role harus dipilih',
-            ]);
-
-            if ($this->showSekolahSelect == true) {
-                $validatedDate = $this->validate([
-                    'sekolah_user' => 'required',
+            $validatedDate = $this->validate(
+                [
+                    'name' => 'required',
+                    'email' => 'required|email',
+                    'role' => 'required',
                 ],
                 [
-                    'sekolah_user.required' => 'Sekolah tidak boleh kosong',
-                ]);
+                    'name.required' => 'Nama tidak boleh kosong',
+                    'email.required' => 'Email tidak boleh kosong',
+                    'role.required' => 'Role harus dipilih',
+                ],
+            );
+            $roleInteger = $roleMapping[$this->role];
+
+
+            if ($this->showSekolahSelect == true) {
+                $validatedDate = $this->validate(
+                    [
+                        'sekolah_user' => 'required',
+                    ],
+                    [
+                        'sekolah_user.required' => 'Sekolah tidak boleh kosong',
+                    ],
+                );
                 $user = User::find($this->user_id);
                 $user->update([
                     'name' => $this->name,
                     'email' => $this->email,
-                    'role' => $this->role,
+                    'role' => $roleInteger,
                     'sekolah_id' => $this->sekolah_user,
                 ]);
             } elseif (auth()->user()->sekolah_id) {
@@ -332,22 +362,24 @@ class Index extends Component
                     $user->update([
                         'name' => $this->name,
                         'email' => $this->email,
-                        'role' => $this->role,
+                        'role' => $roleInteger,
                         'sekolah_id' => auth()->user()->sekolah_id,
                     ]);
                 } elseif ($this->showRuanganSelect == true) {
-                    $validatedDate = $this->validate([
-                        'ruangan_user' => 'required',
-                    ],
-                    [
-                        'ruangan_user.required' => 'Ruangan tidak boleh kosong',
-                    ]);
+                    $validatedDate = $this->validate(
+                        [
+                            'ruangan_user' => 'required',
+                        ],
+                        [
+                            'ruangan_user.required' => 'Ruangan tidak boleh kosong',
+                        ],
+                    );
 
                     $user = User::find($this->user_id);
                     $user->update([
                         'name' => $this->name,
                         'email' => $this->email,
-                        'role' => $this->role,
+                        'role' => $roleInteger,
                         'sekolah_id' => auth()->user()->sekolah_id,
                         'ruangan_id' => $this->ruangan_user,
                     ]);
@@ -356,7 +388,7 @@ class Index extends Component
                     $user->update([
                         'name' => $this->name,
                         'email' => $this->email,
-                        'role' => $this->role,
+                        'role' => $roleInteger,
                         'sekolah_id' => auth()->user()->sekolah_id,
                     ]);
                 }
@@ -365,7 +397,7 @@ class Index extends Component
                 $user->update([
                     'name' => $this->name,
                     'email' => $this->email,
-                    'role' => $this->role,
+                    'role' => $roleInteger,
                 ]);
             }
         }
@@ -382,26 +414,30 @@ class Index extends Component
     public function update_byadmin()
     {
         if ($this->password) {
-            $validatedDate = $this->validate([
-                'name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required|min:6|confirmed',
-            ],
-            [
-                'name.required' => 'Nama tidak boleh kosong',
-                'email.required' => 'Email tidak boleh kosong',
-                'password.required' => 'Password tidak boleh kosong',
-                'password.min:6' => 'Password minimal harus 6 karakter',
-                'password.confirmed' => 'Password tidak sesuai',
-            ]);
-
-            if ($this->showSekolahSelect == true) {
-                $validatedDate = $this->validate([
-                    'sekolah_user' => 'required',
+            $validatedDate = $this->validate(
+                [
+                    'name' => 'required',
+                    'email' => 'required|email',
+                    'password' => 'required|min:6|confirmed',
                 ],
                 [
-                    'sekolah_user.required' => 'Sekolah tidak boleh kosong',
-                ]);
+                    'name.required' => 'Nama tidak boleh kosong',
+                    'email.required' => 'Email tidak boleh kosong',
+                    'password.required' => 'Password tidak boleh kosong',
+                    'password.min:6' => 'Password minimal harus 6 karakter',
+                    'password.confirmed' => 'Password tidak sesuai',
+                ],
+            );
+
+            if ($this->showSekolahSelect == true) {
+                $validatedDate = $this->validate(
+                    [
+                        'sekolah_user' => 'required',
+                    ],
+                    [
+                        'sekolah_user.required' => 'Sekolah tidak boleh kosong',
+                    ],
+                );
                 $user = User::find($this->user_id);
                 $user->update([
                     'name' => $this->name,
@@ -411,12 +447,14 @@ class Index extends Component
                 ]);
             } elseif (auth()->user()->sekolah_id) {
                 if ($this->showGuruSelect == true) {
-                    $validatedDate = $this->validate([
-                        'nama_guru' => 'required',
-                    ],
-                    [
-                        'nama_guru.required' => 'Nama tidak boleh kosong',
-                    ]);
+                    $validatedDate = $this->validate(
+                        [
+                            'nama_guru' => 'required',
+                        ],
+                        [
+                            'nama_guru.required' => 'Nama tidak boleh kosong',
+                        ],
+                    );
 
                     $user = User::find($this->user_id);
                     $user->update([
@@ -426,13 +464,14 @@ class Index extends Component
                         'sekolah_id' => auth()->user()->sekolah_id,
                     ]);
                 } elseif ($this->showRuanganSelect == true) {
-                    $validatedDate = $this->validate([
-                        'ruangan_user' => 'required',
-                    ],
-                    [
-                        'ruangan_user.required' => 'Ruangan tidak boleh kosong',
-                        
-                    ]);
+                    $validatedDate = $this->validate(
+                        [
+                            'ruangan_user' => 'required',
+                        ],
+                        [
+                            'ruangan_user.required' => 'Ruangan tidak boleh kosong',
+                        ],
+                    );
 
                     $user = User::find($this->user_id);
                     $user->update([
@@ -460,22 +499,26 @@ class Index extends Component
                 ]);
             }
         } else {
-            $validatedDate = $this->validate([
-                'name' => 'required',
-                'email' => 'required|email',
-            ],
-            [
-                'name.required' => 'Nama tidak boleh kosong',
-                'email.required' => 'Email tidak boleh kosong',
-            ]);
-
-            if ($this->showSekolahSelect == true) {
-                $validatedDate = $this->validate([
-                    'sekolah_user' => 'required',
+            $validatedDate = $this->validate(
+                [
+                    'name' => 'required',
+                    'email' => 'required|email',
                 ],
                 [
-                    'sekolah_user.required' => 'Sekolah tidak boleh kosong',
-                ]);
+                    'name.required' => 'Nama tidak boleh kosong',
+                    'email.required' => 'Email tidak boleh kosong',
+                ],
+            );
+
+            if ($this->showSekolahSelect == true) {
+                $validatedDate = $this->validate(
+                    [
+                        'sekolah_user' => 'required',
+                    ],
+                    [
+                        'sekolah_user.required' => 'Sekolah tidak boleh kosong',
+                    ],
+                );
                 $user = User::find($this->user_id);
                 $user->update([
                     'name' => $this->name,
@@ -491,12 +534,14 @@ class Index extends Component
                         'sekolah_id' => auth()->user()->sekolah_id,
                     ]);
                 } elseif ($this->showRuanganSelect == true) {
-                    $validatedDate = $this->validate([
-                        'ruangan_user' => 'required',
-                    ],
-                    [
-                        'ruangan_user.required' => 'Ruangan tidak boleh kosong',
-                    ]);
+                    $validatedDate = $this->validate(
+                        [
+                            'ruangan_user' => 'required',
+                        ],
+                        [
+                            'ruangan_user.required' => 'Ruangan tidak boleh kosong',
+                        ],
+                    );
 
                     $user = User::find($this->user_id);
                     $user->update([

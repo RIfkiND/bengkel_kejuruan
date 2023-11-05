@@ -50,9 +50,9 @@
                                 @enderror
                             </div>
                         </div>
-                        @if ((auth()->user()->role == 'Admin' ||
-                                auth()->user()->role == 'SuperAdmin') && ($this->role == 'Guru' ||
-                                $this->role == 'KepalaBengkel'))
+                        @if (
+                            (auth()->user()->role == 'Admin' || auth()->user()->role == 'SuperAdmin') &&
+                                ($this->role == 'Guru' || $this->role == 'KepalaBengkel'))
 
                             <label> Role : {{ $this->role }}</label>
                         @else
@@ -62,16 +62,30 @@
                                     <select id="role" class="form-control" wire:model='role'
                                         wire:change="updateSekolahGuruRuanganVisibility">
                                         <option value="">Pilih</option>
-                                        @if (auth()->user()->role == 'AdminSekolah')
-                                            <option value="0">Guru</option>
-                                            <option value="1">Kepala Bengkel</option>
-                                        @endif
-                                        @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin' or auth()->user()->role == 'AdminSekolah')
-                                            <option value="2">Admin Sekolah</option>
-                                        @endif
-                                        @if (auth()->user()->role == 'SuperAdmin')
-                                            <option value="3">Admin</option>
-                                            <option value="4">Super Admin</option>
+                                        @if ($updateMode)
+                                            @if (auth()->user()->role == 'AdminSekolah')
+                                                <option value="Guru">Guru</option>
+                                                <option value="KepalaBengkel">Kepala Bengkel</option>
+                                            @endif
+                                            @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin' or auth()->user()->role == 'AdminSekolah')
+                                                <option value="AdminSekolah">Admin Sekolah</option>
+                                            @endif
+                                            @if (auth()->user()->role == 'SuperAdmin')
+                                                <option value="Admin">Admin</option>
+                                                <option value="SuperAdmin">Super Admin</option>
+                                            @endif
+                                        @else
+                                            @if (auth()->user()->role == 'AdminSekolah')
+                                                <option value="0">Guru</option>
+                                                <option value="1">Kepala Bengkel</option>
+                                            @endif
+                                            @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin' or auth()->user()->role == 'AdminSekolah')
+                                                <option value="2">Admin Sekolah</option>
+                                            @endif
+                                            @if (auth()->user()->role == 'SuperAdmin')
+                                                <option value="3">Admin</option>
+                                                <option value="4">Super Admin</option>
+                                            @endif
                                         @endif
                                     </select>
                                     @error('role')
