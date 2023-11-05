@@ -44,7 +44,13 @@ class Index extends Component
             'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                 ->orderBy('id', 'DESC')
                 ->get(),
-            'pemeliharaans' => PemeliharaanDanPerawatan::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemeliharaanPage'),
+            'pemeliharaans' => PemeliharaanDanPerawatan::whereHas('peralatan', function ($query) {
+                $query->whereHas('ruangan', function ($query) {
+                    $query->where('sekolah_id', auth()->user()->sekolah->id);
+                });
+            })
+                ->orderBy('id', 'DESC')
+                ->paginate(10, ['*'], 'pemeliharaanPage'),
             'peralatans',
         ]);
     }
@@ -60,18 +66,20 @@ class Index extends Component
 
     public function store()
     {
-        $validatedDate = $this->validate([
-            'tanggal' => 'required',
-            'jenis'=> 'required',
-            'p_m_id'=> 'required',
-            'keterangan'=> 'required',
-        ],
-        [
-            'tanggal.required' => 'Tanggal tidak boleh kosong',
-            'jenis.required' => 'Jenis Kerusakan tidak boleh kosong',
-            'p_m_id.required' => 'Peralatan atau Mesin tidak boleh kosong',
-            'keterangan.required' => 'Keterangan tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'tanggal' => 'required',
+                'jenis' => 'required',
+                'p_m_id' => 'required',
+                'keterangan' => 'required',
+            ],
+            [
+                'tanggal.required' => 'Tanggal tidak boleh kosong',
+                'jenis.required' => 'Jenis Kerusakan tidak boleh kosong',
+                'p_m_id.required' => 'Peralatan atau Mesin tidak boleh kosong',
+                'keterangan.required' => 'Keterangan tidak boleh kosong',
+            ],
+        );
 
         PemeliharaanDanPerawatan::create([
             'tanggal' => $this->tanggal,
@@ -106,12 +114,14 @@ class Index extends Component
 
     public function update()
     {
-        $validatedDate = $this->validate([
-            'tanggal' => 'required',
-        ],
-        [
-            'tanggal.required' => 'Tanggal tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'tanggal' => 'required',
+            ],
+            [
+                'tanggal.required' => 'Tanggal tidak boleh kosong',
+            ],
+        );
 
         $pemeliharaan = PemeliharaanDanPerawatan::find($this->pemeliharaan_id);
         $pemeliharaan->update([
@@ -158,7 +168,6 @@ class Index extends Component
             ]);
         }
     }
-
 
     public function delete()
     {
