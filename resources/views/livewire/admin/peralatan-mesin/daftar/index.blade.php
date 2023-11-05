@@ -228,7 +228,8 @@
                                         <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                 class="fa fa-info-circle fa-lg mr-1"></i>More</a>
                                         <div class="dropdown-menu"><a class="dropdown-item" href="javascript:void(0)"
-                                                data-toggle="modal" data-target="#ModalPeralatan" wire:click='info({{ $peralatan->id }})'>Info
+                                                data-toggle="modal" data-target="#ModalPeralatan"
+                                                wire:click='info({{ $peralatan->id }})'>Info
                                                 pemakaian</a><a class="dropdown-item" href="javascript:void(0)"
                                                 wire:click='edit({{ $peralatan->id }})'>Edit</a> <a
                                                 class="dropdown-item text-danger" href="javascript:void(0)"
@@ -319,6 +320,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     @endif
     {{-- modal --}}
     @include('livewire.admin.peralatan-mesin.daftar.modal')
