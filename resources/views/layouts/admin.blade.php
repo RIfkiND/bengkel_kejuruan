@@ -9,7 +9,7 @@
     <!-- theme meta -->
     <meta name="theme-name" content="quixlab" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Manajement Bengkel</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/Asset/images/favicon.png">
     @livewireStyles
