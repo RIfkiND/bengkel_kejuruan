@@ -14,7 +14,7 @@
                                         wire:model='searchAkun' wire:input='resetPage'>
                                 </div>
                             </div>
-                            <div class="col-2 d-flex justify-content-end px-4 h-50">
+                            <div class="col-lg-2 d-flex justify-content-end px-4 h-50">
                                 <a href="add-peralatan.html" type="button"
                                     class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
                                     data-target="#ModalAkun">Tambahkan Akun</a>

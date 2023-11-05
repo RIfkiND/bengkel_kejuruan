@@ -15,7 +15,7 @@
                                     wire:model='searchSekolah' wire:input='resetPage'>
                             </div>
                         </div>
-                        <div class="col-3 d-flex justify-content-end px-4 h-50">
+                        <div class="col-lg-3 d-flex justify-content-end px-4 h-50">
                             <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
                                 data-toggle="modal" data-target="#ModalSekolah">Tambahkan Sekolah</button>
                         </div>

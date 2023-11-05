@@ -15,7 +15,7 @@
                                     wire:model='searchKategori' wire:input='resetPage'>
                             </div>
                         </div>
-                        <div class="col-2 d-flex justify-content-end px-3 h-50">
+                        <div class="col-lg-2 d-flex justify-content-end px-3 h-50">
                             <a href="#" type="button"
                                 class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
                                 data-target="#ModalKategori">Tambahkan Kategori</a>
