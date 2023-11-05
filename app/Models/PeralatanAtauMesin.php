@@ -41,8 +41,15 @@ class PeralatanAtauMesin extends Model
 
     public function pemakaian()
     {
-        //hasMany pemakaian::calass where status pengajuan == di setujui
         return $this->hasMany(Pemakaian::class,'peralatan_atau_mesin_id', 'id');
+    }
+
+    public function getLatestPemakaianAttribute()
+    {
+        return $this->pemakaian()
+            ->where('status_penggunaan', 'Selesai')
+            ->latest('created_at')
+            ->first();
     }
 
 }

@@ -208,7 +208,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="card-title">
-                            <h4>Daftar Alat dan Bahan</h4>
+                            <h4>Daftar Peralatan dan Mesin</h4>
                         </div>
                     </div>
                     <div class="col d-flex justify-content-end px-4">
@@ -229,8 +229,7 @@
                                                 class="fa fa-info-circle fa-lg mr-1"></i>More</a>
                                         <div class="dropdown-menu"><a class="dropdown-item" href="javascript:void(0)"
                                                 data-toggle="modal" data-target="#ModalPeralatan"
-                                                wire:click='info({{ $peralatan->id }})'>Info
-                                                pemakaian</a><a class="dropdown-item" href="javascript:void(0)"
+                                                wire:click='info({{ $peralatan->id }})'>Informasi</a><a class="dropdown-item" href="javascript:void(0)"
                                                 wire:click='edit({{ $peralatan->id }})'>Edit</a> <a
                                                 class="dropdown-item text-danger" href="javascript:void(0)"
                                                 data-toggle="modal" data-target="#ModalPeralatan"
@@ -247,9 +246,14 @@
                                     <div class="row">
 
                                         <div class="card-text">
-                                            <p>Terakhir Di Pakai Oleh : <br>
-                                                Kelas : <br>
-                                                Pada : </p>
+                                            @if ($peralatan->latestPemakaian)
+                                                <p>Terakhir Di Pakai Oleh:
+                                                    {{ $peralatan->latestPemakaian->guru->nama_guru }}</p>
+                                                <p>Kelas: {{ $peralatan->latestPemakaian->kelas->nama_kelas }}</p>
+                                                <p>Pada: {{ $peralatan->latestPemakaian->tanggal_pemakaian }}, {{ $peralatan->latestPemakaian->waktu_akhir }}</p>
+                                            @else
+                                                <p>Belum Pernah Di Gunakan</p>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-end">
