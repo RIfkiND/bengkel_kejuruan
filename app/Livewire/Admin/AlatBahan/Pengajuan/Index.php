@@ -13,6 +13,7 @@ class Index extends Component
 {
     public $nama_alat_atau_bahan, $tanggal, $kode, $volume, $satuan, $sumber_dana, $merk, $type, $dimensi, $image, $pengajuan_id, $searchPengajuan, $selectedPengajuanId, $imageprev;
     public $updateMode = false;
+    public $informasiMode = false;
 
     use WithPagination;
     use LivewireAlert;
@@ -59,25 +60,40 @@ class Index extends Component
             'volume' => 'required',
             'satuan' => 'required',
             'dimensi' => 'required',
-            'sumber_dana' => 'required',
             'merk' => 'required',
             'type' => 'required',
         ]);
 
-        $validatedDate['image'] = $this->image->store('gambar_pengajuan', 'public');
+        if ($this->image) {
+            $validatedDate['image'] = $this->image->store('gambar_pengajuan', 'public');
 
-        PengajuanAlatAtauBahan::create([
-            'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
-            'gambar' => $validatedDate['image'],
-            'kode' => $this->kode,
-            'volume' => $this->volume,
-            'satuan' => $this->satuan,
-            'sumber_dana' => $this->sumber_dana,
-            'merk' => $this->merk,
-            'type_atau_model' => $this->type,
-            'dimensi' => $this->dimensi,
-            'tanggal' => date('Y-m-d H:i:s'),
-        ]);
+            PengajuanAlatAtauBahan::create([
+                'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
+                'gambar' => $validatedDate['image'],
+                'kode' => $this->kode,
+                'volume' => $this->volume,
+                'satuan' => $this->satuan,
+                'sekolah_id' => auth()->user()->sekolah_id,
+                'nama_pengaju' => auth()->user()->guru->nama_guru,
+                'merk' => $this->merk,
+                'type_atau_model' => $this->type,
+                'dimensi' => $this->dimensi,
+                'tanggal' => date('Y-m-d H:i:s'),
+            ]);
+        } else {
+            PengajuanAlatAtauBahan::create([
+                'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
+                'kode' => $this->kode,
+                'volume' => $this->volume,
+                'satuan' => $this->satuan,
+                'sekolah_id' => auth()->user()->sekolah_id,
+                'nama_pengaju' => auth()->user()->guru->nama_guru,
+                'merk' => $this->merk,
+                'type_atau_model' => $this->type,
+                'dimensi' => $this->dimensi,
+                'tanggal' => date('Y-m-d H:i:s'),
+            ]);
+        }
 
         $this->resetInputFields();
 
@@ -101,7 +117,6 @@ class Index extends Component
         $this->kode = $pengajuan->kode;
         $this->volume = $pengajuan->volume;
         $this->satuan = $pengajuan->satuan;
-        $this->sumber_dana = $pengajuan->sumber_dana;
         $this->updateMode = true;
     }
 
@@ -109,6 +124,7 @@ class Index extends Component
     {
         $this->updateMode = false;
         $this->resetInputFields();
+        $this->informasiMode = false;
     }
 
     public function update()
@@ -119,7 +135,6 @@ class Index extends Component
             'volume' => 'required',
             'satuan' => 'required',
             'dimensi' => 'required',
-            'sumber_dana' => 'required',
             'merk' => 'required',
             'type' => 'required',
         ]);
@@ -133,13 +148,14 @@ class Index extends Component
                 'kode' => $this->kode,
                 'volume' => $this->volume,
                 'satuan' => $this->satuan,
-                'sumber_dana' => $this->sumber_dana,
                 'merk' => $this->merk,
                 'type_atau_model' => $this->type,
                 'dimensi' => $this->dimensi,
                 'tanggal' => date('Y-m-d H:i:s'),
             ]);
-            Storage::disk('public')->delete($this->imageprev);
+            if ($this->imageprev != null) {
+                Storage::disk('public')->delete($this->imageprev);
+            }
         } else {
             $pengajuan = PengajuanAlatAtauBahan::find($this->pengajuan_id);
             $pengajuan->update([
@@ -147,7 +163,6 @@ class Index extends Component
                 'kode' => $this->kode,
                 'volume' => $this->volume,
                 'satuan' => $this->satuan,
-                'sumber_dana' => $this->sumber_dana,
                 'merk' => $this->merk,
                 'type_atau_model' => $this->type,
                 'dimensi' => $this->dimensi,
@@ -211,5 +226,21 @@ class Index extends Component
                 'timerProgressBar' => true,
             ]);
         }
+    }
+
+    public function info($id)
+    {
+        $pengajuan = PengajuanAlatAtauBahan::findOrFail($id);
+        $this->pengajuan_id = $id;
+        $this->nama_alat_atau_bahan = $pengajuan->nama_alat_atau_bahan;
+        $this->imageprev = $pengajuan->gambar;
+        $this->type = $pengajuan->type_atau_model;
+        $this->dimensi = $pengajuan->dimensi;
+        $this->merk = $pengajuan->merk;
+        $this->kode = $pengajuan->kode;
+        $this->volume = $pengajuan->volume;
+        $this->satuan = $pengajuan->satuan;
+        $this->sumber_dana = $pengajuan->sumber_dana;
+        $this->informasiMode = true;
     }
 }
