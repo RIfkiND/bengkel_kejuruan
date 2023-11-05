@@ -210,6 +210,17 @@ class Index extends Component
         ]);
     }
 
+    public function info($id)
+    {
+        $peralatan = PeralatanAtauMesin::findOrFail($id);
+        $this->peralatan_id = $id;
+        $this->merk = $peralatan->spesifikasi->merk;
+        $this->type = $peralatan->spesifikasi->tipe_atau_model;
+        $this->tahun = $peralatan->spesifikasi->tahun;
+        $this->kapasitas = $peralatan->spesifikasi->kapasitas;
+        $this->updateMode = true;
+
+    }
     public function ondel($id)
     {
         $this->selectedPeralatanId = $id;

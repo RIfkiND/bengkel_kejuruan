@@ -4,52 +4,65 @@
             <div class="card">
                 <div class="card-body">
                     <div class="basic-form">
-                        <form wire:submit.prevent="store">
-                            <div class="form-group">
-                                <h4 class="text-center">Tambah Pemakaian</h4>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="row justify-content-md-center">
-                                    <div class="col mb-4">
-                                        <div class="d-flex justify-content-end">
+                        @if ($updateMode)
+                            <form wire:submit.prevent="update">
+                                <div class="form-group">
+                                    <h4 class="text-center">Edit Data Peminjaman</h4>
+                                </div>
+                            @else
+                                <form wire:submit.prevent="store">
+                                    <div class="form-group">
+                                        <h4 class="text-center">Tambah Peminjaman</h4>
+                                    </div>
+                        @endif
+                        <div class="form-group">
+                            <div class="row justify-content-md-center">
+                                <div class="col mb-4">
+                                    <div class="d-flex justify-content-end">
+                                        @if ($updateMode)
+                                            <button type="button" class="btn btn-danger"
+                                                wire:click='cancel'>Batal</button>
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        @else
                                             <button type="submit" class="btn btn-primary">Tambahkan</button>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row justify-content-md-center text-center">
+                                <div class="col-lg-4 mb-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="tanggal" class="text-center">Tanggal Pakai</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="date" id="tanggal" wire:model='tanggal'
+                                                class="form-control input-default">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-4">
+                                    <div class="row">
+                                        <div class="col"><label>Waktu Peminjaman</label></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input id="start" class="form-control input-default" type="time"
+                                                placeholder="Dari..." wire:model='waktu_awal' />
+                                        </div>
+                                        <div class="col">
+                                            <input id="end" class="form-control input-default" type="time"
+                                                placeholder="Sampai..." wire:model='waktu_akhir' />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="row justify-content-md-center text-center">
-                                    <div class="col-lg-4 mb-4">
-                                        <div class="row">
-                                            <div class="col">
-                                                <label for="tanggal" class="text-center">Tanggal Pakai</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="date" id="tanggal" wire:model='tanggal'
-                                                    class="form-control input-default">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 mb-4">
-                                        <div class="row">
-                                            <div class="col"><label>Waktu Pemakaian</label></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input id="start" class="form-control input-default" type="time"
-                                                    placeholder="Dari..." wire:model='waktu_awal' />
-                                            </div>
-                                            <div class="col">
-                                                <input id="end" class="form-control input-default" type="time"
-                                                    placeholder="Sampai..." wire:model='waktu_akhir' />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+                        @if ($updateMode == false)
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-3 mb-4">
@@ -111,6 +124,7 @@
                                     </div>
                                 </div>
                             </div>
+                        @endif
                         </form>
                     </div>
                 </div>
@@ -153,9 +167,11 @@
                                         <tr>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
                                                 PM-{{ $peminjaman->peralatan_atau_mesin_id }}</td>
-                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
+                                            <td data-target="#infoModal" data-toggle="modal"
+                                                style="cursor: pointer;">
                                                 {{ $peminjaman->peralatan->nama_peralatan_atau_mesin }}</td>
-                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
+                                            <td data-target="#infoModal" data-toggle="modal"
+                                                style="cursor: pointer;">
                                                 {{ $peminjaman->tanggal_pemakaian }}
                                             </td>
                                             <td>
@@ -169,7 +185,7 @@
                                             </td>
                                             <td>
                                                 <h4><span
-                                                        class="badge {{ $peminjaman->status_pengajuan == 'Pending' ? 'badge-secondary' : ($peminjaman->status_pengajuan == 'Di Setujui' ? 'badge-success' : 'badge-danger') }}
+                                                        class="badge {{ $peminjaman->status_pengajuan == 'Pending' ? 'badge-secondary' : ($peminjaman->status_pengajuan == 'Disetujui' ? 'badge-success' : 'badge-danger') }}
                                                     px-2 text-white">{{ $peminjaman->status_pengajuan }}</span>
                                                 </h4>
                                             </td>
@@ -180,16 +196,22 @@
                                                     <div class="dropdown-menu">
                                                         @if (auth()->user()->role == 'KepalaBengkel' || auth()->user()->role == 'Guru')
                                                             @if (auth()->user()->role == 'KepalaBengkel')
-                                                                <a href="javascript:void(0)"
-                                                                    class="dropdown-item" wire:click='updateStatus_pengajuan({{ 'id' = $peminjaman->id, 'newstatus' = 'Disetujui' }})'>Setujui</a>
-                                                                <a href="javascript:void(0)"
-                                                                    class="dropdown-item">Tolak</a>
+                                                                <div class="dropdown-item text-dark">
+                                                                    <a href="javascript:void(0)"
+                                                                        wire:click='updateStatus_pengajuan({{ $peminjaman->id }}, "Disetujui")'>Setujui</a>
+                                                                    |
+                                                                    <a href="javascript:void(0)"
+                                                                        wire:click='updateStatus_pengajuan({{ $peminjaman->id }}, "Ditolak")'>Tolak</a>
+                                                                </div>
                                                             @endif
-                                                            <a href="javascript:void(0)" class="dropdown-item">Selesai
+                                                            <a href="javascript:void(0)" class="dropdown-item"
+                                                                wire:click='statuspemakaian({{ $peminjaman->id }})'>Selesai
                                                                 Dipakai</a>
                                                         @endif
-                                                        <a class="dropdown-item" href="javascript:void(0)">Edit</a>
-                                                        <a class="dropdown-item" href="javascript:void(0)">Hapus</a>
+                                                        <a class="dropdown-item" href="javascript:void(0)"
+                                                            wire:click='edit({{ $peminjaman->id }})'>Edit</a>
+                                                        <a class="dropdown-item" href="javascript:void(0)"
+                                                            wire:click='ondel({{ $peminjaman->id }})'>Hapus</a>
                                                     </div>
                                                 </div>
                                             </td>

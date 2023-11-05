@@ -32,11 +32,21 @@ class Index extends Component
     public function render()
     {
         $searchPengajuan = '%' . $this->searchPengajuan . '%';
-        return view('livewire.admin.alat-bahan.pengajuan.index', [
-            'pengajuans' => PengajuanAlatAtauBahan::where('nama_alat_atau_bahan', 'LIKE', $searchPengajuan)
-                ->orderBy('id', 'DESC')
-                ->paginate(10, ['*'], 'pengajuanPages'),
-        ]);
+        if (auth()->user()->guru_id) {
+            return view('livewire.admin.alat-bahan.pengajuan.index', [
+                'pengajuans' => PengajuanAlatAtauBahan::where('nama_alat_atau_bahan', 'LIKE', $searchPengajuan)
+                    ->where('guru_id', auth()->user()->guru_id)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'pengajuanPages'),
+            ]);
+        } else {
+            return view('livewire.admin.alat-bahan.pengajuan.index', [
+                'pengajuans' => PengajuanAlatAtauBahan::where('nama_alat_atau_bahan', 'LIKE', $searchPengajuan)
+                    ->where('sekolah_id', auth()->user()->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'pengajuanPages'),
+            ]);
+        }
     }
 
     private function resetInputFields()
@@ -186,7 +196,7 @@ class Index extends Component
         if (in_array($newStatus, ['Diterima', 'Ditolak'])) {
             $pengajuan->status = $newStatus;
             $pengajuan->save();
-            $this->alert('success', 'Berhasil '. $newStatus .' !', [
+            $this->alert('success', 'Berhasil ' . $newStatus . ' !', [
                 'position' => 'center',
                 'timer' => 3000,
                 'toast' => false,
