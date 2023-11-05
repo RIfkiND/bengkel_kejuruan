@@ -426,11 +426,9 @@
                                                             <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                                     class="fa fa-ellipsis-v fa-lg"></i></a>
                                                             <div class="dropdown-menu">
-                                                                @if (auth()->user()->role == 'AdminSekolah')
                                                                     <a class="dropdown-item" data-toggle="modal"
                                                                         data-target="#ModalPengajuan"href="javascript:void(0)"
                                                                         wire:click='info({{ $pengajuan->id }})'>Informasi</a>
-                                                                @endif
                                                             </div>
                                                         </div>
                                                     </td>
@@ -638,4 +636,6 @@
             </div>
         </div> --}}
     </div>
+    {{-- modal --}}
+    @include('livewire.admin.alat-bahan.pengajuan.modal')
 </div>
