@@ -51,14 +51,14 @@
                         <div class="row">
                             <div class="col-lg-6 ">
                                 <div class="card-text">
-                                    <span>Merk : -</span><br><br>
-                                    <Span>Type/Model : -</Span>
+                                    <span>Merk : {{ $merk }}</span><br><br>
+                                    <Span>Type/Model : {{ $type }}</Span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="card-text">
-                                    <span>Tahun : -</span><br><br>
-                                    <span>Kapasitas : -</span>
+                                    <span>Tahun : {{ $tahun }}</span><br><br>
+                                    <span>Kapasitas : {{ $kapasitas }}</span>
                                 </div>
                             </div>
                         </div>
