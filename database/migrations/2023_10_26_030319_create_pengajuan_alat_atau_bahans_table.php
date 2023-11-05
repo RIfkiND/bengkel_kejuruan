@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('type_atau_model');
             $table->string('dimensi')->nullable();
             $table->string('gambar')->nullable();
-            $table->string('nama_pengaju');
-            $table->foreignId('sekolah_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade');
+            $table->foreignId('sekolah_id')->constrained('sekolahs')->onDelete('cascade');
             $table->enum('status', ['Pending', 'Diterima', 'Ditolak'])->default('Pending');
             $table->timestamps();
         });

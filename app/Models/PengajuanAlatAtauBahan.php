@@ -10,4 +10,14 @@ class PengajuanAlatAtauBahan extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
+
+    public function sekolah()
+    {
+        return $this->belongsTo(Sekolah::class);
+    }
+
 }
