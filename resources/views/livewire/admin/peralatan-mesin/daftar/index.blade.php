@@ -285,6 +285,11 @@
                         </span>
                     @endforelse
                 </div>
+                <div class="row">
+                    <div class="col d-flex justify-content-center">
+                        {{ $peralatans->links() }}
+                    </div>
+                </div>
             </div>
     @endif
 </div>

@@ -49,7 +49,7 @@ class Index extends Component
                 'alats' => AlatAtauBahan::where('nama_alat_atau_bahan', 'LIKE', $searchAlat)
                     ->where('ruangan_id', $this->ruangan_byadmin)
                     ->orderBy('id', 'DESC')
-                    ->paginate(10, ['*'], 'alatPage'),
+                    ->paginate(9, ['*'], 'alatPage'),
             ]);
         } else {
             if (

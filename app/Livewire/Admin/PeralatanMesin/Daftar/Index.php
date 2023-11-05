@@ -43,7 +43,7 @@ class Index extends Component
                     ->where('ruangan_id', $this->ruangan_byadmin)
                     ->where('kondisi', 'ditempat')
                     ->orderBy('id', 'DESC')
-                    ->paginate(10, ['*'], 'peralatanPage'),
+                    ->paginate(9, ['*'], 'peralatanPage'),
             ]);
         } else {
             if (
@@ -59,13 +59,13 @@ class Index extends Component
                         ->where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                         ->where('kondisi', 'ditempat')
                         ->orderBy('id', 'DESC')
-                        ->paginate(10, ['*'], 'peralatanPage');
+                        ->paginate(9, ['*'], 'peralatanPage');
                 } else {
                     $peralatans = PeralatanAtauMesin::where('ruangan_id', auth()->user()->ruangan_id)
                         ->where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                         ->where('kondisi', 'ditempat')
                         ->orderBy('id', 'DESC')
-                        ->paginate(10, ['*'], 'peralatanPage');
+                        ->paginate(9, ['*'], 'peralatanPage');
                 }
 
                 return view('livewire.admin.peralatan-mesin.daftar.index', [
