@@ -245,24 +245,12 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $peralatan->nama_peralatan_atau_mesin }}</h5>
                                     <div class="row">
-                                        @if ($peralatan->spesifikasi)
-                                            <div class="col-lg-6 ">
-                                                <div class="card-text">
-                                                    <span>Merk : {{ $peralatan->spesifikasi->merk }}</span><br>
-                                                    <Span>Type/Model :
-                                                        {{ $peralatan->spesifikasi->tipe_atau_model }}</Span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="card-text">
-                                                    <span>Tahun : {{ $peralatan->spesifikasi->tahun }}</span><br>
-                                                    <span>Kapasitas : {{ $peralatan->spesifikasi->kapasitas }}</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <p>Cat :{{ $peralatan->kategori->nama_kategori }}</p>
-                                            </div>
-                                        @endif
+
+                                        <div class="card-text">
+                                            <p>Terakhir Di Pakai Oleh : <br>
+                                                Kelas : <br>
+                                                Pada : </p>
+                                        </div>
                                     </div>
                                     <div class="d-flex justify-content-end">
                                         <h3> @php
