@@ -18,16 +18,32 @@
                     <div class="modal-body">
                         <div class="container-fluid">
                             {{-- preview img --}}
-                            @if ($updateMode||$informasiMode)
+                            @if ($updateMode || $informasiMode)
                                 @if ($image)
                                     <div class="mb-3 mx-auto col-lg-6">
                                         <img src="{{ $image->temporaryUrl() }}" class="img-fluid" alt="Preview Image">
                                     </div>
                                 @else
-                                    <div class="mb-3 mx-auto col-lg-6">
-                                        <img src="{{ asset('storage/' . $imageprev) }}" class="img-fluid"
-                                            alt="Preview Image">
-                                    </div>
+                                    @if ($imageprev != null)
+                                        <div class="mb-3 mx-auto col-lg-6">
+                                            <img src="{{ asset('storage/' . $imageprev) }}" class="img-fluid"
+                                                alt="Preview Image">
+                                        </div>
+                                    @else
+                                        <div class="mb-3 mx-auto col-lg-6">
+                                            <svg class="bd-placeholder-img img-thumbnail" width="200" height="200"
+                                                xmlns="http://www.w3.org/2000/svg" role="img"
+                                                aria-label="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera: 200x200"
+                                                preserveAspectRatio="xMidYMid slice" focusable="false">
+                                                <title>A generic square placeholder image with a white border around it,
+                                                    making it resemble a photograph taken with an old instant camera
+                                                </title>
+                                                <rect width="100%" height="100%" fill="#868e96"></rect>
+                                                <text y="50%" x="20%" fill="#dee2e6" dy=".3em">Gambar
+                                                    Preview</text>
+                                            </svg>
+                                        </div>
+                                    @endif
                                 @endif
                             @else
                                 @if ($image)
@@ -143,11 +159,11 @@
                         </button>
                         @if ($updateMode)
                             <button type="button" class="btn btn-primary"
-                                wire:click.prevent="update()">Simpan</button>
+                                wire:click.prevent="update()" wire:loading.class="disabled"> Simpan</button>
                         @elseif ($informasiMode)
                         @else
                             <button type="button" class="btn btn-primary"
-                                wire:click.prevent="store()">Ajukan</button>
+                                wire:click.prevent="store()" wire:loading.class="disabled">Ajukan</button>
                         @endif
                     </div>
                 </form>

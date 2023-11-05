@@ -153,7 +153,9 @@ class Index extends Component
                 'dimensi' => $this->dimensi,
                 'tanggal' => date('Y-m-d H:i:s'),
             ]);
-            Storage::disk('public')->delete($this->imageprev);
+            if ($this->imageprev != null) {
+                Storage::disk('public')->delete($this->imageprev);
+            }
         } else {
             $pengajuan = PengajuanAlatAtauBahan::find($this->pengajuan_id);
             $pengajuan->update([
