@@ -34,31 +34,72 @@ class Index extends Component
 
     public function updatePeralatans()
     {
-        $this->peralatans = PeralatanAtauMesin::where('ruangan_id', $this->ruangan_id)
-            ->where('kondisi', 'ditempat')
-            ->orderBy('id', 'DESC')
-            ->get();
+        if (auth()->user()->role == 'KepalaBengkel') {
+            $this->peralatans = PeralatanAtauMesin::where('ruangan_id', auth()->user()->ruangan_id)
+                ->where('kondisi', 'ditempat')
+                ->orderBy('id', 'DESC')
+                ->get();
+        } else {
+            $this->peralatans = PeralatanAtauMesin::where('ruangan_id', $this->ruangan_id)
+                ->where('kondisi', 'ditempat')
+                ->orderBy('id', 'DESC')
+                ->get();
+        }
     }
 
     public function updateKelas()
     {
-        $this->kelas = GuruKelas::where('guru_id', $this->guru_id)
-            ->orderBy('id', 'DESC')
-            ->get();
+        if (auth()->user()->role == 'Guru') {
+            $this->kelas = GuruKelas::where('guru_id', auth()->user()->guru_id)
+                ->orderBy('id', 'DESC')
+                ->get();
+        } else {
+            $this->kelas = GuruKelas::where('guru_id', $this->guru_id)
+                ->orderBy('id', 'DESC')
+                ->get();
+        }
     }
     public function render()
     {
-        return view('livewire.admin.peralatan-mesin.pemakaian.index', [
-            'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
-                ->orderBy('id', 'DESC')
-                ->get(),
-            'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
-            'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
-                ->orderBy('id', 'DESC')
-                ->get(),
-            'peralatans',
-            'kelas',
-        ]);
+        if (auth()->user()->role == 'KepalaBengkel') {
+            $this->updatePeralatans();
+            return view('livewire.admin.peralatan-mesin.pemakaian.index', [
+                'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->get(),
+                'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
+                'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->get(),
+                'peralatans',
+                'kelas',
+            ]);
+        } elseif (auth()->user()->role == 'Guru') {
+            $this->updateKelas();
+            return view('livewire.admin.peralatan-mesin.pemakaian.index', [
+                'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->get(),
+                'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
+                'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->get(),
+                'peralatans',
+                'kelas',
+            ]);
+        } else {
+            return view('livewire.admin.peralatan-mesin.pemakaian.index', [
+                'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->get(),
+                'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
+                'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->get(),
+                'peralatans',
+                'kelas',
+            ]);
+        }
     }
 
     private function resetInputFields()
@@ -72,22 +113,24 @@ class Index extends Component
 
     public function store()
     {
-        $validatedDate = $this->validate([
-            'tanggal' => 'required',
-            'waktu_awal'=> 'required',
-            'p_m_id'=> 'required',
-            'guru_id'=> 'required',
-            'kelas_id'=> 'required',
-            'waktu_akhir'=> 'required',
-        ],
-        [
-            'tanggal.required' => 'Tanggal tidak boleh kosong',
-            'waktu_awal.required' => 'Waktu Awal tidak boleh kosong',
-            'p_m_id.required' => 'Peralatan atau Mesin tidak boleh kosong',
-            'guru_id.required' => 'Guru tidak boleh kosong',
-            'kelas_id.required' => 'Kelas tidak boleh kosong',
-            'waktu_akhir.required' => 'Waktu Akhir tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'tanggal' => 'required',
+                'waktu_awal' => 'required',
+                'p_m_id' => 'required',
+                'guru_id' => 'required',
+                'kelas_id' => 'required',
+                'waktu_akhir' => 'required',
+            ],
+            [
+                'tanggal.required' => 'Tanggal tidak boleh kosong',
+                'waktu_awal.required' => 'Waktu Awal tidak boleh kosong',
+                'p_m_id.required' => 'Peralatan atau Mesin tidak boleh kosong',
+                'guru_id.required' => 'Guru tidak boleh kosong',
+                'kelas_id.required' => 'Kelas tidak boleh kosong',
+                'waktu_akhir.required' => 'Waktu Akhir tidak boleh kosong',
+            ],
+        );
 
         Pemakaian::create([
             'tanggal_pemakaian' => $this->tanggal,
@@ -126,16 +169,18 @@ class Index extends Component
 
     public function update()
     {
-        $validatedDate = $this->validate([
-            'tanggal' => 'required',
-            'waktu_awal'=> 'required',
-            'waktu_akhir'=> 'required',
-        ],
-        [
-            'tanggal.required' => 'Tanggal tidak boleh kosong',
-            'waktu_awal.required' => 'Tanggal tidak boleh kosong',
-            'waktu_akhir.required' => 'Tanggal tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'tanggal' => 'required',
+                'waktu_awal' => 'required',
+                'waktu_akhir' => 'required',
+            ],
+            [
+                'tanggal.required' => 'Tanggal tidak boleh kosong',
+                'waktu_awal.required' => 'Tanggal tidak boleh kosong',
+                'waktu_akhir.required' => 'Tanggal tidak boleh kosong',
+            ],
+        );
 
         $peminjaman = Pemakaian::find($this->peminjaman_id);
         $peminjaman->update([
