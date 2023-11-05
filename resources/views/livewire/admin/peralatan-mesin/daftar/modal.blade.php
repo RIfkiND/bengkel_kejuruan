@@ -33,7 +33,7 @@
                     </div>
                 @else
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Informasi Pemakaian (Nama Alat)</h4>
+                        <h4 class="modal-title" id="myModalLabel">Informasi Pemakaian</h4>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
@@ -41,7 +41,7 @@
                         {{-- <div class="row">
                             <div class="col">
                                 Terakhir Di Pakai Oleh : Guru Bersama Kelas
-                            </div>
+                            </div>  
                         </div>
                         <div class="row">
                             <div class="col">
@@ -58,7 +58,12 @@
                             <div class="col-lg-6">
                                 <div class="card-text">
                                     <span>Tahun : {{ $tahun }}</span><br><br>
-                                    <span>Kapasitas : {{ $kapasitas }}</span>
+                                    <span>Kapasitas : {{ $kapasitas }} <br><br></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card-text">
+                                    <span>Kategori : {{  $peralatan->kategori->nama_kategori}}</span>
                                 </div>
                             </div>
                         </div>
