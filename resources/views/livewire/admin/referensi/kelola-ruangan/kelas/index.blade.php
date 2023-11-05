@@ -34,11 +34,14 @@
                                     <h5 class="card-header position-absolute">{{ $kls->nama_kelas }}</h5>
                                     <div class="card-header ml-auto btn">
                                         <div class="dropdown">
-                                            <a href="#" data-toggle="dropdown"><i
+                                            <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                     class="fa fa-info-circle fa-lg mr-1"></i>More</a>
                                             <div class="dropdown-menu"><a class="dropdown-item"
-                                                    href="#">Edit</a><a class="dropdown-item text-danger"
-                                                    href="#">Delete</a>
+                                                    href="javascript:void(0)" data-toggle="modal"
+                                                    data-target="#ModalKelas"
+                                                    wire:click='edit({{ $kls->id }})'>Edit</a><a
+                                                    class="dropdown-item text-danger" href="javascript:void(0)"
+                                                    wire:click='ondel({{ $kls->id }})'>Delete</a>
                                             </div>
                                         </div>
                                     </div>
@@ -93,11 +96,12 @@
                         </div>
                         <div class="row">
                             @foreach ($ruangans as $ruangan)
-                                <div class="col-lg-4 col-sm-6">
-                                    <a href="{{ route('admin.sekolah.ruangan.peralatan', $ruangan->id) }}">
+                                <a href="{{ route('admin.sekolah.ruangan.peralatan', $ruangan->id) }}">
+                                    <div class="col-lg-4 col-sm-6">
                                         <div class="card border-primary  d-flex justify-content-between">
-                                            <h5 class="card-header position-absolute ">{{ $ruangan->nama_ruangan }}</h5>
-                                            <div class="card-header ml-auto btn">
+                                            <h5 class="card-header position-absolute ">{{ $ruangan->nama_ruangan }}
+                                            </h5>
+                                            {{-- <div class="card-header ml-auto btn">
                                                 <div class="dropdown">
                                                     <a href="#" data-toggle="dropdown"><i
                                                             class="fa fa-info-circle fa-lg mr-1"></i>More</a>
@@ -106,7 +110,7 @@
                                                             class="dropdown-item text-danger" href="#">Delete</a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="card-body">
                                                 <h5 class="card-title"></h5>
                                                 <div class="row">
@@ -125,8 +129,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
                             @endforeach
                         </div>
                         <div class="row">

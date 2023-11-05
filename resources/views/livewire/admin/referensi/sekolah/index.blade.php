@@ -28,11 +28,14 @@
                                         <h5 class="card-header position-absolute ">{{ $sekolah->nama_sekolah }}</h5>
                                         <div class="card-header ml-auto btn">
                                             <div class="dropdown">
-                                                <a href="#" data-toggle="dropdown"><i
+                                                <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                         class="fa fa-info-circle fa-lg mr-1"></i>More</a>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Edit</a>
-                                                    <a class="dropdown-item text-danger" href="#">Delete</a>
+                                                    <a class="dropdown-item" href="javascript:void(0)"
+                                                        wire:click='edit({{ $sekolah->id }})' data-toggle="modal"
+                                                        data-target="#ModalSekolah">Edit</a>
+                                                    <a class="dropdown-item text-danger" href="javascript:void(0)"
+                                                        wire:click='ondel({{ $sekolah->id }})'>Delete</a>
                                                 </div>
                                             </div>
                                         </div>

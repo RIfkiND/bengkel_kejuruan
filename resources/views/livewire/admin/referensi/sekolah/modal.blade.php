@@ -16,7 +16,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" class="form-control" placeholder="Satya N.R" wire:model='nama_sekolah'>
+                            <input type="text" class="form-control" placeholder="SMKN 1 DAERAH" wire:model='nama_sekolah'>
                             @error('nama_sekolah')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror

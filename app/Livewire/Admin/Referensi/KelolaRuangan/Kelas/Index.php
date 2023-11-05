@@ -46,6 +46,7 @@ class Index extends Component
                     ->paginate(6, ['*'], 'kelasPage'),
             ]);
         } else {
+            $searchKelas = '%' . $this->searchKelas . '%';
             $searchRuangan = '%' . $this->searchRuangan . '%';
             return view('livewire.admin.referensi.kelola-ruangan.kelas.index', [
                 'kelas' => Kelas::where('nama_kelas', 'LIKE', $searchKelas)
@@ -72,16 +73,18 @@ class Index extends Component
     public function store()
     {
         if (auth()->user()->sekolah_id) {
-            $validatedDate = $this->validate([
-                'nama_kelas' => 'required',
-                'tingkat' => 'required',
-                'jurusan' => 'required',
-            ],
-            [
-                'nama_kelas.required' => 'Nama tidak boleh kosong',
-                'tingkat.required' => 'Kelas tidak boleh kosong',
-                'jurusan.required' => 'Jurusan tidak boleh kosong',
-            ]);
+            $validatedDate = $this->validate(
+                [
+                    'nama_kelas' => 'required',
+                    'tingkat' => 'required',
+                    'jurusan' => 'required',
+                ],
+                [
+                    'nama_kelas.required' => 'Nama tidak boleh kosong',
+                    'tingkat.required' => 'Kelas tidak boleh kosong',
+                    'jurusan.required' => 'Jurusan tidak boleh kosong',
+                ],
+            );
 
             Kelas::create([
                 'nama_kelas' => $this->nama_kelas,
@@ -90,16 +93,18 @@ class Index extends Component
                 'jurusan' => $this->jurusan,
             ]);
         } else {
-            $validatedDate = $this->validate([
-                'nama_kelas' => 'required',
-                'tingkat' => 'required',
-                'jurusan' => 'required',
-            ],
-            [
-                'nama_kelas.required' => 'Nama tidak boleh kosong',
-                'tingkat.required' => 'Kelas tidak boleh kosong',
-                'jurusan.required' => 'Jurusan tidak boleh kosong',
-            ]);
+            $validatedDate = $this->validate(
+                [
+                    'nama_kelas' => 'required',
+                    'tingkat' => 'required',
+                    'jurusan' => 'required',
+                ],
+                [
+                    'nama_kelas.required' => 'Nama tidak boleh kosong',
+                    'tingkat.required' => 'Kelas tidak boleh kosong',
+                    'jurusan.required' => 'Jurusan tidak boleh kosong',
+                ],
+            );
 
             Kelas::create([
                 'nama_kelas' => $this->nama_kelas,
@@ -139,16 +144,18 @@ class Index extends Component
     public function update()
     {
         if ($this->sekolah_id) {
-            $validatedDate = $this->validate([
-                'nama_kelas' => 'required',
-                'tingkat' => 'required',
-                'jurusan' => 'required',
-            ],
-            [
-                'nama_kelas.required' => 'Nama tidak boleh kosong',
-                'tingkat.required' => 'Kelas tidak boleh kosong',
-                'jurusan.required' => 'Jurusan tidak boleh kosong',
-            ]);
+            $validatedDate = $this->validate(
+                [
+                    'nama_kelas' => 'required',
+                    'tingkat' => 'required',
+                    'jurusan' => 'required',
+                ],
+                [
+                    'nama_kelas.required' => 'Nama tidak boleh kosong',
+                    'tingkat.required' => 'Kelas tidak boleh kosong',
+                    'jurusan.required' => 'Jurusan tidak boleh kosong',
+                ],
+            );
 
             $kelas = Kelas::find($this->kelas_id);
             $kelas->update([
@@ -158,16 +165,18 @@ class Index extends Component
                 'jurusan' => $this->jurusan,
             ]);
         } else {
-            $validatedDate = $this->validate([
-                'nama_kelas' => 'required',
-                'tingkat' => 'required',
-                'jurusan' => 'required',
-            ],
-            [
-                'nama_kelas.required' => 'Nama tidak boleh kosong',
-                'tingkat.required' => 'Kelas tidak boleh kosong',
-                'jurusan.required' => 'Jurusan tidak boleh kosong',
-            ]);
+            $validatedDate = $this->validate(
+                [
+                    'nama_kelas' => 'required',
+                    'tingkat' => 'required',
+                    'jurusan' => 'required',
+                ],
+                [
+                    'nama_kelas.required' => 'Nama tidak boleh kosong',
+                    'tingkat.required' => 'Kelas tidak boleh kosong',
+                    'jurusan.required' => 'Jurusan tidak boleh kosong',
+                ],
+            );
 
             $kelas = Kelas::find($this->kelas_id);
             $kelas->update([

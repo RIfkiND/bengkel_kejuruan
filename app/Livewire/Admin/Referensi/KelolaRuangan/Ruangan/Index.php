@@ -137,7 +137,7 @@ class Index extends Component
                 'letak_ruangan.required' => 'Letak Ruangan tidak boleh kosong',
             ]);
 
-            $ruangan = Ruangan::find($this->kelas_id);
+            $ruangan = Ruangan::find($this->ruangan_id);
             $ruangan->update([
                 'nama_ruangan' => $this->nama_ruangan,
                 'sekolah_id' => $this->sekolah_id,
@@ -153,7 +153,7 @@ class Index extends Component
                 'letak_ruangan.required' => 'Letak Ruangan tidak boleh kosong',
             ]);
 
-            $ruangan = Ruangan::find($this->kelas_id);
+            $ruangan = Ruangan::find($this->ruangan_id);
             $ruangan->update([
                 'nama_ruangan' => $this->nama_ruangan,
                 'sekolah_id' => auth()->user()->sekolah_id,
