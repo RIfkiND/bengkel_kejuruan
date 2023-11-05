@@ -309,9 +309,27 @@
                             </div>
                         </div>
                     @empty
-                        <span>
-                            <h1 class="text-center">Data Kosong</h1>
-                        </span>
+                        <div class="col">
+                            <div class="login-form-bg h-100">
+                                <div class="container h-100">
+                                    <div class="row justify-content-center h-100">
+                                        <div class="col-xl-6">
+                                            <div class="error-content">
+                                                <div class="card mb-0">
+                                                    <div class="card-body text-center pt-5">
+                                                        <h1 class="error-text text-warning mt-5"><i
+                                                                class="fa fa-info-circle"></i></h1>
+
+                                                        <h1 class="my-5 text-warning text-wrap">Data Kosong
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforelse
                 </div>
                 <div class="row">
