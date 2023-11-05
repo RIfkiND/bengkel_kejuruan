@@ -225,7 +225,7 @@
                                 <div class="card-header position-absolute">PM-0{{ $peralatan->id }}</div>
                                 <div class="card-header ml-auto btn">
                                     <div class="dropdown">
-                                        <a href="#" data-toggle="dropdown"><i
+                                        <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                 class="fa fa-info-circle fa-lg mr-1"></i>More</a>
                                         <div class="dropdown-menu"><a class="dropdown-item" href="javascript:void(0)"
                                                 data-toggle="modal" data-target="#ModalPeralatan">Info
@@ -272,13 +272,35 @@
                                                     Sedang Dalam Pemeliharaan
                                                 </span>
                                             @else
-                                                <h3>
-                                                    <span
-                                                        class="badge {{ $peralatan->status == 'Tersedia' ? 'badge-success' : 'badge-danger' }} px-2 text-white"><i
-                                                            class="fa fa-check mr-1"></i>
-                                                        {{ $peralatan->status }}
-                                                    </span>
-                                                </h3>
+                                                @if (auth()->user()->role == 'KepalaBengkel')
+                                                    <a href="javascript:void(0)" data-toggle="dropdown">
+                                                        <h3>
+                                                            <span
+                                                                class="badge {{ $peralatan->status == 'Tersedia' ? 'badge-success' : 'badge-danger' }} px-2 text-white"><i
+                                                                    class="fa fa-check mr-1"></i>
+                                                                {{ $peralatan->status }}
+                                                            </span>
+                                                        </h3>
+                                                    </a>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="javascript:void(0)"
+                                                            wire:click='status({{ $peralatan->id }})'>
+                                                            @if ($peralatan->status == 'Digunakan')
+                                                                Tersedia
+                                                            @else
+                                                                Digunakan
+                                                            @endif
+                                                        </a>
+                                                    </div>
+                                                @else
+                                                    <h3>
+                                                        <span
+                                                            class="badge {{ $peralatan->status == 'Tersedia' ? 'badge-success' : 'badge-danger' }} px-2 text-white"><i
+                                                                class="fa fa-check mr-1"></i>
+                                                            {{ $peralatan->status }}
+                                                        </span>
+                                                    </h3>
+                                                @endif
                                             @endif
                                         </h3>
                                     </div>

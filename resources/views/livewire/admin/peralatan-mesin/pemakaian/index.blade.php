@@ -175,12 +175,21 @@
                                             </td>
                                             <td>
                                                 <div class="dropdown">
-                                                    <a href="#" data-toggle="dropdown"><i
+                                                    <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                             class="fa fa-ellipsis-v fa-lg"></i></a>
                                                     <div class="dropdown-menu">
-                                                        <a href="#" class="dropdown-item">Link 1</a>
-                                                        <a class="dropdown-item" href="#">Link 2</a>
-                                                        <a class="dropdown-item" href="#">Link 3</a>
+                                                        @if (auth()->user()->role == 'KepalaBengkel' || auth()->user()->role == 'Guru')
+                                                            @if (auth()->user()->role == 'KepalaBengkel')
+                                                                <a href="javascript:void(0)"
+                                                                    class="dropdown-item" wire:click='updateStatus_pengajuan({{ 'id' = $peminjaman->id, 'newstatus' = 'Disetujui' }})'>Setujui</a>
+                                                                <a href="javascript:void(0)"
+                                                                    class="dropdown-item">Tolak</a>
+                                                            @endif
+                                                            <a href="javascript:void(0)" class="dropdown-item">Selesai
+                                                                Dipakai</a>
+                                                        @endif
+                                                        <a class="dropdown-item" href="javascript:void(0)">Edit</a>
+                                                        <a class="dropdown-item" href="javascript:void(0)">Hapus</a>
                                                     </div>
                                                 </div>
                                             </td>
