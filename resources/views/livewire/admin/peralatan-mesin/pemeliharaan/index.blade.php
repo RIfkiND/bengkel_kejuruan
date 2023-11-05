@@ -140,8 +140,7 @@
                                                             @else
                                                                 Belum Selesai
                                                             @endif
-                                                        </a>
-                                                        <a class="dropdown-item" href="javascript:void(0)">Link 3</a>
+                                                    </a>
                                                     </div>
                                                 </div>
                                             </td>
