@@ -42,7 +42,7 @@
                                             </div>
                                             <div class="col-lg-3 mb-4">
                                                 <select wire:model="kode" class="form-control" id="kode">
-                                                    <option value="" selected>JENIS</option>
+                                                    <option value="" selected>Jenis</option>
                                                     <option value="A">Alat</option>
                                                     <option value="B">Bahan</option>
                                                 </select>
