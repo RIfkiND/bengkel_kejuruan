@@ -11,7 +11,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama_alat_atau_bahan, $tanggal, $kode, $volume, $satuan, $sumber_dana, $merk, $type, $dimensi, $image, $pengajuan_id, $searchPengajuan, $selectedPengajuanId, $imageprev;
+    public $nama_alat_atau_bahan, $nama_pengaju, $tanggal, $kode, $volume, $satuan, $sumber_dana, $merk, $type, $dimensi, $image, $pengajuan_id, $searchPengajuan, $selectedPengajuanId, $imageprev;
     public $updateMode = false;
     public $informasiMode = false;
 
@@ -46,7 +46,6 @@ class Index extends Component
         $this->kode = '';
         $this->volume = '';
         $this->satuan = '';
-        $this->sumber_dana = '';
         $this->merk = '';
         $this->type = '';
         $this->dimensi = '';
@@ -74,7 +73,7 @@ class Index extends Component
                 'volume' => $this->volume,
                 'satuan' => $this->satuan,
                 'sekolah_id' => auth()->user()->sekolah_id,
-                'nama_pengaju' => auth()->user()->guru->nama_guru,
+                'guru_id' => auth()->user()->guru_id,
                 'merk' => $this->merk,
                 'type_atau_model' => $this->type,
                 'dimensi' => $this->dimensi,
@@ -87,7 +86,7 @@ class Index extends Component
                 'volume' => $this->volume,
                 'satuan' => $this->satuan,
                 'sekolah_id' => auth()->user()->sekolah_id,
-                'nama_pengaju' => auth()->user()->guru->nama_guru,
+                'guru_id' => auth()->user()->guru->nama_guru,
                 'merk' => $this->merk,
                 'type_atau_model' => $this->type,
                 'dimensi' => $this->dimensi,
@@ -180,12 +179,21 @@ class Index extends Component
         ]);
     }
 
-    // public function updateStatus($id)
-    // {
-    //     $pengajuan = PengajuanAlatAtauBahan::find($id);
-    //     $pengajuan->status = $pengajuan->status == 1 ? 0 : 1;
-    //     $pengajuan->save();
-    // }
+    public function updateStatus($newStatus)
+    {
+        $pengajuan = PengajuanAlatAtauBahan::find($this->selectedPengajuanId);
+
+        if (in_array($newStatus, ['Diterima', 'Ditolak'])) {
+            $pengajuan->status = $newStatus;
+            $pengajuan->save();
+            $this->alert('success', 'Berhasil '. $newStatus .' !', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'timerProgressBar' => true,
+            ]);
+        }
+    }
 
     public function ondel($id)
     {
@@ -230,6 +238,7 @@ class Index extends Component
 
     public function info($id)
     {
+        $this->selectedPengajuanId = $id;
         $pengajuan = PengajuanAlatAtauBahan::findOrFail($id);
         $this->pengajuan_id = $id;
         $this->nama_alat_atau_bahan = $pengajuan->nama_alat_atau_bahan;
@@ -240,7 +249,7 @@ class Index extends Component
         $this->kode = $pengajuan->kode;
         $this->volume = $pengajuan->volume;
         $this->satuan = $pengajuan->satuan;
-        $this->sumber_dana = $pengajuan->sumber_dana;
+        $this->nama_pengaju = $pengajuan->guru->nama_guru;
         $this->informasiMode = true;
     }
 }

@@ -32,8 +32,8 @@
                                         <th>Gambar</th>
                                         <th>Kode A/B</th>
                                         <th>Nama A/B</th>
-                                        <th>Spesifikasi</th>
                                         <th>Volume</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -66,12 +66,8 @@
                                             </td>
                                             <td>{{ $pengajuan->kode }}</td>
                                             <td>{{ $pengajuan->nama_alat_atau_bahan }}</td>
-                                            <td>
-                                                Merk: <i>{{ $pengajuan->merk }}</i><br>
-                                                Type/Model: <i>{{ $pengajuan->type_atau_model }}</i><br>
-                                                Dimensi: <i>{{ $pengajuan->dimensi }}</i><br>
-                                            </td>
                                             <td>{{ $pengajuan->volume }}{{ $pengajuan->satuan }}</td>
+                                            <td>{{ $pengajuan->status }}</td>
                                             <td>
                                                 <div class="dropdown">
                                                     <a href="javascript:void(0)" data-toggle="dropdown"><i

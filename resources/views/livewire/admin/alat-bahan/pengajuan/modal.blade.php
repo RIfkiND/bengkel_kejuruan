@@ -66,86 +66,96 @@
                                 @endif
                             @endif
                             {{-- end preview img --}}
-                            <div class="form-row mb-3">
-                                <div class="col">
-                                    <input type="file" class="form-control-file" wire:model='image'>
-                                    @error('image')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                            @if ($informasiMode)
+                                <h4>Nama Pengaju:</h4>
+                                <span>{{ $nama_pengaju }}</span>
+                                <br>
+                                <h4>Spesifikasi:</h4>
+                                <br>
+                                Merk: <i>{{ $pengajuan->merk }}</i><br>
+                                Type/Model: <i>{{ $pengajuan->type_atau_model }}</i><br>
+                                Dimensi: <i>{{ $pengajuan->dimensi }}</i><br>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success"
+                                        wire:click="updateStatus('Diterima')">Setujui</button>
+                                    <button type="button" class="btn btn-danger"
+                                        wire:click="updateStatus('Ditolak')">Tolak</button>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col mb-4">
-                                        <input wire:model="nama_alat_atau_bahan" type="text"
-                                            class="form-control input-default" placeholder="Nama Alat Atau Bahan">
-                                        @error('nama_alat_atau_bahan')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col mb-4">
-                                        <select wire:model="kode" class="form-control" id="kode">
-                                            <option value="" selected>JENIS</option>
-                                            <option value="A">Alat</option>
-                                            <option value="B">Bahan</option>
-                                        </select>
-                                        @error('kode')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                            @else
+                                <div class="form-row mb-3">
                                     <div class="col">
-                                        <input wire:model="sumber_dana" type="text" id="sumber_dana"
-                                            class="form-control input-default" placeholder="Sumber Dana">
-                                        @error('sumber_dana')
+                                        <input type="file" class="form-control-file" wire:model='image'>
+                                        @error('image')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <input wire:model="volume" type="text" id="volume"
-                                            class="form-control input-default" placeholder="Jumlah">
-                                        @error('volume')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col mb-4">
+                                            <input wire:model="nama_alat_atau_bahan" type="text"
+                                                class="form-control input-default" placeholder="Nama Alat Atau Bahan">
+                                            @error('nama_alat_atau_bahan')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <input wire:model="satuan" type="text" id="satuan"
-                                            class="form-control input-default" placeholder="Satuan">
-                                        @error('satuan')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                    <div class="row">
+                                        <div class="col mb-4">
+                                            <select wire:model="kode" class="form-control" id="kode">
+                                                <option value="" selected>JENIS</option>
+                                                <option value="A">Alat</option>
+                                                <option value="B">Bahan</option>
+                                            </select>
+                                            @error('kode')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <label>Spesifikasi</label>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col mb-4">
-                                        <input wire:model="merk" type="text" id="spek"
-                                            class="form-control input-default" placeholder="Merk">
-                                        @error('merk')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col mb-4">
-                                        <input wire:model="type" type="text" class="form-control input-default"
-                                            placeholder="Type/Model">
-                                        @error('type')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <div class="col mb-4">
-                                        <input wire:model="dimensi" type="text" class="form-control input-default"
-                                            placeholder="Dimensi">
-                                        @error('dimensi')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                    <div class="row">
+                                        <div class="col">
+                                            <input wire:model="volume" type="text" id="volume"
+                                                class="form-control input-default" placeholder="Jumlah">
+                                            @error('volume')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col">
+                                            <input wire:model="satuan" type="text" id="satuan"
+                                                class="form-control input-default" placeholder="Satuan">
+                                            @error('satuan')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <label>Spesifikasi</label>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col mb-4">
+                                            <input wire:model="merk" type="text" id="spek"
+                                                class="form-control input-default" placeholder="Merk">
+                                            @error('merk')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col mb-4">
+                                            <input wire:model="type" type="text"
+                                                class="form-control input-default" placeholder="Type/Model">
+                                            @error('type')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col mb-4">
+                                            <input wire:model="dimensi" type="text"
+                                                class="form-control input-default" placeholder="Dimensi">
+                                            @error('dimensi')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -158,12 +168,12 @@
                             @endif
                         </button>
                         @if ($updateMode)
-                            <button type="button" class="btn btn-primary"
-                                wire:click.prevent="update()" wire:loading.class="disabled"> Simpan</button>
+                            <button type="button" class="btn btn-primary" wire:click.prevent="update()"
+                                wire:loading.class="disabled"> Simpan</button>
                         @elseif ($informasiMode)
                         @else
-                            <button type="button" class="btn btn-primary"
-                                wire:click.prevent="store()" wire:loading.class="disabled">Ajukan</button>
+                            <button type="button" class="btn btn-primary" wire:click.prevent="store()"
+                                wire:loading.class="disabled">Ajukan</button>
                         @endif
                     </div>
                 </form>
