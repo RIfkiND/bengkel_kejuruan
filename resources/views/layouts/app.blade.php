@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Manajement Bengkel</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/Asset/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Asset/images/logo-dashboard.png">
 
     <link href="/Asset/css/style.css" rel="stylesheet">
 </head>

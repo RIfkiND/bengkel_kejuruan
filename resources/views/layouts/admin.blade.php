@@ -11,7 +11,7 @@
 
     <title>Manajement Bengkel</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/Asset/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Asset/images/logo-dashboard.png">
     @livewireStyles
     @stack('css')
     <!-- Custom Stylesheet -->

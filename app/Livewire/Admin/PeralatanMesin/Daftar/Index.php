@@ -76,6 +76,7 @@ class Index extends Component
             } else {
                 return view('livewire.admin.peralatan-mesin.daftar.index', [
                     'peralatans' => 'kosong',
+
                 ]);
             }
         }
@@ -218,6 +219,7 @@ class Index extends Component
         $this->type = $peralatan->spesifikasi->tipe_atau_model;
         $this->tahun = $peralatan->spesifikasi->tahun;
         $this->kapasitas = $peralatan->spesifikasi->kapasitas;
+        $this->kategori_id = $peralatan->kategori->nama_kategori;
         $this->updateMode = true;
 
     }

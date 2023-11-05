@@ -116,6 +116,7 @@ class Index extends Component
 
     public function edit($id)
     {
+        $this->informasiMode = false;
         $pengajuan = PengajuanAlatAtauBahan::findOrFail($id);
         $this->pengajuan_id = $id;
         $this->nama_alat_atau_bahan = $pengajuan->nama_alat_atau_bahan;
@@ -248,6 +249,7 @@ class Index extends Component
 
     public function info($id)
     {
+        $this->updateMode = false;
         $this->selectedPengajuanId = $id;
         $pengajuan = PengajuanAlatAtauBahan::findOrFail($id);
         $this->pengajuan_id = $id;
