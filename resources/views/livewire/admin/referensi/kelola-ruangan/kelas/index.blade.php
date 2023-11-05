@@ -30,16 +30,31 @@
                                     @else
                                         <a href="{{ route('admin.kelolaruangan.murid', $kls->id) }}">
                                 @endif
-                                <div class="card">
-                                    <div class="social-graph-wrapper widget-facebook">
-                                        <span class="s-icon text-truncate"
-                                            title="{{ $kls->nama_kelas }}">{{ $kls->nama_kelas }}</span>
+                                <div class="card border-primary  d-flex justify-content-between">
+                                    <h5 class="card-header position-absolute">{{ $kls->nama_kelas }}</h5>
+                                    <div class="card-header ml-auto btn">
+                                        <div class="dropdown">
+                                            <a href="#" data-toggle="dropdown"><i
+                                                    class="fa fa-info-circle fa-lg mr-1"></i>More</a>
+                                            <div class="dropdown-menu"><a class="dropdown-item"
+                                                    href="#">Edit</a><a class="dropdown-item text-danger"
+                                                    href="#">Delete</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                <h4 class="m-1">{{ $kls->murid->count() }}</h4>
-                                                <p class="m-0">Murid</p>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin')
+                                                    <a
+                                                        href="{{ route('admin.sekolah.kelas-ruangan.murid', $kls->id) }}">
+                                                    @else
+                                                        <a href="{{ route('admin.kelolaruangan.murid', $kls->id) }}">
+                                                @endif
+                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                                    <h4 class="m-1">{{ $kls->murid->count() }}</h4>
+                                                    <p class="m-0">Murid</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -80,18 +95,32 @@
                             @foreach ($ruangans as $ruangan)
                                 <div class="col-lg-4 col-sm-6">
                                     <a href="{{ route('admin.sekolah.ruangan.peralatan', $ruangan->id) }}">
-                                        <div class="card">
-                                            <div class="social-graph-wrapper widget-facebook">
-                                                <span class="s-icon text-truncate"
-                                                    title="{{ $ruangan->nama_ruangan }}">{{ $ruangan->nama_ruangan }}</span>
+                                        <div class="card border-primary  d-flex justify-content-between">
+                                            <h5 class="card-header position-absolute ">{{ $ruangan->nama_ruangan }}</h5>
+                                            <div class="card-header ml-auto btn">
+                                                <div class="dropdown">
+                                                    <a href="#" data-toggle="dropdown"><i
+                                                            class="fa fa-info-circle fa-lg mr-1"></i>More</a>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#">Edit</a><a
+                                                            class="dropdown-item text-danger" href="#">Delete</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                        <h4 class="m-1">
-                                                            {{ $ruangan->peralatanataumesinDitempat->count() }}
-                                                        </h4>
-                                                        <p class="m-0">Peralatan</p>
+                                            <div class="card-body">
+                                                <h5 class="card-title"></h5>
+                                                <div class="row">
+                                                    <div class="col ">
+                                                        <a
+                                                            href="{{ route('admin.sekolah.ruangan.peralatan', $ruangan->id) }}">
+                                                        </a>
+                                                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
+                                                            <h4 class="m-1">
+                                                                {{ $ruangan->peralatanataumesinDitempat->count() }}
+                                                            </h4>
+                                                            <p class="m-0">Peralatan</p>
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

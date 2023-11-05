@@ -24,36 +24,31 @@
                         @foreach ($sekolahs as $sekolah)
                             <div class="col-lg-4 col-sm-6">
                                 <a href="{{ route('admin.sekolah.kelas-ruangan', $sekolah->id) }}">
-                                    <div class="card">
-                                        <div class="social-graph-wrapper widget-facebook">
-                                            <span class="s-icon text-truncate"
-                                                title="{{ $sekolah->nama_sekolah }}">{{ $sekolah->nama_sekolah }}</span>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 border-right">
-                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                    <h4 class="m-1">{{ $sekolah->total_murid_count }}</h4>
-                                                    <p class="m-0">Murid</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                    <h4 class="m-1">{{ $sekolah->ruangan->count() }}</h4>
-                                                    <p class="m-0">Ruangan</p>
+                                    <div class="card d-flex justify-content-between">
+                                        <h5 class="card-header position-absolute ">{{ $sekolah->nama_sekolah }}</h5>
+                                        <div class="card-header ml-auto btn">
+                                            <div class="dropdown">
+                                                <a href="#" data-toggle="dropdown"><i
+                                                        class="fa fa-info-circle fa-lg mr-1"></i>More</a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Edit</a>
+                                                    <a class="dropdown-item text-danger" href="#">Delete</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-6 border-right">
-                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                    <h4 class="m-1">{{ $sekolah->guru->count() }}</h4>
-                                                    <p class="m-0">Guru</p>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-6 border-right">
+                                                    <div class="card-text">
+                                                        <span>Murid : {{ $sekolah->total_murid_count }}</span><br><br>
+                                                        <span>Ruangan :{{ $sekolah->ruangan->count() }}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                                                    <h4 class="m-1">{{ $sekolah->total_peralatan_count }}</h4>
-                                                    <p class="m-0">Peralatan/Mesin</p>
+                                                <div class="col-lg-6 border-right">
+                                                    <div class="card-text">
+                                                        <span>Guru : {{ $sekolah->guru->count() }}</span><br><br>
+                                                        <span>Peralatan :{{ $sekolah->total_peralatan_count }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -61,6 +56,7 @@
                                 </a>
                             </div>
                         @endforeach
+
                     </div>
                 </div>
             </div>

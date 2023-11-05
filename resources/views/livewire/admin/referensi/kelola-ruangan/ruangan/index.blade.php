@@ -41,6 +41,7 @@
                                                 <h4 class="m-1">{{ $ruangan->peralatanataumesinDitempat->count() }}
                                                 </h4>
                                                 <p class="m-0">Peralatan</p>
+                                                
                                             </div>
                                         </div>
                                     </div>
