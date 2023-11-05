@@ -156,6 +156,7 @@ class Index extends Component
         }
 
         $this->updateMode = false;
+        $this->dispatchBrowserEvent('close-modal');
         $this->resetInputFields();
         $this->alert('success', 'Berhasil Diubah!', [
             'position' => 'center',

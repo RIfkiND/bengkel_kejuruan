@@ -72,3 +72,13 @@
     {{-- modal --}}
     @include('livewire.admin.alat-bahan.pengajuan.modal')
 </div>
+
+@push('js')
+    <script>
+        document.addEventListener('livewire:load', function() {
+            Livewire.on('close-modal', function() {
+                $('#ModalPengajuan').modal('hide');
+            });
+        });
+    </script>
+@endpush
