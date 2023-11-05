@@ -30,7 +30,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-4 mb-4">
+                                    <div class="col-lg-3 mb-4">
                                         <select class="form-control" id="ruangan" wire:model='ruangan_id'
                                             wire:change="updatePeralatans">
                                             <option value="" selected>Ruangan</option>
@@ -40,7 +40,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-lg-4 mb-4">
+                                    <div class="col-lg-3 mb-4">
                                         <select class="form-control" id="peralatan" wire:model='p_m_id'>
                                             <option value="" selected>Peralatan/Mesin</option>
                                             @foreach ($peralatans as $peralatan)
@@ -68,7 +68,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-lg-4 mb-4">
-                                        <textarea class="form-control" id="keterangan" rows="2" placeholder="Keterangan" wire:model='keterangan'></textarea>
+                                        <textarea class="form-control" id="keterangan" rows="1" placeholder="Keterangan" wire:model='keterangan'></textarea>
                                         @error('keterangan')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
