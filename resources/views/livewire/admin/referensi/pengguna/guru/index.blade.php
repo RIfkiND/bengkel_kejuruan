@@ -15,9 +15,10 @@
                                 </div>
                             </div>
                             @if (auth()->user()->sekolah_id)
-                                <div class="col d-flex justify-content-end px-4 h-50">
-                                    <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
-                                        data-toggle="modal" data-target="#ModalGuru">Tambahkan Guru</button>
+                                <div class="col-2 d-flex justify-content-end px-4 h-50">
+                                    <a href="#" type="button"
+                                        class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
+                                        data-target="#ModalGuru">Tambahkan Guru</a>
                                 </div>
                             @endif
                         </div>
@@ -45,13 +46,20 @@
                                                     <td>Tidak Terdaftar Di Sekolah Manapun</td>
                                                 @endif
                                                 <td>
-                                                    <span>
-                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#ModalGuru"
-                                                            wire:click='edit({{ $guru->id }})'><i
-                                                                class="fa fa-pencil color-muted m-r-5"></i>
-                                                        </a><a href="javascript:void(0)" wire:click='ondel({{ $guru->id }})'><i
-                                                                class="fa fa-trash color-danger"></i></a>
-                                                    </span>
+                                                    <div class="dropdown">
+                                                        <a href="#" data-toggle="dropdown"><i
+                                                                class="fa fa-ellipsis-v fa-lg"></i></a>
+                                                        <div class="dropdown-menu"><a class="dropdown-item"
+                                                                href="javascript:void(0)" data-toggle="modal"
+                                                                data-target="#ModalGuru"
+                                                                wire:click='edit({{ $guru->id }})'><i
+                                                                    class="fa fa-pencil fa-lg mr-2"></i>Edit</a> <a
+                                                                class="dropdown-item text-danger"
+                                                                href="javascript:void(0)"
+                                                                wire:click='ondel({{ $guru->id }})'><i
+                                                                    class="fa fa-trash fa-lg mr-2"></i>Delete</a>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -14,9 +14,10 @@
                                         wire:model='searchAkun' wire:input='resetPage'>
                                 </div>
                             </div>
-                            <div class="col d-flex justify-content-end px-4 h-50">
-                                <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
-                                    data-toggle="modal" data-target="#ModalAkun">Tambahkan Akun</button>
+                            <div class="col-2 d-flex justify-content-end px-4 h-50">
+                                <a href="add-peralatan.html" type="button"
+                                    class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
+                                    data-target="#ModalAkun">Tambahkan Akun</a>
                             </div>
                         </div>
                         <div class="row">
@@ -45,7 +46,26 @@
                                                     @endif
 
                                                     <td>
-                                                        <span>
+                                                        <div class="dropdown">
+                                                            <a href="#" data-toggle="dropdown"><i
+                                                                    class="fa fa-ellipsis-v fa-lg"></i></a>
+                                                            <div class="dropdown-menu"><a class="dropdown-item"
+                                                                    href="javascript:void(0)" data-toggle="modal"
+                                                                    data-target="#ModalAkun"
+                                                                    wire:click='edit({{ $user->id }})'><i
+                                                                        class="fa fa-pencil mr-2"></i>Edit</a> <a
+                                                                    class="dropdown-item text-danger" href="javascript:void(0)"
+                                                                    wire:click='ondel({{ $user->id }})'><i
+                                                                        class="fa fa-trash text-danger mr-2"></i>Delete</a>
+                                                                @if (auth()->user()->role == 'SuperAdmin' || auth()->user()->role == 'Admin')
+                                                                    <a class="dropdown-item text-success"
+                                                                        href="{{ route('admin.impersonate', $user) }}"><i
+                                                                            class="fa fa-sign-in text-success mr-2"></i>Login
+                                                                        As</a>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        {{-- <span>
                                                             <a href="javascript:void(0)" data-toggle="modal"
                                                                 data-target="#ModalAkun"
                                                                 wire:click='edit({{ $user->id }})'><i
@@ -53,10 +73,11 @@
                                                             </a><a href="javascript:void(0)"
                                                                 wire:click='ondel({{ $user->id }})'><i
                                                                     class="fa fa-trash color-danger"></i></a>
-                                                            @if (auth()->user()->role == 'SuperAdmin'|| auth()->user()->role == 'Admin')
-                                                                <a href="{{ route('admin.impersonate', $user) }}">Login AS</a>
+                                                            @if (auth()->user()->role == 'SuperAdmin' || auth()->user()->role == 'Admin')
+                                                                <a href="{{ route('admin.impersonate', $user) }}">Login
+                                                                    AS</a>
                                                             @endif
-                                                        </span>
+                                                        </span> --}}
                                                     </td>
                                                 </tr>
                                             @endforeach

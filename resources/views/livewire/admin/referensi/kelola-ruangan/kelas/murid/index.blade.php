@@ -5,21 +5,22 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-lg-4">
                                 <div class="card-title">
                                     <h4>Murid Yang Terdaftar</h4>
                                 </div>
                             </div>
-                            <div class="col d-flex justify-content-end px-4">
+                            <div class="col-lg-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
                                         wire:model='searchMurid' wire:input='resetPage'>
                                 </div>
                             </div>
                             @if (auth()->user()->sekolah_id)
-                                <div class="col d-flex justify-content-end px-4 h-50">
-                                    <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
-                                        data-toggle="modal" data-target="#ModalMuridKelas">Tambahkan Murid</button>
+                                <div class="col-lg-4">
+                                    <a href="#" type="button"
+                                        class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
+                                        data-target="#ModalMuridKelas">Tambah Murid</a>
                                 </div>
                             @endif
                         </div>
@@ -63,22 +64,22 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-lg-4">
                                     <div class="card-title">
                                         <h4>Guru Yang Mengajar</h4>
                                     </div>
                                 </div>
-                                <div class="col d-flex justify-content-end px-4">
+                                <div class="col-lg-4">
                                     <div class="form-group">
                                         <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
-                                            wire:model='searchMurid' wire:input='resetPage'>
+                                            wire:model='searchGuru' wire:input='resetPage'>
                                     </div>
                                 </div>
                                 @if (auth()->user()->sekolah_id)
-                                    <div class="col d-flex justify-content-end px-4 h-50">
-                                        <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
-                                            data-toggle="modal" data-target="#ModalGuruKelas">Tambahkan
-                                            Pengajar</button>
+                                    <div class="col-lg-4">
+                                        <a href="#" type="button"
+                                            class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
+                                            data-target="#ModalGuruKelas">Tambah Guru</a>
                                     </div>
                                 @endif
                             </div>

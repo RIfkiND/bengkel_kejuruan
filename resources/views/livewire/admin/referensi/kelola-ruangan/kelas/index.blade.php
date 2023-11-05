@@ -16,9 +16,9 @@
                             </div>
                         </div>
                         @if (auth()->user()->sekolah_id)
-                            <div class="col d-flex justify-content-end px-4 h-50">
-                                <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
-                                    data-toggle="modal" data-target="#ModalKelas">Tambahkan Kelas</button>
+                            <div class="col-2 d-flex justify-content-end px-3 h-50">
+                                <a href="#" type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
+                                    data-toggle="modal" data-target="#ModalKelas">Tambahkan Kelas</a>
                             </div>
                         @endif
                     </div>
@@ -26,7 +26,7 @@
                         @foreach ($kelas as $kls)
                             <div class="col-lg-4 col-sm-6">
                                 @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin')
-                                        <a href="{{ route('admin.sekolah.kelas-ruangan.murid', $kls->id) }}">
+                                    <a href="{{ route('admin.sekolah.kelas-ruangan.murid', $kls->id) }}">
                                     @else
                                         <a href="{{ route('admin.kelolaruangan.murid', $kls->id) }}">
                                 @endif
