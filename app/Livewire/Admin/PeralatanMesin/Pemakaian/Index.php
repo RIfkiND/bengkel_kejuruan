@@ -110,9 +110,11 @@ class Index extends Component
 
     public function edit($id)
     {
-        $pemeliharaan = Pemakaian::findOrFail($id);
+        $peminjaman = Pemakaian::findOrFail($id);
         $this->peminjaman_id = $id;
-        $this->tanggal = $pemeliharaan->tanggal;
+        $this->tanggal = $peminjaman->tanggal_pemakaian;
+        $this->waktu_awal = $peminjaman->waktu_awal;
+        $this->waktu_akhir = $peminjaman->waktu_akhir;
         $this->updateMode = true;
     }
 
@@ -126,14 +128,20 @@ class Index extends Component
     {
         $validatedDate = $this->validate([
             'tanggal' => 'required',
+            'waktu_awal'=> 'required',
+            'waktu_akhir'=> 'required',
         ],
         [
             'tanggal.required' => 'Tanggal tidak boleh kosong',
+            'waktu_awal.required' => 'Tanggal tidak boleh kosong',
+            'waktu_akhir.required' => 'Tanggal tidak boleh kosong',
         ]);
 
-        $pemeliharaan = Pemakaian::find($this->peminjaman_id);
-        $pemeliharaan->update([
-            'tanggal' => $this->tanggal,
+        $peminjaman = Pemakaian::find($this->peminjaman_id);
+        $peminjaman->update([
+            'tanggal_pemakaian' => $this->tanggal,
+            'waktu_awal' => $this->waktu_awal,
+            'waktu_akhir' => $this->waktu_akhir,
         ]);
 
         $this->updateMode = false;
@@ -165,24 +173,26 @@ class Index extends Component
     }
     public function updateStatus_pengajuan($id, $newstatus)
     {
-        $pemeliharaan = Pemakaian::find($id);
-        if ($pemeliharaan->status_pengajuan == 'Belum Selesai') {
-            $pemeliharaan->update([
-                'status_pengajuan' => 'Selesai',
-            ]);
-        } else {
-            $pemeliharaan->update([
-                'status_pengajuan' => 'Belum Selesai',
-            ]);
-        }
+        $pengajuan = Pemakaian::find($id);
+        $pengajuan->update([
+            'status_pengajuan' => $newstatus,
+        ]);
+    }
+
+    public function statuspemakaian($id)
+    {
+        $pengajuan = Pemakaian::find($id);
+        $pengajuan->update([
+            'status_penggunaan' => 'Selesai',
+        ]);
     }
 
     public function delete()
     {
-        $pemeliharaan = Pemakaian::find($this->selectedDataId);
+        $peminjaman = Pemakaian::find($this->selectedDataId);
 
-        if ($pemeliharaan) {
-            $pemeliharaan->delete();
+        if ($peminjaman) {
+            $peminjaman->delete();
             $this->alert('success', 'Berhasil Dihapus!', [
                 'position' => 'center',
                 'timer' => 3000,

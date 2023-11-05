@@ -320,7 +320,6 @@
                 </div>
             </div>
     @endif
-</div>
-{{-- modal --}}
-@include('livewire.admin.peralatan-mesin.daftar.modal')
+    {{-- modal --}}
+    @include('livewire.admin.peralatan-mesin.daftar.modal')
 </div>
