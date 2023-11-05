@@ -51,176 +51,317 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 grid-margin transparent">
-                    <div class="row">
-                        <div class="col-md-6 mb-4 mb-lg-0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-primary mb-1 font-weight-medium">12</h2>
+                @if (auth()->user()->role == 'SuperAdmin' or auth()->user()->role == 'Admin' or auth()->user()->role == 'AdminSekolah')
+                    <div class="col-md-6 grid-margin transparent">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-lg-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-primary mb-1 font-weight-medium">12</h2>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Akun</h6>
                                             </div>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Akun</h6>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-user text-primary"></i></h1>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="ms-auto mt-md-3 mt-lg-0">
-                                            <span class="opacity-7 text-muted">
-                                                <h1><i class="fa fa-user text-primary"></i></h1>
-                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 mb-lg-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-info mb-1 font-weight-medium">125</h2>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Guru</h6>
+                                            </div>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-user-circle text-info"></i></h1>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-4 mb-lg-0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-info mb-1 font-weight-medium">125</h2>
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-lg-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-secondary mb-1 font-weight-medium">12</h2>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Kelas
+                                                </h6>
                                             </div>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Guru</h6>
-                                        </div>
-                                        <div class="ms-auto mt-md-3 mt-lg-0">
-                                            <span class="opacity-7 text-muted">
-                                                <h1><i class="fa fa-user-circle text-info"></i></h1>
-                                            </span>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-window-restore text-secondary"></i></h1>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-4 mb-lg-0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-secondary mb-1 font-weight-medium">12</h2>
+                            <div class="col-md-6 ">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan
+                                                </h6>
                                             </div>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Kelas</h6>
-                                        </div>
-                                        <div class="ms-auto mt-md-3 mt-lg-0">
-                                            <span class="opacity-7 text-muted">
-                                                <h1><i class="fa fa-window-restore text-secondary"></i></h1>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 ">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-home text-warning"></i></h1>
+                                                </span>
                                             </div>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan</h6>
-                                        </div>
-                                        <div class="ms-auto mt-md-3 mt-lg-0">
-                                            <span class="opacity-7 text-muted">
-                                                <h1><i class="fa fa-home text-warning"></i></h1>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 grid-margin transparent">
-                    <div class="row">
-                        <div class="col-md-6 mb-4 mb-lg-0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-primary mb-1 font-weight-medium">12</h2>
-                                                <span
-                                                    class="badge font-12 text-secondary font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
-                                            </div>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Peralatan
-                                                tersedia</h6>
-                                        </div>
-                                        <div class="ms-auto mt-md-3 mt-lg-0">
-                                            <span class="opacity-7 text-muted">
-                                                <h1><i class="fa fa-wrench text-primary"></i></h1>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4 mb-lg-0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-success mb-1 font-weight-medium">12</h2>
-                                            </div>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Pemeliharaan
-                                                Selesai</h6>
-                                        </div>
-                                        <div class="ms-auto mt-md-3 mt-lg-0">
-                                            <span class="opacity-7 text-muted">
-                                                <h1><i class="fa fa-check text-success"></i></h1>
-                                            </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-4 mb-lg-0">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-warning mb-1 font-weight-medium">12</h2>
-                                            </div>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam Proses
-                                            </h6>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <div class="d-inline-flex align-items-center">
+                                            <h2 class="text-primary mb-1 font-weight-medium">12</h2>
+                                            <span
+                                                class="badge font-12 text-secondary font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
                                         </div>
-                                        <div class="ms-auto mt-md-3 mt-lg-0">
-                                            <span class="opacity-7 text-muted">
-                                                <h1><i class="fa fa-tasks text-warning"></i></h1>
-                                            </span>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Peralatan
+                                            tersedia</h6>
+                                    </div>
+                                    <div class="ms-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted">
+                                            <h1><i class="fa fa-wrench text-primary"></i></h1>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <div class="d-inline-flex align-items-center">
+                                            <h2 class="text-success mb-1 font-weight-medium">12</h2>
+                                        </div>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
+                                            Pemeliharaan
+                                            Selesai</h6>
+                                    </div>
+                                    <div class="ms-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted">
+                                            <h1><i class="fa fa-check text-success"></i></h1>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <div class="d-inline-flex align-items-center">
+                                            <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                        </div>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam
+                                            Proses
+                                        </h6>
+                                    </div>
+                                    <div class="ms-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted">
+                                            <h1><i class="fa fa-tasks text-warning"></i></h1>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <div class="d-inline-flex align-items-center">
+                                            <h2 class="text-info mb-1 font-weight-medium">12</h2>
+                                        </div>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat /
+                                            Bahan
+                                        </h6>
+                                    </div>
+                                    <div class="ms-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted">
+                                            <h1><i class="fa fa-cube text-info"></i></h1>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if (auth()->user()->role == 'KepalaBengkel')
+                    <div class="col-md-6 grid-margin transparent">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-lg-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-primary mb-1 font-weight-medium">12</h2>
+                                                    <span
+                                                        class="badge font-12 text-secondary font-weight-medium rounded-pill ms-2 d-lg-block d-md-none">/25</span>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
+                                                    Peralatan
+                                                    tersedia</h6>
+                                            </div>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-wrench text-primary"></i></h1>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 mb-lg-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-success mb-1 font-weight-medium">12</h2>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
+                                                    Pemeliharaan
+                                                    Selesai</h6>
+                                            </div>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-check text-success"></i></h1>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 ">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-info mb-1 font-weight-medium">12</h2>
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-lg-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam
+                                                    Proses
+                                                </h6>
                                             </div>
-                                            <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat / Bahan
-                                            </h6>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-tasks text-warning"></i></h1>
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="ms-auto mt-md-3 mt-lg-0">
-                                            <span class="opacity-7 text-muted">
-                                                <h1><i class="fa fa-cube text-info"></i></h1>
-                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-info mb-1 font-weight-medium">12</h2>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat /
+                                                    Bahan
+                                                </h6>
+                                            </div>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-cube text-info"></i></h1>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
+                @if (auth()->user()->role == 'Guru')
+                    <div class="col-md-6 grid-margin transparent">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-lg-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-secondary mb-1 font-weight-medium">12</h2>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Kelas
+                                                </h6>
+                                            </div>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-window-restore text-secondary"></i></h1>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 mb-lg-0">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="d-inline-flex align-items-center">
+                                                    <h2 class="text-warning mb-1 font-weight-medium">12</h2>
+                                                </div>
+                                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan
+                                                </h6>
+                                            </div>
+                                            <div class="ms-auto mt-md-3 mt-lg-0">
+                                                <span class="opacity-7 text-muted">
+                                                    <h1><i class="fa fa-home text-warning"></i></h1>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
             <div class="row">
                 <div class="col-lg-12">
