@@ -199,127 +199,95 @@
         @endif
         <div class="row">
             <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card-title">
-                                    <h4>Daftar Peralatan</h4>
-                                </div>
-                            </div>
-                            <div class="col d-flex justify-content-end px-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
-                                        wire:model='searchPeralatan' wire:input='resetPage'>
-                                </div>
-                            </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card-title">
+                            <h4>Daftar Alat dan Bahan</h4>
                         </div>
-                        <div class="row">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Kode P/M</th>
-                                            <th>Kategori P/M</th>
-                                            <th>Nama P/M</th>
-                                            <th>Spesifikasi</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($peralatans as $peralatan)
-                                            <tr>
-                                                <td>PM-{{ $peralatan->id }}</td>
-                                                <td>{{ $peralatan->kategori->nama_kategori }}</td>
-                                                <td>{{ $peralatan->nama_peralatan_atau_mesin }}</td>
-                                                <td>
-                                                    @if ($peralatan->spesifikasi)
-                                                        <ul>
-                                                            <li>
-                                                                <i>
-                                                                    Merk : {{ $peralatan->spesifikasi->merk }}
-                                                                </i>
-                                                            </li>
-                                                            <li>
-                                                                <i>
-                                                                    Type/Model :
-                                                                    {{ $peralatan->spesifikasi->tipe_atau_model }}
-                                                                </i>
-                                                            </li>
-                                                            <li>
-                                                                <i>
-                                                                    Tahun :
-                                                                    {{ $peralatan->spesifikasi->tahun }}
-                                                                </i>
-                                                            </li>
-                                                            <li>
-                                                                <i>
-                                                                    Kapasitas :
-                                                                    {{ $peralatan->spesifikasi->kapasitas }}
-                                                                </i>
-                                                            </li>
-                                                        </ul>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <h4>
-                                                        @php
-                                                            $latestPemeliharaan = $peralatan->pemeliharaan->sortByDesc('created_at')->first();
-                                                        @endphp
-                                                        @if ($latestPemeliharaan && $latestPemeliharaan->status == 'Belum Selesai')
-                                                            <span class="badge badge-warning px-2 text-white">
-                                                                Sedang Dalam Pemeliharaan
-                                                            </span>
-                                                        @else
-                                                            <span
-                                                                class="badge {{ $peralatan->status == 'Tersedia' ? 'badge-success' : 'badge-danger' }} px-2 text-white">
-                                                                {{ $peralatan->status }}
-                                                            </span>
-                                                        @endif
-                                                    </h4>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a href="javascript:void(0)" data-toggle="dropdown"><i
-                                                                class="fa fa-ellipsis-v fa-lg"></i></a>
-                                                        <div class="dropdown-menu">
-                                                            <a class="dropdown-item" href="javascript:void(0)"
-                                                                data-toggle="modal"
-                                                                data-target="#ModalPeralatan">Informasi Pemakaian</a>
-                                                            <a class="dropdown-item" href="javascript:void(0)"
-                                                                wire:click='edit({{ $peralatan->id }})'>Edit</a>
-                                                            <a class="dropdown-item text-danger"
-                                                                href="javascript:void(0)" data-toggle="modal"
-                                                                data-target="#ModalPeralatan"
-                                                                wire:click='onkel({{ $peralatan->id }})'>Keluar</a>
-                                                            @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
-                                                                <a class="dropdown-item text-danger"
-                                                                    href="javascript:void(0)"
-                                                                    wire:click='ondel({{ $peralatan->id }})'>Delete</a>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="6">
-                                                    <h1>Data Kosong</h1>
-                                                </td>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
+                    </div>
+                    <div class="col d-flex justify-content-end px-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
+                                wire:model='searchPeralatan' wire:input='resetPage'>
                         </div>
                     </div>
                 </div>
+                <div class="row m-b-30">
+                    @forelse ($peralatans as $peralatan)
+                        <div class="col-lg-4">
+                            <div class="card border-primary  d-flex justify-content-between">
+                                <div class="card-header position-absolute">PM-0{{ $peralatan->id }}</div>
+                                <div class="card-header ml-auto btn">
+                                    <div class="dropdown">
+                                        <a href="#" data-toggle="dropdown"><i
+                                                class="fa fa-info-circle fa-lg mr-1"></i>More</a>
+                                        <div class="dropdown-menu"><a class="dropdown-item" href="javascript:void(0)"
+                                                data-toggle="modal" data-target="#ModalPeralatan">Info
+                                                pemakaian</a><a class="dropdown-item" href="javascript:void(0)"
+                                                wire:click='edit({{ $peralatan->id }})'>Edit</a> <a
+                                                class="dropdown-item text-danger" href="javascript:void(0)"
+                                                data-toggle="modal" data-target="#ModalPeralatan"
+                                                wire:click='onkel({{ $peralatan->id }})'>Keluar</a>
+                                            @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
+                                                <a class="dropdown-item text-danger" href="javascript:void(0)"
+                                                    wire:click='ondel({{ $peralatan->id }})'>Delete</a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $peralatan->nama_peralatan_atau_mesin }}</h5>
+                                    <div class="row">
+                                        @if ($peralatan->spesifikasi)
+                                            <div class="col-lg-6 ">
+                                                <div class="card-text">
+                                                    <span>Merk : {{ $peralatan->spesifikasi->merk }}</span><br>
+                                                    <Span>Type/Model :
+                                                        {{ $peralatan->spesifikasi->tipe_atau_model }}</Span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="card-text">
+                                                    <span>Tahun : {{ $peralatan->spesifikasi->tahun }}</span><br>
+                                                    <span>Kapasitas : {{ $peralatan->spesifikasi->kapasitas }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <p>{{ $peralatan->kategori->nama_kategori }}</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <h3> @php
+                                            $latestPemeliharaan = $peralatan->pemeliharaan->sortByDesc('created_at')->first();
+                                        @endphp
+                                            @if ($latestPemeliharaan && $latestPemeliharaan->status == 'Belum Selesai')
+                                                <span class="badge badge-warning px-2 text-white">
+                                                    Sedang Dalam Pemeliharaan
+                                                </span>
+                                            @else
+                                                <h3>
+                                                    <span
+                                                        class="badge {{ $peralatan->status == 'Tersedia' ? 'badge-success' : 'badge-danger' }} px-2 text-white"><i
+                                                            class="fa fa-check mr-1"></i>
+                                                        {{ $peralatan->status }}
+                                                    </span>
+                                                </h3>
+                                            @endif
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <span>
+                            <h1 class="text-center">Data Kosong</h1>
+                        </span>
+                    @endforelse
+                </div>
             </div>
-        </div>
     @endif
-
-
-    {{-- modal --}}
-    @include('livewire.admin.peralatan-mesin.daftar.modal')
+</div>
+{{-- modal --}}
+@include('livewire.admin.peralatan-mesin.daftar.modal')
 </div>
