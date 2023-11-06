@@ -18,8 +18,8 @@
                             </div>
                             @if (auth()->user()->sekolah_id)
                                 <div class="col-lg-4">
-                                    <a href="#" type="button"
-                                        class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
+                                    <a href="javascript:void(0)" type="button"
+                                        class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
                                         data-target="#ModalMuridKelas">Tambah Murid</a>
                                 </div>
                             @endif
@@ -77,8 +77,8 @@
                                 </div>
                                 @if (auth()->user()->sekolah_id)
                                     <div class="col-lg-4">
-                                        <a href="#" type="button"
-                                            class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
+                                        <a href="javascript:void(0)" type="button"
+                                            class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
                                             data-target="#ModalGuruKelas">Tambah Guru</a>
                                     </div>
                                 @endif
