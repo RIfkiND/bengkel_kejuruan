@@ -97,6 +97,11 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                {{ $peralatans->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

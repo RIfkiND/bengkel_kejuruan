@@ -5,7 +5,13 @@
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                         <h3 class="font-weight-bold">Selamat Datang @if (Auth::check())
-                                <h4>{{ auth()->user()->name }}</h4>
+                                @if (auth()->user()->role == 'AdminSekolah' || auth()->user()->role == 'Guru' || auth()->user()->role == 'KepalaBengkel')
+                                    <h4>{{ auth()->user()->name }}</h4>
+                                    <span>dari:</span><br>
+                                    <h4>{{ auth()->user()->sekolah->nama_sekolah }}</h4>
+                                @else
+                                    <h4>{{ auth()->user()->name }}</h4>
+                                @endif
                             @else
                                 <a href="{{ route('login') }}"><i class="icon-user"></i>
                                     <span>Login</span></a>
@@ -34,7 +40,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-primary mb-1 font-weight-medium">{{ $akuns->count() }}</h2>
+                                                <h2 class="text-primary mb-1 font-weight-medium">{{ $akuns->count() }}
+                                                </h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Akun</h6>
                                         </div>
@@ -74,7 +81,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-secondary mb-1 font-weight-medium">{{ $kelas->count() }}</h2>
+                                                <h2 class="text-secondary mb-1 font-weight-medium">{{ $kelas->count() }}
+                                                </h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Kelas
                                             </h6>
@@ -94,7 +102,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-warning mb-1 font-weight-medium">{{ $ruangans->count() }}</h2>
+                                                <h2 class="text-warning mb-1 font-weight-medium">
+                                                    {{ $ruangans->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan
                                             </h6>
@@ -136,7 +145,8 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-success mb-1 font-weight-medium">{{ $pemeliharaans->where('status', 'selesai')->count() }}</h2>
+                                        <h2 class="text-success mb-1 font-weight-medium">
+                                            {{ $pemeliharaans->where('status', 'selesai')->count() }}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
                                         Pemeliharaan
@@ -157,7 +167,8 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-warning mb-1 font-weight-medium">{{ $pemeliharaans->where('status','Belum Selesai')->count() }}</h2>
+                                        <h2 class="text-warning mb-1 font-weight-medium">
+                                            {{ $pemeliharaans->where('status', 'Belum Selesai')->count() }}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam
                                         Proses
@@ -203,7 +214,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-primary mb-1 font-weight-medium">{{ $peralatans->count() }}</h2>
+                                                <h2 class="text-primary mb-1 font-weight-medium">
+                                                    {{ $peralatans->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
                                                 Peralatan</h6>
@@ -223,7 +235,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-success mb-1 font-weight-medium">{{ $pemeliharaans->where('status', 'selesai')->count() }}</h2>
+                                                <h2 class="text-success mb-1 font-weight-medium">
+                                                    {{ $pemeliharaans->where('status', 'selesai')->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
                                                 Pemeliharaan
@@ -246,7 +259,9 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-warning mb-1 font-weight-medium">{{ $pemeliharaans->where('status', 'Belum Selesai')->count() }}</h2>
+                                                <h2 class="text-warning mb-1 font-weight-medium">
+                                                    {{ $pemeliharaans->where('status', 'Belum Selesai')->count() }}
+                                                </h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam
                                                 Proses
@@ -267,7 +282,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-info mb-1 font-weight-medium">{{ $alats->count() }}</h2>
+                                                <h2 class="text-info mb-1 font-weight-medium">{{ $alats->count() }}
+                                                </h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat dan
                                                 Bahan
@@ -294,7 +310,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-secondary mb-1 font-weight-medium">{{ $kelas->count() }}</h2>
+                                                <h2 class="text-secondary mb-1 font-weight-medium">
+                                                    {{ $kelas->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Kelas
                                             </h6>
@@ -314,7 +331,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="d-inline-flex align-items-center">
-                                                <h2 class="text-warning mb-1 font-weight-medium">{{ $ruangans->count() }}</h2>
+                                                <h2 class="text-warning mb-1 font-weight-medium">
+                                                    {{ $ruangans->count() }}</h2>
                                             </div>
                                             <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Ruangan
                                             </h6>

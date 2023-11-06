@@ -227,11 +227,15 @@
                                     <div class="dropdown">
                                         <a href="javascript:void(0)" data-toggle="dropdown"><i
                                                 class="fa fa-info-circle fa-lg mr-1"></i>More</a>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href="javascript:void(0)"
-                                                data-toggle="modal" data-target="#ModalPeralatan"
-                                                wire:click='info({{ $peralatan->id }})'>Informasi</a><a class="dropdown-item" href="javascript:void(0)"
-                                                wire:click='edit({{ $peralatan->id }})'>Edit</a> <a
-                                                class="dropdown-item text-danger" href="javascript:void(0)"
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
+                                                data-target="#ModalPeralatan"
+                                                wire:click='info({{ $peralatan->id }})'>Informasi</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('print.kartuperalatan', ['id' => $peralatan->id]) }}">Download</a>
+                                            <a class="dropdown-item" href="javascript:void(0)"
+                                                wire:click='edit({{ $peralatan->id }})'>Edit</a>
+                                            <a class="dropdown-item text-danger" href="javascript:void(0)"
                                                 data-toggle="modal" data-target="#ModalPeralatan"
                                                 wire:click='onkel({{ $peralatan->id }})'>Keluar</a>
                                             @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
@@ -250,7 +254,8 @@
                                                 <p>Terakhir Di Pakai Oleh:
                                                     {{ $peralatan->latestPemakaian->guru->nama_guru }}</p>
                                                 <p>Kelas: {{ $peralatan->latestPemakaian->kelas->nama_kelas }}</p>
-                                                <p>Pada: {{ $peralatan->latestPemakaian->tanggal_pemakaian }}, {{ $peralatan->latestPemakaian->waktu_akhir }}</p>
+                                                <p>Pada: {{ $peralatan->latestPemakaian->tanggal_pemakaian }},
+                                                    {{ $peralatan->latestPemakaian->waktu_akhir }}</p>
                                             @else
                                                 <p>Belum Pernah Di Gunakan</p>
                                             @endif

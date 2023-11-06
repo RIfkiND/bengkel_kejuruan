@@ -40,6 +40,11 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ $kategories->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -56,6 +56,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                {{ $murids->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -113,6 +118,11 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    {{ $pengajars->links() }}
                                 </div>
                             </div>
                         </div>

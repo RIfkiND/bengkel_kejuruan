@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Tutup</button>  
                     </div>
                 @endif
             </div>

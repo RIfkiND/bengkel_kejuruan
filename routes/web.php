@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ImpersonateController;
 
@@ -32,6 +33,12 @@ Route::prefix('/admin')->group(function () {
         Route::get('stop-impersonating', 'stopImpersonating')->name('admin.stop-impersonating');
     });
 
+    Route::controller(PDFController::class)->group(function () {
+        Route::get('kartu-peralatan/{id}', 'kartuperalatan')->name('print.kartuperalatan');
+        Route::get('kartu-pemeliharaan/{id}', 'kartupemeliharaan')->name('print.kartupemeliharaan');
+        Route::get('kartu-pengajuan/{id}', 'kartupengajuan')->name('print.kartupengajuan');
+        Route::get('kartu-alat/{id}', 'kartualat')->name('print.kartualat');
+    });
     Route::controller(AdminController::class)->group(function () {
         Route::get('dashboard', 'index')->name('admin.index');
         Route::middleware(['auth', 'user-access:SuperAdmin,Admin'])->group(function () {

@@ -11,7 +11,7 @@
                             <div class="col d-flex justify-content-end px-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
-                                        wire:model='searchAkun' wire:input='resetPage'>
+                                        wire:model='searchUser' wire:input='resetPage'>
                                 </div>
                             </div>
                             <div class="col-lg-2 d-flex justify-content-end px-4 h-50">
@@ -54,7 +54,8 @@
                                                                     data-target="#ModalAkun"
                                                                     wire:click='edit({{ $user->id }})'><i
                                                                         class="fa fa-pencil mr-2"></i>Edit</a> <a
-                                                                    class="dropdown-item text-danger" href="javascript:void(0)"
+                                                                    class="dropdown-item text-danger"
+                                                                    href="javascript:void(0)"
                                                                     wire:click='ondel({{ $user->id }})'><i
                                                                         class="fa fa-trash text-danger mr-2"></i>Delete</a>
                                                                 @if (auth()->user()->role == 'SuperAdmin' || auth()->user()->role == 'Admin')
@@ -84,6 +85,11 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{ $users->links() }}
                             </div>
                         </div>
                     </div>

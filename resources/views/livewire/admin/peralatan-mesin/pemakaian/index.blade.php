@@ -225,6 +225,11 @@
                             </table>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ $peminjamans->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

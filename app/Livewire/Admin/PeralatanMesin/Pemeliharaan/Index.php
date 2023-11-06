@@ -13,6 +13,7 @@ class Index extends Component
 {
     public $tanggal, $jenis, $status, $p_m_id, $keterangan, $pemeliharaan_id, $searchRuangan, $selectedDataId, $ruangan_id;
     public $updateMode = false;
+    public $informasiMode = false;
 
     use WithPagination;
     use LivewireAlert;
@@ -100,14 +101,33 @@ class Index extends Component
 
     public function edit($id)
     {
+        $this->informasiMode = false;
+
         $pemeliharaan = PemeliharaanDanPerawatan::findOrFail($id);
         $this->pemeliharaan_id = $id;
         $this->tanggal = $pemeliharaan->tanggal;
+        $this->jenis = $pemeliharaan->jenis;
+        $this->status = $pemeliharaan->status;
+        $this->keterangan = $pemeliharaan->keterangan;
         $this->updateMode = true;
+    }
+
+    public function info($id)
+    {
+        $this->updateMode = false;
+
+        $pemeliharaan = PemeliharaanDanPerawatan::findOrFail($id);
+        $this->pemeliharaan_id = $id;
+        $this->tanggal = $pemeliharaan->tanggal;
+        $this->jenis = $pemeliharaan->jenis;
+        $this->status = $pemeliharaan->status;
+        $this->keterangan = $pemeliharaan->keterangan;
+        $this->informasiMode = true;
     }
 
     public function cancel()
     {
+        $this->informasiMode = false;
         $this->updateMode = false;
         $this->resetInputFields();
     }
@@ -117,15 +137,22 @@ class Index extends Component
         $validatedDate = $this->validate(
             [
                 'tanggal' => 'required',
+                'jenis' => 'required',
+                'keterangan' => 'required',
             ],
             [
                 'tanggal.required' => 'Tanggal tidak boleh kosong',
+                'jenis.required' => 'Jenis Kerusakan tidak boleh kosong',
+                'keterangan.required' => 'Keterangan tidak boleh kosong',
             ],
         );
 
         $pemeliharaan = PemeliharaanDanPerawatan::find($this->pemeliharaan_id);
         $pemeliharaan->update([
             'tanggal' => $this->tanggal,
+            'jenis' => $this->jenis,
+            'keterangan' => $this->keterangan,
+
         ]);
 
         $this->updateMode = false;

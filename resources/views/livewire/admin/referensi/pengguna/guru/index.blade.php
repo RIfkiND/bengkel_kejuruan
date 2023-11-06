@@ -68,6 +68,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ $gurus->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

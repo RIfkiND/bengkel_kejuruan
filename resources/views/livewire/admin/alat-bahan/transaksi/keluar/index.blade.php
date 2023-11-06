@@ -84,6 +84,11 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                {{ $alats->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

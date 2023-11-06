@@ -54,7 +54,7 @@
                                         @forelse ($alats as $alat)
                                             @foreach ($alat->alatmasuk->sortByDesc('id') as $alatmasuk)
                                                 <tr>
-                                                    <td>{{ $alatmasuk->tanggal_masuk}}</td>
+                                                    <td>{{ $alatmasuk->tanggal_masuk }}</td>
                                                     <td>AB-{{ $alat->id }}</td>
                                                     <td>{{ $alat->nama_alat_atau_bahan }}</td>
                                                     <td>{{ $alatmasuk->sumber_dana }}</td>
@@ -82,6 +82,11 @@
                                         @endforelse
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{ $alats->links() }}
                             </div>
                         </div>
                     </div>

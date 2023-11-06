@@ -61,6 +61,11 @@
                         @endforeach
 
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ $sekolahs->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

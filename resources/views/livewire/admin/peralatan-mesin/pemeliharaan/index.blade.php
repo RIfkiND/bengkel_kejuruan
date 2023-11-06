@@ -115,7 +115,7 @@
                                     @foreach ($pemeliharaans as $pemeliharaan)
                                         <tr>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
-                                                PM-{{ $pemeliharaan->peralatan_id }}</td>
+                                                PM-{{ $pemeliharaan->peralatan_atau_mesin_id }}</td>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
                                                 {{ $pemeliharaan->peralatan->nama_peralatan_atau_mesin }}</td>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
@@ -132,7 +132,9 @@
                                                             class="fa fa-ellipsis-v fa-lg"></i></a>
                                                     <div class="dropdown-menu">
                                                         <a class="dropdown-item" href="javascript:void(0)"
-                                                            data-toggle="modal" data-target="#infoModal">More info</a>
+                                                            data-toggle="modal" data-target="#infoModal"
+                                                            wire:click='info({{ $pemeliharaan->id }})'>More info</a>
+                                                        <a class="dropdown-item" href="{{ route('print.kartupemeliharaan', $pemeliharaan->id) }}">Download</a>
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='updateStatus({{ $pemeliharaan->id }})'>
                                                             @if ($pemeliharaan->status == 'Belum Selesai')
@@ -140,7 +142,7 @@
                                                             @else
                                                                 Belum Selesai
                                                             @endif
-                                                    </a>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -150,12 +152,17 @@
                             </table>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            {{ $pemeliharaans->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="infoModal">
+    <div wire:ignore.self class="modal fade" id="infoModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -164,12 +171,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p><b>Tanggal Pemeliharaan :</b> DD-MM-YY</p>
-                    <p><b>Jenis kerusakan :</b> Perawatan Rutin</p>
-                    <p><b>Keterangan :</b> Ganti oli</p>
-                    @foreach ($ruangans as $ruangan)
-                        <p><b>Ruangan :</b> {{ $ruangan->nama_ruangan }}</p>
-                    @endforeach
+                    @if ($informasiMode)
+                        <p><b>Tanggal Pemeliharaan :</b> {{ $pemeliharaan->tanggal }}</p>
+                        <p><b>Jenis kerusakan :</b> {{ $pemeliharaan->jenis }}</p>
+                        <p><b>Keterangan :</b> {{ $pemeliharaan->keterangan }}</p>
+                        <p><b>Ruangan :</b> {{ $pemeliharaan->peralatan->ruangan->nama_ruangan }}</p>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -177,4 +184,5 @@
             </div>
         </div>
     </div>
+
 </div>
