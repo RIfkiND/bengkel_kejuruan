@@ -3,7 +3,7 @@
     <body>
         <h2 align="center">SMK... </h2>
         <h2 align="center">BUKU INDUK BARANG INVENTARIS</h2>
-        <h4>Departemen Mesin Konvensi Energi</h4>
+        <h4>Departemen Mesin Konversi Energi</h4>
 
         <table border="1">
             <tr align="center">
