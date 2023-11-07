@@ -38,7 +38,7 @@ class PDFController extends Controller
         $pdf = app('dompdf.wrapper');
         $pdf->loadView('admin.pdf.PeralatanAtauMesinPDF', $data)->setPaper('a5', 'landscape');;
 
-        return $pdf->download('kartu-peralatan pm-0'. $peralatan->id .'.pdf');
+        return $pdf->stream('kartu-peralatan pm-0'. $peralatan->id .'.pdf');
 
     }
 
@@ -98,7 +98,7 @@ class PDFController extends Controller
 
 
 
-        return $pdf->download('kartu-pengajuan-'. $pengajuan->nama_alat_atau_bahan .'.pdf');
+        return $pdf->stream('kartu-pengajuan-'. $pengajuan->nama_alat_atau_bahan .'.pdf');
     }
 
     public function kartualat($id)
@@ -128,6 +128,6 @@ class PDFController extends Controller
 
 
 
-        return $pdf->download('kartu-peralatan pm-0'. $peralatan->id .'.pdf');
+        return $pdf->stream('kartu-peralatan pm-0'. $peralatan->id .'.pdf');
     }
 }
