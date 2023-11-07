@@ -24,6 +24,12 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::controller(PDFController::class)->group(function () {
+    Route::get('kartu-pemakaian-alat', 'kartupemakaaianalat')->name('print.kartupemakaaianalat');
+    Route::get('kartu-perawatan-alat', 'kartuperawatanalat')->name('print.kartuperawatanalat');
+    Route::get('daftar-inventaris-alat', 'inventarisalat')->name('print.inventarisalat');
+    Route::get('kartu-alat', 'kartualat')->name('print.kartualat');
+});
 
 Route::prefix('/admin')->group(function () {
     Route::controller(ImpersonateController::class)->group(function () {
@@ -33,12 +39,6 @@ Route::prefix('/admin')->group(function () {
         Route::get('stop-impersonating', 'stopImpersonating')->name('admin.stop-impersonating');
     });
 
-    Route::controller(PDFController::class)->group(function () {
-        Route::get('kartu-peralatan/{id}', 'kartuperalatan')->name('print.kartuperalatan');
-        Route::get('kartu-pemeliharaan/{id}', 'kartupemeliharaan')->name('print.kartupemeliharaan');
-        Route::get('kartu-pengajuan/{id}', 'kartupengajuan')->name('print.kartupengajuan');
-        Route::get('kartu-alat/{id}', 'kartualat')->name('print.kartualat');
-    });
     Route::controller(AdminController::class)->group(function () {
         Route::get('dashboard', 'index')->name('admin.index');
         Route::middleware(['auth', 'user-access:SuperAdmin,Admin'])->group(function () {

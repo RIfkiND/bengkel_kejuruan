@@ -12,10 +12,10 @@ use App\Models\PemeliharaanDanPerawatan;
 
 class PDFController extends Controller
 {
-    public function kartuperalatan($id)
+    public function kartupemakaaianalat()
     {
 
-        $peralatan = PeralatanAtauMesin::find($id);
+        $peralatan = PeralatanAtauMesin::find(1);
 
         $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
         $ruangan = Ruangan::find($peralatan->ruangan_id);
@@ -36,15 +36,15 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.PeralatanAtauMesinPDF', $data)->setPaper('a4', 'landscape');;
+        $pdf->loadView('admin.pdf.kartupemakaaianalatPDF', $data)->setPaper('a4', 'landscape');;
 
         return $pdf->stream();
 
     }
 
-    public function kartupemeliharaan($id)
+    public function kartuperawatanalat()
     {
-        $pemeliharaan = PemeliharaanDanPerawatan::find($id);
+        $pemeliharaan = PemeliharaanDanPerawatan::find(1);
         $sekolah = Sekolah::find($pemeliharaan->peralatan->ruangan->sekolah_id);
         $ruangan = Ruangan::find($pemeliharaan->peralatan->ruangan_id);
 
@@ -64,7 +64,7 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.PemeliharaanPDF', $data)->setPaper('a4', 'landscape');;
+        $pdf->loadView('admin.pdf.kartuperawatanalatPDF', $data)->setPaper('a4', 'landscape');;
 
 
 
@@ -72,9 +72,9 @@ class PDFController extends Controller
         return $pdf->stream();
     }
 
-    public function kartupengajuan($id)
+    public function inventarisalat()
     {
-        $pengajuan = PengajuanAlatAtauBahan::find($id);
+        $pengajuan = PengajuanAlatAtauBahan::find(1);
 
         $sekolah = Sekolah::find($pengajuan->sekolah_id);
         $guru = Guru::find($pengajuan->guru_id);
@@ -94,16 +94,16 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.PengajuanPDF', $data)->setPaper('a4', 'landscape');;
+        $pdf->loadView('admin.pdf.inventarisalatPDF', $data)->setPaper('a4', 'landscape');;
 
 
 
         return $pdf->stream();
     }
 
-    public function kartualat($id)
+    public function kartualat()
     {
-        $peralatan = PeralatanAtauMesin::find($id);
+        $peralatan = PeralatanAtauMesin::find(1);
 
         $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
         $ruangan = Ruangan::find($peralatan->ruangan_id);
