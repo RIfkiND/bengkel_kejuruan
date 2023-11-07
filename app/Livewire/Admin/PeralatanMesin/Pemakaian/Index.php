@@ -70,7 +70,9 @@ class Index extends Component
                 'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
-                'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
+                'peminjamans' => Pemakaian::whereHas('peralatan', function ($query) {
+                        $query->where('ruangan_id', auth()->user()->ruangan_id);
+                    })->orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
                 'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
@@ -83,7 +85,7 @@ class Index extends Component
                 'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
-                'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
+                'peminjamans' => Pemakaian::where('guru_id', auth()->user()->guru_id)->orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
                 'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
@@ -95,7 +97,11 @@ class Index extends Component
                 'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
-                'peminjamans' => Pemakaian::orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
+                'peminjamans' => Pemakaian::whereHas('peralatan', function ($query) {
+                        $query->whereHas('ruangan', function ($query) {
+                        $query->where('sekolah_id', auth()->user()->sekolah->id);
+                    });
+                    })->orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
                 'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),

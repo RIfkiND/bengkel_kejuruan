@@ -54,8 +54,7 @@
                                                                     data-target="#ModalAkun"
                                                                     wire:click='edit({{ $user->id }})'><i
                                                                         class="fa fa-pencil mr-2"></i>Edit</a> <a
-                                                                    class="dropdown-item text-danger"
-                                                                    href="javascript:void(0)"
+                                                                    class="dropdown-item text-danger" href="javascript:void(0)"
                                                                     wire:click='ondel({{ $user->id }})'><i
                                                                         class="fa fa-trash text-danger mr-2"></i>Delete</a>
                                                                 @if (auth()->user()->role == 'SuperAdmin' || auth()->user()->role == 'Admin')

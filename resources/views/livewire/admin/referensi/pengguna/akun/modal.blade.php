@@ -16,7 +16,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" class="form-control" placeholder="Satya N.R" wire:model='name'>
+                            <input type="text" class="form-control" placeholder="Nama Pengguna" wire:model='name'>
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -117,7 +117,7 @@
                                     @if ($showGuruSelect)
                                         <div class="form-group col">
                                             <label>Nama Guru</label>
-                                            <input type="text" class="form-control" placeholder="Drs.Nama Anda.Spd"
+                                            <input type="text" class="form-control" placeholder="Nama Guru"
                                                 wire:model='nama_guru'>
                                             @error('nama_guru')
                                                 <span class="text-danger">{{ $message }}</span>

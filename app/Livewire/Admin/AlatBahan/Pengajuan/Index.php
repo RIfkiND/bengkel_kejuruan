@@ -96,7 +96,7 @@ class Index extends Component
                 'volume' => $this->volume,
                 'satuan' => $this->satuan,
                 'sekolah_id' => auth()->user()->sekolah_id,
-                'guru_id' => auth()->user()->guru->nama_guru,
+                'guru_id' => auth()->user()->guru_id,
                 'merk' => $this->merk,
                 'type_atau_model' => $this->type,
                 'dimensi' => $this->dimensi,
@@ -229,7 +229,9 @@ class Index extends Component
         $pengajuan = PengajuanAlatAtauBahan::find($this->selectedPengajuanId);
 
         if ($pengajuan) {
+            if ($pengajuan->gambar != null){
             Storage::disk('public')->delete($pengajuan->gambar);
+            }
             $pengajuan->delete();
             $this->alert('success', 'Berhasil Dihapus!', [
                 'position' => 'center',

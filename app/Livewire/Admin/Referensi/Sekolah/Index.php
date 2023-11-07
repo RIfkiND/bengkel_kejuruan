@@ -32,7 +32,7 @@ class Index extends Component
         return view('livewire.admin.referensi.sekolah.index', [
             'sekolahs' => Sekolah::where('nama_sekolah', 'LIKE', $searchSekolah)
                 ->orderBy('id', 'DESC')
-                ->paginate(10, ['*'], 'sekolahPage'),
+                ->paginate(12, ['*'], 'sekolahPage'),
         ]);
     }
 

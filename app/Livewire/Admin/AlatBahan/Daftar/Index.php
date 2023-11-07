@@ -100,7 +100,7 @@ class Index extends Component
     {
         $validatedDate = $this->validate(
             [
-                'nama_alat_atau_bahan' => 'required | unique:alat_atau_bahans,nama_alat_atau_bahan',
+                'nama_alat_atau_bahan' => 'required',
                 'kode' => 'required',
                 'ruangan_id' => 'required',
                 'volume' => 'required',

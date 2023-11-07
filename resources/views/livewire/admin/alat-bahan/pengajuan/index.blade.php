@@ -16,11 +16,11 @@
                             </div>
                         </div>
                         @if (auth()->user()->role == 'KepalaBengkel' || auth()->user()->role == 'Guru')
-                            <div class="col-lg-2 d-flex justify-content-end px-4 h-50">
-                                <a href="add-peralatan.html" type="button"
-                                    class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
-                                    data-target="#ModalPengajuan">Ajukan Alat dan Bahan</a>
-                            </div>
+                        <div class="col-lg-2 d-flex justify-content-end px-4 h-50">
+                            <a href="add-peralatan.html" type="button"
+                                class="btn mb-1 btn-primary d-flex justify-content-end" data-toggle="modal"
+                                data-target="#ModalPengajuan">Ajukan Alat dan Bahan</a>
+                        </div>
                         @endif
                     </div>
 
