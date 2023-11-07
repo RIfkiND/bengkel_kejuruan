@@ -3,64 +3,59 @@
 
 <head>
 
-    <title>Kartu Pemeliharaan</title>
+    <title>Kartu Perawatan Alat</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        .custom-thead {
+            background-color: #d1d1d1;
+            vertical-align: middle;
+            /* Replace with your chosen secondary color */
+            /* Replace with the text color you want to use */
+        }
+
+        .table-bordered.custom-table {
+            border: 1px solid #000;
+        }
+
+        .table-bordered.custom-table th,
+        .table-bordered.custom-table td {
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 
-<body>
+<body
+    style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
     <div class="container">
-        <div class="row mb-4 pb-4">
-            <div class="col text-center">
-                <h1>{{ $sekolah->nama_sekolah }}</h1>
-            </div>
-            <div class="col text-center">
-                <h4>{{ $ruangan->nama_ruangan }}</h4>
-            </div>
+        <div class="table-responsive">
+            <table class="table table-bordered custom-table">
+                <thead class="custom-thead text-center">
+                    <tr>
+                        <th rowspan="2">NO</th>
+                        <th rowspan="2">NAMA PETUGAS</th>
+                        <th colspan="2" style="min-width: 85px">PERAWATAN/PERBAIKAN</th>
+                        <th rowspan="2">Kondisi Alat</th>
+                        <th rowspan="2">Tanda Tangan</th>
+                    </tr>
+                    <tr>
+                        <th>Jenis</th>
+                        <th>Kuku</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Jamal</td>
+                        <td style="min-width: 85px">Perawatan Rutin</td>
+                        <td style="min-width: 85px">kuku</td>
+                        <td>Baik</td>
+                        <td>sasa</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <h5>
-            <div class="row">
-                <div class="col">
-                    <table>
-                        <tr>
-                            <td class="pb-3">
-                                Kode P/M
-                            </td>
-                            <td class="pb-3">
-                                : PM-0{{ $pemeliharaan->peralatan_id }}
-                            </td>
-                            <td class="pl-2 pb-3">Tanggal Mulai</td>
-                            <td class="pb-3">: {{ $pemeliharaan->tanggal }}</td>
-                        </tr>
-                        <tr>
-                            <td class="pb-3" colspan="2">Nama Peralatan/Mesin</td>
-                            <td class="pb-3" colspan="2">: {{ $pemeliharaan->peralatan->nama_peralatan_atau_mesin }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </h5>
-        <h5>
-            <div class="row">
-                <div class="col">
-                    <table>
-                        <tr>
-                            <td class="pb-4">Status</td>
-                            <td class="pb-4">: {{ $pemeliharaan->status }}</td>
-                            <td class="pl-4 pb-4">Jenis Perawatan</td>
-                            <td class="pb-4">: {{ $pemeliharaan->jenis }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="text-center pb-3">Keterangan</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="text-center">{{ $pemeliharaan->keterangan }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </h5>
     </div>
 </body>
 
