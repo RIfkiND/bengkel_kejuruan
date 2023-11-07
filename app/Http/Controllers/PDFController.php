@@ -36,9 +36,9 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.PeralatanAtauMesinPDF', $data)->setPaper('a5', 'landscape');;
+        $pdf->loadView('admin.pdf.PeralatanAtauMesinPDF', $data)->setPaper('a4', 'landscape');;
 
-        return $pdf->stream('kartu-peralatan pm-0'. $peralatan->id .'.pdf');
+        return $pdf->stream();
 
     }
 
@@ -64,7 +64,7 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.PemeliharaanPDF', $data)->setPaper('a5', 'landscape');;
+        $pdf->loadView('admin.pdf.PemeliharaanPDF', $data)->setPaper('a4', 'landscape');;
 
 
 
@@ -94,11 +94,11 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.PengajuanPDF', $data)->setPaper('a5', 'landscape');;
+        $pdf->loadView('admin.pdf.PengajuanPDF', $data)->setPaper('a4', 'landscape');;
 
 
 
-        return $pdf->stream('kartu-pengajuan-'. $pengajuan->nama_alat_atau_bahan .'.pdf');
+        return $pdf->stream();
     }
 
     public function kartualat($id)
@@ -124,10 +124,10 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.PeralatanAtauMesinPDF', $data)->setPaper('a5', 'landscape');;
+        $pdf->loadView('admin.pdf.PeralatanAtauMesinPDF', $data)->setPaper('a4', 'landscape');;
 
 
 
-        return $pdf->stream('kartu-peralatan pm-0'. $peralatan->id .'.pdf');
+        return $pdf->stream();
     }
 }
