@@ -145,12 +145,12 @@
                                 <h4>Daftar Pemakaian</h4>
                             </div>
                         </div>
-                        <div class="col d-flex justify-content-end px-4">
+                        {{-- <div class="col d-flex justify-content-end px-4">
                             <div class="form-group">
                                 <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
                                     wire:model='searchCategory' wire:input='resetPage'>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="row">
                         <div class="table-responsive">
@@ -169,7 +169,7 @@
                                 <tbody>
                                     @foreach ($peminjamans as $peminjaman)
                                         <tr>
-                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
+                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;" wire:click='info({{ $peminjaman->id }})'>
                                                 PM-{{ $peminjaman->peralatan_atau_mesin_id }}</td>
                                             <td data-target="#infoModal" data-toggle="modal"
                                                 style="cursor: pointer;">
@@ -237,7 +237,7 @@
 
     {{-- Modal info --}}
 
-    <div class="modal fade" id="infoModal">
+    <div wire:ignore.self class="modal fade" id="infoModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -246,11 +246,22 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p><b>Tanggal Pemakaian :</b> DD-MM-YY</p>
-                    <p><b>Waktu/Jam :</b> -</p>
-                    <p><b>Dipakai oleh kelas :</b> XII-PPLG</p>
-                    <p><b>Guru :</b> Drs Nurhayati S.pd</p>
-                    <p><b>Murid :</b> Jajang</p>
+                    @if ($informasiMode)
+                        <div class="row">
+                            <div class="col-lg-6 ">
+                                <div class="card-text">
+                                    <span>Merk : {{ $merk}}</span><br><br>
+                                    <Span>Type/Model : {{ $type }}</Span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card-text">
+                                    <span>Tahun : {{ $tahun }}</span><br><br>
+                                    <span>Kapasitas : {{ $kapasitas }} <br><br></span>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

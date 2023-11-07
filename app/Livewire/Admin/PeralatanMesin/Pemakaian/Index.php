@@ -14,7 +14,10 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class Index extends Component
 {
     public $tanggal, $waktu_awal, $waktu_akhir, $status_pengajuan, $status_pemakaian, $p_m_id, $guru_id, $kelas_id, $peminjaman_id, $searchRuangan, $selectedDataId, $ruangan_id;
+
+    public $merk, $type, $tahun, $kapasitas;
     public $updateMode = false;
+    public $informasiMode = false;
 
     use WithPagination;
     use LivewireAlert;
@@ -153,12 +156,27 @@ class Index extends Component
 
     public function edit($id)
     {
+        $this->informasiMode = false;
+
         $peminjaman = Pemakaian::findOrFail($id);
         $this->peminjaman_id = $id;
         $this->tanggal = $peminjaman->tanggal_pemakaian;
         $this->waktu_awal = $peminjaman->waktu_awal;
         $this->waktu_akhir = $peminjaman->waktu_akhir;
         $this->updateMode = true;
+    }
+
+    public function info($id)
+    {
+        $this->updateMode = false;
+
+        $peminjaman = Pemakaian::findOrFail($id);
+        $this->peminjaman_id = $id;
+        $this->merk = $peminjaman->peralatan->spesifikasi->merk;
+        $this->type =  $peminjaman->peralatan->spesifikasi->tipe_atau_model;
+        $this->tahun = $peminjaman->peralatan->spesifikasi->tahun;
+        $this->kapasitas = $peminjaman->peralatan->spesifikasi->kapasitas;
+        $this->informasiMode = true;
     }
 
     public function cancel()

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('ruangan_id')->constrained('ruangans')->cascadeOnDelete();
             $table->enum('kode', ['A', 'B']);
-            $table->string('nama_alat_atau_bahan')->unique();
+            $table->string('nama_alat_atau_bahan');
             $table->string('volume')->nullable();
             $table->string('satuan')->nullable();
             $table->timestamps();
