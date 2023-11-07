@@ -36,7 +36,7 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.PeralatanAtauMesinPDF', $data)->setPaper('a5', 'landscape');;
+        $pdf->loadView('admin.pdf.PeralatanAtauMesinPDF', $data)->setPaper('a5', 'landscape');;
 
         return $pdf->download('kartu-peralatan pm-0'. $peralatan->id .'.pdf');
 
@@ -64,7 +64,7 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.PemeliharaanPDF', $data)->setPaper('a5', 'landscape');;
+        $pdf->loadView('admin.pdf.PemeliharaanPDF', $data)->setPaper('a5', 'landscape');;
 
 
 
@@ -94,7 +94,7 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.PengajuanPDF', $data)->setPaper('a5', 'landscape');;
+        $pdf->loadView('admin.pdf.PengajuanPDF', $data)->setPaper('a5', 'landscape');;
 
 
 
@@ -124,7 +124,7 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.PeralatanAtauMesinPDF', $data)->setPaper('a5', 'landscape');;
+        $pdf->loadView('admin.pdf.PeralatanAtauMesinPDF', $data)->setPaper('a5', 'landscape');;
 
 
 
