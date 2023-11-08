@@ -31,7 +31,7 @@
                 <td style='width:95px'>Jumlah</td>
                 <td style='width:275px'>Keterangan</td>
             </tr>
-            <tr valign="top"
+            <tr valign="top">
                 <td height="20%">1</td>
                 <td>Kunci Shock</td>
                 <td>6 mm sd 32 mm</td>
