@@ -1,62 +1,223 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='https://www.w3.org/1999/xhtml'>
 <head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<body style='font-family:Tahoma;font-size:12px;color: #333333;background-color:#FFFFFF;'>
+    <table width='100%' cellspacing='0' cellpadding='0' >
+        <tr>
+            <td width='2%'  ><strong style='font-size:14px;'><div align="center" >KARTU PERAWATAN ALAT<br /></strong></div><br>
+            Bengkel &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : .........................<br>
+            Nama Alat / Media &nbsp; : ..........................
+        </tr>
+    </table>
+    
+<table width='100%' cellspacing='0' cellpadding='2' border='1' bordercolor='#CCCCCC'>
+    <tr>
 
-    <title>Kartu Perawatan Alat</title>
+        <th rowspan='2' width='2%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">No</div></strong></th>
+        <th rowspan='2' width='10%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Nama Petugas</div></strong></th>
+        <th colspan='2' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Perawatan/Perbaikan</div></strong></th>
+        <th rowspan='2' width='10%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Kondisi Alat</div></strong></th>
+        <th rowspan='2' width='10%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Tanda Tangan</div></strong></th>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <style>
-        .custom-thead {
-            background-color: #d1d1d1;
-            vertical-align: middle;
-            /* Replace with your chosen secondary color */
-            /* Replace with the text color you want to use */
-        }
 
-        .table-bordered.custom-table {
-            border: 1px solid #000;
-        }
+        
+  
+    </tr>
+    <tr>
+        <th bgcolor='#f2f2f2' width='3%'>Jenis</th>
+        <th bgcolor='#f2f2f2' width='3%'>Tanggal</th>
+    </tr>
+      <tr style="display:none;"><td colspan="*"><tr>
 
-        .table-bordered.custom-table th,
-        .table-bordered.custom-table td {
-            border: 1px solid #000;
-        }
-    </style>
-</head>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
 
-<body
-    style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
-    <div class="container">
-        <div class="table-responsive">
-            <table class="table table-bordered custom-table">
-                <thead class="custom-thead text-center">
-                    <tr>
-                        <th rowspan="2">NO</th>
-                        <th rowspan="2">NAMA PETUGAS</th>
-                        <th colspan="2" style="min-width: 85px">PERAWATAN/PERBAIKAN</th>
-                        <th rowspan="2">Kondisi Alat</th>
-                        <th rowspan="2">Tanda Tangan</th>
-                    </tr>
-                    <tr>
-                        <th>Jenis</th>
-                        <th>Kuku</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Jamal</td>
-                        <td style="min-width: 85px">Perawatan Rutin</td>
-                        <td style="min-width: 85px">kuku</td>
-                        <td>Baik</td>
-                        <td>sasa</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+
+
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+<!--  </tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr>-->
+<tr> 
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+
+<!-- </tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr></td></tr> -->
+    </table>
+<br>
+
+    <table align='right'  width='100%' cellspacing='0' cellpadding='0'>
+        <td align='right'>Cimahi, ....................2016<br/> 
+            Kepala .............................<br/>   
+            <br/> 
+            <br/> 
+            <br/> 
+            <br>
+            ................................
+ </td>
+      </tr>
+    </table>
+</td>
+  </tr>
+</table>
 </body>
-
 </html>

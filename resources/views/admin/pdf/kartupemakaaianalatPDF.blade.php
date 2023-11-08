@@ -1,71 +1,231 @@
-<!DOCTYPE html>
-<html>
-
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='https://www.w3.org/1999/xhtml'>
 <head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<body style='font-family:Tahoma;font-size:12px;color: #333333;background-color:#FFFFFF;'>
+    <table width='100%' cellspacing='0' cellpadding='0' >
+        <tr>
+            <td width='2%'  ><strong style='font-size:14px;'><div align="center" >KARTU PEMAKAIAN ALAT<br /></strong></div><br>
+            Bengkel &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : .........................<br>
+            Nama Alat / Media &nbsp; : ..........................
+        </tr>
+    </table>
+    
+<table width='100%' cellspacing='0' cellpadding='2' border='1' bordercolor='#CCCCCC'>
+    <tr>
 
-    <title>Kartu Peraltan</title>
+        <th rowspan='2' width='2%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">No</div></strong></th>
+        <th rowspan='2' width='10%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Nama Pemakai</div></strong></th>
+        <th colspan='3' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Waktu Pemakaian</div></strong></th>
+        <th rowspan='2' width='10%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Kondisi Alat</div></strong></th>
+        <th rowspan='2' width='10%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Tanda Tangan</div></strong></th>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-</head>
 
-<body>
-    <div class="container">
-        <div class="row mb-4 pb-4">
-            <div class="col text-center">
-                <h1>{{ $sekolah->nama_sekolah }}</h1>
-            </div>
-            <div class="col text-center">
-                <h4>{{ $ruangan->nama_ruangan }}</h4>
-            </div>
-        </div>
-        <h5>
-            <div class="row mb-4 justify-content-center">
-                <div class="col-md-auto">
-                    <table>
-                        <tr>
-                            <td>
-                                Kode P/M
-                            </td>
-                            <td>
-                                : PM-0{{ $peralatan->id }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nama Peralatan/Mesin</td>
-                            <td>: {{ $peralatan->nama_peralatan_atau_mesin }}</td>
-                        </tr>
-                        <tr>
-                            <td>Spesifikasi</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>- {{ $peralatan->spesifikasi->merk }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>- {{ $peralatan->spesifikasi->tipe_atau_model }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>- {{ $peralatan->spesifikasi->kapasitas }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>- {{ $peralatan->spesifikasi->tahun }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </h5>
-        <h5>
-            <div class="row">
-                <div class="col">Tanggal Masuk: <span
-                        class="pl-4">{{ $peralatan->peralatanmasuk->tanggal_masuk }}</span></div>
-            </div>
-        </h5>
-    </div>
+        
+  
+    </tr>
+    <tr>
+        <th bgcolor='#f2f2f2' width='3%'>TGL</th>
+        <th bgcolor='#f2f2f2' width='3%'>Jam Mulai</th>
+        <th bgcolor='#f2f2f2' width='3%'>Jam Selesai</th>
+    </tr>
+      <tr style="display:none;"><td colspan="*"><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+<!--  </tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr>-->
+<tr> 
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+
+<!-- </tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr><tr>
+
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+<td valign='top' style='font-size:12px;'>&nbsp;</td>
+
+</tr></td></tr> -->
+    </table>
+<br>
+
+    <table align='right'  width='100%' cellspacing='0' cellpadding='0'>
+        <td align='right'>Kepala Departemen,<br/> 
+            <br/>   
+            <br/> 
+            <br/> 
+            <br/> 
+            <br>
+            ................................
+ </td>
+      </tr>
+    </table>
+</td>
+  </tr>
+</table>
 </body>
-
 </html>
