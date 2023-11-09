@@ -3,6 +3,7 @@
         <style>
             table {
                 border-collapse: collapse;
+                border-color: black;
             }
             .tab3 {
                 display: inline-block;
