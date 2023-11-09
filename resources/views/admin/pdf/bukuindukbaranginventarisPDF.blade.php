@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+<head>
+        <style>
+            table {
+                border-collapse: collapse;
+                border-color: black;
+            }
+        </style>
+    </head>
     <body>
         <h2 align="center">SMK... </h2>
         <h2 align="center">BUKU INDUK BARANG INVENTARIS</h2>
