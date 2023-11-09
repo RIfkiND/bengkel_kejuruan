@@ -63,6 +63,27 @@
             <tr>
                 <td colspan="4"  height="7%" valign="top">Tujuan :</td>
             </tr>
+            <tr>
+                <td style='width:350px' height="5%" valign="top">Dipinjam :</td>
+                <td style='width:200px'colspan="2"  height="5%" valign="top">Tanggal:</td>
+                <td style='width:350px' height="5%" valign="top">Pukul :</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">Diketahui oleh,<br><br><br><br><br>.......................................................<br>(Penanggungjawab Alat)</td>
+                <td colspan="2" align="center">Pemohon,<br><br><br><br><br>........................................</td>
+            </tr>
+            <tr>
+                <td style='width:350px' height="5%" valign="top">Dikembalikan :</td>
+                <td style='width:200px'colspan="2"  height="5%" valign="top">Tanggal:</td>
+                <td style='width:350px' height="5%" valign="top">Pukul :</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">Diterima oleh,<br><br><br><br><br>.......................................................</td>
+                <td colspan="2" align="center">Yang Mengembalikan,<br><br><br><br><br>........................................</td>
+            </tr>
+            <tr>
+                <td colspan="4"><i>Catatan :<br>1. Peminjam harus menanggung resiko atas kerusakan alat;<br>2. Pengembalian alat harus dalam keadaan baik.</i></td>
+            </tr>
         </table>
     </body>
 </html>
