@@ -22,10 +22,10 @@
             <tr>
                 <td style='width:800px'>Judul Diklat : ...................................................</td>
                 <td>Periode      : ......................
-            </tr>
+            </tr><br>
             <tr>
                 <td>Mata Diklat  : ...................................................</td>
-            </tr>
+            </tr><br>
         </table>
         <table border="1" cellheight="10">
             <tr align="center">
@@ -36,24 +36,24 @@
                 <td style='width:95px'>Jumlah</td>
                 <td style='width:275px'>Keterangan</td>
             </tr>
-            <tr valign="top">
-                <td height="20%">1</td>
-                <td>Kunci Shock</td>
-                <td>6 mm sd 32 mm</td>
-                <td>Unit</td>
-                <td>3</td>
-                <td>Baru/baik</td>
+            <tr valign="top" align="center">
+                <td height="20%"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
         <p><i>*) Cek untuk verifikasi</i></p>
         <table>
             <tr>
-                <td style='width:800px'></td>
-                <td>Cimahi, ...............................<br>Kepala bengkel</td>
+                <td style='width:780px'></td>
+                <td>Cimahi, ..............................................<br>Kepala Bengkel</td>
             </tr>
             <tr>
                 <td></td>
-                <td><br><br><br><br><br>_____________________________<br>NIP.</td>
+                <td><br><br><br><br><br>_______________________________<br>NIP.</td>
             </tr>
         </table>
     </body>
