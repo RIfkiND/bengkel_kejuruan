@@ -1,223 +1,85 @@
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='https://www.w3.org/1999/xhtml'>
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<body style='font-family:Tahoma;font-size:12px;color: #333333;background-color:#FFFFFF;'>
-    <table width='100%' cellspacing='0' cellpadding='0' >
-        <tr>
-            <td width='2%'  ><strong style='font-size:14px;'><div align="center" >KARTU PERAWATAN ALAT<br /></strong></div><br>
-            Bengkel &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : .........................<br>
-            Nama Alat / Media &nbsp; : ..........................
-        </tr>
-    </table>
-    
-<table width='100%' cellspacing='0' cellpadding='2' border='1' bordercolor='#CCCCCC'>
-    <tr>
-
-        <th rowspan='2' width='2%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">No</div></strong></th>
-        <th rowspan='2' width='10%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Nama Petugas</div></strong></th>
-        <th colspan='2' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Perawatan/Perbaikan</div></strong></th>
-        <th rowspan='2' width='10%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Kondisi Alat</div></strong></th>
-        <th rowspan='2' width='10%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><strong><div align="center">Tanda Tangan</div></strong></th>
-
-
-        
-  
-    </tr>
-    <tr>
-        <th bgcolor='#f2f2f2' width='3%'>Jenis</th>
-        <th bgcolor='#f2f2f2' width='3%'>Tanggal</th>
-    </tr>
-      <tr style="display:none;"><td colspan="*"><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-
-
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-<!--  </tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr>-->
-<tr> 
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-
-<!-- </tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr><tr>
-
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-<td valign='top' style='font-size:12px;'>&nbsp;</td>
-
-</tr></td></tr> -->
-    </table>
-<br>
-
-    <table align='right'  width='100%' cellspacing='0' cellpadding='0'>
-        <td align='right'>Cimahi, ....................2016<br/> 
-            Kepala .............................<br/>   
+        <style>
+            table {
+                border-collapse: collapse;
+                border-color: black;
+            }
+            .tab2 {
+              display: inline-block;
+              margin-left: 14px;
+            }
+            .tab3 {
+              display: inline-block;
+              margin-left: 65px;
+            }
+        </style>
+    </head>
+    <body>
+        <table style="margin-left:8%; margin-right:auto; text-align:center;" cellpadding="6">
+            <tr>
+                <td rowspan="4"><img src="/Asset/images/logo-tutwuri-handayani.jpg"></td>
+                <td></td>
+            </tr>
+            <tr align="center">
+                <th style='width:725px'>SMK.......</th>
+            </tr>
+            <tr align="center;" style='font-size:14px'>
+                <td>Jl.Pesantren KM 2 Cimahi 40513 Tlp. (022) 6652326 Fax (022) 6654698</td>
+            </tr>
+        </table>
+        <hr>
+        <table border="0" style=" margin-right:auto; text-align:center;" cellpadding="6" width="100%">
+            <tr align="center;">
+                <td style='font-size:18px;'><b>KARTU PERAWATAN ALAT</b></td>
+            </tr>
+            
+            <tr align="left">
+                <td colspan="6" >Bengkel<span class="tab3">:</span><br>Nama Alat/Media :</td>
+            </tr>
+        </table>
+        <table border="1" cellpadding="4" width="100%">
+            <tr >
+                <th rowspan="2">No.</th>
+                <th rowspan="2">Nama Petugas</th>
+                <th colspan="2">Perawatan/Perbaikan</th>
+                <th rowspan="2">Kondisi ALat</th>
+                <th rowspan="2">Tanda Tangan</th>
+            </tr>
+            <tr>
+                <th>Jenis</th>
+                <th>Tanggal</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <br>
+        <table  width='100%' cellspacing='0' cellpadding='2'>
+      <tr>
+        <td valign='top' width='34%' align='right' style='font-size:13px;'>Cimahi, ....................................2016 <br>
+            Kepala .............................................<br/> 
+            <br/>   
             <br/> 
             <br/> 
             <br/> 
-            <br>
-            ................................
- </td>
+            ......................................................... <br>
+        </td>
       </tr>
     </table>
-</td>
-  </tr>
-</table>
-</body>
+    </body>
 </html>

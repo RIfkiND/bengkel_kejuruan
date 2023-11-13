@@ -1,106 +1,106 @@
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='https://www.w3.org/1999/xhtml'>
-<head>
-<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<body style='font-family:Tahoma;font-size:12px;color: #333333;background-color:#FFFFFF;'>
-    <table  width='100%'  cellspacing='0' cellpadding='2' border='1' >
-        <tr height='200%'>
-            <td width='2%' bordercolor='#ccc'  style='font-size:12px;'><strong><div align="center"><img src='https://www.inv24.com/components/Users/pics/50c86533af47b/thumbs/0.jpg' width='90' height='70' /></div></strong></td>
-        <td align="center" width='30%' bordercolor='#ccc'  style='font-size:17px;'><div >KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN</div>
-            <b style='font-size:19px;' >SMK .......</b>
-        </td>
-        </tr>
-</table>
-<table width='100%' cellspacing='0' cellpadding='2' border='1' >
-        <tr>
-        <th align="center" rowspan='2' width='50%' bordercolor='#ccc'  style='font-size:20px;'><strong>FORMULIR</strong></th>
-        <td align="center" colspan='1' width='10%' bordercolor='#ccc'  style='font-size:12px;'>Kode Dok.</td>
-        <td align="center" colspan='1' width='10%' bordercolor='#ccc'  style='font-size:12px;'>F-SAR-01</td>
-        
-
-    </tr>
-            
-    <tr>
-    <td align="center" style='font-size:12px;'  width='10%'>Edisi/Revisi</td>    
-    <td align="center" style='font-size:12px;'  width='10%'>A/2</td>   
-    </tr>
-    <tr>
-        <td align="center" rowspan='2' width='50%' bordercolor='#ccc'  style='font-size:17px;'>Serah Terima Barang Hasil Perbaikan</td>
-        <td align="center" colspan='1' width='10%' bordercolor='#ccc'  style='font-size:12px;'>Tanggal</td>
-        <td align="center" colspan='1' width='10%' bordercolor='#ccc'  style='font-size:12px;'>03 Juli 2012</td>
-        
-
-    </tr>
-            
-    <tr>
-    <td align="center" style='font-size:12px;'  width='10%'>Halaman</td>    
-    <td align="center" style='font-size:12px;' width='10%'>1 dari 1</td>   
-    </tr>
-</table>
-<br>
-<br>
-<table width='100%' cellspacing='0' cellpadding='0' >
-        <tr>
-            <td width='2%' style='font-size:14px;' >Sudah terima dari : Subbagian Tata Usaha & Rumah Tangga<br>
+<html>
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+                border-color: black;
+            }
+            .tab1 {
+                display: inline-block;
+                margin-left: 110px;
+            }
+            .tab2 {
+                display: inline-block;
+                margin-left: 77px;
+            }
+            .tab3 {
+                display: inline-block;
+                margin-left: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <table style="margin-right:auto; text-align:center;" border="1" cellpadding="4" width="100%">
+                <tr>
+                    <td><img src="/Asset/images/logo-tutwuri-handayani.jpg"></td>
+                    <th colspan="6" align="center" style='width:850px'>KEMENTRIAN PENDIDIKAN DAN KEBUDAYAAN<br>SMK........</th>
+                </tr>
+                <tr>
+                    <th colspan="5" rowspan="2" align="center" style='width:660px'>FORMULIR</th>
+                    <td align="left" style='width:150px'>Kode Dok.</td>
+                    <td align="left" style='width:150px'></td>
+                </tr>
+                <tr>
+                    <td align="left">Edisi/Revisi</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <th colspan="5" rowspan="2" align="center">Serah Terima Barang Hasil Perbaikan</th>
+                    <td align="left">Tanggal</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td align="left">Halaman</td>
+                    <td align="left"></td>
+                </tr>
+        </table>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <td align="left">Sudah terima dari : Subbagian Tata Usaha & Rumah Tangga</td>
+            </tr>
             <br>
-            Barang berupa &nbsp; &nbsp; &nbsp;:
-        </tr>
-    </table>
-    <table width='100%' cellspacing='0' cellpadding='2' border='1' bordercolor='#CCCCCC'>
-    <tr>
-
-        <th  width='4%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><div align="center">No</div></th>
-        <th  width='27%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><div align="center">Nama Barang</div></th>
-        <th  width='27%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><div align="center">Spesifikasi</div></th>
-        <th  width='27%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><div align="center">Jumlah</div></th>
-        <th  width='27%' bordercolor='#ccc' bgcolor='#f2f2f2' style='font-size:12px;'><div align="center">Jumlah</div></th>
-
-        
-  
-    </tr>
-
-      <tr style="display:none;"><td colspan="*"><tr>
-
-        <td valign='top' style='font-size:12px;'><br><br><br><br><br><br><br><br><br><br></td>
-        <td valign='top' style='font-size:12px;'>&nbsp;</td>
-        <td valign='top' style='font-size:12px;'>&nbsp;</td>
-        <td valign='top' style='font-size:12px;'>&nbsp;</td>
-        <td valign='top' style='font-size:12px;'>&nbsp;</td>
-    </tr>
-</table>
-<br>
-<table  width='100%' cellspacing='0' cellpadding='2'>
+            <tr>
+                <td align="left">Barang berupa  <span class="tab3">:</span></td>
+            </tr>
+        </table>
+        <table border="1" cellpadding="4" width="100%">
+              <tr >
+                <th>No.</th>
+                <th>Nama Barang</th>
+                <th>Spesifikasi</th>
+                <th>Jumlah</th>
+                <th>Keterangan</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <table  width='100%' cellspacing='0' cellpadding='2'>
       <tr>
-        <td width='33%' valign='top' >Cimahi, .............................<br/>
-            Yang menyerahkan, <br>
-            Penanggung Jawab Urusan Inventaris/ <br>
-            Penangung Jawab Urusan Kerumahtanggaan <br>
+        <td width='33%' valign='top' style='font-size:13px;'>Mengetahui,<br/>
+            Kepala Departemen<br>
             <br>
             <br>
             <br>
             <br>
             ................................. <br>
-            NIP.
-            
-
-
-</td>
-</td>
-
-        <td valign='top' width='34%' align='right'><br/> 
-            Yang menerima,<br/>
-            Permohonan Perbaikan, 
+        </td>
+        <td valign='top' width='34%' align='right' style='font-size:13px;'>Cimahi, .............................<br/> 
+            Kepala Bengkel/Laboratorium<br/> 
             <br/>   
             <br/> 
             <br/> 
             <br/> 
-            ...................................<br>
-            NIP. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            
- </td>
+            ................................................
+        </td>
       </tr>
     </table>
-    <br><br><br>
-    <p>Untuk diserahkan kembali kepada unit kerja pemohon perbaikan</p>
-</body>
+    </body>
 </html>

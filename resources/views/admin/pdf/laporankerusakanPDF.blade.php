@@ -1,178 +1,185 @@
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='https://www.w3.org/1999/xhtml'>
-<head>
-<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<body style='font-family:Tahoma;font-size:12px;color: #333333;background-color:#FFFFFF;'>
-    <table  width='100%'  cellspacing='0' cellpadding='2' border='1' >
-        <tr height='200%'>
-            <td width='2%' bordercolor='#ccc'  style='font-size:12px;'><strong><div align="center"><img src='https://www.inv24.com/components/Users/pics/50c86533af47b/thumbs/0.jpg' width='90' height='70' /></div></strong></td>
-        <td align="center" width='30%' bordercolor='#ccc'  style='font-size:17px;'><div >KEMENTERIAN PENDIDIKAN DAN KEBUDAYAAN</div>
-            <b style='font-size:19px;' >SMK .......</b>
-        </td>
-        </tr>
-</table>
-<table width='100%' cellspacing='0' cellpadding='2' border='1' >
-        <tr>
-        <th align="center" rowspan='2' width='50%' bordercolor='#ccc'  style='font-size:20px;'><strong>FORMULIR</strong></th>
-        <td align="center" colspan='1' width='10%' bordercolor='#ccc'  style='font-size:12px;'>Kode Dok.</td>
-        <td align="center" colspan='1' width='10%' bordercolor='#ccc'  style='font-size:12px;'>F-SAR-01</td>
-        
-
-    </tr>
-            
-    <tr>
-    <td align="center" style='font-size:12px;'  width='10%'>Edisi/Revisi</td>    
-    <td align="center" style='font-size:12px;'  width='10%'>A/2</td>   
-    </tr>
-    <tr>
-        <td align="center" rowspan='2' width='50%' bordercolor='#ccc'  style='font-size:17px;'>Laporan Kerusakan</td>
-        <td align="center" colspan='1' width='10%' bordercolor='#ccc'  style='font-size:12px;'>Tanggal</td>
-        <td align="center" colspan='1' width='10%' bordercolor='#ccc'  style='font-size:12px;'>03 Juli 2012</td>
-        
-
-    </tr>
-            
-    <tr>
-    <td align="center" style='font-size:12px;'  width='10%'>Halaman</td>    
-    <td align="center" style='font-size:12px;' width='10%'>1 dari 1</td>   
-    </tr>
-</table>
-<br>
-<table width='50%' cellspacing='0' cellpadding='2' border='1'>
-    <tr>
-        <td align="center" style='font-size:15px;'  width='10%'>NOMOR URUT LAPORAN</td>
-    </tr>
-</table>
-<table width='100%' cellspacing='0' cellpadding='2' border=''>
-    <tr>
-        <td align="left" style='font-size:13PX;'  width='10%'>LOKASI &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  :<br>
-            UNIT KERJA &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :<br>
-            NAMA FASILITAS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :<br>
-            URAIAN KERUSAKAN &nbsp; &nbsp; &nbsp; :
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            Kepala Unit Pelapor <br>
-            Tanggal <br>
-            Tanda Tangan <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            ......................................... <br>
-            NIP. 
-        </td>
-        <td align="left" style='font-size:13PX;'  width='10%'>JENIS FASILITAS <br>
-            (ISI)<br>
-            NAMA FASILITAS<br>
-            <br>
-            <input type="checkbox" name="" id=""> GEDUNG <br>
-            <br>
-            <input type="checkbox" name="" id=""> UTILITAS <br>
-            <br>
-            <input type="checkbox" name="" id=""> AREA TERBUKA <br>
-            <br>
-            <input type="checkbox" name="" id=""> PERABOT <br>
-            <br>
-            <input type="checkbox" name="" id=""> PERALATAN <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" style='font-size:13PX;'  width='10%'>URAIAN PEMERIKSAAN &nbsp; :<br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            Penanggung Jawab <br>
-            Pelaksana MR: 
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            ......................................... <br>
-            NIP. 
-        </td>
-        <td align="left" style='font-size:13PX;'  width='10%'>TINDAKAN/REKOMENDASI &nbsp; &nbsp; &nbsp; :<br>
+<html>
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+                border-color: black;
+            }
+            .tab1 {
+                display: inline-block;
+                margin-left: 110px;
+            }
+            .tab2 {
+                display: inline-block;
+                margin-left: 77px;
+            }
+            .tab3 {
+                display: inline-block;
+                margin-left: 40px;
+            }
+            .tab3l {
+                display: inline-block;
+                margin-left: 36px;
+            }
+            .tab4 {
+                display: inline-block;
+                margin-left: 118px;
+            }
+            .tab5 {
+                display: inline-block;
+                margin-left: 79px;
+            }
+            .tab6 {
+                display: inline-block;
+                margin-left: 90px;
+            }
+            .tab7 {
+                display: inline-block;
+                margin-left: 76px;
+            }
+            .tab8 {
+                display: inline-block;
+                margin-left: 86px;
+            }
+            .tab9 {
+                display: inline-block;
+                margin-left: 65px;
+            }
+            .tab10 {
+                display: inline-block;
+                margin-left: 24px;
+            }
+            .tab11 {
+                display: inline-block;
+                margin-left: 29px;
+            }
+            .tab12 {
+                display: inline-block;
+                margin-left: 17px;
+            }
+        </style>
+    </head>
+    <body>
+        <table style="margin-right:auto; text-align:center;" border="1" cellpadding="4" width="100%">
+                <tr>
+                    <td><img src="/Asset/images/logo-tutwuri-handayani.jpg"></td>
+                    <th colspan="6" align="center" style='width:850px'>KEMENTRIAN PENDIDIKAN DAN KEBUDAYAAN<br>SMK........</th>
+                </tr>
+                <tr>
+                    <th colspan="5" rowspan="2" align="center" style='width:660px'>FORMULIR</th>
+                    <td align="left" style='width:150px'>Kode Dok.</td>
+                    <td align="left" style='width:150px'></td>
+                </tr>
+                <tr>
+                    <td align="left">Edisi/Revisi</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <th colspan="5" rowspan="2" align="center">Laporan Kerusakan</th>
+                    <td align="left">Tanggal</td>
+                    <td align="left"></td>
+                </tr>
+                <tr>
+                    <td align="left">Halaman</td>
+                    <td align="left"></td>
+                </tr>
+        </table>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <hr>
-        <br>
-        <br>
-        PENGADAAN BARANG/JASA &nbsp; &nbsp; &nbsp; : YA/TIDAK
-        </td>
-    </tr>
-    <tr>
-        <td align="left" style='font-size:13PX;'  width='10%'><strong>Pemeriksa &nbsp; </strong>:<br>
-            Tanggal &nbsp; &nbsp; &nbsp; &nbsp;:
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            Penanggung Jawab Urusan <br>
-            Kerumahtanggaan 
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            ......................................... <br>
-            NIP. 
-        </td>
-        <td align="left" style='font-size:13PX;'  width='10%'><strong>Mengetahui &nbsp; </strong>:<br>
-        Tanggal &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        Kassubag TU&RT
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        ......................................... <br>
-        NIP. 
-        </td>
-    </tr>
-</table>
-</body>
+        <table  style="margin-right:auto; text-align:center;" border="1" cellpadding="10" width="70%">
+            <tr>
+                <td align="left" ><b>NOMOR URUT LAPORAN</b></td>
+            </tr>
+        </table>
+        <table style="margin-right:auto; text-align:center;" border="1" cellpadding="4" width="100%">
+            <tr valign="top">
+                <td align="left" width="70%">LOKASI<span class="tab1">:</span><br>
+                    UNIT KERJA<span class="tab2">:</span><br>
+                    NAMA FASILITAS<span class="tab3l">:</span><br>
+                    URAIAN KERUSAKAN : <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    Kepala Unit Pelapor<span class="tab3">:</span><br>
+                    Tanggal<span class="tab4">:</span><br>
+                    Tanda Tangan<span class="tab5">:</span><br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    ................................ <br>
+                    NIP.
+                </td>
+                <td align="left" width="30%">JENIS FASILITAS<br>(ISI) <br><br>
+                    GEDUNG<span class="tab6"><input type="checkbox" name="" id=""></span><br><br>
+                    ULTILITAS<span class="tab7"><input type="checkbox" name="" id=""></span> <br><br>
+                    AREA TERBUKA<span class="tab3l"><input type="checkbox" name="" id=""></span><br><br>
+                    PERABOT<span class="tab8"><input type="checkbox" name="" id=""></span> <br><br>
+                    PERALATAN<span class="tab9"><input type="checkbox" name="" id=""></span> <br>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" width="70%">URAIAN PEMERIKSAAN : <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                Penanggung Jawab
+                <br>
+                Pelaksana MR:
+                <br>
+                <br>
+                <br>
+                <br>
+                .................................... <br>
+                NIP.
+                </td>
+                <td align="left" width="30%">TINDAKAN/ <br>REKOMENDASI :<br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <hr>
+                PENGADAAN <br>
+                BARANG/JASA <span class="tab3">: <span class="tab12">YA/TIDAK</span></span>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" width="70%">
+                    <b>Pemeriksa </b>:<br>
+                    Tanggal<span class="tab10">:</span><br><br>
+                    Penanggung Jawab Urusan <br>
+                    Kerumahtanggaan <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    .................................... <br>
+                    NIP.
+                </td>
+                <td align="left" width="30%">
+                    <b>Mengetahui </b>: <br>
+                    Tanggal <span class="tab11">:</span> <br>
+                    <br>
+                    Kassubag TU&RT <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    .................................... <br>
+                    NIP.
+                </td>
+            </tr>
+        </table>
+    </body>
 </html>
