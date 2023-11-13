@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal');
             $table->enum('kode', ['A', 'B']);
+            $table->string('kode_barang')->nullable();
             $table->string('nama_alat_atau_bahan');
             $table->string('volume');
             $table->string('satuan');
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->foreignId('guru_id')->constrained('gurus')->onDelete('cascade');
             $table->foreignId('sekolah_id')->constrained('sekolahs')->onDelete('cascade');
             $table->enum('status', ['Pending', 'Diterima', 'Ditolak'])->default('Pending');
+            $table->enum('keadaan', ['baik','rusak ringan', 'rusak berat'])->default('baik');
             $table->timestamps();
         });
     }

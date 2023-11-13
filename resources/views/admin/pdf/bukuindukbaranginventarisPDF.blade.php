@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
+<head>
+        <style>
+            table {
+                border-collapse: collapse;
+                border-color: black;
+            }
+        </style>
+    </head>
     <body>
         <h2 align="center">SMK... </h2>
         <h2 align="center">BUKU INDUK BARANG INVENTARIS</h2>
         <h4>Departemen Mesin Konversi Energi</h4>
 
-        <table border="1">
-            <tr align="center">
+        <table border="1" cellpadding="10">
+            <tr align="center" bgcolor="#e9e9e9">
                 <th>Nomor urut</th>
                 <th>Tanggal Pembukuan</th>
                 <th>Kode Barang</th>
@@ -22,34 +30,34 @@
                 <th>Keterangan</th>
             </tr>
             <tr align="center">
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr align="center">
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
-                <td> . </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
     </body>
