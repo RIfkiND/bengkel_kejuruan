@@ -1,67 +1,111 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-    <title>Kartu Pengajuan</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-</head>
-
-<body>
-    <div class="container">
-        <div class="row mb-4 pb-4">
-            <div class="col text-center">
-                <h1>{{ $sekolah->nama_sekolah }}</h1>
-            </div>
-            <div class="col text-center">
-                <h4>{{ $guru->nama_guru }}</h4>
-            </div>
-        </div>
-        <h5>
-            <div class="row">
-                <div class="col">
-                    <table>
-                        <tr>
-                            <td class="pb-3">
-                                Kode
-                            </td>
-                            <td class="pb-3">
-                                : {{ $pengajuan->kode }}
-                            </td>
-                            <td class="pl-2 pb-3">Tanggal Pengajuan</td>
-                            <td class="pb-3">: {{ $pengajuan->tanggal }}</td>
-                        </tr>
-                        <tr>
-                            <td class="pb-3" colspan="2">Nama Alat/Bahan</td>
-                            <td class="pb-3" colspan="2">: {{ $pengajuan->peralatan->nama_peralatan_atau_mesin }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </h5>
-        <h5>
-            <div class="row">
-                <div class="col">
-                    <table>
-                        <tr>
-                            <td class="pb-4">Jumlah</td>
-                            <td class="pb-4">: {{ $pengajuan->volume }}{{$pengajuan->satuan}}</td>
-                            <td class="pl-4 pb-4">Status</td>
-                            <td class="pb-4">: {{ $pengajuan->status }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="text-center pb-3">Spesifikasi</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="text-center">{{ $pengajuan->keterangan }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </h5>
-    </div>
-</body>
-
+        <style>
+            table {
+                border-collapse: collapse;
+                border-color: black;
+            }
+            .tab2 {
+              display: inline-block;
+              margin-left: 7px;
+            }
+            .tab3 {
+              display: inline-block;
+              margin-left: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <table style="margin-left:8%; margin-right:auto; text-align:center;" cellpadding="6">
+            <tr>
+                <td rowspan="4"><img src="/Asset/images/logo-tutwuri-handayani.jpg"></td>
+                <td></td>
+            </tr>
+            <tr align="center">
+                <th style='width:725px'>SMK.......</th>
+            </tr>
+            <tr align="center;" style='font-size:14px'>
+                <td>Jl.Pesantren KM 2 Cimahi 40513 Tlp. (022) 6652326 Fax (022) 6654698</td>
+            </tr>
+        </table>
+        
+        <table border="1" width="100%">
+          <tr>
+            <td>
+              <table border="0" style=" margin-right:auto; text-align:center;" cellpadding="6" width="100%">
+                <tr align="center;">
+                  <td style='font-size:18px;'><b>DAFTAR INVENTARIS ALAT/MESIN</b></td>
+                </tr>
+                <tr align="center;">
+                  <td style='font-size:16px;'>Departemen</td>
+                </tr>
+                <tr align="left">
+                  <td>Laboratorium / Bengkel</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table border="1" cellpadding="4" width="100%">
+              <tr >
+                <th rowspan="2">No.</th>
+                <th rowspan="2">Nomor Inventaris</th>
+                <th rowspan="2">Nama Alat</th>
+                <th rowspan="2">Spesifikasi</th>
+                <th rowspan="2">Jumlah</th>
+                <th colspan="3">Keadaan Alat</th>
+            </tr>
+            <tr >
+                <th width="5%">Baik</th>
+                <th>Sedang</th>
+                <th>Rusak</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <table  width='100%' cellspacing='0' cellpadding='2'>
+      <tr>
+        <td width='33%' valign='top' style='font-size:13px;'>Mengetahui,<br/>
+            Kepala Departemen<br>
+            <br>
+            <br>
+            <br>
+            <br>
+            ................................. <br>
+        </td>
+        <td valign='top' width='34%' align='right' style='font-size:13px;'>Cimahi, .............................<br/> 
+            Kepala Bengkel/Laboratorium<br/> 
+            <br/>   
+            <br/> 
+            <br/> 
+            <br/> 
+            ................................................
+        </td>
+      </tr>
+    </table>
+    </body>
 </html>

@@ -1,71 +1,87 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-    <title>Kartu Peraltan</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-</head>
-
-<body>
-    <div class="container">
-        <div class="row mb-4 pb-4">
-            <div class="col text-center">
-                <h1>{{ $sekolah->nama_sekolah }}</h1>
-            </div>
-            <div class="col text-center">
-                <h4>{{ $ruangan->nama_ruangan }}</h4>
-            </div>
-        </div>
-        <h5>
-            <div class="row mb-4 justify-content-center">
-                <div class="col-md-auto">
-                    <table>
-                        <tr>
-                            <td>
-                                Kode P/M
-                            </td>
-                            <td>
-                                : PM-0{{ $peralatan->id }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nama Peralatan/Mesin</td>
-                            <td>: {{ $peralatan->nama_peralatan_atau_mesin }}</td>
-                        </tr>
-                        <tr>
-                            <td>Spesifikasi</td>
-                            <td>:</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>- {{ $peralatan->spesifikasi->merk }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>- {{ $peralatan->spesifikasi->tipe_atau_model }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>- {{ $peralatan->spesifikasi->kapasitas }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>- {{ $peralatan->spesifikasi->tahun }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </h5>
-        <h5>
-            <div class="row">
-                <div class="col">Tanggal Masuk: <span
-                        class="pl-4">{{ $peralatan->peralatanmasuk->tanggal_masuk }}</span></div>
-            </div>
-        </h5>
-    </div>
-</body>
-
+        <style>
+            table {
+                border-collapse: collapse;
+                border-color: black;
+            }
+            .tab2 {
+              display: inline-block;
+              margin-left: 14px;
+            }
+            .tab3 {
+              display: inline-block;
+              margin-left: 65px;
+            }
+        </style>
+    </head>
+    <body>
+        <table style="margin-left:8%; margin-right:auto; text-align:center;" cellpadding="6">
+            <tr>
+                <td rowspan="4"><img src="/Asset/images/logo-tutwuri-handayani.jpg"></td>
+                <td></td>
+            </tr>
+            <tr align="center">
+                <th style='width:725px'>SMK.......</th>
+            </tr>
+            <tr align="center;" style='font-size:14px'>
+                <td>Jl.Pesantren KM 2 Cimahi 40513 Tlp. (022) 6652326 Fax (022) 6654698</td>
+            </tr>
+        </table>
+        <hr>
+        <table border="0" style=" margin-right:auto; text-align:center;" cellpadding="6" width="100%">
+            <tr align="center;">
+                <td style='font-size:18px;'><b>KARTU PEMAKAIAN ALAT</b></td>
+            </tr>
+            
+            <tr align="left">
+                <td colspan="6" >Bengkel<span class="tab3">:</span><br>Nama Alat/Media :</td>
+            </tr>
+        </table>
+        <table border="1" cellpadding="4" width="100%">
+            <tr >
+                <th rowspan="2">No.</th>
+                <th rowspan="2">Nama Pemakai</th>
+                <th colspan="3">Waktu Pemakaian</th>
+                <th rowspan="2">Kondisi ALat</th>
+                <th rowspan="2">Tanda Tangan</th>
+            </tr>
+            <tr>
+                <th>Tanggal</th>
+                <th>Jam Mulai</th>
+                <th>Jam Selesai</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <br>
+        <table  width='100%' cellspacing='0' cellpadding='2'>
+      <tr>
+        <td valign='top' width='34%' align='right' style='font-size:13px;'> Kepala Departemen.........................<br/> 
+            <br/>   
+            <br/> 
+            <br/> 
+            <br/> 
+            ......................................................... <br>
+        </td>
+      </tr>
+    </table>
+    </body>
 </html>
