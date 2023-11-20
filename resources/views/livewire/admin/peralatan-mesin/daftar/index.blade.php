@@ -108,7 +108,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
+                                                <div class="row justify-content-center">
                                                     <div class="col-lg-1 mb-4">
                                                         <label for="tanggal" class="text-center">Tanggal Masuk</label>
                                                     </div>
@@ -156,6 +156,9 @@
                                                         @error('sumber_dana')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
+                                                    </div>
+                                                    <div class="col-lg-3 mb-4">
+                                                        <input type="text" class="form-control input-default" placeholder="Kode Peralatan atau Mesin">
                                                     </div>
                                                 </div>
                                             </div>

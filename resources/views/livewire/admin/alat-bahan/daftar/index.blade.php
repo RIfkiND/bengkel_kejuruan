@@ -106,7 +106,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row justify-content-center">
                                             <label for="tanggal" class="col-md-auto col-form-label">Tanggal
                                                 Masuk</label>
                                             <div class="col-lg-2 mb-4">
@@ -138,6 +138,9 @@
                                                 @error('ruangan_id')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
+                                            </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <input type="text" class="form-control input-default" placeholder="Kode Alat atau Bahan">
                                             </div>
                                         </div>
                                         <div class="row">
