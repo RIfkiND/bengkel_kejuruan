@@ -25,7 +25,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::controller(PDFController::class)->group(function () {
-    Route::get('kartu-pemakaian-alat', 'kartupemakaaianalat')->name('print.kartupemakaaianalat');
+    // Route::get('kartu-pemakaian-alat', 'kartupemakaaianalat')->name('print.kartupemakaaianalat');
     Route::get('kartu-perawatan-alat', 'kartuperawatanalat')->name('print.kartuperawatanalat');
     Route::get('daftar-inventaris-alat', 'inventarisalat')->name('print.inventarisalat');
     Route::get('kartu-peminjaman-alat', 'kartupeminjamanalat')->name('print.kartupeminjamanalat');
@@ -49,7 +49,7 @@ Route::prefix('/admin')->group(function () {
     });
 
     Route::controller(PDFController::class)->group(function () {
-        // Route::get('kartu-pemakaian-alat', 'kartupemakaaianalat')->name('print.kartupemakaaianalat');
+        Route::get('kartu-pemakaian-alat/{id}', 'kartupemakaaianalat')->name('print.kartupemakaaianalat');
         // Route::get('kartu-perawatan-alat', 'kartuperawatanalat')->name('print.kartuperawatanalat');
         // Route::get('daftar-inventaris-alat', 'inventarisalat')->name('print.inventarisalat');
         // Route::get('kartu-peminjaman-alat', 'kartupeminjamanalat')->name('print.kartupeminjamanalat');

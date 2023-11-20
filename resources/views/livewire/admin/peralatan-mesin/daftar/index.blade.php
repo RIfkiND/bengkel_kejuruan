@@ -231,8 +231,6 @@
                                             <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal"
                                                 data-target="#ModalPeralatan"
                                                 wire:click='info({{ $peralatan->id }})'>Informasi</a>
-                                            <a class="dropdown-item"
-                                                href="{{ route('print.kartuperalatan', ['id' => $peralatan->id]) }}">Download</a>
                                             <a class="dropdown-item" href="javascript:void(0)"
                                                 wire:click='edit({{ $peralatan->id }})'>Edit</a>
                                             <a class="dropdown-item text-danger" href="javascript:void(0)"

@@ -58,9 +58,9 @@
                                                                     wire:click='ondel({{ $user->id }})'><i
                                                                         class="fa fa-trash text-danger mr-2"></i>Delete</a>
                                                                 @if (auth()->user()->role == 'SuperAdmin' || auth()->user()->role == 'Admin')
-                                                                    <a class="dropdown-item text-success"
+                                                                    <a class="dropdown-item text-warning"
                                                                         href="{{ route('admin.impersonate', $user) }}"><i
-                                                                            class="fa fa-sign-in text-success mr-2"></i>Login
+                                                                            class="fa fa-sign-in text-warning mr-2"></i>Login
                                                                         As</a>
                                                                 @endif
                                                             </div>
