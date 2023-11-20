@@ -140,7 +140,12 @@
                                                 @enderror
                                             </div>
                                             <div class="col-lg-3 mb-4">
-                                                <input type="text" class="form-control input-default" placeholder="Kode Alat atau Bahan">
+                                                <input wire:model='kode_bahan' type="text"
+                                                    class="form-control input-default"
+                                                    placeholder="Kode Alat atau Bahan">
+                                                @error('kode_bahan')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="row">
@@ -217,11 +222,15 @@
                                     <h4>Daftar Alat dan Bahan</h4>
                                 </div>
                             </div>
-                            <div class="col d-flex justify-content-end px-4">
-                                <div class="form-group">
-                                    <a href="{{ route('print.bukuindukbaranginventaris', ['id' => auth()->user()->ruangan_id]) }}">print buku</a>
+                            @if (auth()->user()->ruangan_id)
+                                <div class="col d-flex justify-content-end px-4">
+                                    <div class="form-group">
+                                        <a
+                                            href="{{ route('print.bukuindukbaranginventaris', ['id' => auth()->user()->ruangan_id]) }}">print
+                                            buku</a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <div class="col d-flex justify-content-end px-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
@@ -247,19 +256,22 @@
                                             <tr>
                                                 <td>
                                                     <a href="javascript:void(0)" data-toggle="modal"
-                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        data-target="#ModalAlat"
+                                                        wire:click='history({{ $alat->id }})'>
                                                         AB-{{ $alat->id }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" data-toggle="modal"
-                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        data-target="#ModalAlat"
+                                                        wire:click='history({{ $alat->id }})'>
                                                         {{ $alat->nama_alat_atau_bahan }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" data-toggle="modal"
-                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        data-target="#ModalAlat"
+                                                        wire:click='history({{ $alat->id }})'>
                                                         @if ($alat->spesifikasi)
                                                             <ul>
                                                                 <li>
@@ -285,13 +297,15 @@
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" data-toggle="modal"
-                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        data-target="#ModalAlat"
+                                                        wire:click='history({{ $alat->id }})'>
                                                         {{ $alat->volume }} {{ $alat->satuan }}
                                                     </a>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0)" data-toggle="modal"
-                                                        data-target="#ModalAlat" wire:click='history({{$alat->id}})'>
+                                                        data-target="#ModalAlat"
+                                                        wire:click='history({{ $alat->id }})'>
                                                         Rp {{ number_format($alat->saldoalat(), 2, ',', '.') }}
                                                     </a>
                                                 </td>

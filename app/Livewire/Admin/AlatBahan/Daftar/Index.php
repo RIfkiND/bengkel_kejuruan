@@ -15,7 +15,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class Index extends Component
 {
     public $nama_alat_atau_bahan, $tanggal_masuk, $kode, $ruangan_id, $volume, $satuan, $sumber_dana, $merk, $type, $dimensi, $alat_id, $searchAlat, $selectedAlatId, $saldo;
-    public $tanggal_keluar, $keterangan, $nama_pemakai, $volume_keluar, $volume_masuk;
+    public $tanggal_keluar, $keterangan, $nama_pemakai, $volume_keluar, $volume_masuk, $kode_bahan;
     public $updateMode = false;
     public $historyData, $alathistory;
     public $ruangan_byadmin;
@@ -92,6 +92,7 @@ class Index extends Component
         $this->satuan = '';
         $this->saldo = '';
         $this->volume = '';
+        $this->kode_bahan = '';
         $this->volume_keluar = '';
         $this->volume_masuk = '';
     }
@@ -102,6 +103,8 @@ class Index extends Component
             [
                 'nama_alat_atau_bahan' => 'required',
                 'kode' => 'required',
+                //required and unique where scholl_id
+                'kode_bahan'=> 'required|unique:alat_atau_bahans,kode_bahan,NULL,id,ruangan_id,'.$this->ruangan_id,
                 'ruangan_id' => 'required',
                 'volume' => 'required',
                 'satuan' => 'required',
