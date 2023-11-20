@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guru;
 use App\Models\Ruangan;
 use App\Models\Sekolah;
+use App\Models\Pemakaian;
 use Illuminate\Http\Request;
 use App\Models\PeralatanAtauMesin;
 use App\Models\PengajuanAlatAtauBahan;
@@ -12,11 +13,11 @@ use App\Models\PemeliharaanDanPerawatan;
 
 class PDFController extends Controller
 {
-    public function kartupemakaaianalat()
+    public function kartupemakaaianalat($id)
     {
 
-        $peralatan = PeralatanAtauMesin::find(1);
-
+        $peralatan = PeralatanAtauMesin::find($id);
+        $pemakai = Pemakaian::where('peralatan_atau_mesin_id', $id)->get();
         $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
         $ruangan = Ruangan::find($peralatan->ruangan_id);
 
@@ -24,10 +25,8 @@ class PDFController extends Controller
 
         $data = [
 
-            'title' => 'Kartu Pemakaian Alat',
-
             'date' => date('m/d/Y'),
-
+            'pemakais' => $pemakai,
             'peralatan' => $peralatan,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
