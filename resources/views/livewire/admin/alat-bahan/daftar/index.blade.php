@@ -216,6 +216,11 @@
                             </div>
                             <div class="col d-flex justify-content-end px-4">
                                 <div class="form-group">
+                                    <a href="{{ route('print.bukuindukbaranginventaris', ['id' => auth()->user()->ruangan_id]) }}">print buku</a>
+                                </div>
+                            </div>
+                            <div class="col d-flex justify-content-end px-4">
+                                <div class="form-group">
                                     <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
                                         wire:model='searchAlat' wire:input='resetPage'>
                                 </div>

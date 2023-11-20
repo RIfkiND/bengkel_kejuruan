@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AlatAtauBahan;
 use App\Models\Guru;
 use App\Models\Ruangan;
 use App\Models\Sekolah;
@@ -213,22 +214,18 @@ class PDFController extends Controller
 
         return $pdf->stream();
     }
-    public function bukuindukbaranginventaris()
+    public function bukuindukbaranginventaris($id)
     {
-        $peralatan = PeralatanAtauMesin::find(1);
-
-        $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($peralatan->ruangan_id);
-
+        $ruangan = Ruangan::find($id);
+        $sekolah = Sekolah::find($ruangan->sekolah_id);
+        $bahans = AlatAtauBahan::where('ruangan_id', $id)->get();
 
 
         $data = [
 
-            'title' => 'Buku Pemeliharaan Alat',
-
             'date' => date('m/d/Y'),
 
-            'peralatan' => $peralatan,
+            'bahans' => $bahans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 

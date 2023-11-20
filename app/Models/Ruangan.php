@@ -21,6 +21,11 @@ class Ruangan extends Model
         return $this->hasMany(PeralatanAtauMesin::class)->where('kondisi', 'ditempat');
     }
 
+    public function alat()
+    {
+        return $this->hasMany(AlatAtauBahan::class, 'ruangan_id', 'id');
+    }
+
     public function sekolah()
     {
         return $this->belongsTo(Sekolah::class);

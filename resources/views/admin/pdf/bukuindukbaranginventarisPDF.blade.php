@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            table {
-                border-collapse: collapse;
-                border-color: black;
-            }
-        </style>
-    </head>
-    <body>
-        <h2 align="center">SMK... </h2>
-        <h2 align="center">BUKU INDUK BARANG INVENTARIS</h2>
-        <h3>Departemen Mesin Konversi Energi</h4>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 align="center">{{ $sekolah->nama_sekolah }}</h2>
+    <h2 align="center">BUKU INDUK BARANG INVENTARIS</h2>
+    <h3>{{ $ruangan->nama_ruangan }}</h4>
 
         <table style="margin-right:2%; text-align:center;" border="1" cellpadding="7">
             <tr align="center" bgcolor="#e9e9e9">
@@ -23,96 +25,19 @@
                 <th style='width:150px'>Kuantitas</th>
                 <th style='width:100px'>Nama Satuan</th>
             </tr>
+            @foreach ($bahans as $bahan)
             <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td height="3%">
+                    {{ $loop->iteration }}
+                </td>
+                <td>{{ $date }}</td>
+                <td>sdsk</td>
+                <td>{{ $bahan->nama_alat_atau_bahan }}</td>
+                <td>{{ $bahan->spesifikasi->merk }},{{ $bahan->spesifikasi->tipe_atau_model }},{{ $bahan->spesifikasi->dimensi }}</td>
+                <td>{{ $bahan->volume }}</td>
+                <td>{{ $bahan->satuan }}</td>
             </tr>
-            <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr align="center">
-                <td height="3%"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            @endforeach
         </table>
         <table style="margin-right:2%; text-align:center; page-break-before:always;" border="1" cellpadding="7">
             <tr align="center" bgcolor="#e9e9e9">
@@ -203,5 +128,6 @@
                 <td></td>
                 <td></td>
             </tr>
-    </body>
+</body>
+
 </html>
