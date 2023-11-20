@@ -258,7 +258,7 @@
                                                     <a href="javascript:void(0)" data-toggle="modal"
                                                         data-target="#ModalAlat"
                                                         wire:click='history({{ $alat->id }})'>
-                                                        AB-{{ $alat->id }}
+                                                        {{ $alat->kode_bahan }}
                                                     </a>
                                                 </td>
                                                 <td>

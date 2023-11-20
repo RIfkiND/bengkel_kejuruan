@@ -101,10 +101,9 @@ class Index extends Component
     {
         $validatedDate = $this->validate(
             [
-                'nama_alat_atau_bahan' => 'required',
+                'nama_alat_atau_bahan' => 'required|unique:alat_atau_bahans,nama_alat_atau_bahan,NULL,id,ruangan_id,' . $this->ruangan_id,
                 'kode' => 'required',
-                //required and unique where scholl_id
-                'kode_bahan'=> 'required|unique:alat_atau_bahans,kode_bahan,NULL,id,ruangan_id,'.$this->ruangan_id,
+                'kode_bahan' => 'required|unique:alat_atau_bahans,kode_bahan,NULL,id,ruangan_id,' . $this->ruangan_id,
                 'ruangan_id' => 'required',
                 'volume' => 'required',
                 'satuan' => 'required',
@@ -119,6 +118,8 @@ class Index extends Component
                 'nama_alat_atau_bahan.required' => 'Nama Alat atau Bahan tidak boleh kosong.',
                 'nama_alat_atau_bahan.unique' => 'Nama Alat atau Bahan sudah ada.',
                 'kode.required' => 'Kode tidak boleh kosong.',
+                'kode_bahan.unique' => 'Alat/Bahan dengan kode ini sudah ada.',
+                'kode_bahan.required' => 'Kode Bahan tidak boleh kosong.',
                 'ruangan_id.required' => 'Ruangan tidak boleh kosong.',
                 'volume.required' => 'Volume tidak boleh kosong.',
                 'satuan.required' => 'Satuan tidak boleh kosong.',
@@ -133,6 +134,7 @@ class Index extends Component
 
         $alat = AlatAtauBahan::create([
             'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
+            'kode_bahan' => $this->kode_bahan,
             'kode' => $this->kode,
             'ruangan_id' => $this->ruangan_id,
             'volume' => $this->volume,
@@ -184,18 +186,20 @@ class Index extends Component
 
     public function update()
     {
-        $validatedDate = $this->validate([
-            'nama_alat_atau_bahan' => 'required',
-            'kode' => 'required',
-            'ruangan_id' => 'required',
-            'satuan' => 'required',
-        ],
-        [
-            'nama_alat_atau_bahan.required' => 'Nama alat atau bahan tidak boleh kosong',
-            'kode.required' => 'Kode tidak boleh kosong',
-            'ruangan_id.required' => 'Ruangan tidak boleh kosong',
-            'satuan.required' => 'Satuan tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'nama_alat_atau_bahan' => 'required',
+                'kode' => 'required',
+                'ruangan_id' => 'required',
+                'satuan' => 'required',
+            ],
+            [
+                'nama_alat_atau_bahan.required' => 'Nama alat atau bahan tidak boleh kosong',
+                'kode.required' => 'Kode tidak boleh kosong',
+                'ruangan_id.required' => 'Ruangan tidak boleh kosong',
+                'satuan.required' => 'Satuan tidak boleh kosong',
+            ],
+        );
 
         $alat = AlatAtauBahan::find($this->alat_id);
         $alat->update([
@@ -265,18 +269,20 @@ class Index extends Component
 
     public function masuk()
     {
-        $validate = $this->validate([
-            'tanggal_masuk' => 'required',
-            'volume_masuk' => 'required',
-            'sumber_dana' => 'required',
-            'saldo' => 'required',
-        ],
-        [
-            'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong',
-            'volume_masuk.required' => 'Volume tidak boleh kosong',
-            'sumber_dana.required' => 'Sumber Dana tidak boleh kosong',
-            'saldo.required' => 'Saldo tidak boleh kosong',
-        ]);
+        $validate = $this->validate(
+            [
+                'tanggal_masuk' => 'required',
+                'volume_masuk' => 'required',
+                'sumber_dana' => 'required',
+                'saldo' => 'required',
+            ],
+            [
+                'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong',
+                'volume_masuk.required' => 'Volume tidak boleh kosong',
+                'sumber_dana.required' => 'Sumber Dana tidak boleh kosong',
+                'saldo.required' => 'Saldo tidak boleh kosong',
+            ],
+        );
 
         $sumvolume = $this->volume + $this->volume_masuk;
 
@@ -312,18 +318,20 @@ class Index extends Component
 
     public function keluar()
     {
-        $validate = $this->validate([
-            'tanggal_keluar' => 'required',
-            'nama_pemakai' => 'required',
-            'volume_keluar' => 'required',
-            'keterangan' => 'required',
-        ],
-        [
-            'tanggal_keluar.required' => 'Tanggal Keluar tidak boleh kosong',
-            'nama_pemakai.required' => 'Nama Pemakai tidak boleh kosong',
-            'volume_keluar.required' => 'Volume tidak boleh kosong',
-            'keterangan.required' => 'Keterangan tidak boleh kosong',
-        ]);
+        $validate = $this->validate(
+            [
+                'tanggal_keluar' => 'required',
+                'nama_pemakai' => 'required',
+                'volume_keluar' => 'required',
+                'keterangan' => 'required',
+            ],
+            [
+                'tanggal_keluar.required' => 'Tanggal Keluar tidak boleh kosong',
+                'nama_pemakai.required' => 'Nama Pemakai tidak boleh kosong',
+                'volume_keluar.required' => 'Volume tidak boleh kosong',
+                'keterangan.required' => 'Keterangan tidak boleh kosong',
+            ],
+        );
 
         $sumvolume = $this->volume - $this->volume_keluar;
 
