@@ -79,7 +79,7 @@
                                         </div>
                                     @endif
                                     <div class="col-lg-3 mb-4">
-                                        <select class="form-control" id="peralatan" wire:model='p_m_id'>
+                                        <select multiple="multiple" class="form-control" id="peralatan" wire:model='p_m_id'>
                                             <option value="" selected>Peralatan/Mesin</option>
                                             @foreach ($peralatans as $peralatan)
                                                 @php
