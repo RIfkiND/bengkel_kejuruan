@@ -203,6 +203,8 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <input type="text" class="form-control" placeholder="Tahun dibuat" id="mdate" >                                            </div>
                                         </div>
                                     </div>
                                 </form>

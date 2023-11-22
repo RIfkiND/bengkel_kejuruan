@@ -259,3 +259,12 @@ quixSettings.prototype.manageResponsiveSidebar = function() {
         body.attr("data-sidebar-style", "overlay");
     }
 }
+
+$(document).ready(function(){
+    $("#mdate").datepicker({
+       format: "yyyy",
+       viewMode: "years", 
+       minViewMode: "years",
+       autoclose:true
+    });   
+  })
