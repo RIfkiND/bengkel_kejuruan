@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\PeralatanAtauMesin;
 use App\Models\PengajuanAlatAtauBahan;
 use App\Models\PemeliharaanDanPerawatan;
+use App\Models\SpesifikasiAlatAtauBahan;
 
 class PDFController extends Controller
 {
@@ -157,24 +158,27 @@ class PDFController extends Controller
 
         return $pdf->stream();
     }
-    public function kartustok()
+    public function kartustok($id)
     {
-        $peralatan = PeralatanAtauMesin::find(1);
+        $bahans = AlatAtauBahan::where('ruangan_id', $id)->first();
 
-        $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($peralatan->ruangan_id);
+        $spesifikasi = SpesifikasiAlatAtauBahan::where('a_atau_b_id', 'id');
+
+        $sekolah = Sekolah::find($bahans->ruangan->sekolah_id);
+        $ruangan = Ruangan::find($bahans->ruangan_id);
 
 
 
         $data = [
 
-            'title' => 'Buku Pemeliharaan Alat',
+            'title' => 'Kartu Alat dan Bahan',
 
             'date' => date('m/d/Y'),
 
-            'peralatan' => $peralatan,
+            'bahans' => $bahans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
+            'spesifikasi' => $spesifikasi,
 
         ];
 
