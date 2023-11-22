@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AlatAtauBahan;
+use App\Models\AlatAtauBahanMasuk;
 use App\Models\Guru;
 use App\Models\Ruangan;
 use App\Models\Sekolah;
@@ -219,6 +220,7 @@ class PDFController extends Controller
         $ruangan = Ruangan::find($id);
         $sekolah = Sekolah::find($ruangan->sekolah_id);
         $bahans = AlatAtauBahan::where('ruangan_id', $id)->get();
+        $saldo = AlatAtauBahanMasuk::where('alat_atau_bahan_id', $id)->get();
 
 
         $data = [
@@ -228,6 +230,7 @@ class PDFController extends Controller
             'bahans' => $bahans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
+            'saldo' => $saldo,
 
         ];
 
