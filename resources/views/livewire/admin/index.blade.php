@@ -7,7 +7,7 @@
                         <h3 class="font-weight-bold">Selamat Datang @if (Auth::check())
                                 @if (auth()->user()->role == 'AdminSekolah' || auth()->user()->role == 'Guru' || auth()->user()->role == 'KepalaBengkel')
                                     <h4>{{ auth()->user()->name }}</h4>
-                                    <span>dari:</span><br>
+                                    <span>dari :</span><br>
                                     <h4>{{ auth()->user()->sekolah->nama_sekolah }}</h4>
                                 @else
                                     <h4>{{ auth()->user()->name }}</h4>
