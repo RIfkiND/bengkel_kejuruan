@@ -51,7 +51,7 @@
                     </div>
                 @elseif ($masukMode)
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Alat Atau Bahan Masuk</h4>
+                        <h4 class="modal-title" id="myModalLabel">Penambahan Stock</h4>
                         <button type="button" class="close" data-dismiss="modal"
                             wire:click.prevent='cancel()'><span>&times;</span>
                         </button>
