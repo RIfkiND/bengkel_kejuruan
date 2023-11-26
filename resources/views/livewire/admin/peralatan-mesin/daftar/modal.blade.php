@@ -70,7 +70,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="card-text">
-                                    {{-- <a href="{{ route('print.kartupemakaaianalat', ['id' => $peralatan->id]) }}">Print Pemakaian</a> --}}
+                                    <a href="{{ route('print.kartupemakaaianalat', ['id' => $peralatan->id]) }}">Print Pemakaian</a>
                                 </div>
                             </div>
                         </div>
