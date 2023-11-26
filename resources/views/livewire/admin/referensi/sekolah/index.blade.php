@@ -24,7 +24,7 @@
                         @foreach ($sekolahs as $sekolah)
                             <div class="col-lg-4 col-sm-6">
                                 <a href="{{ route('admin.sekolah.kelas-ruangan', $sekolah->id) }}">
-                                    <div class="card d-flex justify-content-between">
+                                    <div class="card d-flex justify-content-between" aria-label="Hallo">
                                         <h5 class="card-header position-absolute">
                                             @if (strlen($sekolah->nama_sekolah) > 20)
                                                 {{ substr($sekolah->nama_sekolah, 0, 20) . '...' }}

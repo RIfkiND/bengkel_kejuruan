@@ -240,7 +240,7 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.bukuindukbaranginventarisPDF', $data)->setPaper('a4', 'landscape');;
+        $pdf->loadView('admin.pdf.bukuindukbaranginventarisPDF', $data)->setPaper('a3', 'landscape');;
 
 
 

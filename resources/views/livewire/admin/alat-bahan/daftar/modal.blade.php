@@ -105,7 +105,7 @@
                     <div class="modal-body">
                         @if ($historyData)
                             <div>
-                                <h4>RIwayat Transaksi Alat: {{ $historyData->nama_alat_atau_bahan }}</h4>
+                                <h4>Riwayat Transaksi Alat: {{ $historyData->nama_alat_atau_bahan }}</h4>
                                 <ul>
                                     <li>Pemasukan Alat Atau Bahan:</li>
                                     <div class="row">

@@ -182,29 +182,42 @@
                                     <label>Spesifikasi</label>
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-lg-3 mb-4">
+                                            <div class="col-lg-3">
                                                 <input wire:model="merk" type="text" id="spek"
                                                     class="form-control input-default" placeholder="Merk">
                                                 @error('merk')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="col-lg-3 mb-4">
+                                            <div class="col-lg-3">
                                                 <input wire:model="type" type="text"
                                                     class="form-control input-default" placeholder="Type/Model">
                                                 @error('type')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="col-lg-3 mb-4">
+                                            <div class="col-lg-3">
                                                 <input wire:model="dimensi" type="text"
                                                     class="form-control input-default" placeholder="Dimensi">
                                                 @error('dimensi')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="col-lg-3 mb-4">
+                                            <div class="col-lg-3">
                                                 <input type="text" class="form-control" placeholder="Tahun dibuat" id="mdate" >                                            </div>
+                                        </div>
+                                    </div>
+                                    <label>Lainnya</label>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-3 mb-4">
+                                                <input wire:model="" type="text" id="keadaan"
+                                                    class="form-control input-default" placeholder="Keadaan Barang">
+                                            </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <input wire:model="" type="text"
+                                                    class="form-control input-default" placeholder="Asal Barang">
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
