@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <h2 align="center">{{ $sekolah->nama_sekolah }}</h2>
-        <h2 align="center">BUKU INDUK BARANG INVENTARIS</h2>
+        <h2 align="center">BUKU INDUK BAHAN INVENTARIS</h2>
         <h3 align="center">{{ $ruangan->nama_ruangan }}</h3>
 
         <table style="margin-right:2%; text-align:center;" border="1" cellpadding="7">
