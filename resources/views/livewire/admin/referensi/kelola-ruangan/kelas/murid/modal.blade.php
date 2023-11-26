@@ -48,11 +48,24 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <h6>Pastikan Data Nama Murid Ada di Kolom A dan Mulai dari Baris 1 <br> Seperti Pada
+                                    Gambar :</h6>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <img src="/Asset/images/murid-tutor.png" alt="" width="50%">
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <input type="file" wire:model="file" required> <br>
-                            @error('file')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            <input class="form-control mb-2" type="file" wire:model="file" required>
+                            @if ($errors->has('file'))
+                                <div class="alert alert-danger">
+                                    {{ $errors->first('file') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="modal-footer">

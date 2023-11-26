@@ -75,31 +75,37 @@ class Index extends Component
 
     public function importMurids()
     {
-        $this->validate([
-            'file' => 'required|mimes:xlsx,xls',
-        ]);
-        $data = $this->file;
-        $path = $data->store('temp');
+        try {
+            $this->validate([
+                'file' => 'required|mimes:xlsx,xls',
+            ]);
 
-        Excel::import(new MuridsImport($this->kelas_id), $path);
+            $data = $this->file;
+            $path = $data->store('temp');
 
+            Excel::import(new MuridsImport($this->kelas_id), $path);
 
-        $this->alert('success', 'Berhasil Ditambahkan!', [
-            'position' => 'center',
-            'timer' => 3000,
-            'toast' => false,
-            'timerProgressBar' => true,
-        ]);
+            $this->alert('success', 'Berhasil Ditambahkan!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'timerProgressBar' => true,
+            ]);
+        } catch (\Exception $e) {
+            $this->addError('file', $e->getMessage());
+        }
     }
+
     public function store()
     {
-        $validatedDate = $this->validate([
-            'nama_murid' => 'required',
-        ],
-        [
-            'nama_murid.required' => 'Nama tidak boleh kosong',
-
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'nama_murid' => 'required',
+            ],
+            [
+                'nama_murid.required' => 'Nama tidak boleh kosong',
+            ],
+        );
 
         Murid::create([
             'nama_murid' => $this->nama_murid,
@@ -132,13 +138,14 @@ class Index extends Component
 
     public function update()
     {
-        $validatedDate = $this->validate([
-            'nama_murid' => 'required',
-        ],
-        [
-            'nama_murid.required' => 'Nama tidak boleh kosong',
-
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'nama_murid' => 'required',
+            ],
+            [
+                'nama_murid.required' => 'Nama tidak boleh kosong',
+            ],
+        );
 
         $murid = Murid::find($this->murid_id);
         $murid->update([
@@ -197,12 +204,14 @@ class Index extends Component
 
     public function store_guru()
     {
-        $validatedDate = $this->validate([
-            'guru_ids' => 'required|array|min:1',
-        ],
-        [
-            'guru_ids.required' => 'Guru tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'guru_ids' => 'required|array|min:1',
+            ],
+            [
+                'guru_ids.required' => 'Guru tidak boleh kosong',
+            ],
+        );
 
         foreach ($this->guru_ids as $guruId) {
             GuruKelas::create([
