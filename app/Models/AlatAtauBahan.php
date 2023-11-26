@@ -33,4 +33,5 @@ class AlatAtauBahan extends Model
         return $this->hasMany(AlatAtauBahanKeluar::class, 'alat_atau_bahan_id', 'id');
     }
 
+
 }

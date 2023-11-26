@@ -214,6 +214,8 @@
                                                         @endif
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='edit({{ $peminjaman->id }})'>Edit</a>
+                                                            <a class="dropdown-item text-success"
+                                                                href="{{ route('print.kartupeminjamanalat', ['id' => auth()->user()->ruangan_id]) }}">Print Kartu Peminjaman</a>
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='ondel({{ $peminjaman->id }})'>Hapus</a>
                                                     </div>

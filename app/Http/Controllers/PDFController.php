@@ -10,6 +10,7 @@ use App\Models\Sekolah;
 use App\Models\Pemakaian;
 use Illuminate\Http\Request;
 use App\Models\PeralatanAtauMesin;
+use App\Models\AlatAtauBahanKeluar;
 use App\Models\PengajuanAlatAtauBahan;
 use App\Models\PemeliharaanDanPerawatan;
 use App\Models\SpesifikasiAlatAtauBahan;
@@ -73,12 +74,12 @@ class PDFController extends Controller
         // return $pdf->download('kartu-peralatan pm-0'. $peralatan->id .'.pdf');
         return $pdf->stream();
     }
-    public function inventarisalat()
+    public function inventarisalat($id)
     {
-        $pengajuan = PengajuanAlatAtauBahan::find(1);
+        $ruangan = Ruangan::find($id);
+        $peralatans = PeralatanAtauMesin::where('ruangan_id', $id)->get();
+        $sekolah = Sekolah::find($ruangan->sekolah_id);
 
-        $sekolah = Sekolah::find($pengajuan->sekolah_id);
-        $guru = Guru::find($pengajuan->guru_id);
 
 
 
@@ -87,9 +88,9 @@ class PDFController extends Controller
             'title' => 'Daftar Inventaris Alat',
             'date' => date('m/d/Y'),
 
-            'pengajuan' => $pengajuan,
             'sekolah' => $sekolah,
-            'guru' => $guru,
+            'ruangan' => $ruangan,
+            'peralatans' => $peralatans,
 
         ];
 
@@ -104,6 +105,7 @@ class PDFController extends Controller
     public function kartupeminjamanalat()
     {
         $peralatan = PeralatanAtauMesin::find(1);
+        $peminjaman = Pemakaian::find(1);
 
         $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
         $ruangan = Ruangan::find($peralatan->ruangan_id);
@@ -119,6 +121,7 @@ class PDFController extends Controller
             'peralatan' => $peralatan,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
+            'peminjaman' => $peminjaman,
 
         ];
 
@@ -277,22 +280,22 @@ class PDFController extends Controller
 
         return $pdf->stream();
     }
-    public function pengeluaranbarang()
+    public function pengeluaranbarang($id)
     {
-        $peralatan = PeralatanAtauMesin::find(1);
-
-        $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($peralatan->ruangan_id);
-
+        $ruangan = Ruangan::find($id);
+        $sekolah = Sekolah::find($ruangan->sekolah_id);
+        $bahans = AlatAtauBahan::where('ruangan_id', $id)->get();
+        $alatkeluar = AlatAtauBahanKeluar::where('alat_atau_bahan_id', $id)->get();
 
 
         $data = [
 
             'title' => 'Buku Pemeliharaan Alat',
 
-            'date' => date('m/d/Y'),
+            'date' => date('Y-m-d'),
 
-            'peralatan' => $peralatan,
+            'bahans' => $bahans,
+            'alatkeluar' => $alatkeluar,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 

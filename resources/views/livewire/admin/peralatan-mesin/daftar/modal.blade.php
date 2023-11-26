@@ -67,13 +67,13 @@
                                     </div>
                                 </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col">
                                 <div class="card-text">
                                     <a href="{{ route('print.kartupemakaaianalat', ['id' => $peralatan->id]) }}">Print Pemakaian</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Tutup</button>

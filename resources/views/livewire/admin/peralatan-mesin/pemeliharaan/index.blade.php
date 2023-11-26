@@ -134,7 +134,7 @@
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             data-toggle="modal" data-target="#infoModal"
                                                             wire:click='info({{ $pemeliharaan->id }})'>More info</a>
-                                                        <a class="dropdown-item" href="{{ route('print.kartupemeliharaan', $pemeliharaan->id) }}">Download</a>
+                                                        {{-- <a class="dropdown-item" href="{{ route('print.kartupemeliharaan', $pemeliharaan->id) }}">Download</a> --}}
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='updateStatus({{ $pemeliharaan->id }})'>
                                                             @if ($pemeliharaan->status == 'Belum Selesai')

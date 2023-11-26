@@ -219,6 +219,11 @@
                             <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
                                 wire:model='searchPeralatan' wire:input='resetPage'>
                         </div>
+                        <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
+                            <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
+                                href="{{ route('print.inventarisalat', ['id' => auth()->user()->ruangan_id]) }}"><i class="fa fa-print fa-lg mr-1">  Print</i>
+                                </a>
+                        </div>
                     </div>
                 </div>
                 <div class="row m-b-30">
