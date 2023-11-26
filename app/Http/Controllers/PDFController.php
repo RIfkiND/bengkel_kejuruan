@@ -16,6 +16,7 @@ use App\Models\SpesifikasiAlatAtauBahan;
 
 class PDFController extends Controller
 {
+    public $historyData, $alathistory;
     public function kartupemakaaianalat($id)
     {
 
@@ -123,7 +124,7 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.kartupeminjamanalatPDF', $data)->setPaper('a4', 'landscape');;
+        $pdf->loadView('admin.pdf.kartupeminjamanalatPDF', $data)->setPaper('a3', 'potrait');;
 
 
 
@@ -160,7 +161,7 @@ class PDFController extends Controller
     }
     public function kartustok($id)
     {
-        
+    
         $bahans = AlatAtauBahan::where('ruangan_id', $id)->first();
 
         $spesifikasi = SpesifikasiAlatAtauBahan::where('a_atau_b_id', 'id');

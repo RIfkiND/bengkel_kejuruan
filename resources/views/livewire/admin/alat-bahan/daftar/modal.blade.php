@@ -75,13 +75,6 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-6 mb-4">
-                                    <input wire:model="saldo" type="text" class="form-control input-default"
-                                        placeholder="Harga">
-                                    @error('saldo')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-lg-6 mb-4">
                                     <input wire:model="volume_masuk" type="text" class="form-control input-default"
                                         placeholder="Jumlah Di Tambah">
                                     @error('volume_masuk')
@@ -89,10 +82,17 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-6 mb-4">
-                                    <input  type="text" class="form-control input-default"
-                                        placeholder="Keterangan">
+                                    <input wire:model="saldo" type="text" class="form-control input-default"
+                                        placeholder="Harga">
+                                    @error('saldo')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Keterangan</label>
+                            <textarea class="form-control" id="keterangan" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -218,6 +218,10 @@
                                                 <input wire:model="" type="text"
                                                     class="form-control input-default" placeholder="Asal Barang">
                                             </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <input wire:model="" type="text"
+                                                    class="form-control input-default" placeholder="Harga Satuan">
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -337,8 +341,10 @@
                                                                 href="javascript:void(0)" data-toggle="modal"
                                                                 data-target="#ModalAlat"
                                                                 wire:click='onkel({{ $alat->id }})'>Keluar</a>
-                                                            <a class="dropdown-item text-success"
+                                                                @if (auth()->user()->role == 'KepalaBengkel')
+                                                                <a class="dropdown-item text-success"
                                                                 href="{{ route('print.kartustok', ['id' => auth()->user()->ruangan_id]) }}">Print Kartu Stock</a>
+                                                                @endif
                                                             @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
                                                                 <a class="dropdown-item text-danger"
                                                                     href="javascript:void(0)"
