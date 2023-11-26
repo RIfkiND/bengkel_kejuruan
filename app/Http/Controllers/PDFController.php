@@ -160,6 +160,7 @@ class PDFController extends Controller
     }
     public function kartustok($id)
     {
+        
         $bahans = AlatAtauBahan::where('ruangan_id', $id)->first();
 
         $spesifikasi = SpesifikasiAlatAtauBahan::where('a_atau_b_id', 'id');
