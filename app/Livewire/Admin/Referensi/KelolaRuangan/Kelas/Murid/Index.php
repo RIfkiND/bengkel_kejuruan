@@ -3,20 +3,24 @@
 namespace App\Livewire\Admin\Referensi\KelolaRuangan\Kelas\Murid;
 
 use App\Models\Guru;
-use App\Models\GuruKelas;
 use App\Models\Kelas;
 use App\Models\Murid;
 use Livewire\Component;
+use App\Models\GuruKelas;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use App\Imports\MuridsImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama_murid, $murid_id, $kelas_id, $searchMurid, $selectedMuridId;
+    public $nama_murid, $murid_id, $kelas_id, $searchMurid, $selectedMuridId, $file;
     public $updateMode = false;
     public $guru_ids = [];
 
     use WithPagination;
+    use WithFileUploads;
     use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
@@ -37,14 +41,14 @@ class Index extends Component
             return view('livewire.admin.referensi.kelola-ruangan.kelas.murid.index', [
                 'murids' => Murid::where('nama_murid', 'LIKE', $searchMurid)
                     ->where('kelas_id', $this->kelas_id)
-                    ->orderBy('id', 'DESC')
+                    ->orderBy('id', 'ASC')
                     ->paginate(10, ['*'], 'muridPage'),
                 'kelas' => Kelas::all(),
                 'gurus' => Guru::where('sekolah_id', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
                 'pengajars' => GuruKelas::where('kelas_id', $this->kelas_id)
-                    ->orderBy('id', 'DESC')
+                    ->orderBy('id', 'ASC')
                     ->paginate(10, ['*'], 'guruPage'),
             ]);
         } else {
@@ -52,12 +56,12 @@ class Index extends Component
             return view('livewire.admin.referensi.kelola-ruangan.kelas.murid.index', [
                 'murids' => Murid::where('nama_murid', 'LIKE', $searchMurid)
                     ->where('kelas_id', $this->kelas_id)
-                    ->orderBy('id', 'DESC')
+                    ->orderBy('id', 'ASC')
                     ->paginate(10, ['*'], 'muridPage'),
                 'kelas' => Kelas::all(),
                 'gurus' => $gurus,
                 'pengajars' => GuruKelas::where('kelas_id', $this->kelas_id)
-                    ->orderBy('id', 'DESC')
+                    ->orderBy('id', 'ASC')
                     ->paginate(10, ['*'], 'guruPage'),
             ]);
         }
@@ -69,15 +73,39 @@ class Index extends Component
         $this->guru_ids = '';
     }
 
+    public function importMurids()
+    {
+        try {
+            $this->validate([
+                'file' => 'required|mimes:xlsx,xls',
+            ]);
+
+            $data = $this->file;
+            $path = $data->store('temp');
+
+            Excel::import(new MuridsImport($this->kelas_id), $path);
+
+            $this->alert('success', 'Berhasil Ditambahkan!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'timerProgressBar' => true,
+            ]);
+        } catch (\Exception $e) {
+            $this->addError('file', $e->getMessage());
+        }
+    }
+
     public function store()
     {
-        $validatedDate = $this->validate([
-            'nama_murid' => 'required',
-        ],
-        [
-            'nama_murid.required' => 'Nama tidak boleh kosong',
-
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'nama_murid' => 'required',
+            ],
+            [
+                'nama_murid.required' => 'Nama tidak boleh kosong',
+            ],
+        );
 
         Murid::create([
             'nama_murid' => $this->nama_murid,
@@ -110,13 +138,14 @@ class Index extends Component
 
     public function update()
     {
-        $validatedDate = $this->validate([
-            'nama_murid' => 'required',
-        ],
-        [
-            'nama_murid.required' => 'Nama tidak boleh kosong',
-
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'nama_murid' => 'required',
+            ],
+            [
+                'nama_murid.required' => 'Nama tidak boleh kosong',
+            ],
+        );
 
         $murid = Murid::find($this->murid_id);
         $murid->update([
@@ -175,12 +204,14 @@ class Index extends Component
 
     public function store_guru()
     {
-        $validatedDate = $this->validate([
-            'guru_ids' => 'required|array|min:1',
-        ],
-        [
-            'guru_ids.required' => 'Guru tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'guru_ids' => 'required|array|min:1',
+            ],
+            [
+                'guru_ids.required' => 'Guru tidak boleh kosong',
+            ],
+        );
 
         foreach ($this->guru_ids as $guruId) {
             GuruKelas::create([

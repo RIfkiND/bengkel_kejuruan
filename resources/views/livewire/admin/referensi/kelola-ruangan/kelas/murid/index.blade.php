@@ -17,6 +17,11 @@
                                 </div>
                             </div>
                             @if (auth()->user()->sekolah_id)
+                            <div class="col-lg-4">
+                                <a href="javascript:void(0)" type="button"
+                                    class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
+                                    data-target="#ModalImportMuridKelas">Import Murid</a>
+                            </div>
                                 <div class="col-lg-4">
                                     <a href="javascript:void(0)" type="button"
                                         class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
@@ -30,6 +35,7 @@
                                     <table class="table table-bordered verticle-middle">
                                         <thead>
                                             <tr>
+                                                <th>No</th>
                                                 <th scope="col">Nama</th>
                                                 <th scope="col">Aksi</th>
                                             </tr>
@@ -37,6 +43,9 @@
                                         <tbody>
                                             @foreach ($murids as $murid)
                                                 <tr>
+                                                    <td>
+                                                        {{ $loop->iteration + $murids->firstItem() - 1 }}
+                                                    </td>
                                                     <td>{{ $murid->nama_murid }}</td>
                                                     <td>
                                                         <span>
