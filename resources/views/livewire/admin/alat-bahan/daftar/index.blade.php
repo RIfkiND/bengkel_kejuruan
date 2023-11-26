@@ -338,7 +338,7 @@
                                                                 data-target="#ModalAlat"
                                                                 wire:click='onkel({{ $alat->id }})'>Keluar</a>
                                                             <a class="dropdown-item text-success"
-                                                                href="{{ route('print.kartustok', ['id' => auth()->user()->ruangan_id]) }}">Print</a>
+                                                                href="{{ route('print.kartustok', ['id' => auth()->user()->ruangan_id]) }}">Print Kartu Stock</a>
                                                             @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
                                                                 <a class="dropdown-item text-danger"
                                                                     href="javascript:void(0)"
