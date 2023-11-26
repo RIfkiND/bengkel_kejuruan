@@ -37,6 +37,35 @@
         </div>
     </div>
 
+    <div wire:ignore.self class="modal fade" id="ModalImportMuridKelas">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Import Data Dari Excel</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                            wire:click.prevent='cancel()'><span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="file" wire:model="file" required> <br>
+                            @error('file')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            wire:click.prevent='cancel()'>Batal</button>
+                        <button type="button" class="btn btn-primary" wire:click.prevent="importMurids()"
+                            wire:loading.attr="disabled">Import</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div wire:ignore.self class="modal fade" id="ModalGuruKelas">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
