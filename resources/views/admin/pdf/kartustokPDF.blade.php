@@ -11,7 +11,7 @@
     <body>
 
         <h2 align="center">{{ $sekolah->nama_sekolah }}</h2>
-        <h2 align="center">KARTU STOK BARANG  </h2>
+        <h2 align="center">KARTU STOK BAHAN  </h2>
         <h2 align="center">{{ $ruangan->nama_ruangan }}</h2><br>
         <p>Nama Barang:</p>
 

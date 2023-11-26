@@ -88,6 +88,10 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-lg-6 mb-4">
+                                    <input  type="text" class="form-control input-default"
+                                        placeholder="Keterangan">
+                                </div>
                             </div>
                         </div>
                     </div>
