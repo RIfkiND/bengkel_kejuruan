@@ -7,7 +7,7 @@
                         <h3 class="font-weight-bold">Selamat Datang @if (Auth::check())
                                 @if (auth()->user()->role == 'AdminSekolah' || auth()->user()->role == 'Guru' || auth()->user()->role == 'KepalaBengkel')
                                     <h4>{{ auth()->user()->name }}</h4>
-                                    <span>dari:</span><br>
+                                    <span>dari :</span><br>
                                     <h4>{{ auth()->user()->sekolah->nama_sekolah }}</h4>
                                 @else
                                     <h4>{{ auth()->user()->name }}</h4>
@@ -125,14 +125,14 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-primary mb-1 font-weight-medium">{{ $peralatans->count() }}</h2>
+                                        <h2 class="mb-1 font-weight-medium" style="color: #99bbff;">{{ $peralatans->count() }}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Peralatan
                                         tersedia</h6>
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted">
-                                        <h1><i class="fa fa-wrench text-primary"></i></h1>
+                                        <h1><i class="fa fa-wrench" style="color: #99bbff;"></i></h1>
                                     </span>
                                 </div>
                             </div>
@@ -167,7 +167,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-warning mb-1 font-weight-medium">
+                                        <h2 class="mb-1 font-weight-medium" style="color: #ff66a3;">
                                             {{ $pemeliharaans->where('status', 'Belum Selesai')->count() }}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Dalam
@@ -176,7 +176,7 @@
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted">
-                                        <h1><i class="fa fa-tasks text-warning"></i></h1>
+                                        <h1><i class="fa fa-tasks" style="color: #ff66a3"></i></h1>
                                     </span>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-info mb-1 font-weight-medium">{{ $alats->count() }}</h2>
+                                        <h2 class="mb-1 font-weight-medium" style="color: #d580ff;">{{ $alats->count() }}</h2>
                                     </div>
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Alat dan
                                         Bahan
@@ -197,7 +197,7 @@
                                 </div>
                                 <div class="ms-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted">
-                                        <h1><i class="fa fa-cube text-info"></i></h1>
+                                        <h1><i class="fa fa-cube" style="color: #d580ff"></i></h1>
                                     </span>
                                 </div>
                             </div>

@@ -29,7 +29,7 @@ Route::controller(PDFController::class)->group(function () {
     Route::get('daftar-inventaris-alat', 'inventarisalat')->name('print.inventarisalat');
     Route::get('kartu-peminjaman-alat', 'kartupeminjamanalat')->name('print.kartupeminjamanalat');
     Route::get('buku-pemeliharaan-alat', 'bukupemeliharaanalat')->name('print.bukupemeliharaanalat');
-    Route::get('kartu-stok-barang', 'kartustok')->name('print.kartustok');
+    // Route::get('kartu-stok-barang', 'kartustok')->name('print.kartustok');
     Route::get('rencana-kebutuhan-alat-bahan-diklat', 'kebutuhanalatbahandiklat')->name('print.kebutuhanalatbahandiklat');
     // Route::get('buku-induk-inventaris-barang', 'bukuindukbaranginventaris')->name('print.bukuindukbaranginventaris');
     Route::get('tanda-terima-pengambilan-barang', 'tandaterimapengambilanbarang')->name('print.tandaterimapengambilanbarang');
@@ -53,7 +53,7 @@ Route::prefix('/admin')->group(function () {
         // Route::get('daftar-inventaris-alat', 'inventarisalat')->name('print.inventarisalat');
         // Route::get('kartu-peminjaman-alat', 'kartupeminjamanalat')->name('print.kartupeminjamanalat');
         // Route::get('buku-pemeliharaan-alat', 'bukupemeliharaanalat')->name('print.bukupemeliharaanalat');
-        // Route::get('kartu-stok-barang', 'kartustok')->name('print.kartustok');
+        Route::get('kartu-stok-barang/{id}', 'kartustok')->name('print.kartustok');
         // Route::get('rencana-kebutuhan-alat-bahan-diklat', 'kebutuhanalatbahandiklat')->name('print.kebutuhanalatbahandiklat');
         Route::get('buku-induk-inventaris-barang/{id}', 'bukuindukbaranginventaris')->name('print.bukuindukbaranginventaris');
         // Route::get('tanda-terima-pengambilan-barang', 'tandaterimapengambilanbarang')->name('print.tandaterimapengambilanbarang');

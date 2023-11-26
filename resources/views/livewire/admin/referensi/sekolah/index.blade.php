@@ -25,7 +25,13 @@
                             <div class="col-lg-4 col-sm-6">
                                 <a href="{{ route('admin.sekolah.kelas-ruangan', $sekolah->id) }}">
                                     <div class="card d-flex justify-content-between">
-                                        <h5 class="card-header position-absolute ">{{ $sekolah->nama_sekolah }}</h5>
+                                        <h5 class="card-header position-absolute">
+                                            @if (strlen($sekolah->nama_sekolah) > 20)
+                                                {{ substr($sekolah->nama_sekolah, 0, 20) . '...' }}
+                                            @else
+                                                {{ $sekolah->nama_sekolah }}
+                                            @endif
+                                        </h5>
                                         <div class="card-header ml-auto btn">
                                             <div class="dropdown">
                                                 <a href="javascript:void(0)" data-toggle="dropdown"><i

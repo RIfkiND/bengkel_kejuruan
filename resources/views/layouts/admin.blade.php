@@ -17,6 +17,10 @@
     <!-- Custom Stylesheet -->
     <link href="/Asset/css/style.css" rel="stylesheet">
 
+    <!-- Datepicker -->
+    <link href="/Asset/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -89,11 +93,13 @@
     <script src="/Asset/js/gleek.js"></script>
     <script src="/Asset/js/styleSwitcher.js"></script>
 
-    {{-- Mobiscroll Daterange --}}
+    {{-- Yearpicker --}}
+    <script src="/Asset/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
 
     <!-- Circle progress -->
     <script src="/Asset/plugins/circle-progress/circle-progress.min.js"></script>
+
 
     @stack('js')
 
