@@ -51,10 +51,10 @@
             </tr>
             @foreach ($pemeliharaans as $pemeliharaan)
             <tr>
-                <td>{{ loop->iteration }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $pemeliharaan->peralatan->nama_peralatan_atau_mesin }}</td>
-                <td></td>
-                <td></td>
+                <td>{{ $pemeliharaan->jenis }}</td>
+                <td>{{ $pemeliharaan->tanggal }}</td>
             </tr>
             @endforeach
         </table>
