@@ -48,6 +48,7 @@ class Index extends Component
         if (auth()->user()->role == 'Admin') {
             return view('livewire.admin.referensi.pengguna.akun.index', [
                 'users' => User::where('name', 'LIKE', $searchUser)
+                    ->orWhere('email', 'LIKE', $searchUser)
                     ->where('role', '!=', '4')
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),
@@ -56,6 +57,7 @@ class Index extends Component
         } elseif (auth()->user()->role == 'AdminSekolah') {
             return view('livewire.admin.referensi.pengguna.akun.index', [
                 'users' => User::where('name', 'LIKE', $searchUser)
+                    ->orWhere('email', 'LIKE', $searchUser)
                     ->where('sekolah_id', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),
@@ -65,6 +67,8 @@ class Index extends Component
         } else {
             return view('livewire.admin.referensi.pengguna.akun.index', [
                 'users' => User::where('name', 'LIKE', $searchUser)
+                    ->orWhere('role', 'LIKE', $searchUser)
+                    ->orWhere('email', 'LIKE', $searchUser)
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),
                 'sekolahs' => Sekolah::all(),
@@ -338,7 +342,6 @@ class Index extends Component
                 ],
             );
             $roleInteger = $roleMapping[$this->role];
-
 
             if ($this->showSekolahSelect == true) {
                 $validatedDate = $this->validate(
