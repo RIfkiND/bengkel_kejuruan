@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('alat_atau_bahan_id')->constrained('alat_atau_bahans')->cascadeOnDelete();
             $table->string('sumber_dana')->nullable();
             $table->string('volume');
+            $table->string('sisa')->nullable();
             $table->string('saldo')->nullable();
             $table->timestamps();
         });
