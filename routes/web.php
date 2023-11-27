@@ -34,7 +34,7 @@ Route::controller(PDFController::class)->group(function () {
     // Route::get('buku-induk-inventaris-barang', 'bukuindukbaranginventaris')->name('print.bukuindukbaranginventaris');
     Route::get('tanda-terima-pengambilan-barang', 'tandaterimapengambilanbarang')->name('print.tandaterimapengambilanbarang');
     // Route::get('pengeluaran-barang', 'pengeluaranbarang')->name('print.pengeluaranbarang');
-    Route::get('daftar-ruang-barang', 'daftarruangbarang')->name('print.daftarruangbarang');
+    // Route::get('daftar-ruang-barang', 'daftarruangbarang')->name('print.daftarruangbarang');
     Route::get('laporan-kerusakan', 'laporankerusakan')->name('print.laporankerusakan');
     Route::get('serah-terima-barang', 'serahterimabarang')->name('print.serahterimabarang');
 });
@@ -58,7 +58,7 @@ Route::prefix('/admin')->group(function () {
         Route::get('buku-induk-inventaris-barang/{id}', 'bukuindukbaranginventaris')->name('print.bukuindukbaranginventaris');
         // Route::get('tanda-terima-pengambilan-barang', 'tandaterimapengambilanbarang')->name('print.tandaterimapengambilanbarang');
         Route::get('pengeluaran-barang/{id}', 'pengeluaranbarang')->name('print.pengeluaranbarang');
-        // Route::get('daftar-ruang-barang', 'daftarruangbarang')->name('print.daftarruangbarang');
+        Route::get('daftar-ruang-barang/{id}', 'daftarruangbarang')->name('print.daftarruangbarang');
         // Route::get('laporan-kerusakan', 'laporankerusakan')->name('print.laporankerusakan');
         // Route::get('serah-terima-barang', 'serahterimabarang')->name('print.serahterimabarang');
     });

@@ -309,12 +309,11 @@ class PDFController extends Controller
 
         return $pdf->stream();
     }
-    public function daftarruangbarang()
+    public function daftarruangbarang($id)
     {
-        $peralatan = PeralatanAtauMesin::find(1);
-
-        $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($peralatan->ruangan_id);
+        $ruangan = Ruangan::find($id);
+        $sekolah = Sekolah::find($ruangan->sekolah_id);
+        $peralatans = PeralatanAtauMesin::where('ruangan_id', $id)->get();
 
 
 
@@ -324,7 +323,7 @@ class PDFController extends Controller
 
             'date' => date('m/d/Y'),
 
-            'peralatan' => $peralatan,
+            'peralatans' => $peralatans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 

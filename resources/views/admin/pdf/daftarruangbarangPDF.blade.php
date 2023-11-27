@@ -19,33 +19,35 @@
     <body>
         <table style="margin-left:8%; margin-right:auto; text-align:center;" cellpadding="6">
             <tr>
-                <td rowspan="4"><img src="/Asset/images/logo-tutwuri-handayani.jpg"></td>
+                <td rowspan="4"><img src="Asset/images/logo-tutwuri-handayani.jpg" width="65px" height="65px"></td>
                 <td></td>
             </tr>
             <tr align="center">
-                <th style='width:725px'>SMK.......</th>
+                <th style='width:725px'>{{ $sekolah->nama_sekolah }}</th>
             </tr>
-            <tr align="center; color:red;">
+            <tr align="center; color:red; mb-4">
                 <td>Jl.Pesantren KM 2 Cimahi 40513 Tlp. (022) 6652326 Fax (022) 6654698</td>
             </tr>
-        </table>
         <p align="center"><b>DAFTAR RUANG BARANG (DBR)</b></p>
+
+        </table>
         <table border="0">
             <tr>
-                <td colspan="6" >Tanggal :<br>Nomor <span class="tab2">:</span></td>
+                <td colspan="6" >Tanggal : {{ $date }}</td>
+            </tr>
+            <tr>
+                <td colspan="6" >Ruang : {{ $ruangan->nama_ruangan }}</td>
             </tr>
         </table>
         <table border="1" cellpadding="4" width="100%">
             <tr style='font-size:14px;'>
                 <th rowspan="2">No.</th>
-                <th width="9%" rowspan="2">Jenis Barang</th>
-                <th rowspan="2">Merek/Model</th>
-                <th rowspan="2">No. Seri Pabrik</th>
-                <th rowspan="2">Ukuran</th>
-                <th width="9%" rowspan="2">Bahan</th>
-                <th rowspan="2">Tahun Pembuatan/ Pembelian</th>
+                <th width="9%" rowspan="2">Nama Barang</th>
+                <th rowspan="2">Merek</th>
+                <th rowspan="2">Type/Model</th>
+                <th rowspan="2">Tahun Pembuatan</th>
+                <th rowspan="2">Kapasitas</th>
                 <th rowspan="2">Nomor Kode Barang</th>
-                <th rowspan="2">Jumlah Barang/ Register</th>
                 <th rowspan="2">Harga Beli/ Peroleh</th>
                 <th colspan="3">Keadaan Barang</th>
                 <th rowspan="2">Keterangan</th>
@@ -55,15 +57,14 @@
                 <th>Rusak Ringan</th>
                 <th>Rusak Berat</th>
             </tr>
+            @foreach ($peralatans as $peralatan)
             <tr>
+                <td align="center">{{ $loop->iteration }}</td>
+                <td>{{ $peralatan->nama_peralatan_atau_mesin }}</td>
+                <td align="center">{{ $peralatan->spesifikasi->merk }}</td>
+                <td align="center">{{ $peralatan->spesifikasi->tipe_atau_model }}</td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td align="center">{{ $peralatan->spesifikasi->kapasitas }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -71,22 +72,7 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            @endforeach
         </table>
         <br>
         <table>

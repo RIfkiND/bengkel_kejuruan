@@ -61,10 +61,10 @@
                 <td>{{ $bahan->satuan }}</td>
                 <td>
                     @foreach ($bahan->alatkeluar->where('tanggal_keluar', $date) as $alatkeluar)
-                        {{ $alatkeluar->keterangan }}, 
+                        {{ $alatkeluar->keterangan }}
                     @endforeach
                 </td>
-            </tr>
+            </tr>x`
             @endforeach
         </table>
         <table border="1" cellpadding="4" width="100%">
