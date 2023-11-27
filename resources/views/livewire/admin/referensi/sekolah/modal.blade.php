@@ -56,7 +56,7 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col">
-                                <img src="/Asset/images/murid-tutor.png" alt="" width="50%">
+                                <img src="/Asset/images/sekolah-tutor.png" alt="" width="50%">
                             </div>
                         </div>
                         <div class="form-group">
