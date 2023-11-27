@@ -70,6 +70,21 @@
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
+                                                    <div class="col-lg-3 mb-2">
+                                                        <input type="text" class="form-control input-default"
+                                                            placeholder="Kode Peralatan atau Mesin"
+                                                            wire:model='kode_peralatan'>
+                                                        @error('kode_peralatan')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <input type="text" class="form-control input-default"
+                                                            placeholder="Harga" wire:model='harga'>
+                                                        @error('harga')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
                                                     <div class="col">
                                                         <div class="d-flex justify-content-end">
                                                             <div class="col-auto">
@@ -151,7 +166,11 @@
                                                     @endif
                                                     <div class="col-lg-3 mb-2">
                                                         <input type="text" class="form-control input-default"
-                                                            placeholder="Kode Peralatan atau Mesin">
+                                                            placeholder="Kode Peralatan atau Mesin"
+                                                            wire:model='kode_peralatan'>
+                                                        @error('kode_peralatan')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,14 +220,11 @@
                                                         @enderror
                                                     </div>
                                                     <div class="col-lg-3">
-                                                        <input type="text"
-                                                            class="form-control input-default"
-                                                            placeholder="Harga">
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <input type="text"
-                                                            class="form-control input-default"
-                                                            placeholder="Keterangan">
+                                                        <input type="text" class="form-control input-default"
+                                                            placeholder="Harga" wire:model='harga'>
+                                                        @error('harga')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -243,7 +259,7 @@
                             </a>
                         </div>
                     @endif
-                    
+
                 </div>
                 <div class="row m-b-30">
                     @forelse ($peralatans as $peralatan)
@@ -262,7 +278,8 @@
                                                 wire:click='edit({{ $peralatan->id }})'>Edit</a>
                                             @if (auth()->user()->role == 'KepalaBengkel')
                                                 <a class="dropdown-item text-success"
-                                                    href="{{ route('print.kartuperawatanalat', ['id' => $peralatan->id]) }}">Print Kartu Pemeliharaan</a>
+                                                    href="{{ route('print.kartuperawatanalat', ['id' => $peralatan->id]) }}">Print
+                                                    Kartu Pemeliharaan</a>
                                             @endif
                                             <a class="dropdown-item text-danger" href="javascript:void(0)"
                                                 data-toggle="modal" data-target="#ModalPeralatan"
