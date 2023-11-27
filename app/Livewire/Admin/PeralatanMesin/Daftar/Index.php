@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\PeralatanMesin\Daftar;
 
+use App\Imports\PeralatanImportSpesifikasi;
 use App\Models\Ruangan;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -113,6 +114,9 @@ class Index extends Component
             $peralatan = Excel::import($peralatanImport, $path);
 
             $peralatanImportMasuk = new PeralatanImportMasuk($peralatan);
+            Excel::import($peralatanImportMasuk, $path);
+
+            $peralatanImportMasuk = new PeralatanImportSpesifikasi($peralatan);
             Excel::import($peralatanImportMasuk, $path);
 
             $this->alert('success', 'Berhasil Ditambahkan!', [

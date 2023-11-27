@@ -2,9 +2,11 @@
 
 namespace App\Imports;
 
+use App\Models\Ruangan;
 use App\Models\PeralatanAtauMesin;
 use App\Models\PeralatanAtauMesinMasuk;
 use Maatwebsite\Excel\Concerns\ToModel;
+use App\Models\KategoriPeralatanAtauMesin;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
 class PeralatanImport implements ToModel, WithValidation
@@ -25,10 +27,17 @@ class PeralatanImport implements ToModel, WithValidation
 
     public function model(array $row)
     {
+        $catid = KategoriPeralatanAtauMesin::where('nama_kategori_peralatan_atau_mesin', $row[2])->first()->id;
+        $ruanganid = Ruangan::where('nama_ruangan', $row[3])->first()->id;
+        $harga = preg_replace('/[^0-9]/', '', $row[4]);
+
         return new PeralatanAtauMesin([
             'kode_peralatan' => $row[0],
             'nama_peralatan_atau_mesin' => $row[1],
-            'kategori_id' => $row[2],
+            'kategori_id' => $catid,
+            'ruangan_id' => $ruanganid,
+            'harga' => $harga,
         ]);
+        
     }
 }

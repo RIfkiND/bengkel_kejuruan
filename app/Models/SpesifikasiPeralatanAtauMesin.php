@@ -12,7 +12,7 @@ class SpesifikasiPeralatanAtauMesin extends Model
 
     protected $guarded = ['id'];
 
-    public function peralatanataumesin()
+    public function peralatan()
     {
         return $this->hasOne(PeralatanAtauMesin::class, 'id', 'p_atau_m_id');
     }

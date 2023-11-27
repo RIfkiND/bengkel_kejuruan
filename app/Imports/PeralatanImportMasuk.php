@@ -21,7 +21,7 @@ class PeralatanImportMasuk implements ToModel
 
         $peralatanMasuk = new PeralatanAtauMesinMasuk([
             'tanggal_masuk' => $date,
-            'sumber_dana' => $row[3],
+            'sumber_dana' => $row[9],
         ]);
 
         $peralatanMasuk->peralatan()->associate($this->peralatan);
