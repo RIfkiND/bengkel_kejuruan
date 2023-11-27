@@ -26,6 +26,11 @@ class Index extends Component
     use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
 
+    public function calculateTotalHarga()
+    {
+            $this->saldo = $this->volume * $this->harga;
+    }
+
     public function mount(AlatAtauBahan $alathistory)
     {
         $this->alathistory = $alathistory;
@@ -181,6 +186,13 @@ class Index extends Component
         $this->nama_alat_atau_bahan = $alat->nama_alat_atau_bahan;
         $this->kode = $alat->kode;
         $this->ruangan_id = $alat->ruangan_id;
+        $this->satuan = $alat->satuan;
+        $this->kode_bahan = $alat->kode_bahan;
+        $this->harga = $alat->harga;
+        $this->merk = $alat->spesifikasi->merk;
+        $this->type = $alat->spesifikasi->tipe_atau_model;
+        $this->dimensi = $alat->spesifikasi->dimensi;
+        $this->tahun = $alat->spesifikasi->tahun;
         $this->updateMode = true;
     }
 
@@ -200,6 +212,12 @@ class Index extends Component
                 'kode' => 'required',
                 'ruangan_id' => 'required',
                 'satuan' => 'required',
+                'kode_bahan' => 'required',
+                'harga' => 'required',
+                'merk' => 'required',
+                'type' => 'required',
+                'dimensi' => 'required',
+                'tahun' => 'required',
             ],
             [
                 'nama_alat_atau_bahan.required' => 'Nama alat atau bahan tidak boleh kosong',
@@ -210,11 +228,20 @@ class Index extends Component
         );
 
         $alat = AlatAtauBahan::find($this->alat_id);
+        $alat->spesifikasi->update([
+            'merk' => $this->merk,
+            'tipe_atau_model' => $this->type,
+            'dimensi' => $this->dimensi,
+            'tahun' => $this->tahun,
+        ]);
         $alat->update([
             'nama_alat_atau_bahan' => $this->nama_alat_atau_bahan,
+            'kode_bahan' => $this->kode_bahan,
             'kode' => $this->kode,
             'ruangan_id' => $this->ruangan_id,
+            'volume' => $this->volume,
             'satuan' => $this->satuan,
+            'harga' => $this->harga,
         ]);
 
         $this->updateMode = false;

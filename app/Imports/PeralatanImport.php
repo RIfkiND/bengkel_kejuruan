@@ -18,13 +18,33 @@ class PeralatanImport implements ToModel, WithValidation
     {
         return [
             '0' => 'required',
+            '1' => 'required',
+            '2' => 'required',
+            '3' => 'required',
+            '4' => 'required',
+            '5' => 'required',
+            '6' => 'required',
+            '7' => 'required',
+            '8' => 'required',
+            '9' => 'required',
+            '10' => 'required',
         ];
     }
 
     public function customValidationMessages()
     {
         return [
-            '0.required' => 'Pastikan Nama Peralatan Ada di Kolom A Dari Paling Atas',
+            '0.required' => 'Pastikan Kode Peralatan Ada di Kolom A Dari Paling Atas',
+            '1.required' => 'Pastikan Nama Peralatan Ada di Kolom B Dari Paling Atas',
+            '2.required' => 'Pastikan Nama Kategori Ada di Kolom C Dari Paling Atas',
+            '3.required' => 'Pastikan Nama Ruangan Ada di Kolom D Dari Paling Atas',
+            '4.required' => 'Pastikan Harga Ada di Kolom E Dari Paling Atas',
+            '5.required' => 'Pastikan Merk Ada di Kolom F Dari Paling Atas',
+            '6.required' => 'Pastikan Type/Model Ada di Kolom G Dari Paling Atas',
+            '7.required' => 'Pastikan Tahun Dibuat Ada di Kolom H Dari Paling Atas',
+            '8.required' => 'Pastikan Kapasitas Ada di Kolom I Dari Paling Atas',
+            '9.required' => 'Pastikan Sumber Dana Ada di Kolom J Dari Paling Atas',
+            '10.required' => 'Pastikan Tanggal Masuk Ada di Kolom K Dari Paling Atas',
         ];
     }
 

@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="card-text">
-                                    <span>Harga : {{ $peralatan->harga }}</span>
+                                    <span>Harga : {{ $harga }}</span>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         </div> --}}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-secondary text-white" data-dismiss="modal" wire:click='cancel()'>Tutup</button>
                     </div>
                 @endif
             </div>

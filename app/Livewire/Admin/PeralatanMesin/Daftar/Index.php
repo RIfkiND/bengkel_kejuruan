@@ -284,6 +284,7 @@ class Index extends Component
         $this->tahun = $peralatan->spesifikasi->tahun;
         $this->kapasitas = $peralatan->spesifikasi->kapasitas;
         $this->kategori_id = $peralatan->kategori->nama_kategori;
+        $this->harga = $peralatan->harga;
     }
     public function ondel($id)
     {

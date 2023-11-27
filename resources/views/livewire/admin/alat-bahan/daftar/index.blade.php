@@ -29,10 +29,9 @@
                                     <div class="form-group">
                                         <h4 class="text-center">Edit Data Alat Atau Bahan</h4>
                                     </div>
-
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-lg-4 mb-4">
+                                            <div class="col-lg-6 mb-4">
                                                 <input wire:model="nama_alat_atau_bahan" type="text"
                                                     class="form-control input-default"
                                                     placeholder="Nama Alat Atau Bahan">
@@ -40,9 +39,11 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="col-lg-3 mb-4">
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-2 mb-4">
                                                 <select wire:model="kode" class="form-control" id="kode">
-                                                    <option value="" selected>Jenis</option>
+                                                    <option value="" selected>JENIS</option>
                                                     <option value="A">Alat</option>
                                                     <option value="B">Bahan</option>
                                                 </select>
@@ -52,9 +53,10 @@
                                             </div>
                                             <div class="col-lg-3 mb-4">
                                                 <select wire:model="ruangan_id" class="form-control" id="ruangan">
-                                                    <option value="" selected>Ruangan</option>
+                                                    <option value="">Ruangan</option>
                                                     @foreach ($ruangans as $ruangan)
-                                                        <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
+                                                        <option value="{{ $ruangan->id }}">
+                                                            {{ $ruangan->nama_ruangan }}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -62,14 +64,64 @@
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="col-lg-4 mb-4">
-                                                <input wire:model="satuan" type="text"
+                                            <div class="col-lg-3 mb-4">
+                                                <input wire:model='kode_bahan' type="text"
+                                                    class="form-control input-default"
+                                                    placeholder="Kode Alat atau Bahan">
+                                                @error('kode_bahan')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <input wire:model="satuan" type="text" id="satuan"
                                                     class="form-control input-default" placeholder="Satuan">
                                                 @error('satuan')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="col">
+                                            <div class="col-lg-3">
+                                                <input wire:model="harga" type="text"
+                                                    class="form-control input-default" placeholder="Harga Satuan">
+                                                @error('harga')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label>Spesifikasi</label>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <input wire:model="merk" type="text" id="spek"
+                                                    class="form-control input-default" placeholder="Merk">
+                                                @error('merk')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input wire:model="type" type="text"
+                                                    class="form-control input-default" placeholder="Type/Model">
+                                                @error('type')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input wire:model="dimensi" type="text"
+                                                    class="form-control input-default" placeholder="Dimensi">
+                                                @error('dimensi')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" class="form-control" placeholder="Tahun dibuat"
+                                                    id="mdate" wire:model='tahun'>
+                                                @error('tahun')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col mt-3">
                                                 <div class="d-flex justify-content-end">
                                                     <div class="col-auto">
                                                         <button type="button" wire:click="cancel"
@@ -128,7 +180,7 @@
                                             </div>
                                             <div class="col-lg-3 mb-4">
                                                 <select wire:model="ruangan_id" class="form-control" id="ruangan">
-                                                    <option value="" selected>Ruangan</option>
+                                                    <option value="">Ruangan</option>
                                                     @foreach ($ruangans as $ruangan)
                                                         <option value="{{ $ruangan->id }}">
                                                             {{ $ruangan->nama_ruangan }}
@@ -151,7 +203,8 @@
                                         <div class="row">
                                             <div class="col-lg-3">
                                                 <input wire:model="volume" type="text" id="volume"
-                                                    class="form-control input-default" placeholder="Jumlah">
+                                                    class="form-control input-default" placeholder="Jumlah"
+                                                    wire:input='calculateTotalHarga()'>
                                                 @error('volume')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
@@ -164,13 +217,21 @@
                                                 @enderror
                                             </div>
                                             <div class="col-lg-3">
-                                                <input wire:model="saldo" type="text" id="saldo"
-                                                    class="form-control input-default" placeholder="Harga">
-                                                @error('saldo')
+                                                <input wire:model="harga" type="text"
+                                                    class="form-control input-default" placeholder="Harga Satuan"
+                                                    wire:input='calculateTotalHarga()'>
+                                                @error('harga')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                             <div class="col-lg-3">
+                                                <input wire:model="saldo" type="text" id="saldo"
+                                                    class="form-control input-default" placeholder="Total Harga">
+                                                @error('saldo')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-3 mt-3">
                                                 <input wire:model="sumber_dana" type="text" id="sumber_dana"
                                                     class="form-control input-default" placeholder="Sumber Dana">
                                                 @error('sumber_dana')
@@ -204,23 +265,8 @@
                                                 @enderror
                                             </div>
                                             <div class="col-lg-3">
-                                                <input type="text" class="form-control" placeholder="Tahun dibuat" id="mdate" >                                            </div>
-                                        </div>
-                                    </div>
-                                    <label>Lainnya</label>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-lg-3 mb-4">
-                                                <input wire:model="" type="text" id="keadaan"
-                                                    class="form-control input-default" placeholder="Keadaan Barang">
-                                            </div>
-                                            <div class="col-lg-3 mb-4">
-                                                <input wire:model="" type="text"
-                                                    class="form-control input-default" placeholder="Asal Barang">
-                                            </div>
-                                            <div class="col-lg-3 mb-4">
-                                                <input wire:model="" type="text"
-                                                    class="form-control input-default" placeholder="Harga Satuan">
+                                                <input type="text" class="form-control" placeholder="Tahun dibuat"
+                                                    id="mdate" wire:model='tahun'>
                                             </div>
                                         </div>
                                     </div>
@@ -250,8 +296,9 @@
                             @if (auth()->user()->ruangan_id)
                                 <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
                                     <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
-                                        href="{{ route('print.bukuindukbaranginventaris', ['id' => auth()->user()->ruangan_id]) }}"><i class="fa fa-print fa-lg mr-1">  Print</i>
-                                        </a>
+                                        href="{{ route('print.bukuindukbaranginventaris', ['id' => auth()->user()->ruangan_id]) }}"><i
+                                            class="fa fa-print fa-lg mr-1"> Print</i>
+                                    </a>
                                 </div>
                             @endif
                         </div>
@@ -341,10 +388,11 @@
                                                                 href="javascript:void(0)" data-toggle="modal"
                                                                 data-target="#ModalAlat"
                                                                 wire:click='onkel({{ $alat->id }})'>Keluar</a>
-                                                                @if (auth()->user()->role == 'KepalaBengkel')
+                                                            @if (auth()->user()->role == 'KepalaBengkel')
                                                                 <a class="dropdown-item text-success"
-                                                                href="{{ route('print.kartustok', ['id' => auth()->user()->ruangan_id]) }}">Print Kartu Stock</a>
-                                                                @endif
+                                                                    href="{{ route('print.kartustok', ['id' => auth()->user()->ruangan_id]) }}">Print
+                                                                    Kartu Stock</a>
+                                                            @endif
                                                             @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
                                                                 <a class="dropdown-item text-danger"
                                                                     href="javascript:void(0)"

@@ -251,12 +251,14 @@
                                 wire:model='searchPeralatan' wire:input='resetPage'>
                         </div>
                     </div>
-                    <div class="col-auto justify-content-end px-2">
-                        <a href="javascript:void(0)" class="btn btn-primary mb-1 d-flex" data-toggle="modal"
-                            data-target="#ModalImportPeralatan">
-                            <span class="text-white">import</span>
-                        </a>
-                    </div>
+                    @if (auth()->user()->role == 'AdminSekolah')
+                        <div class="col-auto justify-content-end px-2">
+                            <a href="javascript:void(0)" class="btn btn-primary mb-1 d-flex" data-toggle="modal"
+                                data-target="#ModalImportPeralatan">
+                                <span class="text-white">import</span>
+                            </a>
+                        </div>
+                    @endif
                     @if (auth()->user()->role == 'KepalaBengkel')
                         <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
                             <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
