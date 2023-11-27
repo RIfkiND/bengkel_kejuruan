@@ -11,7 +11,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $nama_sekolah, $sekolah_id, $searchSekolah, $selectedSekolahId;
+    public $nama_sekolah, $sekolah_id, $searchSekolah, $selectedSekolahId, $file;
     public $updateMode = false;
 
     use WithPagination;
