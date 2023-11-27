@@ -76,7 +76,10 @@ class Index extends Component
             'nama_alat_atau_bahan.required' => 'Nama Alat atau Bahan tidak boleh kosong.',
             'kode.required' => 'Kode tidak boleh kosong.',
             'volume.required' => 'Volume tidak boleh kosong.',
-            'satuan.required' => 'Satuan tidak boleh kosong',
+            'satuan.required' => 'Satuan tidak boleh kosong.',
+            'dimensi.required' => 'Dimensi tidak boleh kosong.',
+            'merk.reqired' => 'Merk tidak boleh kosong.',
+            'type.required' => 'Type tidak boleh kosong.',
         ]);
 
         if ($this->image) {
@@ -153,6 +156,15 @@ class Index extends Component
             'dimensi' => 'required',
             'merk' => 'required',
             'type' => 'required',
+        ],
+        [
+            'nama_alat_atau_bahan.required' => 'Nama Alat atau Bahan tidak boleh kosong.',
+            'kode.required' => 'Kode tidak boleh kosong.',
+            'volume.required' => 'Volume tidak boleh kosong.',
+            'satuan.required' => 'Satuan tidak boleh kosong.',
+            'dimensi.required' => 'Dimensi tidak boleh kosong.',
+            'merk.required' => 'Merk tidak boleh kosong.',
+            'type.required' => 'Type tidak boleh kosong.',
         ]);
 
         if ($this->image != null) {
