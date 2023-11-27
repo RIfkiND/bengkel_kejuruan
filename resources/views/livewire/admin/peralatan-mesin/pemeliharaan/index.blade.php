@@ -94,12 +94,14 @@
                                 <h4>Daftar Pemeliharaan</h4>
                             </div>
                         </div>
+                        @if (auth()->user()->role == 'KepalaBengkel')
                         <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
                             <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
                                 href="{{ route('print.bukupemeliharaanalat', ['id' => auth()->user()->ruangan_id]) }}"><i
                                     class="fa fa-print fa-lg mr-1"> Print</i>
                             </a>
                         </div>
+                        @endif
                         {{-- <div class="col d-flex justify-content-end px-4">
                             <div class="form-group">
                                 <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
@@ -143,10 +145,7 @@
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             data-toggle="modal" data-target="#infoModal"
                                                             wire:click='info({{ $pemeliharaan->id }})'>More info</a>
-                                                            @if (auth()->user()->role == 'KepalaBengkel')
-                                                            <a class="dropdown-item text-success"
-                                                            href="{{ route('print.kartuperawatanalat', ['id' => auth()->user()->ruangan_id]) }}">Print Kartu</a>
-                                                            @endif
+                                                        
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='updateStatus({{ $pemeliharaan->id }})'>
                                                             @if ($pemeliharaan->status == 'Belum Selesai')

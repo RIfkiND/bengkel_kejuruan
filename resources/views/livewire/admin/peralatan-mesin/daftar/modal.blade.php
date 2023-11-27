@@ -61,11 +61,16 @@
                                     <span>Kapasitas : {{ $kapasitas }} <br><br></span>
                                 </div>
                             </div>
-                                <div class="col-lg-6">
-                                    <div class="card-text">
-                                        <span>Kategori : {{ $kategori_id }}</span>
-                                    </div>
+                            <div class="col-lg-6">
+                                <div class="card-text">
+                                    <span>Kategori : {{ $kategori_id }}</span>
                                 </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card-text">
+                                    <span>Harga : {{ $peralatan->harga }}</span>
+                                </div>
+                            </div>
                         </div>
                         {{-- <div class="row">
                             <div class="col">

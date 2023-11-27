@@ -47,11 +47,10 @@ class PDFController extends Controller
     }
     public function kartuperawatanalat($id)
     {
-        $pemeliharaans = PemeliharaanDanPerawatan::find($id);
-        $peralatans = PeralatanAtauMesin::find($pemeliharaans->peralatan_id);
-        $sekolah = Sekolah::find($pemeliharaans->peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($pemeliharaans->peralatan->ruangan_id);
-
+        $peralatan = PeralatanAtauMesin::find($id);
+        $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
+        $ruangan = Ruangan::find($peralatan->ruangan_id);
+        $pemeliharaans = PemeliharaanDanPerawatan::where('peralatan_atau_mesin_id',$id)->get();
 
 
         $data = [
@@ -61,7 +60,7 @@ class PDFController extends Controller
             'date' => date('m/d/Y'),
 
             'pemeliharaans' => $pemeliharaans,
-            'peralatans' => $peralatans,
+            'peralatan' => $peralatan,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 
@@ -137,11 +136,25 @@ class PDFController extends Controller
     }
     public function bukupemeliharaanalat($id)
     {
-        $pemeliharaans = PemeliharaanDanPerawatan::where('peralatan_atau_mesin_id',$id)->get();
-        $peralatan = PeralatanAtauMesin::find($id);
-        $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($peralatan->ruangan_id);
+        $ruangan = Ruangan::find($id);
+        $sekolah = Sekolah::find($ruangan->sekolah_id);
+        if ($ruangan) {
+            $peralatan = PeralatanAtauMesin::where('ruangan_id', $id)->get();  // Retrieve all equipment in the room
 
+            $pemeliharaans = collect();  // Initialize an empty collection to store maintenance data
+
+            foreach ($peralatan as $peralatanItem) {
+                // For each equipment, retrieve maintenance data and add it to the collection
+                $maintenanceData = PemeliharaanDanPerawatan::where('peralatan_atau_mesin_id', $peralatanItem->id)->get();
+                $pemeliharaans = $pemeliharaans->merge($maintenanceData);
+            }
+
+            // Now you have all maintenance data for all equipment in the room in $pemeliharaans
+            // You can also get the school data using $sekolah = Sekolah::find($ruangan->sekolah_id);
+        } else {
+            // Handle the case where the room with the given ID is not found
+            // You may want to return an error response or redirect the user
+        }
 
 
         $data = [
@@ -152,6 +165,7 @@ class PDFController extends Controller
 
             'pemeliharaans' => $pemeliharaans,
             'sekolah' => $sekolah,
+            'peralatan' => $peralatan,
             'ruangan' => $ruangan,
 
         ];
