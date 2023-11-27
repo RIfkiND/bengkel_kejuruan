@@ -53,7 +53,7 @@ class Index extends Component
             $data = $this->file;
             $path = $data->store('temp');
 
-            Excel::import(new SekolahImport(), $path);
+            Excel::import(new SekolahImport, $path);
 
             $this->alert('success', 'Berhasil Ditambahkan!', [
                 'position' => 'center',
