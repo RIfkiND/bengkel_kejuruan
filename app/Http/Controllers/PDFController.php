@@ -45,11 +45,12 @@ class PDFController extends Controller
         return $pdf->stream();
 
     }
-    public function kartuperawatanalat()
+    public function kartuperawatanalat($id)
     {
-        $pemeliharaan = PemeliharaanDanPerawatan::find(1);
-        $sekolah = Sekolah::find($pemeliharaan->peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($pemeliharaan->peralatan->ruangan_id);
+        $pemeliharaans = PemeliharaanDanPerawatan::find($id);
+        $peralatans = PeralatanAtauMesin::find($pemeliharaans->peralatan_id);
+        $sekolah = Sekolah::find($pemeliharaans->peralatan->ruangan->sekolah_id);
+        $ruangan = Ruangan::find($pemeliharaans->peralatan->ruangan_id);
 
 
 
@@ -59,7 +60,8 @@ class PDFController extends Controller
 
             'date' => date('m/d/Y'),
 
-            'pemeliharaan' => $pemeliharaan,
+            'pemeliharaans' => $pemeliharaans,
+            'peralatans' => $peralatans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 
@@ -133,10 +135,10 @@ class PDFController extends Controller
 
         return $pdf->stream();
     }
-    public function bukupemeliharaanalat()
+    public function bukupemeliharaanalat($id)
     {
-        $peralatan = PeralatanAtauMesin::find(1);
-
+        $pemeliharaans = PemeliharaanDanPerawatan::where('peralatan_atau_mesin_id',$id)->get();
+        $peralatan = PeralatanAtauMesin::find($id);
         $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
         $ruangan = Ruangan::find($peralatan->ruangan_id);
 
@@ -148,7 +150,7 @@ class PDFController extends Controller
 
             'date' => date('m/d/Y'),
 
-            'peralatan' => $peralatan,
+            'pemeliharaans' => $pemeliharaans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 

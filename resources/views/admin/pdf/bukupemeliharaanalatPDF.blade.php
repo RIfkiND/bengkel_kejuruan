@@ -19,11 +19,11 @@
     <body>
         <table style="margin-left:8%; margin-right:auto; text-align:center;" cellpadding="6">
             <tr>
-                <td rowspan="4"><img src="/Asset/images/logo-tutwuri-handayani.jpg"></td>
+                <td rowspan="4"><img src="Asset/images/logo-tutwuri-handayani.jpg" width="65px" height="65px"></td>
                 <td></td>
             </tr>
             <tr align="center">
-                <th style='width:725px'>SMK.......</th>
+                <th style='width:725px'>{{ $sekolah->nama_sekolah}}</th>
             </tr>
             <tr align="center;" style='font-size:14px'>
                 <td>Jl.Pesantren KM 2 Cimahi 40513 Tlp. (022) 6652326 Fax (022) 6654698</td>
@@ -36,7 +36,10 @@
             </tr>
             
             <tr align="left">
-                <td colspan="6" >Unit Kerja :<br>Bengkel <span class="tab2">:</span></td>
+                <td colspan="6" >Unit Kerja :</td>
+            </tr>
+            <tr align="left">
+                <td colspan="6" >Ruang : {{ $ruangan->nama_ruangan }}</td>
             </tr>
         </table>
         <table border="1" cellpadding="4" width="100%">
@@ -46,18 +49,14 @@
                 <th>Keadaan yang Dikehendaki</th>
                 <th>Pelaksanaan Pemeliharaan</th>
             </tr>
+            @foreach ($pemeliharaans as $pemeliharaan)
             <tr>
-                <td></td>
-                <td></td>
+                <td>{{ loop->iteration }}</td>
+                <td>{{ $pemeliharaan->peralatan->nama_peralatan_atau_mesin }}</td>
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            @endforeach
         </table>
         <br>
         <table  width='100%' cellspacing='0' cellpadding='2'>

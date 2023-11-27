@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="row justify-content-md-center">
-                                    <div class="col-lg-4 mb-4">
+                                    <div class="col-lg-3 mb-4">
                                         <select class="form-control" id="ruangan" wire:model='jenis'>
                                             <option value="" selected>Jenis Kerusakan</option>
                                             <option value="Perawatan Rutin">Perawatan Rutin</option>
@@ -67,7 +67,10 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="col-lg-4 mb-4">
+                                    <div class="col-lg-3 mb-4">
+                                        <input type="text" class="form-control" id="petugas"placeholder="Nama Petugas" wire:model='keterangan'></input>
+                                    </div>
+                                    <div class="col-lg-3 mb-4">
                                         <textarea class="form-control" id="keterangan" rows="1" placeholder="Keterangan" wire:model='keterangan'></textarea>
                                         @error('keterangan')
                                             <span class="text-danger">{{ $message }}</span>
@@ -90,6 +93,12 @@
                             <div class="card-title">
                                 <h4>Daftar Pemeliharaan</h4>
                             </div>
+                        </div>
+                        <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
+                            <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
+                                href="{{ route('print.bukupemeliharaanalat', ['id' => auth()->user()->ruangan_id]) }}"><i
+                                    class="fa fa-print fa-lg mr-1"> Print</i>
+                            </a>
                         </div>
                         {{-- <div class="col d-flex justify-content-end px-4">
                             <div class="form-group">
@@ -134,7 +143,10 @@
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             data-toggle="modal" data-target="#infoModal"
                                                             wire:click='info({{ $pemeliharaan->id }})'>More info</a>
-                                                        {{-- <a class="dropdown-item" href="{{ route('print.kartupemeliharaan', $pemeliharaan->id) }}">Download</a> --}}
+                                                            @if (auth()->user()->role == 'KepalaBengkel')
+                                                            <a class="dropdown-item text-success"
+                                                            href="{{ route('print.kartuperawatanalat', ['id' => auth()->user()->ruangan_id]) }}">Print Kartu</a>
+                                                            @endif
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='updateStatus({{ $pemeliharaan->id }})'>
                                                             @if ($pemeliharaan->status == 'Belum Selesai')
