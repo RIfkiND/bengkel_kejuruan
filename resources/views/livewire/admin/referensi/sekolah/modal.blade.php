@@ -50,7 +50,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col">
-                                <h6>Pastikan Data Nama Murid Ada di Kolom A dan Mulai dari Baris 1 <br> Seperti Pada
+                                <h6>Pastikan Data Nama Sekolah Ada di Kolom A dan Mulai dari Baris 1 <br> Seperti Pada
                                     Gambar :</h6>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input class="form-control mb-2" type="file" wire:model="file" required>
+                            <input class="form-control mb-2" type="file" wire:model="file">
                             @if ($errors->has('file'))
                                 <div class="alert alert-danger">
                                     {{ $errors->first('file') }}

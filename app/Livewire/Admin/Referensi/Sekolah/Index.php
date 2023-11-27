@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Referensi\Sekolah;
 
 use App\Models\Sekolah;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use App\Imports\SekolahImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -15,6 +16,7 @@ class Index extends Component
     public $updateMode = false;
 
     use WithPagination;
+    use WithFileUploads;
     use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
