@@ -18,7 +18,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class Index extends Component
 {
     public $nama_peralatan_atau_mesin, $tanggal_masuk, $kategori_id, $ruangan_id, $sumber_dana, $merk, $type, $tahun, $kapasitas, $peralatan_id, $searchPeralatan, $selectedPeralatanId;
-    public $tanggal_keluar, $alasan;
+    public $tanggal_keluar, $alasan, $kode_peralatan, $harga;
     public $updateMode = false;
     public $ruangan_byadmin;
     public $keluarMode = false;
@@ -95,6 +95,8 @@ class Index extends Component
         $this->kapasitas = '';
         $this->tanggal_keluar = '';
         $this->alasan = '';
+        $this->harga = '';
+        $this->kode_peralatan = '';
     }
 
     public function importperalatan()
@@ -131,6 +133,7 @@ class Index extends Component
                 'tanggal_masuk' => 'required',
                 'kategori_id' => 'required',
                 'sumber_dana' => 'required',
+                'harga' => 'required|numeric',
                 'merk' => 'required',
                 'type' => 'required',
                 'tahun' => 'required',
@@ -145,22 +148,39 @@ class Index extends Component
                 'type.required' => 'Type tidak boleh kosong',
                 'tahun.required' => 'Tahun tidak boleh kosong',
                 'kapasitas.required' => 'kapasitas tidak boleh kosong',
+                'harga.required' => 'Harga tidak boleh kosong',
+                'kode_peralatan.required' => 'Kode Peralatan tidak boleh kosong',
+                'harga.numeric' => 'Harga harus berupa angka',
             ],
         );
 
         if (auth()->user()->ruangan_id) {
+            $validate = $this->validate(
+                [
+                    'kode_peralatan' => 'required|unique:peralatan_atau_mesins,kode_peralatan,NULL,id,ruangan_id,' . auth()->user()->ruangan_id,
+                ],
+                [
+                    'kode_peralatan.required' => 'Kode tidak boleh kosong',
+                    'kode_peralatan.unique' => 'Kode sudah digunakan di ruangan ini',
+                ],
+            );
             $peralatan = PeralatanAtauMesin::create([
                 'nama_peralatan_atau_mesin' => $this->nama_peralatan_atau_mesin,
                 'kategori_id' => $this->kategori_id,
                 'ruangan_id' => auth()->user()->ruangan_id,
+                'kode_peralatan' => $this->kode_peralatan,
+                'harga' => $this->harga,
             ]);
         } else {
             $validate = $this->validate(
                 [
                     'ruangan_id' => 'required',
+                    'kode_peralatan' => 'required|unique:peralatan_atau_mesins,kode_peralatan,NULL,id,ruangan_id,' . $this->ruangan_id,
                 ],
                 [
                     'ruangan_id.required' => 'Ruangan tidak boleh kosong',
+                    'kode_peralatan.required' => 'Kode tidak boleh kosong',
+                    'kode_peralatan.unique' => 'Kode sudah digunakan di ruangan ini',
                 ],
             );
 
@@ -168,6 +188,8 @@ class Index extends Component
                 'nama_peralatan_atau_mesin' => $this->nama_peralatan_atau_mesin,
                 'kategori_id' => $this->kategori_id,
                 'ruangan_id' => $this->ruangan_id,
+                'kode_peralatan' => $this->kode_peralatan,
+                'harga' => $this->harga,
             ]);
         }
 
@@ -202,6 +224,8 @@ class Index extends Component
         $this->nama_peralatan_atau_mesin = $peralatan->nama_peralatan_atau_mesin;
         $this->kategori_id = $peralatan->kategori_id;
         $this->ruangan_id = $peralatan->ruangan_id;
+        $this->kode_peralatan = $peralatan->kode_peralatan;
+        $this->harga = $peralatan->harga;
         $this->updateMode = true;
     }
 
@@ -219,11 +243,16 @@ class Index extends Component
                 'nama_peralatan_atau_mesin' => 'required',
                 'kategori_id' => 'required',
                 'ruangan_id' => 'required',
+                'kode_peralatan' => 'required',
+                'harga' => 'required|numeric',
             ],
             [
                 'nama_peralatan_atau_mesin.required' => 'Nama Peralatan atau Mesin tidak boleh kosong',
                 'kategori_id.required' => 'Kategori tidak boleh kosong',
                 'ruangan_id.required' => 'Ruangan tidak boleh kosong',
+                'kode_peralatan.required' => 'Kode Peralatan tidak boleh kosong',
+                'harga.required' => 'Harga tidak boleh kosong',
+                'harga.numeric' => 'Harga harus berupa angka',
             ],
         );
 
@@ -232,6 +261,8 @@ class Index extends Component
             'nama_peralatan_atau_mesin' => $this->nama_peralatan_atau_mesin,
             'kategori_id' => $this->kategori_id,
             'ruangan_id' => $this->ruangan_id,
+            'kode_peralatan' => $this->kode_peralatan,
+            'harga' => $this->harga,
         ]);
 
         $this->updateMode = false;
