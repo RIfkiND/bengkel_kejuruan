@@ -5,7 +5,10 @@ namespace App\Livewire\Admin\PeralatanMesin\Daftar;
 use App\Models\Ruangan;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Imports\PeralatanImport;
 use App\Models\PeralatanAtauMesin;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PeralatanImportMasuk;
 use App\Models\PeralatanAtauMesinMasuk;
 use App\Models\PeralatanAtauMesinKeluar;
 use App\Models\KategoriPeralatanAtauMesin;
@@ -37,7 +40,7 @@ class Index extends Component
     {
         $searchPeralatan = '%' . $this->searchPeralatan . '%';
 
-        if ($this->ruangan_byadmin !=null) {
+        if ($this->ruangan_byadmin != null) {
             return view('livewire.admin.peralatan-mesin.daftar.index', [
                 'peralatans' => PeralatanAtauMesin::where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                     ->where('ruangan_id', $this->ruangan_byadmin)
@@ -76,7 +79,6 @@ class Index extends Component
             } else {
                 return view('livewire.admin.peralatan-mesin.daftar.index', [
                     'peralatans' => 'kosong',
-
                 ]);
             }
         }
@@ -95,29 +97,56 @@ class Index extends Component
         $this->alasan = '';
     }
 
+    public function importperalatan()
+    {
+        try {
+            $this->validate([
+                'file' => 'required|mimes:xlsx,xls',
+            ]);
+
+            $data = $this->file;
+            $path = $data->store('temp');
+
+            $peralatanImport = new PeralatanImport();
+            $peralatan = Excel::import($peralatanImport, $path);
+
+            $peralatanImportMasuk = new PeralatanImportMasuk($peralatan);
+            Excel::import($peralatanImportMasuk, $path);
+
+            $this->alert('success', 'Berhasil Ditambahkan!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'timerProgressBar' => true,
+            ]);
+        } catch (\Exception $e) {
+            $this->addError('file', $e->getMessage());
+        }
+    }
     public function store()
     {
-        $validatedDate = $this->validate([
-            'nama_peralatan_atau_mesin' => 'required',
-            'tanggal_masuk' => 'required',
-            'kategori_id' => 'required',
-            'sumber_dana' => 'required',
-            'merk' => 'required',
-            'type' => 'required',
-            'tahun' => 'required',
-            'kapasitas' => 'required',
-        ],
-        [
-            'nama_peralatan_atau_mesin.required' => 'Nama Peralatan atau Mesin tidak boleh kosong',
-            'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong',
-            'kategori_id.required' => 'Kategori tidak boleh kosong',
-            'sumber_dana.required' => 'Sumber Dana tidak boleh kosong',
-            'merk.required' => 'Merk tidak boleh kosong',
-            'type.required' => 'Type tidak boleh kosong',
-            'tahun.required' => 'Tahun tidak boleh kosong',
-            'kapasitas.required' => 'kapasitas tidak boleh kosong',
-
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'nama_peralatan_atau_mesin' => 'required',
+                'tanggal_masuk' => 'required',
+                'kategori_id' => 'required',
+                'sumber_dana' => 'required',
+                'merk' => 'required',
+                'type' => 'required',
+                'tahun' => 'required',
+                'kapasitas' => 'required',
+            ],
+            [
+                'nama_peralatan_atau_mesin.required' => 'Nama Peralatan atau Mesin tidak boleh kosong',
+                'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong',
+                'kategori_id.required' => 'Kategori tidak boleh kosong',
+                'sumber_dana.required' => 'Sumber Dana tidak boleh kosong',
+                'merk.required' => 'Merk tidak boleh kosong',
+                'type.required' => 'Type tidak boleh kosong',
+                'tahun.required' => 'Tahun tidak boleh kosong',
+                'kapasitas.required' => 'kapasitas tidak boleh kosong',
+            ],
+        );
 
         if (auth()->user()->ruangan_id) {
             $peralatan = PeralatanAtauMesin::create([
@@ -126,12 +155,14 @@ class Index extends Component
                 'ruangan_id' => auth()->user()->ruangan_id,
             ]);
         } else {
-            $validate = $this->validate([
-                'ruangan_id' => 'required',
-            ],
-            [
-                'ruangan_id.required' => 'Ruangan tidak boleh kosong',
-            ]);
+            $validate = $this->validate(
+                [
+                    'ruangan_id' => 'required',
+                ],
+                [
+                    'ruangan_id.required' => 'Ruangan tidak boleh kosong',
+                ],
+            );
 
             $peralatan = PeralatanAtauMesin::create([
                 'nama_peralatan_atau_mesin' => $this->nama_peralatan_atau_mesin,
@@ -183,16 +214,18 @@ class Index extends Component
 
     public function update()
     {
-        $validatedDate = $this->validate([
-            'nama_peralatan_atau_mesin' => 'required',
-            'kategori_id' => 'required',
-            'ruangan_id' => 'required',
-        ],
-        [
-            'nama_peralatan_atau_mesin.required' => 'Nama Peralatan atau Mesin tidak boleh kosong',
-            'kategori_id.required' => 'Kategori tidak boleh kosong',
-            'ruangan_id.required' => 'Ruangan tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'nama_peralatan_atau_mesin' => 'required',
+                'kategori_id' => 'required',
+                'ruangan_id' => 'required',
+            ],
+            [
+                'nama_peralatan_atau_mesin.required' => 'Nama Peralatan atau Mesin tidak boleh kosong',
+                'kategori_id.required' => 'Kategori tidak boleh kosong',
+                'ruangan_id.required' => 'Ruangan tidak boleh kosong',
+            ],
+        );
 
         $peralatan = PeralatanAtauMesin::find($this->peralatan_id);
         $peralatan->update([
@@ -220,7 +253,6 @@ class Index extends Component
         $this->tahun = $peralatan->spesifikasi->tahun;
         $this->kapasitas = $peralatan->spesifikasi->kapasitas;
         $this->kategori_id = $peralatan->kategori->nama_kategori;
-
     }
     public function ondel($id)
     {
@@ -271,14 +303,16 @@ class Index extends Component
 
     public function keluar()
     {
-        $validate = $this->validate([
-            'tanggal_keluar' => 'required',
-            'alasan' => 'required',
-        ],
-        [
-            'tanggal_keluar.required' => 'Tanggan Keluar tidak boleh kosong',
-            'alasan.required' => 'Alasan tidak boleh kosong',
-        ]);
+        $validate = $this->validate(
+            [
+                'tanggal_keluar' => 'required',
+                'alasan' => 'required',
+            ],
+            [
+                'tanggal_keluar.required' => 'Tanggan Keluar tidak boleh kosong',
+                'alasan.required' => 'Alasan tidak boleh kosong',
+            ],
+        );
 
         $peralatan = PeralatanAtauMesin::find($this->peralatan_id);
         $peralatan->update([
