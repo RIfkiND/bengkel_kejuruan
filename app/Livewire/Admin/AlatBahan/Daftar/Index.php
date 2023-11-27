@@ -15,7 +15,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class Index extends Component
 {
     public $nama_alat_atau_bahan, $tanggal_masuk, $kode, $ruangan_id, $volume, $satuan, $sumber_dana, $merk, $type, $dimensi, $alat_id, $searchAlat, $selectedAlatId, $saldo;
-    public $tanggal_keluar, $keterangan, $nama_pemakai, $volume_keluar, $volume_masuk, $kode_bahan;
+    public $tanggal_keluar, $keterangan, $nama_pemakai, $volume_keluar, $volume_masuk, $kode_bahan, $tahun, $harga;
     public $updateMode = false;
     public $historyData, $alathistory;
     public $ruangan_byadmin;
@@ -95,6 +95,8 @@ class Index extends Component
         $this->kode_bahan = '';
         $this->volume_keluar = '';
         $this->volume_masuk = '';
+        $this->tahun='';
+        $this->harga='';
     }
 
     public function store()
@@ -113,6 +115,8 @@ class Index extends Component
                 'merk' => 'required',
                 'type' => 'required',
                 'dimensi' => 'required',
+                'harga' => 'required',
+                'tahun' => 'required',
             ],
             [
                 'nama_alat_atau_bahan.required' => 'Nama Alat atau Bahan tidak boleh kosong.',
@@ -139,6 +143,7 @@ class Index extends Component
             'ruangan_id' => $this->ruangan_id,
             'volume' => $this->volume,
             'satuan' => $this->satuan,
+            'harga' => $this->harga,
         ]);
 
         AlatAtauBahanMasuk::create([
@@ -154,6 +159,7 @@ class Index extends Component
             'tipe_atau_model' => $this->type,
             'dimensi' => $this->dimensi,
             'a_atau_b_id' => $alat->id,
+            'tahun' => $this->tahun,
         ]);
 
         $this->resetInputFields();

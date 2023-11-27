@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('merk');
             $table->string('tipe_atau_model');
             $table->string('dimensi');
+            $table->string('tahun')->nullable();
             $table->timestamps();
         });
     }
