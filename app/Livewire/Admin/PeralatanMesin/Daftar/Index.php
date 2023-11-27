@@ -107,23 +107,12 @@ class Index extends Component
         try {
             $this->validate([
                 'file' => 'required|mimes:xlsx,xls',
-            ],
-            [
-                'file.required' => 'File tidak boleh kosong.',
-                'file.mimes' => 'Format File harus xlsx,xls.'
             ]);
 
             $data = $this->file;
             $path = $data->store('temp');
-
             $peralatanImport = new PeralatanImport();
-            $peralatan = Excel::import($peralatanImport, $path);
-
-            $peralatanImportMasuk = new PeralatanImportMasuk($peralatan);
-            Excel::import($peralatanImportMasuk, $path);
-
-            $peralatanImportMasuk = new PeralatanImportSpesifikasi($peralatan);
-            Excel::import($peralatanImportMasuk, $path);
+            Excel::import($peralatanImport, $path);
 
             $this->alert('success', 'Berhasil Ditambahkan!', [
                 'position' => 'center',
