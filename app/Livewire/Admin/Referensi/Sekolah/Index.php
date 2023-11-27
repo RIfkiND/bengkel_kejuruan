@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Referensi\Sekolah;
 use App\Models\Sekolah;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Imports\SekolahImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
@@ -41,6 +43,28 @@ class Index extends Component
         $this->nama_sekolah = '';
     }
 
+    public function importSekolah()
+    {
+        try {
+            $this->validate([
+                'file' => 'required|mimes:xlsx,xls',
+            ]);
+
+            $data = $this->file;
+            $path = $data->store('temp');
+
+            Excel::import(new SekolahImport(), $path);
+
+            $this->alert('success', 'Berhasil Ditambahkan!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'timerProgressBar' => true,
+            ]);
+        } catch (\Exception $e) {
+            $this->addError('file', $e->getMessage());
+        }
+    }
     public function store()
     {
         $validatedDate = $this->validate([

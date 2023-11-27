@@ -16,6 +16,11 @@
                             </div>
                         </div>
                         <div class="col-lg-3 d-flex justify-content-end px-4 h-50">
+                            <a href="javascript:void(0)" type="button"
+                                class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
+                                data-target="#ModalImportSekolah">Import Murid</a>
+                        </div>
+                        <div class="col-lg-3 d-flex justify-content-end px-4 h-50">
                             <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
                                 data-toggle="modal" data-target="#ModalSekolah">Tambahkan Sekolah</button>
                         </div>
