@@ -27,7 +27,7 @@ class PeralatanImport implements ToModel, WithValidation
 
     public function model(array $row)
     {
-        $catid = KategoriPeralatanAtauMesin::where('nama_kategori_peralatan_atau_mesin', $row[2])->first()->id;
+        $catid = KategoriPeralatanAtauMesin::where('nama_kategori', $row[2])->first()->id;
         $ruanganid = Ruangan::where('nama_ruangan', $row[3])->first()->id;
         $harga = preg_replace('/[^0-9]/', '', $row[4]);
 
