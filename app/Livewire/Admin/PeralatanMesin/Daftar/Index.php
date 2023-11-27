@@ -107,6 +107,10 @@ class Index extends Component
         try {
             $this->validate([
                 'file' => 'required|mimes:xlsx,xls',
+            ],
+            [
+                'file.required' => 'File tidak boleh kosong.',
+                'file.mimes' => 'Format File harus xlsx,xls.'
             ]);
 
             $data = $this->file;
@@ -144,6 +148,7 @@ class Index extends Component
                 'type' => 'required',
                 'tahun' => 'required',
                 'kapasitas' => 'required',
+                'kode_peralatan' => 'required',
             ],
             [
                 'nama_peralatan_atau_mesin.required' => 'Nama Peralatan atau Mesin tidak boleh kosong',
