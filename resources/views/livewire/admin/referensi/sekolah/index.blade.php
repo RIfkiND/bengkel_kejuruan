@@ -15,14 +15,19 @@
                                     wire:model='searchSekolah' wire:input='resetPage'>
                             </div>
                         </div>
-                        <div class="col-lg-3 d-flex justify-content-end px-4 h-50">
-                            <a href="javascript:void(0)" type="button"
-                                class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
-                                data-target="#ModalImportSekolah">Import Sekolah</a>
-                        </div>
-                        <div class="col-lg-3 d-flex justify-content-end px-4 h-50">
-                            <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
-                                data-toggle="modal" data-target="#ModalSekolah">Tambahkan Sekolah</button>
+                        <div class="col-lg-2 d-flex justify-content-end px-4 h-50">
+                            <div class="basic-dropdown">
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary dropdown-toggle"
+                                        data-toggle="dropdown">Tambahkan</button>
+                                    <div class="dropdown-menu"><a href="javascript:void(0)" type="button"
+                                            class="dropdown-item" data-toggle="modal"
+                                            data-target="#ModalImportSekolah"><i class="fa fa-download fa-lg mr-2 text-success"></i>Import Sekolah</a> <a
+                                            href="javascript:void(0)" type="button" class="dropdown-item"
+                                            data-toggle="modal" data-target="#ModalSekolah"><i class="fa fa-plus fa-lg mr-2"></i>Tambah Sekolah</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">

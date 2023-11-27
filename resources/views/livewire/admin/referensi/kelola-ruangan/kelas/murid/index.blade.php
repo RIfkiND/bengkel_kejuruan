@@ -17,16 +17,31 @@
                                 </div>
                             </div>
                             @if (auth()->user()->sekolah_id)
-                            <div class="col-lg-4">
-                                <a href="javascript:void(0)" type="button"
-                                    class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
-                                    data-target="#ModalImportMuridKelas">Import Murid</a>
-                            </div>
                                 <div class="col-lg-4">
+                                    {{-- <a href="javascript:void(0)" type="button"
+                                    class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
+                                    data-target="#ModalImportMuridKelas">Import Murid</a> --}}
+                                    <div class="basic-dropdown">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-primary dropdown-toggle"
+                                                data-toggle="dropdown">Tambahkan</button>
+                                            <div class="dropdown-menu"><a href="javascript:void(0)" type="button"
+                                                    class="dropdown-item" data-toggle="modal"
+                                                    data-target="#ModalImportMuridKelas"><i
+                                                        class="fa fa-download fa-lg mr-2 text-success"></i>Import
+                                                    Murid</a> <a href="javascript:void(0)" type="button"
+                                                    class="dropdown-item" data-toggle="modal"
+                                                    data-target="#ModalMuridKelas"><i
+                                                        class="fa fa-plus fa-lg mr-2" style="color: #99bbff;"></i>Tambah Murid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-lg-4">
                                     <a href="javascript:void(0)" type="button"
                                         class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
                                         data-target="#ModalMuridKelas">Tambah Murid</a>
-                                </div>
+                                </div> --}}
                             @endif
                         </div>
                         <div class="row">
