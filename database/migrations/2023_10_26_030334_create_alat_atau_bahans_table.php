@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('kode_bahan')->nullable();
             $table->enum('kode', ['A', 'B']);
             $table->string('nama_alat_atau_bahan');
+            $table->string('harga')->nullable();
             $table->string('volume')->nullable();
+            $table->string('volumesedang')->nullable();
+            $table->string('volumerusak')->nullable();
             $table->string('satuan')->nullable();
             $table->timestamps();
         });
