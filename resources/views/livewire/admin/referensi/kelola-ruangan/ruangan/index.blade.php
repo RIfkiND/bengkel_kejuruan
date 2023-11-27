@@ -41,7 +41,9 @@
                                                 <a class="dropdown-item" href="javascript:void(0)"
                                                     wire:click='edit({{ $ruangan->id }})' data-toggle="modal"
                                                     data-target="#ModalRuangan">Edit</a><a
-                                                    class="dropdown-item text-danger" href="avascript:void(0)"
+                                                    class="dropdown-item text-success"
+                                                    href="{{ route('print.daftarruangbarang', ['id' => $ruangan->id]) }}">Print</a>
+                                                <a class="dropdown-item text-danger" href="avascript:void(0)"
                                                     wire:click='ondel({{ $ruangan->id }})'>Delete</a>
                                             </div>
                                         </div>
