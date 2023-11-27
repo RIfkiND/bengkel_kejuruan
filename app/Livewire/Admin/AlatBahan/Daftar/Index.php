@@ -133,6 +133,8 @@ class Index extends Component
                 'merk.required' => 'Merk tidak boleh kosong.',
                 'type.required' => 'Type tidak boleh kosong.',
                 'dimensi.required' => 'Dimensi tidak boleh kosong.',
+                'harga.required' => 'Harga tidak boleh kosong.',
+                'tahun.required' => 'Tahun tidak boleh kosong.'
             ],
         );
 

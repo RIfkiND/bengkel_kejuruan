@@ -71,6 +71,12 @@ class Index extends Component
             'dimensi' => 'required',
             'merk' => 'required',
             'type' => 'required',
+        ],
+        [
+            'nama_alat_atau_bahan.required' => 'Nama Alat atau Bahan tidak boleh kosong.',
+            'kode.required' => 'Kode tidak boleh kosong.',
+            'volume.required' => 'Volume tidak boleh kosong.',
+            'satuan.required' => 'Satuan tidak boleh kosong',
         ]);
 
         if ($this->image) {
