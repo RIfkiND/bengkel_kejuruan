@@ -37,7 +37,7 @@
             });
         @endphp
 
-        @foreach ($groupedEntries as $tanggal => $entries)
+        @forelse ($groupedEntries as $tanggal => $entries)
             @php
                 $totalVolumeMasuk = $bahans->alatmasuk->where('tanggal_masuk', $tanggal)->sum('volume');
                 $totalVolumeKeluar = $bahans->alatkeluar->where('tanggal_keluar', $tanggal)->sum('volume');
@@ -53,7 +53,11 @@
                 <td align="center"> {{ $bahans->volume }}</td>
                 <td align="center"></td>
             </tr>
-        @endforeach
+            @empty
+            <tr>
+                <td colspan='8' align='center'></td>
+            </tr>
+        @endforelse
 
 
     </table>

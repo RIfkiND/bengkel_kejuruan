@@ -47,7 +47,7 @@
               <td align="center" bgcolor='#f2f2f2'>Satuan</td>
               <td align="center" bgcolor='#f2f2f2'>Keterangan</td>
             </tr>
-            @foreach ($bahans as $bahan)
+            @forelse ($bahans as $bahan)
             <tr align="center">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $bahan->nama_alat_atau_bahan }}</td>
@@ -64,8 +64,12 @@
                         {{ $alatkeluar->keterangan }}
                     @endforeach
                 </td>
-            </tr>x`
-            @endforeach
+            </tr>
+            @empty
+            <tr>
+                <td colspan='6' align='center'></td>
+            </tr>
+            @endforelse
         </table>
         <table border="1" cellpadding="4" width="100%">
           <tr valign="top">

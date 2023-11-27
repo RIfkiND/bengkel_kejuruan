@@ -31,7 +31,7 @@
                 <th style='width:120px'>Harga</th>
                 <th style='width:180px'>Keterangan</th>
             </tr>
-            @foreach ($bahans as $bahan)
+            @forelse ($bahans as $bahan)
                 <tr align="center">
                     <td height="3%">
                         {{ $loop->iteration }}
@@ -49,7 +49,11 @@
                     <td>Rp {{ number_format($bahan->saldo, 2, ',', '.') }}</td>
                     <td></td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan='12' align='center'></td>
+                </tr>
+            @endforelse
         </table>
     </div>
 </body>

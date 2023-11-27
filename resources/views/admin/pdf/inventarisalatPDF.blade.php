@@ -65,7 +65,7 @@
                         <th>Sedang</th>
                         <th>Baik</th>
                     </tr>
-                    @foreach ($peralatans as $peralatan)
+                    @forelse ($peralatans as $peralatan)
                         <tr>
                             <td align="center">{{ $loop->iteration }}</td>
                             <td></td>
@@ -84,7 +84,11 @@
                             <td align="center">X</td>
                             @endif
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan='8' align='center'></td>
+                        </tr>
+                    @endforelse
                 </table>
             </td>
         </tr>

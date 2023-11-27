@@ -49,14 +49,18 @@
                 <th>Keadaan yang Dikehendaki</th>
                 <th>Pelaksanaan Pemeliharaan</th>
             </tr>
-            @foreach ($pemeliharaans as $pemeliharaan)
+            @forelse ($pemeliharaans as $pemeliharaan)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $pemeliharaan->peralatan->nama_peralatan_atau_mesin }}</td>
                 <td>{{ $pemeliharaan->jenis }}</td>
                 <td>{{ $pemeliharaan->tanggal }}</td>
             </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan='4' align='center'></td>
+                </tr>
+            @endforelse
         </table>
         <br>
         <table  width='100%' cellspacing='0' cellpadding='2'>

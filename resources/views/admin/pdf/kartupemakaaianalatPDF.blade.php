@@ -57,7 +57,7 @@
             <th>Jam Mulai</th>
             <th>Jam Selesai</th>
         </tr>
-        @foreach ($pemakais as $pemakai)
+        @forelse ($pemakais as $pemakai)
             <tr>
                 <td>
                     {{ $loop->iteration }}
@@ -81,7 +81,11 @@
 
                 </td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan='8' align='center'></td>
+            </tr>
+        @endforelse
     </table>
     <br>
     <table width='100%' cellspacing='0' cellpadding='2'>

@@ -57,7 +57,7 @@
                 <th>Rusak Ringan</th>
                 <th>Rusak Berat</th>
             </tr>
-            @foreach ($peralatans as $peralatan)
+            @forelse ($peralatans as $peralatan)
             <tr>
                 <td align="center">{{ $loop->iteration }}</td>
                 <td>{{ $peralatan->nama_peralatan_atau_mesin }}</td>
@@ -72,7 +72,11 @@
                 <td></td>
                 <td></td>
             </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan='13' align='center'></td>
+                </tr>
+            @endforelse
         </table>
         <br>
         <table>

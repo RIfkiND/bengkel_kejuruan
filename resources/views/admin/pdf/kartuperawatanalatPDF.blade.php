@@ -59,7 +59,7 @@
             <th>Jenis</th>
             <th>Tanggal</th>
         </tr>
-        @foreach ($pemeliharaans as $pemeliharaan)
+        @forelse ($pemeliharaans as $pemeliharaan)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td></td>
@@ -68,7 +68,11 @@
                 <td>{{ $pemeliharaan->peralatan->kondisi }}</td>
                 <td></td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan='7' align='center'></td>
+            </tr>
+        @endforelse
     </table>
     <br>
     <table width='100%' cellspacing='0' cellpadding='2'>
