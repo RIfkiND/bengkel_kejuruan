@@ -37,6 +37,48 @@
         </div>
     </div>
 
+    <div wire:ignore.self class="modal fade" id="ModalImportMuridKelas">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Import Data Dari Excel</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                            wire:click.prevent='cancel()'><span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <h6>Pastikan Data Nama Murid Ada di Kolom A dan Mulai dari Baris 1 <br> Seperti Pada
+                                    Gambar :</h6>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <img src="/Asset/images/murid-tutor.png" alt="" width="50%">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control mb-2" type="file" wire:model="file" required>
+                            @if ($errors->has('file'))
+                                <div class="alert alert-danger">
+                                    {{ $errors->first('file') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            wire:click.prevent='cancel()'>Batal</button>
+                        <button type="button" class="btn btn-primary" wire:click.prevent="importMurids()"
+                            wire:loading.attr="disabled">Import</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div wire:ignore.self class="modal fade" id="ModalGuruKelas">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

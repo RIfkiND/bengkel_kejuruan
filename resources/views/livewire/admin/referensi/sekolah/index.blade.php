@@ -16,6 +16,11 @@
                             </div>
                         </div>
                         <div class="col-lg-3 d-flex justify-content-end px-4 h-50">
+                            <a href="javascript:void(0)" type="button"
+                                class="btn mb-1 btn-primary justify-content-end" data-toggle="modal"
+                                data-target="#ModalImportSekolah">Import Sekolah</a>
+                        </div>
+                        <div class="col-lg-3 d-flex justify-content-end px-4 h-50">
                             <button type="button" class="btn mb-1 btn-primary d-flex justify-content-end"
                                 data-toggle="modal" data-target="#ModalSekolah">Tambahkan Sekolah</button>
                         </div>
@@ -24,7 +29,7 @@
                         @foreach ($sekolahs as $sekolah)
                             <div class="col-lg-4 col-sm-6">
                                 <a href="{{ route('admin.sekolah.kelas-ruangan', $sekolah->id) }}">
-                                    <div class="card d-flex justify-content-between">
+                                    <div class="card d-flex justify-content-between" aria-label="Hallo">
                                         <h5 class="card-header position-absolute">
                                             @if (strlen($sekolah->nama_sekolah) > 20)
                                                 {{ substr($sekolah->nama_sekolah, 0, 20) . '...' }}

@@ -80,7 +80,7 @@
                                     @endif
                                     <div class="col-lg-3 mb-4">
                                         <select multiple="multiple" class="form-control" id="peralatan" wire:model='p_m_id'>
-                                            <option value="" selected>Peralatan/Mesin</option>
+                                            <option value="">Peralatan/Mesin</option>
                                             @foreach ($peralatans as $peralatan)
                                                 @php
                                                     $validPeralatan = true;
@@ -214,6 +214,8 @@
                                                         @endif
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='edit({{ $peminjaman->id }})'>Edit</a>
+                                                            <a class="dropdown-item text-success"
+                                                                href="{{ route('print.kartupeminjamanalat', ['id' => auth()->user()->ruangan_id]) }}">Print Kartu Peminjaman</a>
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='ondel({{ $peminjaman->id }})'>Hapus</a>
                                                     </div>

@@ -13,11 +13,12 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $tanggal, $waktu_awal, $waktu_akhir, $status_pengajuan, $status_pemakaian, $p_m_id, $guru_id, $kelas_id, $peminjaman_id, $searchRuangan, $selectedDataId, $ruangan_id;
-
+    public $tanggal, $waktu_awal, $waktu_akhir, $status_pengajuan, $status_pemakaian, $guru_id, $kelas_id, $peminjaman_id, $searchRuangan, $selectedDataId, $ruangan_id;
     public $merk, $type, $tahun, $kapasitas;
     public $updateMode = false;
     public $informasiMode = false;
+
+    public $p_m_id = [];
 
     use WithPagination;
     use LivewireAlert;
@@ -71,8 +72,10 @@ class Index extends Component
                     ->orderBy('id', 'DESC')
                     ->get(),
                 'peminjamans' => Pemakaian::whereHas('peralatan', function ($query) {
-                        $query->where('ruangan_id', auth()->user()->ruangan_id);
-                    })->orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
+                    $query->where('ruangan_id', auth()->user()->ruangan_id);
+                })
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'pemakaianPage'),
                 'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
@@ -85,12 +88,16 @@ class Index extends Component
                 'ruangans' => Ruangan::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
-                'peminjamans' => Pemakaian::where('guru_id', auth()->user()->guru_id)->orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
+                'peminjamans' => Pemakaian::where('guru_id', auth()->user()->guru_id)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'pemakaianPage'),
                 'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
                 'peralatans',
-                'kelas',
+                'kelas' => GuruKelas::where('guru_id', auth()->user()->guru_id)
+                    ->orderBy('id', 'DESC')
+                    ->get(),
             ]);
         } else {
             return view('livewire.admin.peralatan-mesin.pemakaian.index', [
@@ -98,10 +105,12 @@ class Index extends Component
                     ->orderBy('id', 'DESC')
                     ->get(),
                 'peminjamans' => Pemakaian::whereHas('peralatan', function ($query) {
-                        $query->whereHas('ruangan', function ($query) {
+                    $query->whereHas('ruangan', function ($query) {
                         $query->where('sekolah_id', auth()->user()->sekolah->id);
                     });
-                    })->orderBy('id', 'DESC')->paginate(10, ['*'], 'pemakaianPage'),
+                })
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'pemakaianPage'),
                 'gurus' => Guru::where('sekolah_id', 'LIKE', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->get(),
@@ -126,8 +135,7 @@ class Index extends Component
             [
                 'tanggal' => 'required',
                 'waktu_awal' => 'required',
-                'p_m_id' => 'required',
-                'guru_id' => 'required',
+                'p_m_id' => 'required|array',
                 'kelas_id' => 'required',
                 'waktu_akhir' => 'required',
             ],
@@ -135,20 +143,32 @@ class Index extends Component
                 'tanggal.required' => 'Tanggal tidak boleh kosong',
                 'waktu_awal.required' => 'Waktu Awal tidak boleh kosong',
                 'p_m_id.required' => 'Peralatan atau Mesin tidak boleh kosong',
-                'guru_id.required' => 'Guru tidak boleh kosong',
                 'kelas_id.required' => 'Kelas tidak boleh kosong',
                 'waktu_akhir.required' => 'Waktu Akhir tidak boleh kosong',
             ],
         );
 
-        Pemakaian::create([
-            'tanggal_pemakaian' => $this->tanggal,
-            'waktu_awal' => $this->waktu_awal,
-            'waktu_akhir' => $this->waktu_akhir,
-            'peralatan_atau_mesin_id' => $this->p_m_id,
-            'guru_id' => $this->guru_id,
-            'kelas_id' => $this->kelas_id,
-        ]);
+        foreach ($this->p_m_id as $pmid) {
+            if (auth()->user()->role != 'Guru') {
+                Pemakaian::create([
+                    'tanggal_pemakaian' => $this->tanggal,
+                    'waktu_awal' => $this->waktu_awal,
+                    'waktu_akhir' => $this->waktu_akhir,
+                    'peralatan_atau_mesin_id' => $pmid,
+                    'guru_id' => $this->guru_id,
+                    'kelas_id' => $this->kelas_id,
+                ]);
+            } else {
+                Pemakaian::create([
+                    'tanggal_pemakaian' => $this->tanggal,
+                    'waktu_awal' => $this->waktu_awal,
+                    'waktu_akhir' => $this->waktu_akhir,
+                    'peralatan_atau_mesin_id' => $pmid,
+                    'guru_id' => auth()->user()->guru_id,
+                    'kelas_id' => $this->kelas_id,
+                ]);
+            }
+        }
 
         $this->resetInputFields();
 
@@ -179,7 +199,7 @@ class Index extends Component
         $peminjaman = Pemakaian::findOrFail($id);
         $this->peminjaman_id = $id;
         $this->merk = $peminjaman->peralatan->spesifikasi->merk;
-        $this->type =  $peminjaman->peralatan->spesifikasi->tipe_atau_model;
+        $this->type = $peminjaman->peralatan->spesifikasi->tipe_atau_model;
         $this->tahun = $peminjaman->peralatan->spesifikasi->tahun;
         $this->kapasitas = $peminjaman->peralatan->spesifikasi->kapasitas;
         $this->informasiMode = true;

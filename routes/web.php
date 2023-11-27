@@ -25,16 +25,16 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::controller(PDFController::class)->group(function () {
-    Route::get('kartu-perawatan-alat', 'kartuperawatanalat')->name('print.kartuperawatanalat');
-    Route::get('daftar-inventaris-alat', 'inventarisalat')->name('print.inventarisalat');
-    Route::get('kartu-peminjaman-alat', 'kartupeminjamanalat')->name('print.kartupeminjamanalat');
-    Route::get('buku-pemeliharaan-alat', 'bukupemeliharaanalat')->name('print.bukupemeliharaanalat');
+    // Route::get('kartu-perawatan-alat', 'kartuperawatanalat')->name('print.kartuperawatanalat');
+    // Route::get('daftar-inventaris-alat', 'inventarisalat')->name('print.inventarisalat');
+    // Route::get('kartu-peminjaman-alat', 'kartupeminjamanalat')->name('print.kartupeminjamanalat');
+    // Route::get('buku-pemeliharaan-alat', 'bukupemeliharaanalat')->name('print.bukupemeliharaanalat');
     // Route::get('kartu-stok-barang', 'kartustok')->name('print.kartustok');
     Route::get('rencana-kebutuhan-alat-bahan-diklat', 'kebutuhanalatbahandiklat')->name('print.kebutuhanalatbahandiklat');
     // Route::get('buku-induk-inventaris-barang', 'bukuindukbaranginventaris')->name('print.bukuindukbaranginventaris');
     Route::get('tanda-terima-pengambilan-barang', 'tandaterimapengambilanbarang')->name('print.tandaterimapengambilanbarang');
-    Route::get('pengeluaran-barang', 'pengeluaranbarang')->name('print.pengeluaranbarang');
-    Route::get('daftar-ruang-barang', 'daftarruangbarang')->name('print.daftarruangbarang');
+    // Route::get('pengeluaran-barang', 'pengeluaranbarang')->name('print.pengeluaranbarang');
+    // Route::get('daftar-ruang-barang', 'daftarruangbarang')->name('print.daftarruangbarang');
     Route::get('laporan-kerusakan', 'laporankerusakan')->name('print.laporankerusakan');
     Route::get('serah-terima-barang', 'serahterimabarang')->name('print.serahterimabarang');
 });
@@ -49,16 +49,16 @@ Route::prefix('/admin')->group(function () {
 
     Route::controller(PDFController::class)->group(function () {
         Route::get('kartu-pemakaian-alat/{id}', 'kartupemakaaianalat')->name('print.kartupemakaaianalat');
-        // Route::get('kartu-perawatan-alat', 'kartuperawatanalat')->name('print.kartuperawatanalat');
-        // Route::get('daftar-inventaris-alat', 'inventarisalat')->name('print.inventarisalat');
-        // Route::get('kartu-peminjaman-alat', 'kartupeminjamanalat')->name('print.kartupeminjamanalat');
-        // Route::get('buku-pemeliharaan-alat', 'bukupemeliharaanalat')->name('print.bukupemeliharaanalat');
-        Route::get('kartu-stok-barang', 'kartustok')->name('print.kartustok');
+        Route::get('kartu-perawatan-alat/{id}', 'kartuperawatanalat')->name('print.kartuperawatanalat');
+        Route::get('daftar-inventaris-alat/{id}', 'inventarisalat')->name('print.inventarisalat');
+        Route::get('kartu-peminjaman-alat/{id}', 'kartupeminjamanalat')->name('print.kartupeminjamanalat');
+        Route::get('buku-pemeliharaan-alat/{id}', 'bukupemeliharaanalat')->name('print.bukupemeliharaanalat');
+        Route::get('kartu-stok-barang/{id}', 'kartustok')->name('print.kartustok');
         // Route::get('rencana-kebutuhan-alat-bahan-diklat', 'kebutuhanalatbahandiklat')->name('print.kebutuhanalatbahandiklat');
         Route::get('buku-induk-inventaris-barang/{id}', 'bukuindukbaranginventaris')->name('print.bukuindukbaranginventaris');
         // Route::get('tanda-terima-pengambilan-barang', 'tandaterimapengambilanbarang')->name('print.tandaterimapengambilanbarang');
-        // Route::get('pengeluaran-barang', 'pengeluaranbarang')->name('print.pengeluaranbarang');
-        // Route::get('daftar-ruang-barang', 'daftarruangbarang')->name('print.daftarruangbarang');
+        Route::get('pengeluaran-barang/{id}', 'pengeluaranbarang')->name('print.pengeluaranbarang');
+        Route::get('daftar-ruang-barang/{id}', 'daftarruangbarang')->name('print.daftarruangbarang');
         // Route::get('laporan-kerusakan', 'laporankerusakan')->name('print.laporankerusakan');
         // Route::get('serah-terima-barang', 'serahterimabarang')->name('print.serahterimabarang');
     });

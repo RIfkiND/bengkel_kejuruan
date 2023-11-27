@@ -10,11 +10,14 @@ use App\Models\Sekolah;
 use App\Models\Pemakaian;
 use Illuminate\Http\Request;
 use App\Models\PeralatanAtauMesin;
+use App\Models\AlatAtauBahanKeluar;
 use App\Models\PengajuanAlatAtauBahan;
 use App\Models\PemeliharaanDanPerawatan;
+use App\Models\SpesifikasiAlatAtauBahan;
 
 class PDFController extends Controller
 {
+    public $historyData, $alathistory;
     public function kartupemakaaianalat($id)
     {
 
@@ -42,11 +45,12 @@ class PDFController extends Controller
         return $pdf->stream();
 
     }
-    public function kartuperawatanalat()
+    public function kartuperawatanalat($id)
     {
-        $pemeliharaan = PemeliharaanDanPerawatan::find(1);
-        $sekolah = Sekolah::find($pemeliharaan->peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($pemeliharaan->peralatan->ruangan_id);
+        $pemeliharaans = PemeliharaanDanPerawatan::find($id);
+        $peralatans = PeralatanAtauMesin::find($pemeliharaans->peralatan_id);
+        $sekolah = Sekolah::find($pemeliharaans->peralatan->ruangan->sekolah_id);
+        $ruangan = Ruangan::find($pemeliharaans->peralatan->ruangan_id);
 
 
 
@@ -56,7 +60,8 @@ class PDFController extends Controller
 
             'date' => date('m/d/Y'),
 
-            'pemeliharaan' => $pemeliharaan,
+            'pemeliharaans' => $pemeliharaans,
+            'peralatans' => $peralatans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 
@@ -71,12 +76,12 @@ class PDFController extends Controller
         // return $pdf->download('kartu-peralatan pm-0'. $peralatan->id .'.pdf');
         return $pdf->stream();
     }
-    public function inventarisalat()
+    public function inventarisalat($id)
     {
-        $pengajuan = PengajuanAlatAtauBahan::find(1);
+        $ruangan = Ruangan::find($id);
+        $peralatans = PeralatanAtauMesin::where('ruangan_id', $id)->get();
+        $sekolah = Sekolah::find($ruangan->sekolah_id);
 
-        $sekolah = Sekolah::find($pengajuan->sekolah_id);
-        $guru = Guru::find($pengajuan->guru_id);
 
 
 
@@ -85,9 +90,9 @@ class PDFController extends Controller
             'title' => 'Daftar Inventaris Alat',
             'date' => date('m/d/Y'),
 
-            'pengajuan' => $pengajuan,
             'sekolah' => $sekolah,
-            'guru' => $guru,
+            'ruangan' => $ruangan,
+            'peralatans' => $peralatans,
 
         ];
 
@@ -102,6 +107,7 @@ class PDFController extends Controller
     public function kartupeminjamanalat()
     {
         $peralatan = PeralatanAtauMesin::find(1);
+        $peminjaman = Pemakaian::find(1);
 
         $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
         $ruangan = Ruangan::find($peralatan->ruangan_id);
@@ -117,21 +123,22 @@ class PDFController extends Controller
             'peralatan' => $peralatan,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
+            'peminjaman' => $peminjaman,
 
         ];
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.kartupeminjamanalatPDF', $data)->setPaper('a4', 'landscape');;
+        $pdf->loadView('admin.pdf.kartupeminjamanalatPDF', $data)->setPaper('a3', 'potrait');;
 
 
 
         return $pdf->stream();
     }
-    public function bukupemeliharaanalat()
+    public function bukupemeliharaanalat($id)
     {
-        $peralatan = PeralatanAtauMesin::find(1);
-
+        $pemeliharaans = PemeliharaanDanPerawatan::where('peralatan_atau_mesin_id',$id)->get();
+        $peralatan = PeralatanAtauMesin::find($id);
         $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
         $ruangan = Ruangan::find($peralatan->ruangan_id);
 
@@ -143,7 +150,7 @@ class PDFController extends Controller
 
             'date' => date('m/d/Y'),
 
-            'peralatan' => $peralatan,
+            'pemeliharaans' => $pemeliharaans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 
@@ -157,24 +164,28 @@ class PDFController extends Controller
 
         return $pdf->stream();
     }
-    public function kartustok()
+    public function kartustok($id)
     {
-        $peralatan = PeralatanAtauMesin::find(1);
+    
+        $bahans = AlatAtauBahan::where('ruangan_id', $id)->first();
 
-        $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($peralatan->ruangan_id);
+        $spesifikasi = SpesifikasiAlatAtauBahan::where('a_atau_b_id', 'id');
+
+        $sekolah = Sekolah::find($bahans->ruangan->sekolah_id);
+        $ruangan = Ruangan::find($bahans->ruangan_id);
 
 
 
         $data = [
 
-            'title' => 'Buku Pemeliharaan Alat',
+            'title' => 'Kartu Alat dan Bahan',
 
             'date' => date('m/d/Y'),
 
-            'peralatan' => $peralatan,
+            'bahans' => $bahans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
+            'spesifikasi' => $spesifikasi,
 
         ];
 
@@ -236,7 +247,7 @@ class PDFController extends Controller
 
 
         $pdf = app('dompdf.wrapper');
-        $pdf->loadView('admin.pdf.bukuindukbaranginventarisPDF', $data)->setPaper('a4', 'landscape');;
+        $pdf->loadView('admin.pdf.bukuindukbaranginventarisPDF', $data)->setPaper('a3', 'landscape');;
 
 
 
@@ -271,22 +282,22 @@ class PDFController extends Controller
 
         return $pdf->stream();
     }
-    public function pengeluaranbarang()
+    public function pengeluaranbarang($id)
     {
-        $peralatan = PeralatanAtauMesin::find(1);
-
-        $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($peralatan->ruangan_id);
-
+        $ruangan = Ruangan::find($id);
+        $sekolah = Sekolah::find($ruangan->sekolah_id);
+        $bahans = AlatAtauBahan::where('ruangan_id', $id)->get();
+        $alatkeluar = AlatAtauBahanKeluar::where('alat_atau_bahan_id', $id)->get();
 
 
         $data = [
 
             'title' => 'Buku Pemeliharaan Alat',
 
-            'date' => date('m/d/Y'),
+            'date' => date('Y-m-d'),
 
-            'peralatan' => $peralatan,
+            'bahans' => $bahans,
+            'alatkeluar' => $alatkeluar,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 
@@ -300,12 +311,11 @@ class PDFController extends Controller
 
         return $pdf->stream();
     }
-    public function daftarruangbarang()
+    public function daftarruangbarang($id)
     {
-        $peralatan = PeralatanAtauMesin::find(1);
-
-        $sekolah = Sekolah::find($peralatan->ruangan->sekolah_id);
-        $ruangan = Ruangan::find($peralatan->ruangan_id);
+        $ruangan = Ruangan::find($id);
+        $sekolah = Sekolah::find($ruangan->sekolah_id);
+        $peralatans = PeralatanAtauMesin::where('ruangan_id', $id)->get();
 
 
 
@@ -315,7 +325,7 @@ class PDFController extends Controller
 
             'date' => date('m/d/Y'),
 
-            'peralatan' => $peralatan,
+            'peralatans' => $peralatans,
             'sekolah' => $sekolah,
             'ruangan' => $ruangan,
 

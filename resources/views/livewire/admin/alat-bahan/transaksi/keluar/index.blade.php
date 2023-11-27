@@ -29,12 +29,19 @@
                                     <h4>Riwayat Pemakaian Alat</h4>
                                 </div>
                             </div>
-                            <div class="col d-flex justify-content-end px-4">
+                            <div class="col d-flex justify-content-end px-5">
                                 <div class="form-group">
                                     <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
                                         wire:model='searchAlat' wire:input='resetPage'>
                                 </div>
                             </div>
+                            @if (auth()->user()->role == 'KepalaBengkel')
+                            <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
+                                <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
+                                    href="{{ route('print.pengeluaranbarang', ['id' => auth()->user()->ruangan_id]) }}"><i class="fa fa-print fa-lg mr-1">  Print</i>
+                                    </a>
+                            </div>
+                            @endif
                         </div>
                         <div class="row">
                             <div class="table-responsive">

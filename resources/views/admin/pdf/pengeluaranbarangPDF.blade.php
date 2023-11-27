@@ -22,11 +22,11 @@
     <body>
         <table style="margin-left:12%; margin-right:auto; text-align:center;" cellpadding="6">
             <tr>
-                <td rowspan="4"><img src="/Asset/images/logo-tutwuri-handayani.jpg"></td>
+                <td rowspan="4"><img src="Asset/images/logo-tutwuri-handayani.jpg" width="65px" height="65px"></td>
                 <td></td>
             </tr>
             <tr align="center">
-                <th style='width:725px'>SMK.......</th>
+                <th style='width:725px'>{{ $sekolah->nama_sekolah }}</th>
             </tr>
             <tr align="center; color:red;">
                 <td>Jl.Pesantren KM 2 Cimahi 40513 Tlp. (022) 6652326 Fax (022) 6654698</td>
@@ -37,7 +37,7 @@
                 <th colspan="6" align="center">PENGELUARAN BARANG</th>
             </tr>
             <tr>
-                <td colspan="6" >Tanggal :<br>Nomor <span class="tab2">:</span></td>
+                <td colspan="6" >Tanggal : {{ $date }}<br>Nomor <span class="tab2">:</span></td>
             </tr>
             <tr>
               <td align="center" bgcolor='#f2f2f2'>No.</td>
@@ -47,22 +47,25 @@
               <td align="center" bgcolor='#f2f2f2'>Satuan</td>
               <td align="center" bgcolor='#f2f2f2'>Keterangan</td>
             </tr>
+            @foreach ($bahans as $bahan)
             <tr align="center">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr align="center">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $bahan->nama_alat_atau_bahan }}</td>
+                <td>
+                    @php
+                        $totalVolumeKeluar = $bahan->alatkeluar->where('tanggal_keluar', $date)->sum('volume');
+                    @endphp
+                    {{ $totalVolumeKeluar}}
+                </td>
+                <td>{{ $bahan->spesifikasi->merk }}, {{ $bahan->spesifikasi->tipe_atau_model }}, {{ $bahan->spesifikasi->dimensi }}</td>
+                <td>{{ $bahan->satuan }}</td>
+                <td>
+                    @foreach ($bahan->alatkeluar->where('tanggal_keluar', $date) as $alatkeluar)
+                        {{ $alatkeluar->keterangan }}
+                    @endforeach
+                </td>
+            </tr>x`
+            @endforeach
         </table>
         <table border="1" cellpadding="4" width="100%">
           <tr valign="top">

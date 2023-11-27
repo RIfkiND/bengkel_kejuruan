@@ -182,26 +182,45 @@
                                     <label>Spesifikasi</label>
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-lg-3 mb-4">
+                                            <div class="col-lg-3">
                                                 <input wire:model="merk" type="text" id="spek"
                                                     class="form-control input-default" placeholder="Merk">
                                                 @error('merk')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="col-lg-3 mb-4">
+                                            <div class="col-lg-3">
                                                 <input wire:model="type" type="text"
                                                     class="form-control input-default" placeholder="Type/Model">
                                                 @error('type')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                            <div class="col-lg-3 mb-4">
+                                            <div class="col-lg-3">
                                                 <input wire:model="dimensi" type="text"
                                                     class="form-control input-default" placeholder="Dimensi">
                                                 @error('dimensi')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" class="form-control" placeholder="Tahun dibuat" id="mdate" >                                            </div>
+                                        </div>
+                                    </div>
+                                    <label>Lainnya</label>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-lg-3 mb-4">
+                                                <input wire:model="" type="text" id="keadaan"
+                                                    class="form-control input-default" placeholder="Keadaan Barang">
+                                            </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <input wire:model="" type="text"
+                                                    class="form-control input-default" placeholder="Asal Barang">
+                                            </div>
+                                            <div class="col-lg-3 mb-4">
+                                                <input wire:model="" type="text"
+                                                    class="form-control input-default" placeholder="Harga Satuan">
                                             </div>
                                         </div>
                                     </div>
@@ -222,16 +241,18 @@
                                     <h4>Daftar Alat dan Bahan</h4>
                                 </div>
                             </div>
-                                <div class="col d-flex justify-content-end px-7">
+                            <div class="col d-flex justify-content-end px-5">
                                 <div class="form-group">
                                     <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
                                         wire:model='searchAlat' wire:input='resetPage'>
                                 </div>
-                                </div>
-                            @if (auth()->user()->ruangan_id)
-                            <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
-                                <a type="button" class="btn mb-1 btn-primary d-flex justify-content-end" href="{{ route('print.bukuindukbaranginventaris', ['id' => auth()->user()->ruangan_id]) }}">print buku</a>
                             </div>
+                            @if (auth()->user()->ruangan_id)
+                                <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
+                                    <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
+                                        href="{{ route('print.bukuindukbaranginventaris', ['id' => auth()->user()->ruangan_id]) }}"><i class="fa fa-print fa-lg mr-1">  Print</i>
+                                        </a>
+                                </div>
                             @endif
                         </div>
                         <div class="row">
@@ -320,8 +341,10 @@
                                                                 href="javascript:void(0)" data-toggle="modal"
                                                                 data-target="#ModalAlat"
                                                                 wire:click='onkel({{ $alat->id }})'>Keluar</a>
-                                                            <a class="dropdown-item text-success"
-                                                            href="{{ route('print.kartustok', ['id' => auth()->user()->ruangan_id]) }}">Print</a>
+                                                                @if (auth()->user()->role == 'KepalaBengkel')
+                                                                <a class="dropdown-item text-success"
+                                                                href="{{ route('print.kartustok', ['id' => auth()->user()->ruangan_id]) }}">Print Kartu Stock</a>
+                                                                @endif
                                                             @if (auth()->user()->role == 'AdminSekolah' or auth()->user()->role == 'SuperAdmin')
                                                                 <a class="dropdown-item text-danger"
                                                                     href="javascript:void(0)"
