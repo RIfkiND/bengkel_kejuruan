@@ -251,6 +251,12 @@
                                 wire:model='searchPeralatan' wire:input='resetPage'>
                         </div>
                     </div>
+                    <div class="col-auto justify-content-end px-2">
+                        <a href="javascript:void(0)" class="btn btn-primary mb-1 d-flex" data-toggle="modal"
+                            data-target="#ModalImportPeralatan">
+                            <span class="text-white">import</span>
+                        </a>
+                    </div>
                     @if (auth()->user()->role == 'KepalaBengkel')
                         <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
                             <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
@@ -265,7 +271,7 @@
                     @forelse ($peralatans as $peralatan)
                         <div class="col-lg-4">
                             <div class="card border-primary  d-flex justify-content-between">
-                                <div class="card-header position-absolute">PM-0{{ $peralatan->id }}</div>
+                                <div class="card-header position-absolute">{{ $peralatan->kode_peralatan }}</div>
                                 <div class="card-header ml-auto btn">
                                     <div class="dropdown">
                                         <a href="javascript:void(0)" data-toggle="dropdown"><i

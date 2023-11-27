@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\PeralatanMesin\Daftar;
 use App\Imports\PeralatanImportSpesifikasi;
 use App\Models\Ruangan;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use App\Imports\PeralatanImport;
 use App\Models\PeralatanAtauMesin;
@@ -19,12 +20,13 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class Index extends Component
 {
     public $nama_peralatan_atau_mesin, $tanggal_masuk, $kategori_id, $ruangan_id, $sumber_dana, $merk, $type, $tahun, $kapasitas, $peralatan_id, $searchPeralatan, $selectedPeralatanId;
-    public $tanggal_keluar, $alasan, $kode_peralatan, $harga;
+    public $tanggal_keluar, $alasan, $kode_peralatan, $harga, $file;
     public $updateMode = false;
     public $ruangan_byadmin;
     public $keluarMode = false;
 
     use WithPagination;
+    use WithFileUploads;
     use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
