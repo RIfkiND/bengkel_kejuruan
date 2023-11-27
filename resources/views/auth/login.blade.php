@@ -1,16 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="login-form-bg h-100">
-        <div class="container h-100">
-            <div class="row justify-content-center h-100">
-                <div class="col-xl-6">
-                    <div class="form-input-content">
-                        <div class="card login-form mb-0">
-                            <div class="card-body pt-5">
-                                <a class="text-center" href="javascript:void(0)">
-                                    <h4>Login</h4>
-                                </a>
+<div class="login-form-bg h-100">
+    <div class="container h-100">
+        <div class="row justify-content-center h-100">
+            <div class="col-xl-6">
+                <div class="form-input-content">
+                    <div class="card login-form mb-0">
+                        <div class="card-body d-flex align-items-center"> <!-- Updated line -->
+                            <div class="col-md-6"> <!-- Updated line -->
+                                <img src="../Asset/images/login.png" class="img-fluid" alt="Login Image"> <!-- Updated line -->
+                            </div>
+                            <h2 class="d-flex position-absolute" style="top: 5%; right: 43%">Login</h2> <!-- Updated line -->
+                            <div class="col-md-6"> <!-- Updated line -->
                                 @if (session('error'))
                                     <div class="alert alert-danger">
                                         {{ session('error') }}
@@ -42,13 +44,15 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn login-form__btn submit w-100">Masuk</button>
+                                    <button type="submit" class="btn btn-primary" style="width: 100%">Masuk</button>
                                 </form>
-                            </div>
+                            </div> <!-- Updated line -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 @endsection
