@@ -107,7 +107,7 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col">
-                                <img src="/Asset/images/sekolah-tutor.png" alt="" width="50%">
+                                <img src="/Asset/images/peralatan-tutor.png" alt="" width="100%">
                             </div>
                         </div>
                         <div class="form-group">
