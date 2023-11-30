@@ -31,8 +31,8 @@ class Index extends Component
     {
         if (auth()->user()->sekolah_id) {
             $this->showSekolahSelect = false;
-            $this->showGuruSelect = $this->role == '0';
-            $this->showRuanganSelect = $this->role == '1';
+            $this->showGuruSelect = ($this->role == '0' || $this->role == 'Guru');
+            $this->showRuanganSelect = ($this->role == '1' || $this->role == 'KepalaBengkel');
         } else {
             $this->showSekolahSelect = $this->role == '2';
         }
@@ -57,7 +57,6 @@ class Index extends Component
         } elseif (auth()->user()->role == 'AdminSekolah') {
             return view('livewire.admin.referensi.pengguna.akun.index', [
                 'users' => User::where('name', 'LIKE', $searchUser)
-                    ->orWhere('email', 'LIKE', $searchUser)
                     ->where('sekolah_id', auth()->user()->sekolah_id)
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),

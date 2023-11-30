@@ -260,7 +260,7 @@
                         </div>
                     @endif
                     @if (auth()->user()->role == 'KepalaBengkel')
-                        <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
+                        <div class="col-lg-1 d-flex justify-content-end px-4 h-50 ml-3">
                             <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
                                 href="{{ route('print.inventarisalat', ['id' => auth()->user()->ruangan_id]) }}"><i
                                     class="fa fa-print fa-lg mr-1"> Print</i>

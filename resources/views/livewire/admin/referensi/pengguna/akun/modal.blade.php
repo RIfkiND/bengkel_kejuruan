@@ -178,8 +178,7 @@
                             wire:click.prevent='cancel()'>Batal</button>
                         @if ($updateMode)
                             @if (auth()->user()->role == 'Admin' or
-                                    auth()->user()->role == 'SuperAdmin' and $this->role == 'Guru' or
-                                    $this->role == 'KepalaBengkel')
+                                    auth()->user()->role == 'SuperAdmin')
                                 <button type="button" class="btn btn-primary"
                                     wire:click.prevent="update_byadmin()">Simpan</button>
                             @else
