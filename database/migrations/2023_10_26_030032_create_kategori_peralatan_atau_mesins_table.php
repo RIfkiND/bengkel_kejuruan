@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('kategori_peralatan_atau_mesins', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kategori');
+            $table->foreignId('sekolah_id')->nullable()->constrained('sekolahs')->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -31,6 +31,7 @@ class Index extends Component
 
         return view('livewire.admin.referensi.kategori-peralatan.index', [
             'kategories' => KategoriPeralatanAtauMesin::where('nama_kategori', 'LIKE', $searchKategori)
+                ->where('sekolah_id', auth()->user()->sekolah_id)
                 ->orderBy('id', 'DESC')
                 ->paginate(10, ['*'], 'kategoriPage'),
         ]);
@@ -43,15 +44,18 @@ class Index extends Component
 
     public function store()
     {
-        $validatedDate = $this->validate([
-            'nama_kategori' => 'required',
-        ],
-        [
-            'nama_kategori.required' => 'Nama tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'nama_kategori' => 'required',
+            ],
+            [
+                'nama_kategori.required' => 'Nama tidak boleh kosong',
+            ],
+        );
 
         KategoriPeralatanAtauMesin::create([
             'nama_kategori' => $this->nama_kategori,
+            'sekolah_id' => auth()->user()->sekolah_id,
         ]);
 
         $this->resetInputFields();
@@ -80,12 +84,14 @@ class Index extends Component
 
     public function update()
     {
-        $validatedDate = $this->validate([
-            'nama_kategori' => 'required',
-        ],
-        [
-            'nama_kategori.required' => 'Nama tidak boleh kosong',
-        ]);
+        $validatedDate = $this->validate(
+            [
+                'nama_kategori' => 'required',
+            ],
+            [
+                'nama_kategori.required' => 'Nama tidak boleh kosong',
+            ],
+        );
 
         $kategori = KategoriPeralatanAtauMesin::find($this->kategori_id);
         $kategori->update([
