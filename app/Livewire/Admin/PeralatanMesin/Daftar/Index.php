@@ -66,17 +66,19 @@ class Index extends Component
                         ->where('kondisi', 'ditempat')
                         ->orderBy('id', 'DESC')
                         ->paginate(9, ['*'], 'peralatanPage');
+                    $kategories = KategoriPeralatanAtauMesin::where('sekolah_id', auth()->user()->sekolah_id)->get();
                 } else {
                     $peralatans = PeralatanAtauMesin::where('ruangan_id', auth()->user()->ruangan_id)
                         ->where('nama_peralatan_atau_mesin', 'LIKE', $searchPeralatan)
                         ->where('kondisi', 'ditempat')
                         ->orderBy('id', 'DESC')
                         ->paginate(9, ['*'], 'peralatanPage');
+                    $kategories = KategoriPeralatanAtauMesin::where('sekolah_id', auth()->user()->sekolah_id)->get();
                 }
 
                 return view('livewire.admin.peralatan-mesin.daftar.index', [
                     'peralatans' => $peralatans,
-                    'kategories' => KategoriPeralatanAtauMesin::all(),
+                    'kategories' => $kategories,
                     'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
                 ]);
             } else {
