@@ -11,7 +11,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $tanggal, $jenis, $status, $p_m_id, $keterangan, $pemeliharaan_id, $searchRuangan, $selectedDataId, $ruangan_id;
+    public $tanggal, $jenis, $status, $p_m_id, $keterangan, $pemeliharaan_id, $searchRuangan, $selectedDataId, $ruangan_id, $petugas;
     public $updateMode = false;
     public $informasiMode = false;
 
@@ -63,6 +63,8 @@ class Index extends Component
         $this->status = '';
         $this->keterangan = '';
         $this->p_m_id = '';
+        $this->petugas = '';
+
     }
 
     public function store()
@@ -87,6 +89,7 @@ class Index extends Component
             'jenis' => $this->jenis,
             'peralatan_atau_mesin_id' => $this->p_m_id,
             'keterangan' => $this->keterangan,
+            'petugas' => $this->petugas,
         ]);
 
         $this->resetInputFields();

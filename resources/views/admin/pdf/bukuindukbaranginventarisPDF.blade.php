@@ -18,16 +18,14 @@
 
         <table style="margin-right:2%; text-align:center;" border="1" cellpadding="7">
             <tr align="center" bgcolor="#e9e9e9">
-                <th style='width:50px'>Nomor urut</th>
-                <th style='width:90px'>Tanggal Pembukuan</th>
+                <th style='width:80px'>Nomor urut</th>
+                <th style='width:140px'>Tanggal Pembukuan</th>
                 <th style='width:120px'>Kode Barang</th>
-                <th style='width:150px'>Nama Barang</th>
-                <th style='width:100px'>Spesifikasi</th>
+                <th style='width:180px'>Nama Barang</th>
+                <th style='width:180px'>Spesifikasi</th>
                 <th style='width:100px'>Kuantitas</th>
-                <th style='width:90px'>Nama Satuan</th>
-                <th style='width:90px'>Tahun Pembuatan</th>
-                <th style='width:120px'>Asal Barang</th>
-                <th style='width:110px'>Keadaan Barang</th>
+                <th style='width:120px'>Nama Satuan</th>
+                <th style='width:120px'>Tahun Pembuatan</th>
                 <th style='width:120px'>Harga</th>
                 <th style='width:180px'>Keterangan</th>
             </tr>
@@ -37,16 +35,14 @@
                         {{ $loop->iteration }}
                     </td>
                     <td>{{ $date }}</td>
-                    <td>sdsk</td>
+                    <td>{{ $bahan->kode_bahan }}</td>
                     <td>{{ $bahan->nama_alat_atau_bahan }}</td>
                     <td>{{ $bahan->spesifikasi->merk }}, {{ $bahan->spesifikasi->tipe_atau_model }},
                         {{ $bahan->spesifikasi->dimensi }}</td>
                     <td>{{ $bahan->volume }}</td>
                     <td>{{ $bahan->satuan }}</td>
-                    <td height="3%"></td>
-                    <td></td>
-                    <td></td>
-                    <td>Rp {{ number_format($bahan->saldo, 2, ',', '.') }}</td>
+                    <td height="3%">{{ $bahan->spesifikasi->tahun }}</td>
+                    <td>Rp {{ number_format($bahan->harga, 2, ',', '.') }}</td>
                     <td></td>
                 </tr>
             @empty

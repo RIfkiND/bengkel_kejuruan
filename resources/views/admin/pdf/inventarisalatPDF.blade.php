@@ -58,21 +58,21 @@
                         <th rowspan="2">Nomor Inventaris</th>
                         <th rowspan="2">Nama Alat</th>
                         <th rowspan="2">Spesifikasi</th>
-                        <th rowspan="2">Jumlah</th>
+                        <th rowspan="2">Kapasitas</th>
                         <th colspan="2">Keadaan Alat</th>
                     </tr>
                     <tr>
-                        <th>Sedang</th>
-                        <th>Baik</th>
+                        <th>Pemeliharaan</th>
+                        <th>Siap Digunakan</th>
                     </tr>
                     @forelse ($peralatans as $peralatan)
                         <tr>
                             <td align="center">{{ $loop->iteration }}</td>
-                            <td></td>
+                            <td>{{ $peralatan->kode_peralatan}}</td>
                             <td>{{ $peralatan->nama_peralatan_atau_mesin }}</td>
                             <td>{{ $peralatan->spesifikasi->merk }}, {{ $peralatan->spesifikasi->tipe_atau_model }},
-                                {{ $peralatan->spesifikasi->tahun }}, {{ $peralatan->spesifikasi->kapasitas }}</td>
-                            <td></td>
+                                {{ $peralatan->spesifikasi->tahun }}</td>
+                            <td>{{ $peralatan->spesifikasi->kapasitas }}</td>
                             @php
                                 $latestPemeliharaan = $peralatan->pemeliharaan->sortByDesc('created_at')->first();
                             @endphp
