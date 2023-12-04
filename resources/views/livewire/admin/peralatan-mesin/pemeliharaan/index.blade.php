@@ -68,6 +68,13 @@
                                         @enderror
                                     </div>
                                     <div class="col-lg-3 mb-4">
+                                        <input type="text" id="petugas" class="form-control"
+                                            placeholder="Nama Petugas" wire:model='petugas'>
+                                    </div>
+                                    @error('petugas')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <div class="col-lg-3 mb-4">
                                         <textarea class="form-control" id="keterangan" rows="1" placeholder="Keterangan" wire:model='keterangan'></textarea>
                                         @error('keterangan')
                                             <span class="text-danger">{{ $message }}</span>
@@ -92,12 +99,12 @@
                             </div>
                         </div>
                         @if (auth()->user()->role == 'KepalaBengkel')
-                        <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
-                            <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
-                                href="{{ route('print.bukupemeliharaanalat', ['id' => auth()->user()->ruangan_id]) }}"><i
-                                    class="fa fa-print fa-lg mr-1"> Print</i>
-                            </a>
-                        </div>
+                            <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
+                                <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
+                                    href="{{ route('print.bukupemeliharaanalat', ['id' => auth()->user()->ruangan_id]) }}"><i
+                                        class="fa fa-print fa-lg mr-1"> Print</i>
+                                </a>
+                            </div>
                         @endif
                         {{-- <div class="col d-flex justify-content-end px-4">
                             <div class="form-group">
@@ -142,7 +149,6 @@
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             data-toggle="modal" data-target="#infoModal"
                                                             wire:click='info({{ $pemeliharaan->id }})'>More info</a>
-
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='updateStatus({{ $pemeliharaan->id }})'>
                                                             @if ($pemeliharaan->status == 'Belum Selesai')

@@ -62,8 +62,8 @@
                         <th colspan="2">Keadaan Alat</th>
                     </tr>
                     <tr>
-                        <th>Sedang</th>
-                        <th>Baik</th>
+                        <th>Pemeliharaan</th>
+                        <th>Siap Digunakan</th>
                     </tr>
                     @forelse ($peralatans as $peralatan)
                         <tr>

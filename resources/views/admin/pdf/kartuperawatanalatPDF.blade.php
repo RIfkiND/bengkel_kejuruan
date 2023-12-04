@@ -61,8 +61,8 @@
         </tr>
         @forelse ($pemeliharaans as $pemeliharaan)
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td></td>
+                <td align="center">{{ $loop->iteration }}</td>
+                <td>{{ $pemeliharaan->petugas }}</td>
                 <td>{{ $pemeliharaan->jenis }}</td>
                 <td>{{ $pemeliharaan->tanggal }}</td>
                 <td>{{ $pemeliharaan->peralatan->kondisi }}</td>
