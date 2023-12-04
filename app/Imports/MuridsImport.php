@@ -4,9 +4,10 @@ namespace App\Imports;
 
 use App\Models\Murid;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class MuridsImport implements ToModel, WithValidation
+class MuridsImport implements ToModel, WithValidation, WithStartRow
 {
     protected $kelas_id;
 
@@ -25,8 +26,13 @@ class MuridsImport implements ToModel, WithValidation
     public function customValidationMessages()
     {
         return [
-            '0.required' => 'Pastikan Nama Murid Ada di Kolom A Dari Paling Atas',
+            '0.required' => 'Pastikan Nama Murid Ada di Kolom A Dari Baris Kedua, Tidak Ada Yang Kosong Dan Sheet Di Excel Hanya Satu',
         ];
+    }
+
+    public function startRow(): int
+    {
+        return 2;
     }
 
     public function model(array $row)

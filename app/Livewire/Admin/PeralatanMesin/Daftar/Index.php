@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Admin\PeralatanMesin\Daftar;
 
-use App\Imports\PeralatanImportSpesifikasi;
 use App\Models\Ruangan;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -10,7 +9,6 @@ use Livewire\WithPagination;
 use App\Imports\PeralatanImport;
 use App\Models\PeralatanAtauMesin;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\PeralatanImportMasuk;
 use App\Models\PeralatanAtauMesinMasuk;
 use App\Models\PeralatanAtauMesinKeluar;
 use App\Models\KategoriPeralatanAtauMesin;

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal_masuk');
             $table->foreignId('peralatan_atau_mesin_id')->constrained('peralatan_atau_mesins')->cascadeOnDelete();
-            $table->string('sumber_dana');
+            $table->string('sumber_dana')->nullable();
             $table->timestamps();
         });
     }

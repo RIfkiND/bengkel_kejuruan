@@ -2,20 +2,22 @@
 
 namespace App\Livewire\Admin\AlatBahan\Daftar;
 
-use App\Models\AlatAtauBahanKeluar;
-use App\Models\AlatAtauBahanMasuk;
 use App\Models\Ruangan;
-use App\Models\SpesifikasiAlatAtauBahan;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\AlatAtauBahan;
-use Illuminate\Auth\Events\Validated;
+use Livewire\WithFileUploads;
+use App\Models\AlatAtauBahanMasuk;
+use App\Models\AlatAtauBahanKeluar;
+use App\Imports\AlatAtauBahanImport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\SpesifikasiAlatAtauBahan;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
     public $nama_alat_atau_bahan, $tanggal_masuk, $kode, $ruangan_id, $volume, $satuan, $sumber_dana, $merk, $type, $dimensi, $alat_id, $searchAlat, $selectedAlatId, $saldo;
-    public $tanggal_keluar, $keterangan, $nama_pemakai, $volume_keluar, $volume_masuk, $kode_bahan, $tahun, $harga;
+    public $tanggal_keluar, $keterangan, $nama_pemakai, $volume_keluar, $volume_masuk, $kode_bahan, $tahun, $harga, $file;
     public $updateMode = false;
     public $historyData, $alathistory;
     public $ruangan_byadmin;
@@ -23,6 +25,7 @@ class Index extends Component
     public $masukMode = false;
 
     use WithPagination;
+    use WithFileUploads;
     use LivewireAlert;
     protected $paginationTheme = 'bootstrap';
 
@@ -121,7 +124,28 @@ class Index extends Component
         $this->tahun = '';
         $this->harga = '';
     }
+    public function importperalatan()
+    {
+        try {
+            $this->validate([
+                'file' => 'required|mimes:xlsx,xls',
+            ]);
 
+            $data = $this->file;
+            $path = $data->store('temp');
+            $alatbahanimport = new AlatAtauBahanImport();
+            Excel::import($alatbahanimport, $path);
+
+            $this->alert('success', 'Berhasil Ditambahkan!', [
+                'position' => 'center',
+                'timer' => 3000,
+                'toast' => false,
+                'timerProgressBar' => true,
+            ]);
+        } catch (\Exception $e) {
+            $this->addError('file', $e->getMessage());
+        }
+    }
     public function store()
     {
         $validatedDate = $this->validate(
