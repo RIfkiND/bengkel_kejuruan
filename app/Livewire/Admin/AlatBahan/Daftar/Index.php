@@ -28,7 +28,13 @@ class Index extends Component
 
     public function calculateTotalHarga()
     {
+        if (is_numeric($this->volume) && is_numeric($this->harga)) {
             $this->saldo = $this->volume * $this->harga;
+        }
+
+        if ($this->volume == '' || $this->harga == '') {
+            $this->saldo = '';
+        }
     }
 
     public function mount(AlatAtauBahan $alathistory)
@@ -63,17 +69,29 @@ class Index extends Component
                     ->sekolah->ruangan->pluck('id')
                     ->count() > 0
             ) {
-                $alats = AlatAtauBahan::whereHas('ruangan', function ($query) {
-                    $query->where('sekolah_id', auth()->user()->sekolah->id);
-                })
-                    ->where('nama_alat_atau_bahan', 'LIKE', $searchAlat)
-                    ->orderBy('id', 'DESC')
-                    ->paginate(10, ['*'], 'peralatanPage');
+                if (auth()->user()->role == 'KepalaBengkel') {
+                    $alats = AlatAtauBahan::where('ruangan_id', auth()->user()->ruangan_id)
+                        ->where('nama_alat_atau_bahan', 'LIKE', $searchAlat)
+                        ->orderBy('id', 'DESC')
+                        ->paginate(10, ['*'], 'peralatanPage');
 
-                return view('livewire.admin.alat-bahan.daftar.index', [
-                    'alats' => $alats,
-                    'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
-                ]);
+                    return view('livewire.admin.alat-bahan.daftar.index', [
+                        'alats' => $alats,
+                        'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
+                    ]);
+                } else {
+                    $alats = AlatAtauBahan::whereHas('ruangan', function ($query) {
+                        $query->where('sekolah_id', auth()->user()->sekolah->id);
+                    })
+                        ->where('nama_alat_atau_bahan', 'LIKE', $searchAlat)
+                        ->orderBy('id', 'DESC')
+                        ->paginate(10, ['*'], 'peralatanPage');
+
+                    return view('livewire.admin.alat-bahan.daftar.index', [
+                        'alats' => $alats,
+                        'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
+                    ]);
+                }
             } else {
                 return view('livewire.admin.alat-bahan.daftar.index', [
                     'alats' => 'kosong',
@@ -100,8 +118,8 @@ class Index extends Component
         $this->kode_bahan = '';
         $this->volume_keluar = '';
         $this->volume_masuk = '';
-        $this->tahun='';
-        $this->harga='';
+        $this->tahun = '';
+        $this->harga = '';
     }
 
     public function store()
@@ -139,7 +157,7 @@ class Index extends Component
                 'type.required' => 'Type tidak boleh kosong.',
                 'dimensi.required' => 'Dimensi tidak boleh kosong.',
                 'harga.required' => 'Harga tidak boleh kosong.',
-                'tahun.required' => 'Tahun tidak boleh kosong.'
+                'tahun.required' => 'Tahun tidak boleh kosong.',
             ],
         );
 

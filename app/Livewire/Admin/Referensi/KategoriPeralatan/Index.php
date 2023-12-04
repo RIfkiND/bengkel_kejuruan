@@ -29,12 +29,20 @@ class Index extends Component
     {
         $searchKategori = '%' . $this->searchKategori . '%';
 
-        return view('livewire.admin.referensi.kategori-peralatan.index', [
-            'kategories' => KategoriPeralatanAtauMesin::where('nama_kategori', 'LIKE', $searchKategori)
-                ->where('sekolah_id', auth()->user()->sekolah_id)
-                ->orderBy('id', 'DESC')
-                ->paginate(10, ['*'], 'kategoriPage'),
-        ]);
+        if (auth()->user()->role == 'SuperAdmin' || auth()->user()->role == 'Admin') {
+            return view('livewire.admin.referensi.kategori-peralatan.index', [
+                'kategories' => KategoriPeralatanAtauMesin::where('nama_kategori', 'LIKE', $searchKategori)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'kategoriPage'),
+            ]);
+        } else {
+            return view('livewire.admin.referensi.kategori-peralatan.index', [
+                'kategories' => KategoriPeralatanAtauMesin::where('nama_kategori', 'LIKE', $searchKategori)
+                    ->where('sekolah_id', auth()->user()->sekolah_id)
+                    ->orderBy('id', 'DESC')
+                    ->paginate(10, ['*'], 'kategoriPage'),
+            ]);
+        }
     }
 
     private function resetInputFields()

@@ -266,10 +266,7 @@
                                             </div>
                                             <div class="col-lg-3">
                                                 <input type="text" class="form-control" placeholder="Tahun dibuat"
-                                                     wire:model='tahun'>
-                                                    @error('tahun')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
+                                                    id="mdate" wire:model='tahun'>
                                             </div>
                                         </div>
                                     </div>
