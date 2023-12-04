@@ -266,7 +266,10 @@
                                             </div>
                                             <div class="col-lg-3">
                                                 <input type="text" class="form-control" placeholder="Tahun dibuat"
-                                                    id="mdate" wire:model='tahun'>
+                                                     wire:model='tahun'>
+                                                    @error('tahun')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -387,7 +390,7 @@
                                                             <a class="dropdown-item text-danger"
                                                                 href="javascript:void(0)" data-toggle="modal"
                                                                 data-target="#ModalAlat"
-                                                                wire:click='onkel({{ $alat->id }})'>Keluar</a>
+                                                                wire:click='onkel({{ $alat->id }})'>Pakai</a>
                                                             @if (auth()->user()->role == 'KepalaBengkel')
                                                                 <a class="dropdown-item text-success"
                                                                     href="{{ route('print.kartustok', ['id' => auth()->user()->ruangan_id]) }}">Print

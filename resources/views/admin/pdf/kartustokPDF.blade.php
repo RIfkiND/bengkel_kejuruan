@@ -47,7 +47,7 @@
                 <td height="3%">{{ $tanggal }}</td>
                 <td align="center">{{ $bahans->spesifikasi->merk }}, {{ $bahans->spesifikasi->tipe_atau_model }},
                     {{ $bahans->spesifikasi->dimensi }}</td>
-                <td align="center"></td>
+                <td align="center">Rp {{ number_format($bahans->harga, 2, ',', '.') }}</td>
                 <td align="center">{{ $totalVolumeMasuk }}</td>
                 <td align="center">{{ $totalVolumeKeluar }}</td>
                 <td align="center"> {{ $bahans->volume }}</td>

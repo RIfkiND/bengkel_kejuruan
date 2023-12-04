@@ -68,9 +68,6 @@
                                         @enderror
                                     </div>
                                     <div class="col-lg-3 mb-4">
-                                        <input type="text" class="form-control" id="petugas"placeholder="Nama Petugas" wire:model='keterangan'></input>
-                                    </div>
-                                    <div class="col-lg-3 mb-4">
                                         <textarea class="form-control" id="keterangan" rows="1" placeholder="Keterangan" wire:model='keterangan'></textarea>
                                         @error('keterangan')
                                             <span class="text-danger">{{ $message }}</span>
