@@ -47,7 +47,7 @@
                                             <th>Nama Barang</th>
                                             <th>Spesifikasi</th>
                                             <th>Alasan Keluar</th>
-                                            {{-- <th>Aksi</th> --}}
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -74,17 +74,16 @@
                                                     @endif
                                                 </td>
                                                 <td>{{ $peralatan->peralatankeluar->alasan_keluar }}</td>
-                                                {{-- <td>
-                                                            <div class="dropdown">
-                                                                <a href="#" data-toggle="dropdown"><i
-                                                                        class="fa fa-ellipsis-v fa-lg"></i></a>
-                                                                <div class="dropdown-menu"><a class="dropdown-item"
-                                                                        href="#">Link
-                                                                        1</a> <a class="dropdown-item" href="#">Link 2</a> <a
-                                                                        class="dropdown-item" href="#">Link 3</a>
-                                                                </div>
-                                                            </div>
-                                                        </td> --}}
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a href="javascript:void(0)" data-toggle="dropdown"><i
+                                                                class="fa fa-ellipsis-v fa-lg"></i></a>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item text-success"
+                                                                href="javascript:void(0)">Masuk Kembali
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                             </tr>
                                         @empty
                                             <tr>

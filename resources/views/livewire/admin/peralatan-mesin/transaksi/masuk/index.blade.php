@@ -54,7 +54,7 @@
                                         @forelse ($peralatans as $peralatan)
                                             <tr>
                                                 <td>{{ $peralatan->peralatanmasuk->tanggal_masuk }}</td>
-                                                <td>PM-{{ $peralatan->id }}</td>
+                                                <td>{{ $peralatan->kode_peralatan  }}</td>
                                                 <td>{{ $peralatan->kategori->nama_kategori }}</td>
                                                 <td>{{ $peralatan->nama_peralatan_atau_mesin }}</td>
                                                 <td>
