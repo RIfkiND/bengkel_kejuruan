@@ -80,7 +80,10 @@
                                                                 class="fa fa-ellipsis-v fa-lg"></i></a>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item text-success"
-                                                                href="javascript:void(0)">Masuk Kembali
+                                                                href="javascript:void(0)" data-toggle="modal"
+                                                                data-target="#ModalAlatKeluar"
+                                                                wire:click='onkembali($peralatan->peralatankeluar->id)'>Masuk
+                                                                Kembali
                                                             </a>
                                                         </div>
                                                     </div>
@@ -100,8 +103,8 @@
                                                                 <div class="form-group">
                                                                     <label>Tanggal Masuk</label>
                                                                     <input type="date" id="tanggal_masuk_kembali"
-                                                                        class="form-control input-default">
-                                                                    @error('tanggal_masuk_kembali')
+                                                                        class="form-control input-default" wire:model='tanggal_masuk'>
+                                                                    @error('tanggal_masuk')
                                                                         <span class="text-danger">{{ $message }}</span>
                                                                     @enderror
                                                                 </div>
@@ -110,7 +113,7 @@
                                                                 <button type="button" class="btn btn-danger"
                                                                     data-dismiss="modal">Batal</button>
                                                                 <button type="button" class="btn btn-primary"
-                                                                    data-dismiss="modal">Simpan</button>
+                                                                    data-dismiss="modal" wire:click.prevent="kembali()">Simpan</button>
                                                             </div>
                                                         </div>
                                                     </div>
