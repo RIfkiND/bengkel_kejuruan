@@ -80,10 +80,41 @@
                                                                 class="fa fa-ellipsis-v fa-lg"></i></a>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item text-success"
-                                                                href="javascript:void(0)" wire:click='onkembali($peralatan->peralatankeluar->id)'>Masuk Kembali
+                                                                href="javascript:void(0)">Masuk Kembali
                                                             </a>
                                                         </div>
                                                     </div>
+                                                </td>
+                                                {{-- Modal --}}
+                                                <div class="modal fade" id="ModalAlatKeluar">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Masukkan Kembali Peralatan
+                                                                    Keluar</h4>
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">×</span></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label>Tanggal Masuk</label>
+                                                                    <input type="date" id="tanggal_masuk_kembali"
+                                                                        class="form-control input-default">
+                                                                    @error('tanggal_masuk_kembali')
+                                                                        <span class="text-danger">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-dismiss="modal">Batal</button>
+                                                                <button type="button" class="btn btn-primary"
+                                                                    data-dismiss="modal">Simpan</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </tr>
                                         @empty
                                             <tr>
