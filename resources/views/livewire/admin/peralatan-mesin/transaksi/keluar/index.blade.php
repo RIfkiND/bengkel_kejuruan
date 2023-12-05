@@ -80,7 +80,7 @@
                                                                 class="fa fa-ellipsis-v fa-lg"></i></a>
                                                         <div class="dropdown-menu">
                                                             <a class="dropdown-item text-success"
-                                                                href="javascript:void(0)">Masuk Kembali
+                                                                href="javascript:void(0)" wire:click='onkembali($peralatan->peralatankeluar->id)'>Masuk Kembali
                                                             </a>
                                                         </div>
                                                     </div>

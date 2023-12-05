@@ -12,7 +12,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Index extends Component
 {
-    public $name, $email, $password, $mata_pelajaran, $nama_guru, $role, $sekolah_user, $ruangan_user, $password_confirmation, $user_id, $searchUser, $selectedUserId;
+    public $name, $email, $password, $gurus=[], $mata_pelajaran, $nama_guru, $selectedguru, $role, $sekolah_user, $ruangan_user, $password_confirmation, $user_id, $searchUser, $selectedUserId;
     public $updateMode = false;
     public $showSekolahSelect = false;
     public $showGuruSelect = false;
@@ -31,8 +31,8 @@ class Index extends Component
     {
         if (auth()->user()->sekolah_id) {
             $this->showSekolahSelect = false;
-            $this->showGuruSelect = ($this->role == '0' || $this->role == 'Guru');
-            $this->showRuanganSelect = ($this->role == '1' || $this->role == 'KepalaBengkel');
+            $this->showGuruSelect = $this->role == '0' || $this->role == 'Guru';
+            $this->showRuanganSelect = $this->role == '1' || $this->role == 'KepalaBengkel';
         } else {
             $this->showSekolahSelect = $this->role == '2';
         }
@@ -42,9 +42,19 @@ class Index extends Component
     {
         $this->gotoPage(1, 'userPage');
     }
+
+    public function updateGuruIndicator()
+    {
+        $searchguru = '%' . $this->nama_guru . '%';
+
+        $this->gurus = Guru::where('nama_guru', 'LIKE', $searchguru)
+            ->where('sekolah_id', auth()->user()->sekolah_id)
+            ->get();
+    }
     public function render()
     {
         $searchUser = '%' . $this->searchUser . '%';
+
         if (auth()->user()->role == 'Admin') {
             return view('livewire.admin.referensi.pengguna.akun.index', [
                 'users' => User::where('name', 'LIKE', $searchUser)
@@ -61,7 +71,7 @@ class Index extends Component
                     ->orderBy('id', 'DESC')
                     ->paginate(10, ['*'], 'userPage'),
                 'ruangans' => Ruangan::where('sekolah_id', auth()->user()->sekolah_id)->get(),
-                'gurus' => Guru::where('sekolah_id', auth()->user()->sekolah_id)->get(),
+                'gurus' => $this->gurus,
             ]);
         } else {
             return view('livewire.admin.referensi.pengguna.akun.index', [
@@ -130,31 +140,45 @@ class Index extends Component
             ]);
         } elseif (auth()->user()->sekolah_id) {
             if ($this->showGuruSelect == true) {
-                $validatedDate = $this->validate(
-                    [
-                        'nama_guru' => 'required',
-                        'mata_pelajaran' => 'required',
-                    ],
-                    [
-                        'nama_guru.required' => 'Nama tidak boleh kosong',
-                        'mata_pelajaran.required' => 'Mata pelajaran tidak boleh kosong',
-                    ],
-                );
+                if ($this->selectedguru != null) {
+                    $selectedguru = Guru::find($this->selectedguru);
 
-                $guru = Guru::create([
-                    'sekolah_id' => auth()->user()->sekolah_id,
-                    'nama_guru' => $this->nama_guru,
-                    'mata_pelajaran' => $this->mata_pelajaran,
-                ]);
+                    User::create([
+                        'name' => $this->name,
+                        'email' => $this->email,
+                        'password' => bcrypt($this->password),
+                        'role' => $this->role,
+                        'sekolah_id' => auth()->user()->sekolah_id,
+                        'guru_id' => $selectedguru->id,
+                    ]);
+                } else {
+                    $validatedDate = $this->validate(
+                        [
+                            'nama_guru' => 'required|unique:gurus,nama_guru,NULL,id,sekolah_id,' . auth()->user()->sekolah_id,
+                            'mata_pelajaran' => 'required',
+                        ],
+                        [
+                            'nama_guru.required' => 'Nama tidak boleh kosong',
+                            'mata_pelajaran.required' => 'Mata pelajaran tidak boleh kosong',
+                            'nama_guru.unique' => 'Guru dengan nama ini sudah ada',
+                        ],
+                    );
 
-                User::create([
-                    'name' => $this->name,
-                    'email' => $this->email,
-                    'password' => bcrypt($this->password),
-                    'role' => $this->role,
-                    'sekolah_id' => auth()->user()->sekolah_id,
-                    'guru_id' => $guru->id,
-                ]);
+                    $guru = Guru::create([
+                        'sekolah_id' => auth()->user()->sekolah_id,
+                        'nama_guru' => $this->nama_guru,
+                        'mata_pelajaran' => $this->mata_pelajaran,
+                    ]);
+
+                    User::create([
+                        'name' => $this->name,
+                        'email' => $this->email,
+                        'password' => bcrypt($this->password),
+                        'role' => $this->role,
+                        'sekolah_id' => auth()->user()->sekolah_id,
+                        'guru_id' => $guru->id,
+                    ]);
+                }
             } elseif ($this->showRuanganSelect == true) {
                 $validatedDate = $this->validate(
                     [

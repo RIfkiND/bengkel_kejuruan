@@ -116,9 +116,21 @@
                                 @if ($updateMode == false)
                                     @if ($showGuruSelect)
                                         <div class="form-group col">
+                                            <label>Guru Terdata</label>
+                                            <select id="selectedguru" class="form-control" wire:model='selectedguru'>
+                                                <option value="">Pilih</option>
+                                                @foreach ($gurus as $guru)
+                                                    <option value="{{ $guru->id }}">{{ $guru->nama_guru }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('selectedguru')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+
                                             <label>Nama Guru</label>
                                             <input type="text" class="form-control" placeholder="Nama Guru"
-                                                wire:model='nama_guru'>
+                                                wire:model='nama_guru' wire:keydown='updateGuruIndicator'>
                                             @error('nama_guru')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -152,6 +164,17 @@
                                 </div>
                                 @if ($updateMode == false)
                                     <div class="form-group col">
+                                        <label>Guru Terdata</label>
+                                        <select id="selectedguru" class="form-control" wire:model='selectedguru'>
+                                            <option value="">Pilih</option>
+                                            @foreach ($gurus as $guru)
+                                                <option value="{{ $guru->id }}">{{ $guru->nama_guru }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('selectedguru')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                         <label>Nama Guru</label>
                                         <input type="text" class="form-control" placeholder="Drs.Nama Anda.Spd"
                                             wire:model='nama_guru'>
@@ -177,8 +200,7 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                             wire:click.prevent='cancel()'>Batal</button>
                         @if ($updateMode)
-                            @if (auth()->user()->role == 'Admin' or
-                                    auth()->user()->role == 'SuperAdmin')
+                            @if (auth()->user()->role == 'Admin' or auth()->user()->role == 'SuperAdmin')
                                 <button type="button" class="btn btn-primary"
                                     wire:click.prevent="update_byadmin()">Simpan</button>
                             @else
