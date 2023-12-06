@@ -115,7 +115,15 @@
                                 @endif
                                 @if ($updateMode == false)
                                     @if ($showGuruSelect)
-                                        <div class="form-group col">
+                                        <div class="form-group col-lg-12">
+                                            <label>Nama Guru</label>
+                                            <input type="text" class="form-control" placeholder="Nama Guru"
+                                                wire:model='nama_guru' wire:keydown='updateGuruIndicator'>
+                                            @error('nama_guru')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group col-lg-6">
                                             <label>Guru Terdata</label>
                                             <select id="selectedguru" class="form-control" wire:model='selectedguru'>
                                                 <option value="">Pilih</option>
@@ -127,15 +135,8 @@
                                             @error('selectedguru')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
-
-                                            <label>Nama Guru</label>
-                                            <input type="text" class="form-control" placeholder="Nama Guru"
-                                                wire:model='nama_guru' wire:keydown='updateGuruIndicator'>
-                                            @error('nama_guru')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
                                         </div>
-                                        <div class="form-group col">
+                                        <div class="form-group col-lg-6">
                                             <label>Mata Pelajaran</label>
                                             <input type="text" class="form-control" placeholder="Teknik Mesin"
                                                 wire:model='mata_pelajaran'>
@@ -149,7 +150,7 @@
                         @endif
                         <div class="form-row">
                             @if ($showRuanganSelect)
-                                <div class="form-group col">
+                                <div class="form-group col-lg-6">
                                     <label>Ruangan</label>
                                     <select id="ruangan_user" class="form-control" wire:model='ruangan_user'>
                                         <option selected="selected" value="">Pilih</option>
@@ -163,7 +164,7 @@
                                     @enderror
                                 </div>
                                 @if ($updateMode == false)
-                                    <div class="form-group col">
+                                    <div class="form-group col-lg-6">
                                         <label>Guru Terdata</label>
                                         <select id="selectedguru" class="form-control" wire:model='selectedguru'>
                                             <option value="">Pilih</option>
@@ -175,6 +176,8 @@
                                         @error('selectedguru')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
+                                    </div>
+                                    <div class="form-group col-lg-6">
                                         <label>Nama Guru</label>
                                         <input type="text" class="form-control" placeholder="Drs.Nama Anda.Spd"
                                             wire:model='nama_guru'>
@@ -182,7 +185,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="form-group col">
+                                    <div class="form-group col-lg-6">
                                         <label>Mata Pelajaran</label>
                                         <input type="text" class="form-control" placeholder="Teknik Mesin"
                                             wire:model='mata_pelajaran'>
