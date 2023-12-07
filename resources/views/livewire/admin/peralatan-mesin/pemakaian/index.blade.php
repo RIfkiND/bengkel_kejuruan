@@ -79,7 +79,8 @@
                                         </div>
                                     @endif
                                     <div class="col-lg-3 mb-4">
-                                        <select multiple="multiple" class="form-control" id="peralatan" wire:model='p_m_id'>
+                                        <select multiple="multiple" class="form-control" id="peralatan"
+                                            wire:model='p_m_id'>
                                             <option value="">Peralatan/Mesin</option>
                                             @foreach ($peralatans as $peralatan)
                                                 @php
@@ -119,11 +120,15 @@
                                     <div class="col-lg-3 mb-4">
                                         <select class="form-control" id="ruangan" wire:model='kelas_id'>
                                             <option value="" selected>Kelas</option>
-                                            @foreach ($kelas as $kls)
+                                            @forelse ($kelas as $kls)
                                                 <option value="{{ $kls->kelas->id }}">
                                                     {{ $kls->kelas->nama_kelas }}
                                                 </option>
-                                            @endforeach
+                                            @empty
+                                                <option value="" disabled>
+                                                    Guru tidak mengajar kelas manapun
+                                                </option>
+                                            @endforelse
                                         </select>
                                     </div>
                                 </div>
@@ -169,13 +174,12 @@
                                 <tbody>
                                     @foreach ($peminjamans as $peminjaman)
                                         <tr>
-                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;" wire:click='info({{ $peminjaman->id }})'>
+                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;"
+                                                wire:click='info({{ $peminjaman->id }})'>
                                                 PM-{{ $peminjaman->peralatan_atau_mesin_id }}</td>
-                                            <td data-target="#infoModal" data-toggle="modal"
-                                                style="cursor: pointer;">
+                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
                                                 {{ $peminjaman->peralatan->nama_peralatan_atau_mesin }}</td>
-                                            <td data-target="#infoModal" data-toggle="modal"
-                                                style="cursor: pointer;">
+                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
                                                 {{ $peminjaman->tanggal_pemakaian }}
                                             </td>
                                             <td>
@@ -214,10 +218,11 @@
                                                         @endif
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='edit({{ $peminjaman->id }})'>Edit</a>
-                                                            @if (auth()->user()->role == 'KepalaBengkel')
-                                                                <a class="dropdown-item text-success"
-                                                                    href="{{ route('print.kartupeminjamanalat', ['id' => auth()->user()->ruangan_id]) }}">Print Kartu Peminjaman</a>
-                                                            @endif
+                                                        @if (auth()->user()->role == 'KepalaBengkel')
+                                                            <a class="dropdown-item text-success"
+                                                                href="{{ route('print.kartupeminjamanalat', ['id' => auth()->user()->ruangan_id]) }}">Print
+                                                                Kartu Peminjaman</a>
+                                                        @endif
                                                         <a class="dropdown-item" href="javascript:void(0)"
                                                             wire:click='ondel({{ $peminjaman->id }})'>Hapus</a>
                                                     </div>
@@ -254,7 +259,7 @@
                         <div class="row">
                             <div class="col-lg-6 ">
                                 <div class="card-text">
-                                    <span>Merk : {{ $merk}}</span><br><br>
+                                    <span>Merk : {{ $merk }}</span><br><br>
                                     <Span>Type/Model : {{ $type }}</Span>
                                 </div>
                             </div>
