@@ -350,9 +350,12 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $peralatan->nama_peralatan_atau_mesin }}</h5>
+                                    <h5 class="card-title">{{ $peralatan->nama_peralatan_atau_mesin }}
+                                        @if (auth()->user()->role == 'AdminSekolah')
+                                            <br><small>Ruangan: {{ $peralatan->ruangan->nama_ruangan }}</small>
+                                        @endif
+                                    </h5>
                                     <div class="row">
-
                                         <div class="card-text">
                                             @if ($peralatan->latestPemakaian)
                                                 <p>Terakhir Di Pakai Oleh:
