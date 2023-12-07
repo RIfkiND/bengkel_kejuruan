@@ -32,7 +32,7 @@
             @forelse ($bahans as $bahan)
                 <tr align="center">
                     <td height="3%">
-                        {{ $loop->iteration }}nana
+                        {{ $loop->iteration }}
                     </td>
                     <td>{{ $date }}</td>
                     <td>{{ $bahan->kode_bahan }}</td>
