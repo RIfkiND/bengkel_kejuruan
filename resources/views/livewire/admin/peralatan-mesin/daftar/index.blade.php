@@ -351,7 +351,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $peralatan->nama_peralatan_atau_mesin }}
-                                        @if (auth()->user()->role == 'AdminSekolah')
+                                        @if (auth()->user()->role == 'AdminSekolah' || auth()->user()->role == 'Guru')
                                             <br><small>Ruangan: {{ $peralatan->ruangan->nama_ruangan }}</small>
                                         @endif
                                     </h5>
