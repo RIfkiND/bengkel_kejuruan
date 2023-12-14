@@ -27,7 +27,7 @@
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card tale-bg">
                     <div class="card-people mt-auto">
-                        <img src="/Asset/images/people.svg" alt="people" width="100%">
+                        <img src="/Asset/images/index_img.png" alt="people" width="100%">
                     </div>
                 </div>
             </div>
