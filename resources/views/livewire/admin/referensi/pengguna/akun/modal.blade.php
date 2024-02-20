@@ -126,7 +126,7 @@
                                         <div class="form-group col-lg-6">
                                             <label>Guru Terdata</label>
                                             <select id="selectedguru" class="form-control" wire:model='selectedguru'>
-                                                <option value="">Pilih</option>
+                                                <option value="" selected>Pilih</option>
                                                 @foreach ($gurus as $guru)
                                                     <option value="{{ $guru->id }}">{{ $guru->nama_guru }}
                                                     </option>
