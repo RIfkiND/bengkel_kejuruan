@@ -15,10 +15,14 @@
         <h2>Beranda </h2>
         <ul>
             <li><a href="#1">Beranda</a></li>
-            <li><a href="#2">Pencapaian</a></li>
-            <li><a href="#3">Tentang</a></li>
+            <li><a href="#Pencapaian">Pencapaian</a></li>
+            <li><a href="#Tentang">Tentang</a></li>
         </ul>
-        <a href="{{ route('login') }}"><button class="hire-btn">Login</button></a>
+        @if (auth()->user())
+            <a href="{{ route('admin.index') }}"><button class="hire-btn">Ke Dashboard</button></a>
+        @else
+            <a href="{{ route('login') }}"><button class="hire-btn">Login</button></a>
+        @endif
     </div>
 
     <div class="main">
@@ -27,14 +31,14 @@
         <p class="subtitle">dengan mudah dan praktis.</p>
     </div>
 
-    <h5 class="seprator" id="2">Pencapaian</h5>
+    <h5 class="seprator" id="Pencapaian">Pencapaian</h5>
     <div class="guarantee">
         <div class="item">
             <div class="icon">
                 <i class='bx bx-user'></i>
             </div>
             <div class="info">
-                <h3>+5</h3>
+                <h3>{{ $users->count()}}</h3>
                 <p>Akun yang terdaftar</p>
             </div>
             <i class='bx bx-chevron-right'></i>
@@ -44,7 +48,7 @@
                 <i class='bx bx-home'></i>
             </div>
             <div class="info">
-                <h3>+100</h3>
+                <h3>{{ $sekolahs->count() }}</h3>
                 <p>Sekolah</p>
             </div>
             <i class='bx bx-chevron-right'></i>
@@ -61,15 +65,16 @@
         </div>
     </div>
 
-    <h5 class="seprator" id="3">Tentang</h5>
+    <h5 class="seprator" id="Tentang">Tentang</h5>
 
     <div class="about">
         <img src="../Asset/images/login.png">
         <div class="info">
             <h3>Tentang Manajemen Bengkel</h3>
             <p>Adalah sebuah web yang dirancang untuk memudahkan pengelolaan barang disuatu sekolah
-                dengan mudah dan praktis. Yang dimana  web ini menjadi perantara antara Admin Sekolah, Kepala
-                Bengkel, dan Guru. Fitur yang tersedia diantaranya, pengelolaan stok barang, transaksi barang, pemeliharaan barang
+                dengan mudah dan praktis. Yang dimana web ini menjadi perantara antara Admin Sekolah, Kepala
+                Bengkel, dan Guru. Fitur yang tersedia diantaranya, pengelolaan stok barang, transaksi barang,
+                pemeliharaan barang
                 peminjaman barang dan lain-lain.
             </p>
         </div>
@@ -79,8 +84,13 @@
     <footer>
         <div class="start">
             <h3>Mulai mengelola</h3>
-            <p>Login untuk membuka web ini, tanyakan Admin Sekolah jika ada kendala saat login.</p>
-            <a href="{{ route('login') }}"><button>Login sekarang</button></a>
+            @if (auth()->user())
+                <p>Anda sudah login, silahkan ke dashboard untuk mengelola barang.</p>
+                <a href="{{ route('admin.index') }}"><button>Ke Dashboard</button></a>
+            @else
+                <p>Login untuk membuka web ini, tanyakan Admin Sekolah jika ada kendala saat login.</p>
+                <a href="{{ route('login') }}"><button>Login sekarang</button></a>
+            @endif
         </div>
 
         <div class="cols">
