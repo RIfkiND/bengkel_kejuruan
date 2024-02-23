@@ -148,21 +148,22 @@ class Index extends Component
     }
     public function store()
     {
+
         $validatedDate = $this->validate(
             [
                 'nama_alat_atau_bahan' => 'required|unique:alat_atau_bahans,nama_alat_atau_bahan,NULL,id,ruangan_id,' . $this->ruangan_id,
                 'kode' => 'required',
                 'kode_bahan' => 'required|unique:alat_atau_bahans,kode_bahan,NULL,id,ruangan_id,' . $this->ruangan_id,
                 'ruangan_id' => 'required',
-                'volume' => 'required',
+                'volume' => 'required|numeric',
                 'satuan' => 'required',
                 'sumber_dana' => 'required',
-                'saldo' => 'required',
+                'saldo' => 'required|numeric',
                 'tanggal_masuk' => 'required',
                 'merk' => 'required',
                 'type' => 'required',
                 'dimensi' => 'required',
-                'harga' => 'required',
+                'harga' => 'required|numeric',
                 'tahun' => 'required',
             ],
             [
@@ -255,7 +256,7 @@ class Index extends Component
                 'ruangan_id' => 'required',
                 'satuan' => 'required',
                 'kode_bahan' => 'required',
-                'harga' => 'required',
+                'harga' => 'required|numeric',
                 'merk' => 'required',
                 'type' => 'required',
                 'dimensi' => 'required',
@@ -349,15 +350,17 @@ class Index extends Component
         $validate = $this->validate(
             [
                 'tanggal_masuk' => 'required',
-                'volume_masuk' => 'required',
+                'volume_masuk' => 'required|numeric',
                 'sumber_dana' => 'required',
-                'saldo' => 'required',
+                'saldo' => 'required|numeric',
             ],
             [
                 'tanggal_masuk.required' => 'Tanggal Masuk tidak boleh kosong',
                 'volume_masuk.required' => 'Volume tidak boleh kosong',
                 'sumber_dana.required' => 'Sumber Dana tidak boleh kosong',
                 'saldo.required' => 'Saldo tidak boleh kosong',
+                'volume_masuk.numeric' => 'Volume harus berupa angka',
+                'saldo.numeric' => 'Saldo harus berupa angka',
             ],
         );
 
@@ -399,7 +402,7 @@ class Index extends Component
             [
                 'tanggal_keluar' => 'required',
                 'nama_pemakai' => 'required',
-                'volume_keluar' => 'required',
+                'volume_keluar' => 'required|numeric',
                 'keterangan' => 'required',
             ],
             [
@@ -407,6 +410,7 @@ class Index extends Component
                 'nama_pemakai.required' => 'Nama Pemakai tidak boleh kosong',
                 'volume_keluar.required' => 'Volume tidak boleh kosong',
                 'keterangan.required' => 'Keterangan tidak boleh kosong',
+                'volume_keluar.numeric' => 'Volume harus berupa angka',
             ],
         );
 
