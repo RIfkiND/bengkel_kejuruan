@@ -13,7 +13,7 @@ class ImpersonateController extends Controller
 
         auth()->login($user);
 
-        return redirect('/');
+        return redirect('/login');
     }
 
     public function stopImpersonating()
