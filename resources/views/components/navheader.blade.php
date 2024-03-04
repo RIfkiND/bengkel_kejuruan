@@ -7,7 +7,7 @@
     <!-- ============================================================== -->
     <div class="navbar-brand">
         <!-- Logo icon -->
-        <a href="index.html">
+        <a href="{{ route('admin.index') }}">
             <img src="/Asset/images/freedashDark.svg" alt="" class="img-fluid">
         </a>
     </div>
