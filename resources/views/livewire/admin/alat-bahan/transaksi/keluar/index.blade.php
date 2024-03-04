@@ -38,7 +38,7 @@
                                     </form>
                                     @if (auth()->user()->role == 'KepalaBengkel')
                                         <div class="customize-input float-end ms-2">
-                                            <a class="btn btn-success" type="button" style="border-radius: 10px"
+                                            <a class="btn btn-success" type="button" style="border-radius: 10px" target="_blank"
                                                 href="{{ route('print.pengeluaranbarang', ['id' => auth()->user()->ruangan_id]) }}"><i
                                                     class="fas fa-print"></i>
                                                 Print

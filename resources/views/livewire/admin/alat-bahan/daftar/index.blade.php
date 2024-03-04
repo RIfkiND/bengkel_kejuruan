@@ -23,7 +23,7 @@
                                 </div>
                                 @if (auth()->user()->ruangan_id)
                                     <div class="customize-input float-end ms-2">
-                                        <a class="btn btn-success" type="button" style="border-radius: 10px"
+                                        <a class="btn btn-success" type="button" style="border-radius: 10px" target="_blank"
                                             href="{{ route('print.bukuindukbaranginventaris', ['id' => auth()->user()->ruangan_id]) }}"><i
                                                 class="fas fa-print"></i>
                                             Print
@@ -459,7 +459,7 @@
                                                             data-bs-toggle="modal" data-bs-target="#ModalAlat"
                                                             wire:click='onkel({{ $alat->id }})'>Pakai</a>
                                                         @if (auth()->user()->role == 'KepalaBengkel')
-                                                            <a class="dropdown-item text-success"
+                                                            <a class="dropdown-item text-success" target="_blank"
                                                                 href="{{ route('print.kartustok', ['id' => auth()->user()->ruangan_id]) }}">Print
                                                                 Kartu Stock</a>
                                                         @endif

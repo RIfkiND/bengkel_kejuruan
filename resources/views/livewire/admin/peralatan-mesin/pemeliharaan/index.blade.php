@@ -101,7 +101,7 @@
                         </div>
                         @if (auth()->user()->role == 'KepalaBengkel')
                             <div class="col-lg-2 d-flex justify-content-end px-4 h-50 mb-2">
-                                <a class="btn btn-success" type="button" style="border-radius: 10px"
+                                <a class="btn btn-success" type="button" style="border-radius: 10px" target="_blank"
                                     href="{{ route('print.bukupemeliharaanalat', ['id' => auth()->user()->ruangan_id]) }}"><i
                                         class="fas fa-print"></i>
                                     Print

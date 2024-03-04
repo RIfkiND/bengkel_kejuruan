@@ -37,7 +37,7 @@
                                 @endif
                                 @if (auth()->user()->role == 'KepalaBengkel')
                                     <div class="customize-input float-end ms-2">
-                                        <a class="btn btn-success" type="button" style="border-radius: 10px"
+                                        <a class="btn btn-success" type="button" style="border-radius: 10px" target="_blank"
                                             href="{{ route('print.inventarisalat', ['id' => auth()->user()->ruangan_id]) }}"><i
                                                 class="fas fa-print"></i>
                                             Print
@@ -328,7 +328,7 @@
                                                     data-bs-toggle="modal" data-bs-target="#ModalEditPeralatan"
                                                     wire:click='edit({{ $peralatan->id }})'>Edit</a>
                                                 @if (auth()->user()->role == 'KepalaBengkel')
-                                                    <a class="dropdown-item text-success"
+                                                    <a class="dropdown-item text-success" target="_blank"
                                                         href="{{ route('print.kartuperawatanalat', ['id' => $peralatan->id]) }}">Print
                                                         Kartu Pemeliharaan</a>
                                                 @endif

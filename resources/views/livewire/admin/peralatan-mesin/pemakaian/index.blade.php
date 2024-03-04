@@ -219,7 +219,7 @@
                                                     <a class="dropdown-item" href="javascript:void(0)"
                                                         wire:click='edit({{ $peminjaman->id }})'>Edit</a>
                                                     @if (auth()->user()->role == 'KepalaBengkel')
-                                                        <a class="dropdown-item text-success"
+                                                        <a class="dropdown-item text-success" target="_blank"
                                                             href="{{ route('print.kartupeminjamanalat', ['id' => auth()->user()->ruangan_id]) }}">Print
                                                             Kartu Peminjaman</a>
                                                     @endif
