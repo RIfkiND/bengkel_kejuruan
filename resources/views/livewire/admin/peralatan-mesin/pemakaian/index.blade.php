@@ -115,6 +115,9 @@
                                                     </option>
                                                 @endforeach
                                             </select>
+                                            @error('guru_id')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     @endif
                                     <div class="col-lg-3 mb-4">
@@ -130,6 +133,9 @@
                                                 </option>
                                             @endforelse
                                         </select>
+                                        @error('kelas_id')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

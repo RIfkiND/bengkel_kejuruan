@@ -117,69 +117,25 @@
                                                     </div>
                                                     <div class="col-lg-5">
                                                         <div class="d-flex justify-content-end">
-                                                            <button type="submit"
-                                                                class="btn btn-primary">Tambahkan</button>
+                                                            <button type="submit" class="btn btn-primary">Tambahkan</button>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-1">
+                                                    {{-- <div class="col-lg-1">
                                                         <div class="d-flex justify-content-end">
                                                             <button data-toggle="modal"
                                                                 data-target="#ModalImportPeralatan" type="button"
                                                                 class="btn btn-danger">Import</button>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
-                                                {{-- Modal Import Peralatan --}}
-                                                <div class="modal fade" id="ModalImportPeralatan">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <form>
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title" id="myModalLabel">Import Data Dari Excel</h4>
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                        ><span>&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="row">
-                                                                        <div class="col">
-                                                                            <h6>Pastikan Data Nama Murid Ada di Kolom A dan Mulai dari Baris 1 <br> Seperti Pada
-                                                                                Gambar :</h6>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row mb-4">
-                                                                        <div class="col">
-                                                                            <img src="/Asset/images/murid-tutor.png" alt="" width="50%">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <input class="form-control mb-2" type="file" wire:model="file" required>
-                                                                        @if ($errors->has('file'))
-                                                                            <div class="alert alert-danger">
-                                                                                {{ $errors->first('file') }}
-                                                                            </div>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                                                        wire:click.prevent='cancel()'>Batal</button>
-                                                                    <button type="button" class="btn btn-primary" wire:click.prevent="importMurids()"
-                                                                        wire:loading.attr="disabled">Import</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {{-- End Modal --}}
-
                                                 <div class="row">
                                                     <div class="col-lg-1 mb-2">
-                                                        <label for="tanggal" class="text-center">Tanggal Masuk</label>
+                                                        <label for="tanggal" class="text-center">Tanggal
+                                                            Masuk</label>
                                                     </div>
                                                     <div class="col-lg-2 mb-2">
-                                                        <input wire:model="tanggal_masuk" type="date" id="tanggal"
-                                                            class="form-control input-default">
+                                                        <input wire:model="tanggal_masuk" type="date"
+                                                            id="tanggal" class="form-control input-default">
                                                         @error('tanggal_masuk')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
