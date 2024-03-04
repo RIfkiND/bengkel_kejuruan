@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid pt-2">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -115,9 +115,6 @@
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            @error('guru_id')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
                                         </div>
                                     @endif
                                     <div class="col-lg-3 mb-4">
@@ -133,9 +130,6 @@
                                                 </option>
                                             @endforelse
                                         </select>
-                                        @error('kelas_id')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +159,7 @@
                     </div>
                     <div class="row">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped table-responsive">
                                 <thead>
                                     <tr>
                                         <th>Kode P/M</th>
@@ -185,7 +179,8 @@
                                                 PM-{{ $peminjaman->peralatan_atau_mesin_id }}</td>
                                             <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
                                                 {{ $peminjaman->peralatan->nama_peralatan_atau_mesin }}</td>
-                                            <td data-target="#infoModal" data-toggle="modal" style="cursor: pointer;">
+                                            <td data-target="#infoModal" data-toggle="modal"
+                                                style="cursor: pointer;">
                                                 {{ $peminjaman->tanggal_pemakaian }}
                                             </td>
                                             <td>
@@ -199,39 +194,37 @@
                                             </td>
                                             <td>
                                                 <h4><span
-                                                        class="badge {{ $peminjaman->status_pengajuan == 'Pending' ? 'badge-secondary' : ($peminjaman->status_pengajuan == 'Disetujui' ? 'badge-success' : 'badge-danger') }}
+                                                        class="badge {{ $peminjaman->status_pengajuan == 'Pending' ? 'text-bg-secondary' : ($peminjaman->status_pengajuan == 'Disetujui' ? 'text-bg-success' : 'text-bg-danger') }}
                                                     px-2 text-white">{{ $peminjaman->status_pengajuan }}</span>
                                                 </h4>
                                             </td>
                                             <td>
-                                                <div class="dropdown">
-                                                    <a href="javascript:void(0)" data-toggle="dropdown"><i
-                                                            class="fa fa-ellipsis-v fa-lg"></i></a>
-                                                    <div class="dropdown-menu">
-                                                        @if (auth()->user()->role == 'KepalaBengkel' || auth()->user()->role == 'Guru')
-                                                            @if (auth()->user()->role == 'KepalaBengkel')
-                                                                <div class="dropdown-item text-dark">
-                                                                    <a href="javascript:void(0)"
-                                                                        wire:click='updateStatus_pengajuan({{ $peminjaman->id }}, "Disetujui")'>Setujui</a>
-                                                                    |
-                                                                    <a href="javascript:void(0)"
-                                                                        wire:click='updateStatus_pengajuan({{ $peminjaman->id }}, "Ditolak")'>Tolak</a>
-                                                                </div>
-                                                            @endif
-                                                            <a href="javascript:void(0)" class="dropdown-item"
-                                                                wire:click='statuspemakaian({{ $peminjaman->id }})'>Selesai
-                                                                Dipakai</a>
-                                                        @endif
-                                                        <a class="dropdown-item" href="javascript:void(0)"
-                                                            wire:click='edit({{ $peminjaman->id }})'>Edit</a>
+                                                <a href="javascript:void(0)" data-bs-toggle="dropdown"><i
+                                                        class="fa fa-ellipsis-v fa-lg"></i></a>
+                                                <div class="dropdown-menu">
+                                                    @if (auth()->user()->role == 'KepalaBengkel' || auth()->user()->role == 'Guru')
                                                         @if (auth()->user()->role == 'KepalaBengkel')
-                                                            <a class="dropdown-item text-success"
-                                                                href="{{ route('print.kartupeminjamanalat', ['id' => auth()->user()->ruangan_id]) }}">Print
-                                                                Kartu Peminjaman</a>
+                                                            <div class="dropdown-item text-dark">
+                                                                <a href="javascript:void(0)"
+                                                                    wire:click='updateStatus_pengajuan({{ $peminjaman->id }}, "Disetujui")'>Setujui</a>
+                                                                |
+                                                                <a href="javascript:void(0)"
+                                                                    wire:click='updateStatus_pengajuan({{ $peminjaman->id }}, "Ditolak")'>Tolak</a>
+                                                            </div>
                                                         @endif
-                                                        <a class="dropdown-item" href="javascript:void(0)"
-                                                            wire:click='ondel({{ $peminjaman->id }})'>Hapus</a>
-                                                    </div>
+                                                        <a href="javascript:void(0)" class="dropdown-item"
+                                                            wire:click='statuspemakaian({{ $peminjaman->id }})'>Selesai
+                                                            Dipakai</a>
+                                                    @endif
+                                                    <a class="dropdown-item" href="javascript:void(0)"
+                                                        wire:click='edit({{ $peminjaman->id }})'>Edit</a>
+                                                    @if (auth()->user()->role == 'KepalaBengkel')
+                                                        <a class="dropdown-item text-success"
+                                                            href="{{ route('print.kartupeminjamanalat', ['id' => auth()->user()->ruangan_id]) }}">Print
+                                                            Kartu Peminjaman</a>
+                                                    @endif
+                                                    <a class="dropdown-item" href="javascript:void(0)"
+                                                        wire:click='ondel({{ $peminjaman->id }})'>Hapus</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -286,4 +279,3 @@
     </div>
 
     {{-- End Modal Info --}}
-</div>

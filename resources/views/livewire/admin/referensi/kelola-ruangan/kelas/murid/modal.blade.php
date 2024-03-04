@@ -1,16 +1,16 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="ModalMuridKelas">
+    <div wire:ignore.self class="modal fade" id="ModalMuridKelas" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 10px">
                 <form>
                     <div class="modal-header">
                         @if ($updateMode)
-                            <h4 class="modal-title" id="myModalLabel">Edit Data</h4>
+                            <h4 class="modal-title" id="myModalLabel">Edit Murid</h4>
                         @else
-                            <h4 class="modal-title" id="myModalLabel">Tambahkan Data</h4>
+                            <h4 class="modal-title" id="myModalLabel">Tambahkan Murid</h4>
                         @endif
-                        <button type="button" class="close" data-dismiss="modal"
-                            wire:click.prevent='cancel()'><span>&times;</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click.prevent='cancel()'>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             wire:click.prevent='cancel()'>Batal</button>
                         @if ($updateMode)
                             <button type="button" class="btn btn-primary" wire:click.prevent="update()">Simpan</button>
@@ -37,14 +37,14 @@
         </div>
     </div>
 
-    <div wire:ignore.self class="modal fade" id="ModalImportMuridKelas">
+    <div wire:ignore.self class="modal fade" id="ModalImportMuridKelas" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 10px">
                 <form>
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Import Data Dari Excel</h4>
-                        <button type="button" class="close" data-dismiss="modal"
-                            wire:click.prevent='cancel()'><span>&times;</span>
+                        <h4 class="modal-title" id="myModalLabel">Import Murid Dari Excel</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click.prevent='cancel()'>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             wire:click.prevent='cancel()'>Batal</button>
                         <button type="button" class="btn btn-primary" wire:click.prevent="importMurids()"
                             wire:loading.attr="disabled">Import</button>
@@ -79,19 +79,20 @@
         </div>
     </div>
 
-    <div wire:ignore.self class="modal fade" id="ModalGuruKelas">
+    <div wire:ignore.self class="modal fade" id="ModalGuruKelas" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 10px">
                 <form>
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Tambahkan Data</h4>
-                        <button type="button" class="close" data-dismiss="modal"
-                            wire:click.prevent='cancel()'><span>&times;</span>
+                        <h4 class="modal-title" id="myModalLabel">Tambahkan Guru</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            wire:click.prevent='cancel()'>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Daftar Guru (tahan shift untuk pilih banyak):</label>
+                            <label>Daftar Guru (tahan shift untuk pilih lebih dari satu):</label>
                             <select multiple="multiple" class="form-control" id="sel2" wire:model='guru_ids'>
                                 @foreach ($gurus as $guru)
                                     <option value="{{ $guru->id }}">{{ $guru->nama_guru }}</option>
@@ -100,7 +101,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             wire:click.prevent='cancel()'>Batal</button>
                         <button type="button" class="btn btn-primary"
                             wire:click.prevent="store_guru()">Tambahkan</button>

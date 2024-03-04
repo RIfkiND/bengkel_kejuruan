@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid pt-2">
     @if ($peralatans == 'kosong')
         <div class="login-form-bg h-100">
             <div class="container h-100">
@@ -20,25 +20,36 @@
         </div>
     @else
         <div class="row">
+            <div class="col-sm-6 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row justify-content-between">
+                            <div class="col-7 pt-2">
+                                <caption>Peralatan Masuk yang terdaftar</caption>
+                            </div>
+                            <div class="col-5">
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <form class="me-2 d-none d-lg-block">
+                                        <div class="customize-input">
+                                            <input class="form-control custom-shadow border-2 bg-white" type="text"
+                                                placeholder="Search" aria-label="Search" style="border-radius: 10px;"
+                                                wire:model='searchPeralatan' wire:input='resetPage'>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col">
-                                <div class="card-title">
-                                    <h4>Daftar Peralatan Masuk</h4>
-                                </div>
-                            </div>
-                            <div class="col d-flex justify-content-end px-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
-                                        wire:model='searchPeralatan' wire:input='resetPage'>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table class="table table-bordered table-striped table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Tanggal Masuk</th>
@@ -54,7 +65,7 @@
                                         @forelse ($peralatans as $peralatan)
                                             <tr>
                                                 <td>{{ $peralatan->peralatanmasuk->tanggal_masuk }}</td>
-                                                <td>{{ $peralatan->kode_peralatan  }}</td>
+                                                <td>{{ $peralatan->kode_peralatan }}</td>
                                                 <td>{{ $peralatan->kategori->nama_kategori }}</td>
                                                 <td>{{ $peralatan->nama_peralatan_atau_mesin }}</td>
                                                 <td>
@@ -107,4 +118,3 @@
             </div>
         </div>
     @endif
-</div>

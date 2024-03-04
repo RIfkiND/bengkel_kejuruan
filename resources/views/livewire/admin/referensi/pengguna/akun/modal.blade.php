@@ -1,7 +1,8 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="ModalAkun">
+    <div wire:ignore.self class="modal fade" id="ModalAkun" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 10px;">
                 <form>
                     <div class="modal-header">
                         @if ($updateMode)
@@ -9,59 +10,58 @@
                         @else
                             <h4 class="modal-title" id="myModalLabel">Tambahkan Akun</h4>
                         @endif
-                        <button type="button" class="close" data-dismiss="modal"
-                            wire:click.prevent='cancel()'><span>&times;</span>
-                        </button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"
+                            wire:click.prevent='cancel()'></button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" class="form-control" placeholder="Nama Pengguna" wire:model='name'>
-                            @error('name')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" placeholder="Email" wire:model='email'>
-                            @error('email')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
+                        <div class="row">
+                            <div class="col-lg-12 mb-3">
+                                <label for="name" class="form-label">Nama Pengguna</label>
+                                <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                                    wire:model='name'>
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                                {{-- <div id="nameHelp" class="form-text text-success">boleh menggunakan huruf
+                                    kapital dan spasi</div> --}}
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" wire:model='email'>
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-lg-6 mb-3">
                                 @if ($updateMode)
-                                    <label>Password Baru</label>
+                                    <label class="form-label">Password Baru</label>
                                 @else
-                                    <label>Password</label>
+                                    <label class="form-label">Password</label>
                                 @endif
-                                <input type="password" class="form-control" placeholder="Password"
-                                    wire:model='password'>
+                                <input type="password" class="form-control" wire:model="password">
                                 @error('password')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="form-group col-md-6">
-                                <label>Konfirmasi Password</label>
-                                <input type="password" class="form-control" placeholder="Konfirmasi Password"
+                            <div class="col-lg-6 mb-3">
+                                <label for="con-password" class="form-label">Konfirmasi Password</label>
+                                <input type="password" class="form-control" id="con-password"
                                     wire:model='password_confirmation'>
                                 @error('password_confirmation')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
-                        @if (
-                            (auth()->user()->role == 'Admin' || auth()->user()->role == 'SuperAdmin') &&
-                                ($this->role == 'Guru' || $this->role == 'KepalaBengkel'))
+                            @if (
+                                (auth()->user()->role == 'Admin' || auth()->user()->role == 'SuperAdmin') &&
+                                    ($this->role == 'Guru' || $this->role == 'KepalaBengkel'))
 
-                            <label> Role : {{ $this->role }}</label>
-                        @else
-                            <div class="form-row">
-                                <div class="form-group col">
-                                    <label>Role</label>
-                                    <select id="role" class="form-control" wire:model='role'
+                                <label class="form-label text-info"> Role : {{ $this->role }}</label>
+                            @else
+                                <div class="col-lg-12 mb-2">
+                                    <label for="role" class="form-label">Role</label>
+                                    <select class="form-select" id="role" class="form-control" wire:model='role'
                                         wire:change="updateSekolahGuruRuanganVisibility">
-                                        <option value="">Pilih</option>
+                                        <option value="">Pilih Role</option>
                                         @if ($updateMode)
                                             @if (auth()->user()->role == 'AdminSekolah')
                                                 <option value="Guru">Guru</option>
@@ -93,9 +93,9 @@
                                     @enderror
                                 </div>
                                 @if ($showSekolahSelect)
-                                    <div class="form-group col">
+                                    <div class="col-lg-12 mb-2">
                                         <label>Sekolah</label>
-                                        <select id="sekolah_user" class="form-control" wire:model='sekolah_user'>
+                                        <select id="sekolah_user" class="form-select" wire:model='sekolah_user'>
                                             @if (auth()->user()->sekolah_id)
                                                 <option value="">Pilih</option>
                                                 <option selected value="{{ auth()->user()->sekolah_id }}">
@@ -115,7 +115,7 @@
                                 @endif
                                 @if ($updateMode == false)
                                     @if ($showGuruSelect)
-                                        <div class="form-group col-lg-12">
+                                        <div class="form-group col-lg-12 mb-2">
                                             <label>Nama Guru</label>
                                             <input type="text" class="form-control" placeholder="Nama Guru"
                                                 wire:model='nama_guru' wire:keydown='updateGuruIndicator'>
@@ -125,8 +125,8 @@
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label>Guru Terdata</label>
-                                            <select id="selectedguru" class="form-control" wire:model='selectedguru'>
-                                                <option value="" selected>Pilih</option>
+                                            <select id="selectedguru" class="form-select" wire:model='selectedguru'>
+                                                <option value="">Pilih</option>
                                                 @foreach ($gurus as $guru)
                                                     <option value="{{ $guru->id }}">{{ $guru->nama_guru }}
                                                     </option>
@@ -146,13 +146,11 @@
                                         </div>
                                     @endif
                                 @endif
-                            </div>
-                        @endif
-                        <div class="form-row">
+                            @endif
                             @if ($showRuanganSelect)
-                                <div class="form-group col-lg-6">
+                                <div class="form-group col-lg-6 mb-2">
                                     <label>Ruangan</label>
-                                    <select id="ruangan_user" class="form-control" wire:model='ruangan_user'>
+                                    <select id="ruangan_user" class="form-select" wire:model='ruangan_user'>
                                         <option selected="selected" value="">Pilih</option>
                                         @foreach ($ruangans as $ruangan)
                                             <option value="{{ $ruangan->id }}">{{ $ruangan->nama_ruangan }}
@@ -164,9 +162,9 @@
                                     @enderror
                                 </div>
                                 @if ($updateMode == false)
-                                    <div class="form-group col-lg-6">
+                                    <div class="form-group col-lg-6 mb-2">
                                         <label>Guru Terdata</label>
-                                        <select id="selectedguru" class="form-control" wire:model='selectedguru'>
+                                        <select id="selectedguru" class="form-select" wire:model='selectedguru'>
                                             <option value="">Pilih</option>
                                             @foreach ($gurus as $guru)
                                                 <option value="{{ $guru->id }}">{{ $guru->nama_guru }}
@@ -195,12 +193,11 @@
                                         @enderror
                                     </div>
                                 @endif
-
                             @endif
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal"
                             wire:click.prevent='cancel()'>Batal</button>
                         @if ($updateMode)
                             @if (auth()->user()->role == 'Admin' or auth()->user()->role == 'SuperAdmin')

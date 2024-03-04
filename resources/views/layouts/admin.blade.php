@@ -4,23 +4,20 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- theme meta -->
-    <meta name="theme-name" content="quixlab" />
-
-    <title>Manajement Bengkel</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/Asset/images/logo-dashboard.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Asset/images/favicon.png">
+
+    <title>Manajemen Bengkel</title>
+
     @livewireStyles
     @stack('css')
-    <!-- Custom Stylesheet -->
+    <!-- Custom CSS -->
     <link href="/Asset/css/style.css" rel="stylesheet">
-
-    <!-- Datepicker -->
-    <link href="/Asset/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -37,20 +34,29 @@
     <!--**********************************
         Main wrapper start
     ***********************************-->
-    <div id="main-wrapper">
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
 
         <!--**********************************
+            
             Nav header start
         ***********************************-->
-        <x-navheader />
-        <!--**********************************
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-lg">
+
+                <x-navheader />
+
+                <!--**********************************
             Nav header end
         ***********************************-->
 
-        <!--**********************************
+                <!--**********************************
             Header start
         ***********************************-->
-        <x-header />
+                <x-header />
+
+            </nav>
+        </header>
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -71,6 +77,7 @@
             Content body end
         ***********************************-->
 
+        <x-chat-widget />
 
         <!--**********************************
             Footer start
@@ -87,18 +94,17 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="/Asset/plugins/common/common.min.js"></script>
-    <script src="/Asset/js/custom.min.js"></script>
-    <script src="/Asset/js/settings.js"></script>
-    <script src="/Asset/js/gleek.js"></script>
-    <script src="/Asset/js/styleSwitcher.js"></script>
-
-    {{-- Yearpicker --}}
-    <script src="/Asset/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-
-
-    <!-- Circle progress -->
-    <script src="/Asset/plugins/circle-progress/circle-progress.min.js"></script>
+    <script src="/Asset/js/App.js"></script>
+    <script src="/Asset/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/Asset/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="/Asset/js/app-style-switcher.js"></script>
+    <script src="/Asset/js/feather.min.js"></script>
+    <script src="/Asset/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/Asset/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/Asset/js/custom.js"></script>
 
 
     @stack('js')

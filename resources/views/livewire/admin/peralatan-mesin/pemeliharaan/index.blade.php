@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid pt-2">
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -13,7 +13,8 @@
                                 <div class="row justify-content-md-center">
                                     <div class="col mb-4">
                                         <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary">Tambahkan</button>
+                                            <button type="submit" class="btn btn-primary"
+                                                style="border-radius: 10px">Tambahkan</button>
                                         </div>
                                     </div>
                                 </div>
@@ -31,7 +32,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-lg-3 mb-4">
-                                        <select class="form-control" id="ruangan" wire:model='ruangan_id'
+                                        <select class="form-select" id="ruangan" wire:model='ruangan_id'
                                             wire:change="updatePeralatans">
                                             <option value="" selected>Ruangan</option>
                                             @foreach ($ruangans as $ruangan)
@@ -41,7 +42,7 @@
                                         </select>
                                     </div>
                                     <div class="col-lg-3 mb-4">
-                                        <select class="form-control" id="peralatan" wire:model='p_m_id'>
+                                        <select class="form-select" id="peralatan" wire:model='p_m_id'>
                                             <option value="" selected>Peralatan/Mesin</option>
                                             @foreach ($peralatans as $peralatan)
                                                 <option value="{{ $peralatan->id }}">
@@ -58,7 +59,7 @@
                             <div class="form-group">
                                 <div class="row justify-content-md-center">
                                     <div class="col-lg-3 mb-4">
-                                        <select class="form-control" id="ruangan" wire:model='jenis'>
+                                        <select class="form-select" id="ruangan" wire:model='jenis'>
                                             <option value="" selected>Jenis Kerusakan</option>
                                             <option value="Perawatan Rutin">Perawatan Rutin</option>
                                             <option value="Perbaikan">Perbaikan</option>
@@ -99,10 +100,11 @@
                             </div>
                         </div>
                         @if (auth()->user()->role == 'KepalaBengkel')
-                            <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
-                                <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
+                            <div class="col-lg-2 d-flex justify-content-end px-4 h-50 mb-2">
+                                <a class="btn btn-success" type="button" style="border-radius: 10px"
                                     href="{{ route('print.bukupemeliharaanalat', ['id' => auth()->user()->ruangan_id]) }}"><i
-                                        class="fa fa-print fa-lg mr-1"> Print</i>
+                                        class="fas fa-print"></i>
+                                    Print
                                 </a>
                             </div>
                         @endif
@@ -114,9 +116,9 @@
                         </div> --}}
                     </div>
 
-                    <div class="row">
+                    <div class="row mb-5">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped table-responsive">
                                 <thead>
                                     <tr>
                                         <th>Kode P/M</th>
@@ -138,26 +140,26 @@
                                             <td>
                                                 <h4>
                                                     <span
-                                                        class="badge {{ $pemeliharaan->status == 'Selesai' ? 'badge-success' : 'badge-danger' }} px-2 text-white">{{ $pemeliharaan->status }}</span>
+                                                        class="badge {{ $pemeliharaan->status == 'Selesai' ? 'text-bg-success' : 'text-bg-danger' }} px-2 text-white">{{ $pemeliharaan->status }}</span>
                                                 </h4>
                                             </td>
                                             <td>
-                                                <div class="dropdown">
-                                                    <a href="javascript:void(0)" data-toggle="dropdown"><i
-                                                            class="fa fa-ellipsis-v fa-lg"></i></a>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="javascript:void(0)"
-                                                            data-toggle="modal" data-target="#infoModal"
-                                                            wire:click='info({{ $pemeliharaan->id }})'>More info</a>
-                                                        <a class="dropdown-item" href="javascript:void(0)"
-                                                            wire:click='updateStatus({{ $pemeliharaan->id }})'>
-                                                            @if ($pemeliharaan->status == 'Belum Selesai')
-                                                                Selesai
-                                                            @else
-                                                                Belum Selesai
-                                                            @endif
-                                                        </a>
-                                                    </div>
+                                                <a class="dropdown-toggle pl-md-3 position-relative"
+                                                    href="javascript:void(0)" data-bs-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false"><i
+                                                        class="fa fa-ellipsis-v fa-lg"></i></a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="javascript:void(0)"
+                                                        data-bs-toggle="modal" data-bs-target="#infoModal"
+                                                        wire:click='info({{ $pemeliharaan->id }})'>More info</a>
+                                                    <a class="dropdown-item" href="javascript:void(0)"
+                                                        wire:click='updateStatus({{ $pemeliharaan->id }})'>
+                                                        @if ($pemeliharaan->status == 'Belum Selesai')
+                                                            Selesai
+                                                        @else
+                                                            Belum Selesai
+                                                        @endif
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -198,5 +200,3 @@
             </div>
         </div>
     </div>
-
-</div>

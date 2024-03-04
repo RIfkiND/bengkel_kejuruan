@@ -15,30 +15,26 @@
         <h2>Beranda </h2>
         <ul>
             <li><a href="#1">Beranda</a></li>
-            <li><a href="#Pencapaian">Pencapaian</a></li>
-            <li><a href="#Tentang">Tentang</a></li>
+            <li><a href="#2">Pencapaian</a></li>
+            <li><a href="#3">Tentang</a></li>
         </ul>
-        @if (auth()->user())
-            <a href="{{ route('admin.index') }}"><button class="hire-btn">Ke Dashboard</button></a>
-        @else
-            <a href="{{ route('login') }}"><button class="hire-btn">Login</button></a>
-        @endif
+        <a href="{{ route('login') }}"><button class="hire-btn">Login</button></a>
     </div>
 
     <div class="main">
-        <h4>Selamat Datang, di <span>Manajemen Bengkel</span> 👋</h4>
+        {{-- <h4>Selamat Datang, di <span>Manajemen Bengkel</span> 👋</h4>
         <p class="title">Web pengelola barang</p>
-        <p class="subtitle">dengan mudah dan praktis.</p>
+        <p class="subtitle">dengan mudah dan praktis.</p> --}}
     </div>
 
-    <h5 class="seprator" id="Pencapaian">Pencapaian</h5>
+    <h5 class="seprator" id="2">Pencapaian</h5>
     <div class="guarantee">
         <div class="item">
             <div class="icon">
                 <i class='bx bx-user'></i>
             </div>
             <div class="info">
-                <h3>{{ $users->count()}}</h3>
+                <h3>+5</h3>
                 <p>Akun yang terdaftar</p>
             </div>
             <i class='bx bx-chevron-right'></i>
@@ -48,7 +44,7 @@
                 <i class='bx bx-home'></i>
             </div>
             <div class="info">
-                <h3>{{ $sekolahs->count() }}</h3>
+                <h3>+100</h3>
                 <p>Sekolah</p>
             </div>
             <i class='bx bx-chevron-right'></i>
@@ -65,7 +61,7 @@
         </div>
     </div>
 
-    <h5 class="seprator" id="Tentang">Tentang</h5>
+    <h5 class="seprator" id="3">Tentang</h5>
 
     <div class="about">
         <img src="../Asset/images/login.png">
@@ -84,13 +80,8 @@
     <footer>
         <div class="start">
             <h3>Mulai mengelola</h3>
-            @if (auth()->user())
-                <p>Anda sudah login, silahkan ke dashboard untuk mengelola barang.</p>
-                <a href="{{ route('admin.index') }}"><button>Ke Dashboard</button></a>
-            @else
-                <p>Login untuk membuka web ini, tanyakan Admin Sekolah jika ada kendala saat login.</p>
-                <a href="{{ route('login') }}"><button>Login sekarang</button></a>
-            @endif
+            <p>Login untuk membuka web ini, tanyakan Admin Sekolah jika ada kendala saat login.</p>
+            <a href="{{ route('login') }}"><button>Login sekarang</button></a>
         </div>
 
         <div class="cols">
@@ -109,7 +100,7 @@
             </div>
 
             <div class="links-col">
-                <h4>Social Media</h4>
+                <h4>Sosial Media</h4>
                 <a href="#">Instagram</a>
                 <a href="#">Linkedin</a>
                 <a href="#">Dribble</a>
@@ -118,11 +109,11 @@
             </div>
 
             <div class="news-col">
-                <h4>NewsLetter</h4>
-                <p>Enter your email and get notified about news, of.</p>
+                <h4>Email</h4>
+                <p>Inputkan Email anda untuk mendapatkan Buku Petunjuk dari web ini</p>
 
                 <form>
-                    <input type="email" placeholder="Your email address">
+                    <input type="email" placeholder="Alamat Email Anda">
                     <button><i class='bx bxl-telegram'></i></button>
                 </form>
 
@@ -131,6 +122,19 @@
         </div>
 
     </footer>
+    <script>
+        window.addEventListener('scroll', function() {
+            var navbar = document.querySelector('.navbar');
+            if (window.scrollY > 0) {
+                navbar.style.backgroundColor = '#fff'; /* ubah warna latar belakang navbar saat digulir */
+                navbar.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)'; /* tambahkan bayangan saat digulir */
+            } else {
+                navbar.style.backgroundColor =
+                    'transparent'; /* kembalikan warna latar belakang navbar ke transparan */
+                navbar.style.boxShadow = 'none'; /* hilangkan bayangan saat tidak digulir */
+            }
+        });
+    </script>
 
 </body>
 

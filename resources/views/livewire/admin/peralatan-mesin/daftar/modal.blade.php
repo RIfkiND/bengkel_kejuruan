@@ -1,12 +1,12 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="ModalPeralatan">
+    <div wire:ignore.self class="modal fade" id="ModalPeralatan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 10px">
                 @if ($keluarMode)
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">Peralatan Atau Mesin Keluar</h4>
-                        <button type="button" class="close" data-dismiss="modal"
-                            wire:click.prevent='cancel()'><span>&times;</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click.prevent='cancel()'>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -27,14 +27,14 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             wire:click.prevent='cancel()'>Batal</button>
                         <button type="button" class="btn btn-primary" wire:click.prevent="keluar()">Simpan</button>
                     </div>
                 @else
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Informasi Pemakaian</h4>
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                        <h4 class="modal-title" id="myModalLabel">Informasi Peralatan</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
                         </button>
                     </div>
                     <div class="modal-body">
@@ -63,12 +63,12 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="card-text">
-                                    <span>Kategori : {{ $kategori_id }}</span>
+                                    <span>Kategori : {{ $kategori_id }}</span><br><br>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="card-text">
-                                    <span>Harga : {{ $harga }}</span>
+                                    <span>Harga : {{ $harga }}</span><br><br>
                                 </div>
                             </div>
                         </div>
@@ -81,52 +81,56 @@
                         </div> --}}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary text-white" data-dismiss="modal" wire:click='cancel()'>Tutup</button>
+                        <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal"
+                            wire:click='cancel()'>Tutup</button>
                     </div>
-                @endif
             </div>
+            @endif
         </div>
     </div>
+</div>
 
-    <div wire:ignore.self class="modal fade" id="ModalImportPeralatan">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Import Data Dari Excel</h4>
-                        <button type="button" class="close" data-dismiss="modal"
-                            wire:click.prevent='cancel()'><span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <h6>Pastikan Data Ada Pada Kolom Yang Sesuai <br> Seperti Pada
-                                    Gambar :</h6>
-                            </div>
+<div wire:ignore.self class="modal fade" id="ModalImportPeralatan" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="border-radius: 10px">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Import Peralatan Dari Excel</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click.prevent='cancel()'>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h6>Pastikan Data Ada Pada Kolom Yang Sesuai <br> Seperti Pada
+                                Gambar :</h6>
                         </div>
-                        <div class="row mb-4">
-                            <div class="col">
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                            <a href="/Asset/images/peralatan-tutor.png" target="_blank" class="enlarge-image">
                                 <img src="/Asset/images/peralatan-tutor.png" alt="" width="100%">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control mb-2" type="file" wire:model="file">
+                        @if ($errors->has('file'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('file') }}
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control mb-2" type="file" wire:model="file">
-                            @if ($errors->has('file'))
-                                <div class="alert alert-danger">
-                                    {{ $errors->first('file') }}
-                                </div>
-                            @endif
-                        </div>
+                        @endif
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                            wire:click.prevent='cancel()'>Batal</button>
-                        <button type="button" class="btn btn-primary" wire:click.prevent="importperalatan()"
-                            wire:loading.attr="disabled">Import</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        wire:click.prevent='cancel()'>Batal</button>
+                    <button type="button" class="btn btn-primary" wire:click.prevent="importperalatan()"
+                        wire:loading.attr="disabled">Import</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>

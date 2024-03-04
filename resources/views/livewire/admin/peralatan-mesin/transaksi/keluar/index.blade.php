@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid pt-2">
     @if ($peralatans == 'kosong')
         <div class="login-form-bg h-100">
             <div class="container h-100">
@@ -20,22 +20,33 @@
         </div>
     @else
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-sm-6 col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card-title">
-                                    <h4>Daftar Peralatan Keluar</h4>
-                                </div>
+                        <div class="row justify-content-between">
+                            <div class="col-7 pt-2">
+                                <caption>Peralatan Keluar yang terdaftar</caption>
                             </div>
-                            <div class="col d-flex justify-content-end px-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
-                                        wire:model='searchPeralatan' wire:input='resetPage'>
+                            <div class="col-5">
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <form class="me-2 d-none d-lg-block">
+                                        <div class="customize-input">
+                                            <input class="form-control custom-shadow border-2 bg-white" type="text"
+                                                placeholder="Search" aria-label="Search" style="border-radius: 10px;"
+                                                wire:model='searchPeralatan' wire:input='resetPage'>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
                         <div class="row">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
@@ -75,45 +86,49 @@
                                                 </td>
                                                 <td>{{ $peralatan->peralatankeluar->alasan_keluar }}</td>
                                                 <td>
-                                                    <div class="dropdown">
-                                                        <a href="javascript:void(0)" data-toggle="dropdown"><i
-                                                                class="fa fa-ellipsis-v fa-lg"></i></a>
-                                                        <div class="dropdown-menu">
-                                                            <a class="dropdown-item text-success"
-                                                                href="javascript:void(0)" data-toggle="modal"
-                                                                data-target="#ModalAlatKeluar"
-                                                                wire:click='onkembali($peralatan->peralatankeluar->id)'>Masuk
-                                                                Kembali
-                                                            </a>
-                                                        </div>
+                                                    <a class="dropdown-toggle pl-md-3 position-relative"
+                                                        href="javascript:void(0)" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" a href="javascript:void(0)"
+                                                            data-bs-toggle="modal" data-bs-target="#ModalAlatKeluar"
+                                                            wire:click='onkembali($peralatan->peralatankeluar->id)'><i
+                                                                class="fas fa-pencil-alt text-info"></i><span
+                                                                class="text-info">
+                                                                Masuk Kembali</span></a>
                                                     </div>
                                                 </td>
                                                 {{-- Modal --}}
-                                                <div class="modal fade" id="ModalAlatKeluar">
+                                                <div class="modal fade" id="ModalAlatKeluar" tabindex="-1"
+                                                    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
-                                                        <div class="modal-content">
+                                                        <div class="modal-content" style="border-radius: 10px">
                                                             <div class="modal-header">
                                                                 <h4 class="modal-title">Masukkan Kembali Peralatan
                                                                     Keluar</h4>
-                                                                <button type="button" class="close"
-                                                                    data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">×</span></button>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close">
+                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="form-group">
                                                                     <label>Tanggal Masuk</label>
                                                                     <input type="date" id="tanggal_masuk_kembali"
-                                                                        class="form-control input-default" wire:model='tanggal_masuk'>
+                                                                        class="form-control input-default"
+                                                                        wire:model='tanggal_masuk'>
                                                                     @error('tanggal_masuk')
                                                                         <span class="text-danger">{{ $message }}</span>
                                                                     @enderror
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-danger"
-                                                                    data-dismiss="modal">Batal</button>
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Batal</button>
                                                                 <button type="button" class="btn btn-primary"
-                                                                    data-dismiss="modal" wire:click.prevent="kembali()">Simpan</button>
+                                                                    data-bs-dismiss="modal"
+                                                                    wire:click.prevent="kembali()">Simpan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -121,7 +136,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="6">
+                                                <td colspan="7">
                                                     <h1>Data Kosong</h1>
                                                 </td>
                                             </tr>
@@ -140,4 +155,3 @@
             </div>
         </div>
     @endif
-</div>

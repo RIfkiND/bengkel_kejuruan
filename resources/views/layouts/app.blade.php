@@ -3,14 +3,21 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Manajement Bengkel</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="/Asset/images/logo-dashboard.png">
 
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+
+    <title>Manajemen Bengkel</title>
+
+    <!-- Custom CSS -->
     <link href="/Asset/css/style.css" rel="stylesheet">
 </head>
 
@@ -22,15 +29,24 @@
     <!--*******************
         Preloader end
     ********************-->
+    <div class="container-fluid pt-8">
 
-    @yield('content')
+        @yield('content')
+
+    </div>
 
 
-    <script src="/Asset/plugins/common/common.min.js"></script>
+
+    <script src="/Asset/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/Asset/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="/Asset/js/app-style-switcher.js"></script>
+    <script src="/Asset/js/feather.min.js"></script>
+    <script src="/Asset/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/Asset/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
     <script src="/Asset/js/custom.min.js"></script>
-    <script src="/Asset/js/settings.js"></script>
-    <script src="/Asset/js/gleek.js"></script>
-    <script src="/Asset/js/styleSwitcher.js"></script>
 </body>
 
 </html>

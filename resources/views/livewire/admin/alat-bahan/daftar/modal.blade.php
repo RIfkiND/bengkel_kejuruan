@@ -1,12 +1,13 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="ModalAlat">
+    <div wire:ignore.self class="modal fade" id="ModalAlat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 10px">
                 @if ($keluarMode)
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">Alat Atau Bahan Keluar</h4>
-                        <button type="button" class="close" data-dismiss="modal"
-                            wire:click.prevent='cancel()'><span>&times;</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            wire:click.prevent='cancel()'>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -96,14 +97,14 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             wire:click.prevent='cancel()'>Batal</button>
                         <button type="button" class="btn btn-primary" wire:click.prevent="masuk()">Simpan</button>
                     </div>
                 @else
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">Informasi Lengkap</h4>
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
                         </button>
                     </div>
                     <div class="modal-body">
@@ -195,7 +196,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary text-white"
-                            data-dismiss="modal">Tutup</button>
+                            data-bs-dismiss="modal">Tutup</button>
                     </div>
                 @endif
             </div>

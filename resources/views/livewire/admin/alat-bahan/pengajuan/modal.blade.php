@@ -1,7 +1,8 @@
 <div>
-    <div wire:ignore.self class="modal fade" id="ModalPengajuan">
+    <div wire:ignore.self class="modal fade" id="ModalPengajuan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="border-radius: 10px">
                 <form>
                     <div class="modal-header">
                         @if ($updateMode)
@@ -11,8 +12,8 @@
                         @else
                             <h5 class="modal-title" id="modallabel">Ajukan Alat atau Bahan</h5>
                         @endif
-                        <button type="button" class="close" data-dismiss="modal"
-                            wire:click.prevent='cancel()'><span>×</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            wire:click.prevent='cancel()'>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -84,7 +85,7 @@
                             @else
                                 <div class="form-row mb-3">
                                     <div class="col">
-                                        <input type="file" class="form-control-file" wire:model='image'>
+                                        <input type="file" class="form-control" wire:model='image'>
                                         @error('image')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -102,7 +103,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col mb-4">
-                                            <select wire:model="kode" class="form-control" id="kode">
+                                            <select wire:model="kode" class="form-select" id="kode">
                                                 <option value="" selected>JENIS</option>
                                                 <option value="A">Alat</option>
                                                 <option value="B">Bahan</option>
@@ -159,12 +160,12 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                             wire:click.prevent='cancel()'>
                             @if ($informasiMode)
                                 Tutup
                             @else
-                                Batalkan
+                                Batal
                             @endif
                         </button>
                         @if ($updateMode)

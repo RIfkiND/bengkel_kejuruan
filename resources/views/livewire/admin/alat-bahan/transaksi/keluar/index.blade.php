@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid pt-2">
     @if ($alats == 'kosong')
         <div class="login-form-bg h-100">
             <div class="container h-100">
@@ -20,32 +20,45 @@
         </div>
     @else
         <div class="row">
+            <div class="col-sm-6 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row justify-content-between">
+                            <div class="col-7 pt-2">
+                                <caption>Riwayat Pemakaian A/B</caption>
+                            </div>
+                            <div class="col-5">
+                                <div class="d-flex align-items-center justify-content-end">
+                                    <form class="me-2 d-none d-lg-block">
+                                        <div class="customize-input">
+                                            <input class="form-control custom-shadow border-2 bg-white" type="text"
+                                                placeholder="Search" aria-label="Search" style="border-radius: 10px;"
+                                                wire:model='searchAlat' wire:input='resetPage'>
+                                        </div>
+                                    </form>
+                                    @if (auth()->user()->role == 'KepalaBengkel')
+                                        <div class="customize-input float-end ms-2">
+                                            <a class="btn btn-success" type="button" style="border-radius: 10px"
+                                                href="{{ route('print.pengeluaranbarang', ['id' => auth()->user()->ruangan_id]) }}"><i
+                                                    class="fas fa-print"></i>
+                                                Print
+                                            </a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col">
-                                <div class="card-title">
-                                    <h4>Riwayat Pemakaian Alat</h4>
-                                </div>
-                            </div>
-                            <div class="col d-flex justify-content-end px-5">
-                                <div class="form-group">
-                                    <input type="text" class="form-control input-rounded h-25" placeholder="Cari"
-                                        wire:model='searchAlat' wire:input='resetPage'>
-                                </div>
-                            </div>
-                            @if (auth()->user()->role == 'KepalaBengkel')
-                            <div class="col-lg-1 d-flex justify-content-end px-4 h-50">
-                                <a type="button" class="btn mb-1 btn-success d-flex justify-content-end"
-                                    href="{{ route('print.pengeluaranbarang', ['id' => auth()->user()->ruangan_id]) }}"><i class="fa fa-print fa-lg mr-1">  Print</i>
-                                    </a>
-                            </div>
-                            @endif
-                        </div>
-                        <div class="row">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table class="table table-bordered table-striped table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Tanggal Pemakaian</th>
@@ -101,4 +114,3 @@
             </div>
         </div>
     @endif
-</div>

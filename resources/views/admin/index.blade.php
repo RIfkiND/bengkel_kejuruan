@@ -2,14 +2,13 @@
 
 @push('css')
     <!-- Pignose Calender -->
-    <link href="/Asset/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
-    <!-- Chartist -->
-    <link rel="stylesheet" href="/Asset/plugins/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href="/Asset/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <link href="/Asset/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="/Asset/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="/Asset/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
 @endpush
 
 @section('content')
-    <div class="content-body">
+    <div class="page-wrapper">
 
         @livewire('admin.index')
         <!-- #/ container -->
@@ -17,23 +16,12 @@
 @endsection
 
 @push('js')
-    <!-- Chartjs -->
-    <script src="/Asset/plugins/chart.js/Chart.bundle.min.js"></script>
-    <!-- Datamap -->
-    <script src="/Asset/plugins/d3v3/index.js"></script>
-    <script src="/Asset/plugins/topojson/topojson.min.js"></script>
-    <script src="/Asset/plugins/datamaps/datamaps.world.min.js"></script>
-    <!-- Morrisjs -->
-    <script src="/Asset/plugins/raphael/raphael.min.js"></script>
-    <script src="/Asset/plugins/morris/morris.min.js"></script>
-    <!-- Pignose Calender -->
-    <script src="/Asset/plugins/moment/moment.min.js"></script>
-    <script src="/Asset/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
-    <!-- ChartistJS -->
-    <script src="/Asset/plugins/chartist/js/chartist.min.js"></script>
-    <script src="/Asset/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
-
-
-
-    <script src="/Asset/js/dashboard/dashboard-1.js"></script>
+    <!--This page JavaScript -->
+    <script src="/Asset/extra-libs/c3/d3.min.js"></script>
+    <script src="/Asset/extra-libs/c3/c3.min.js"></script>
+    <script src="/Asset/libs/chartist/dist/chartist.min.js"></script>
+    <script src="/Asset/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="/Asset/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="/Asset/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="/Asset/js/pages/dashboards/dashboard1.min.js"></script>
 @endpush
