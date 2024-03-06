@@ -43,6 +43,11 @@ class Index extends Component
         $this->gotoPage(1, 'userPage');
     }
 
+    public function updateGuruIndicator()
+    {
+        
+    }
+
     public function render()
     {
         $searchUser = '%' . $this->searchUser . '%';

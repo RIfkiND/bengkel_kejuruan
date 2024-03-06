@@ -4,7 +4,7 @@
     <!-- ============================================================== -->
     <ul class="navbar-nav float-left me-auto ms-3 ps-1">
         <!-- Notification -->
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)" id="bell"
                 role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span><i data-feather="bell" class="svg-icon"></i></span>
@@ -74,12 +74,12 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> --}}
         <!-- End Notification -->
         <!-- ============================================================== -->
         <!-- create new -->
         <!-- ============================================================== -->
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i data-feather="settings" class="svg-icon"></i>
@@ -90,7 +90,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Something else here</a>
             </div>
-        </li>
+        </li> --}}
         {{-- <li class="nav-item d-none d-md-block">
             <a class="nav-link" href="javascript:void(0)">
                 <div class="customize-input">

@@ -123,7 +123,7 @@
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div class="form-group col-lg-6">
+                                        {{-- <div class="form-group col-lg-6">
                                             <label>Guru Terdata</label>
                                             <select id="selectedguru" class="form-select" wire:model='selectedguru'>
                                                 <option value="">Pilih</option>
@@ -135,7 +135,7 @@
                                             @error('selectedguru')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group col-lg-6">
                                             <label>Mata Pelajaran</label>
                                             <input type="text" class="form-control" placeholder="Teknik Mesin"
