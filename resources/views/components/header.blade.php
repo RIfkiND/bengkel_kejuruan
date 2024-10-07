@@ -140,28 +140,28 @@
                 <img id="userImage" src="/Asset/images/UserImage1.png" alt="user" class="rounded-circle"
                     width="30">
                 <span class="ms-2 d-none d-lg-inline-block"><span id="halloText">Halo,</span> <span
-                        class="text-dark">{{ auth()->user()->name }}</span> <i data-feather="chevron-down"
-                        class="svg-icon"></i></span>
+                        class="text-dark">{{ auth()->user()->name }}</span> {{--<i data-feather="chevron-down"
+                        class="svg-icon"></i>--}}</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-end dropdown-menu-right animated flipInY">
-                <a class="dropdown-item" href="javascript:void(0)" id="changeUserImage"><i data-feather="user"
+            {{-- <div class="dropdown-menu dropdown-menu-end dropdown-menu-right animated flipInY"> --}}
+                {{-- <a class="dropdown-item" href="javascript:void(0)" id="changeUserImage"><i data-feather="user"
                         class="svg-icon me-2 ms-1"></i>
-                    Change Profile</a>
-                <a class="dropdown-item" href="{{ route('logout') }}"
+                    Change Profile</a> --}}
+                {{-- <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"><i
                         data-feather="log-out" class="svg-icon me-2 ms-1"></i>
                     Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
-                </form>
+                </form> --}}
                 @if (session('original_user_id'))
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('admin.stop-impersonating') }}" class="text-info dropdown-item"><i
                             data-feather="power" class="svg-icon me-2 ms-1"></i>
                         Berhenti</a>
                 @endif
-            </div>
+            {{-- </div> --}}
         </li>
         <!-- ============================================================== -->
         <!-- User profile and search -->

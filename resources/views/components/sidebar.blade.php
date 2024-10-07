@@ -66,6 +66,16 @@
                             class="feather-icon"></i><span class="hide-menu">Kategori Peralatan
                         </span></a>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><i
+                        data-feather="log-out" class="svg-icon me-2 ms-1"></i>
+                        Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                </li>
 
                 <li class="list-divider"></li>
 
