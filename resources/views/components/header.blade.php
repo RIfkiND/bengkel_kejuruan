@@ -103,9 +103,8 @@
             </a>
         </li> --}}
         <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-container="body"
-                data-bs-toggle="popover" data-bs-placement="bottom"
-                data-bs-content="Saat ini baru tersedia bahasa Indonesia">
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-container="body" data-bs-toggle="popover"
+                data-bs-placement="bottom" data-bs-content="Saat ini baru tersedia bahasa Indonesia">
                 <img src="/Asset/images/indonesia.png" class="rounded-circle" width="30">
             </a>
         </li>

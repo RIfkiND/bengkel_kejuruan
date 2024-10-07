@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -12,6 +12,7 @@ body {
     background: #ffffff;
 }
 
+/* Navbar Start*/
 .navbar {
     position: fixed;
     top: 0;
@@ -73,21 +74,22 @@ body {
     background: #e9f3ff;
     color: #265b9e;
 }
+/* Navbar End */
 
+/* Home Main Start*/
 .main {
     height: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('../images/backgroundd.jpg');
+    background-image: url("../images/backgroundd.jpg");
     background-size: cover;
     /* Untuk mengatur ukuran gambar agar sesuai dengan elemen */
     background-position: center;
     /* Untuk mengatur posisi gambar di dalam elemen */
     margin-top: 45px;
 }
-
 
 .main h4 {
     font-size: 32px;
@@ -116,6 +118,19 @@ body {
     height: 200px;
     margin-top: 100px;
 }
+
+/* Home Main End */
+
+.seprator {
+    margin: 50px 50px 30px;
+    padding: 10px 20px;
+    background: #7571f9;
+    display: inline-block;
+    color: #ffffff;
+    border-radius: 12px;
+}
+
+/* Guarantee Start */
 
 .guarantee {
     margin-top: 50px;
@@ -156,6 +171,7 @@ body {
 
 .guarantee .item:hover .icon {
     background-color: #7571f9;
+    color: #fff;
 }
 
 .guarantee .item .icon i {
@@ -178,25 +194,19 @@ body {
     font-weight: 600;
 }
 
-.guarantee .item>i {
+.guarantee .item > i {
     color: #fff;
     font-size: 30px;
     transition: color 0.3s ease;
 }
 
-.guarantee .item:hover>i {
+.guarantee .item:hover > i {
     color: #ffb742;
 }
 
-.seprator {
-    margin: 50px 50px 30px;
-    padding: 10px 20px;
-    background: #7571f9;
-    display: inline-block;
-    color: #ffffff;
-    border-radius: 12px;
-}
+/* Guarantee End */
 
+/* About Start */
 .about {
     display: flex;
     justify-content: space-between;
@@ -224,6 +234,8 @@ body {
 .about .info button {
     margin-top: 30px;
 }
+
+/* About End */
 
 .skills {
     display: flex;
@@ -275,6 +287,7 @@ body {
     color: #fff;
 }
 
+/* Footer Start */
 footer {
     position: relative;
     background: #e9f3ff;
@@ -313,6 +326,7 @@ footer .start button {
 footer .start button:hover {
     background-color: #7571f9;
     border-color: #7571f9;
+    color: #fff;
 }
 
 footer .cols {
@@ -405,7 +419,9 @@ footer .cols .news-col form button:hover {
 footer .cols .news-col form button i {
     font-size: 26px;
 }
+/* Footer End */
 
+/* Responsive Start*/
 @media screen and (max-width: 1100px) {
     .guarantee {
         flex-wrap: wrap;
@@ -458,11 +474,9 @@ footer .cols .news-col form button i {
     footer .cols .news-col {
         flex-basis: 50%;
     }
-
 }
 
 @media screen and (max-width: 780px) {
-
     .navbar button {
         display: none;
     }
@@ -487,11 +501,9 @@ footer .cols .news-col form button i {
         flex-wrap: wrap;
         justify-content: center;
     }
-
 }
 
 @media screen and (max-width: 650px) {
-
     .navbar {
         justify-content: center;
     }
@@ -562,11 +574,9 @@ footer .cols .news-col form button i {
     footer .cols .news-col {
         flex-basis: 100%;
     }
-
 }
 
 @media screen and (max-width: 480px) {
-
     .main p.title {
         font-size: 18px;
     }
@@ -582,5 +592,6 @@ footer .cols .news-col form button i {
     .guarantee .item .info p {
         font-size: 12px;
     }
-
 }
+
+/* Responsive End */

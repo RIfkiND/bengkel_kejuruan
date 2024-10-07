@@ -38,7 +38,7 @@
         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
 
         <!--**********************************
-            
+
             Nav header start
         ***********************************-->
         <header class="topbar" data-navbarbg="skin6">
