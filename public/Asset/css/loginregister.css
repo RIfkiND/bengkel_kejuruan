@@ -1,0 +1,116 @@
+:root {
+    --primary: #7faec7;
+    --secondary: #0f172a;
+}
+
+.w-full {
+    width: 100%;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.nodeva-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-container {
+    width: 60%;
+    padding: 60px 0 60px 60px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.right-container {
+    width: 40%;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background: #a3cfe7;
+}
+
+.login-nodeva-container {
+    display: flex;
+    width: 900px;
+    border-radius: 20px;
+    background-color: white;
+    overflow: hidden;
+    border: 1px solid #a3cfe7;
+}
+
+.nodeva-container {
+    color: var(--secondary);
+}
+
+.welcome-text {
+    font-size: 14px;
+
+    margin-bottom: 0;
+}
+
+.login-text {
+    font-size: 44px;
+    font-weight: 600;
+}
+
+.tittle-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container p {
+    font-size: 14px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-container input {
+    width: 75%;
+    border: 1px solid #475569;
+    border-radius: 13px;
+    padding: 5px 20px;
+    margin-top: 5px;
+}
+
+.btn-login-container {
+    display: flex;
+    width: 75%;
+    justify-content: center;
+}
+
+.btn-login-container button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid var(--primary);
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--primary);
+    padding: 5px 20px;
+    color: white;
+    border-radius: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-login-container button:hover {
+    background-color: #638496;
+    transition: all 0.3s ease-in-out;
+}
+
+.img-login-container {
+    width: 400px;
+    left: -7rem;
+}

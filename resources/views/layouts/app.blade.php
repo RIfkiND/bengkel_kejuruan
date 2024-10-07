@@ -19,6 +19,7 @@
 
     <!-- Custom CSS -->
     <link href="/Asset/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('Asset/css/loginregister.css') }}">
 </head>
 
 <body class="h-100">
@@ -29,7 +30,7 @@
     <!--*******************
         Preloader end
     ********************-->
-    <div class="container-fluid pt-8">
+    <div class="">
 
         @yield('content')
 
