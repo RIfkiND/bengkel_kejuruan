@@ -12,9 +12,9 @@
                                 <img src="../Asset/images/login.png" class="img-fluid" alt="Login Image"> <!-- Updated line -->
                             </div>
                             <h2 class="d-flex position-absolute" style="top: 5%; right: 43%">Login</h2> <!-- Updated line -->
-                            <div class="col-md-6"> <!-- Updated line -->
+                            <div class="col-md-5"> <!-- Updated line -->
                                 @if (session('error'))
-                                    <div class="alert alert-danger">
+                                    <div id="error-alert" class="alert alert-danger mt-4">
                                         {{ session('error') }}
                                     </div>
                                 @endif
@@ -55,4 +55,22 @@
     </div>
 </div>
 
+<script>
+    // Wait for the DOM to load
+    document.addEventListener("DOMContentLoaded", function() {
+        // Set a timeout to remove the alert after 3 seconds
+        setTimeout(function() {
+            var alert = document.getElementById('error-alert');
+            if (alert) {
+                alert.style.transition = "opacity 0.5s ease"; // Optional: Fade out effect
+                alert.style.opacity = 0; // Make it invisible
+
+                // Remove from the DOM after fading out (optional)
+                setTimeout(function() {
+                    alert.remove();
+                }, 500); // Wait until the fade-out effect completes
+            }
+        }, 3000); // 3000 milliseconds = 3 seconds
+    });
+</script>
 @endsection
